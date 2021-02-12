@@ -1,0 +1,138 @@
+  BEBS.AdminMenu.resources - Embedded, ContainedInManifestFile, 
+  BEBS.DiscountControl.resources - Embedded, ContainedInManifestFile, 
+  BEBS.HomePage.resources - Embedded, ContainedInManifestFile, 
+  BEBS.LogInMenu.resources - Embedded, ContainedInManifestFile, 
+  BEBS.OrdersControl.resources - Embedded, ContainedInManifestFile, 
+  BEBS.ProfitControl.resources - Embedded, ContainedInManifestFile, 
+  BEBS.RegisterMenu.resources - Embedded, ContainedInManifestFile, 
+  BEBS.SalesControl.resources - Embedded, ContainedInManifestFile, 
+  BEBS.ShoppingMenu.resources - Embedded, ContainedInManifestFile, 
+  BEBS.UsersControl.resources - Embedded, ContainedInManifestFile, 
+ImageRuntimeVersion: v4.0.30319
+Assembly BEBS, Version=1.0.*, Culture=Invariant Language (Invariant Country): 
+	hash=SHA1, flags=PublicKey
+Assembly mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly MySql.Data, Version=8.0.19.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d: 
+	hash=None, flags=None
+Assembly System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a: 
+	hash=None, flags=None
+Assembly System.Windows.Forms.DataVisualization.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35: 
+	hash=None, flags=None
+Assembly System.Windows.Forms.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35: 
+	hash=None, flags=None
+Assembly System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly Microsoft.VisualC.STLCLR, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a: 
+	hash=None, flags=None
+Class BEBS.ProfitControl: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(System.Windows.Forms.Form): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class BEBS.OrdersControl: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(System.Windows.Forms.Form): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class BEBS.SalesControl: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(System.Windows.Forms.Form): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class Item: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  Interfaces:
+    System.IDisposable
+  Fields:
+    Item next : Public
+  Methods:
+    getNumItem(): PrivateScope, Public, HideBySig
+    Dispose(): PrivateScope, Public, Final, Virtual, HideBySig
+Class Book: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :Item
+    Void .ctor(System.String, System.String, System.String, System.String, System.String, System.String, System.String, System.String, System.String, System.String, Item): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    getTitle(): PrivateScope, Public, HideBySig
+    getBookId(): PrivateScope, Public, HideBySig
+    getPages(): PrivateScope, Public, HideBySig
+    getSection(): PrivateScope, Public, HideBySig
+    getPrice(): PrivateScope, Public, HideBySig
+    getAmount(): PrivateScope, Public, HideBySig
+    getPublishDate(): PrivateScope, Public, HideBySig
+    getInfo(): PrivateScope, Public, HideBySig
+    getImg(): PrivateScope, Public, HideBySig
+    getAuthorId(): PrivateScope, Public, HideBySig
+Class User: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(System.String, System.String, System.String, System.String, System.String): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Interfaces:
+    System.IDisposable
+  Methods:
+    getUserRole(): PrivateScope, Public, HideBySig
+    getName(): PrivateScope, Public, HideBySig
+    Dispose(): PrivateScope, Public, Final, Virtual, HideBySig
+Class Coustomer: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :User
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(System.String, System.String, System.String, System.String, System.String): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    addItemToCart(String): PrivateScope, Public, HideBySig
+    getValue(String): PrivateScope, Public, HideBySig
+Class Inventory: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(Book): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Interfaces:
+    System.IDisposable
+  Methods:
+    getNumberItems(): PrivateScope, Public, HideBySig
+    initBookAndSendP(): PrivateScope, Public, HideBySig
+    BookLIndex(): PrivateScope, Public, HideBySig
+    getBook(): PrivateScope, Public, HideBySig
+    Dispose(): PrivateScope, Public, Final, Virtual, HideBySig
+Class BEBS.DiscountControl: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(System.Windows.Forms.Form): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class BEBS.RegisterMenu: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(System.Windows.Forms.Form): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class BEBS.ShoppingMenu: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(Coustomer): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class BEBS.LogInMenu: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(System.Windows.Forms.Form): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class BEBS.UsersControl: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(System.Windows.Forms.Form): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class BEBS.AdminMenu: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class BEBS.HomePage: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class MySQL: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Interfaces:
+    System.IDisposable
+  Fields:
+    System.String constr : Public
+    MySql.Data.MySqlClient.MySqlConnection conData : Public
+  Methods:
+    getInstaseUser(String, String): PrivateScope, Public, HideBySig
+    deleteBook(String): PrivateScope, Public, HideBySig
+    updateBook(String, String, String, String, String, String, String, String): PrivateScope, Public, HideBySig
+    addNewUser(String, String, String): PrivateScope, Public, HideBySig
+    GetBookTable(): PrivateScope, Public, HideBySig
+    GetUserTable(): PrivateScope, Public, HideBySig
+    getListOfBook(): PrivateScope, Public, HideBySig
+    getSearchListBook(String): PrivateScope, Public, HideBySig
+    Dispose(): PrivateScope, Public, Final, Virtual, HideBySig

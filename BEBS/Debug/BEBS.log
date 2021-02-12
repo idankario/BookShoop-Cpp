@@ -1,0 +1,23 @@
+﻿  pch.cpp
+  AdminMenu.cpp
+  AssemblyInfo.cpp
+  BEBS.cpp
+  Book.cpp
+  Coustomer.cpp
+  DiscountControl.cpp
+  HomePage.cpp
+  Inventory.cpp
+  Item.cpp
+  LogInMenu.cpp
+  MySQL.cpp
+  OrdersControl.cpp
+  ProfitControl.cpp
+  RegisterMenu.cpp
+  SalesControl.cpp
+  ShoppingMenu.cpp
+  User.cpp
+  UsersControl.cpp
+  Generating Code...
+  .NETFramework,Version=v4.7.2.AssemblyAttributes.cpp
+  AdminMenu.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
+  BEBS.vcxproj -> C:\Users\MY PC\source\repos\BEBS\Debug\BEBS.exe
