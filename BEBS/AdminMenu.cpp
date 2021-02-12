@@ -53,11 +53,9 @@ BEBS::AdminMenu::~AdminMenu()
 		this->label2 = (gcnew System::Windows::Forms::Label());
 		this->label3 = (gcnew System::Windows::Forms::Label());
 		this->author_txt = (gcnew System::Windows::Forms::TextBox());
-		this->img_txt = (gcnew System::Windows::Forms::TextBox());
 		this->date_txt = (gcnew System::Windows::Forms::TextBox());
 		this->label4 = (gcnew System::Windows::Forms::Label());
 		this->Delete = (gcnew System::Windows::Forms::Button());
-		this->label5 = (gcnew System::Windows::Forms::Label());
 		this->HomePage = (gcnew System::Windows::Forms::PictureBox());
 		(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->img))->BeginInit();
 		(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->HomePage))->BeginInit();
@@ -66,24 +64,28 @@ BEBS::AdminMenu::~AdminMenu()
 		// listBox
 		// 
 		this->listBox->BackColor = System::Drawing::Color::Black;
+		this->listBox->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			static_cast<System::Byte>(0)));
 		this->listBox->ForeColor = System::Drawing::Color::White;
 		this->listBox->FormattingEnabled = true;
-		this->listBox->ItemHeight = 16;
+		this->listBox->ItemHeight = 22;
 		this->listBox->Location = System::Drawing::Point(673, 133);
 		this->listBox->Name = L"listBox";
-		this->listBox->Size = System::Drawing::Size(241, 308);
+		this->listBox->Size = System::Drawing::Size(241, 290);
 		this->listBox->TabIndex = 0;
 		this->listBox->SelectedIndexChanged += gcnew System::EventHandler(this, &AdminMenu::listBox_SelectedIndexChanged);
 		// 
 		// img
 		// 
 		this->img->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+		this->img->Cursor = System::Windows::Forms::Cursors::Hand;
 		this->img->Location = System::Drawing::Point(454, 106);
 		this->img->Name = L"img";
 		this->img->Size = System::Drawing::Size(162, 153);
 		this->img->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 		this->img->TabIndex = 1;
 		this->img->TabStop = false;
+		this->img->Click += gcnew System::EventHandler(this, &AdminMenu::img_Click);
 		// 
 		// book_id
 		// 
@@ -275,7 +277,7 @@ BEBS::AdminMenu::~AdminMenu()
 		this->SAVE->TabIndex = 20;
 		this->SAVE->Text = L"SAVE";
 		this->SAVE->UseVisualStyleBackColor = false;
-		this->SAVE->Click += gcnew System::EventHandler(this, &AdminMenu::button1_Click_1);
+		this->SAVE->Click += gcnew System::EventHandler(this, &AdminMenu::saveClick);
 		// 
 		// Update
 		// 
@@ -354,16 +356,6 @@ BEBS::AdminMenu::~AdminMenu()
 		this->author_txt->TabIndex = 27;
 		this->author_txt->TextChanged += gcnew System::EventHandler(this, &AdminMenu::author_txt_TextChanged);
 		// 
-		// img_txt
-		// 
-		this->img_txt->BackColor = System::Drawing::Color::Black;
-		this->img_txt->ForeColor = System::Drawing::Color::White;
-		this->img_txt->Location = System::Drawing::Point(454, 265);
-		this->img_txt->Multiline = true;
-		this->img_txt->Name = L"img_txt";
-		this->img_txt->Size = System::Drawing::Size(162, 34);
-		this->img_txt->TabIndex = 28;
-		// 
 		// date_txt
 		// 
 		this->date_txt->BackColor = System::Drawing::Color::Black;
@@ -397,17 +389,6 @@ BEBS::AdminMenu::~AdminMenu()
 		this->Delete->UseVisualStyleBackColor = false;
 		this->Delete->Click += gcnew System::EventHandler(this, &AdminMenu::Delete_Click);
 		// 
-		// label5
-		// 
-		this->label5->AutoSize = true;
-		this->label5->BackColor = System::Drawing::Color::Transparent;
-		this->label5->ForeColor = System::Drawing::Color::Brown;
-		this->label5->Location = System::Drawing::Point(546, 302);
-		this->label5->Name = L"label5";
-		this->label5->Size = System::Drawing::Size(53, 17);
-		this->label5->TabIndex = 32;
-		this->label5->Text = L"*add // ";
-		// 
 		// HomePage
 		// 
 		this->HomePage->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"HomePage.BackgroundImage")));
@@ -428,11 +409,9 @@ BEBS::AdminMenu::~AdminMenu()
 		this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 		this->ClientSize = System::Drawing::Size(1407, 670);
 		this->Controls->Add(this->HomePage);
-		this->Controls->Add(this->label5);
 		this->Controls->Add(this->Delete);
 		this->Controls->Add(this->label4);
 		this->Controls->Add(this->date_txt);
-		this->Controls->Add(this->img_txt);
 		this->Controls->Add(this->author_txt);
 		this->Controls->Add(this->label3);
 		this->Controls->Add(this->label2);
@@ -479,16 +458,17 @@ System::Void BEBS::AdminMenu::label1_Click_1(System::Object^ sender, System::Eve
 System::Void BEBS::AdminMenu::textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 }
 System::Void BEBS::AdminMenu::button1_Click(System::Object^ sender, System::EventArgs^ e) {
-	this->Hide();
-	BEBS::UsersControl users(this);
+	this->~AdminMenu();
+	BEBS::UsersControl users;
 	users.ShowDialog();
 }
 
 	   //image text -> add / / image//books//
-System::Void BEBS::AdminMenu::button1_Click_1(System::Object^ sender, System::EventArgs^ e) {
+System::Void BEBS::AdminMenu::saveClick(System::Object^ sender, System::EventArgs^ e) {
 	String^ con = L"datasource=localhost; port=3306; username=root; password=bebs";
 	MySqlConnection^ conData = gcnew MySqlConnection(con);
-	MySqlCommand^ cmdDB = gcnew MySqlCommand("INSERT INTO `book_store`.`books`(`book_id`,`title`,`pages` ,`section`,`price`,`amount`,`info`,`img`,`author`) VALUES('" + id_txt->Text + "','" + title_txt->Text + "','" + pag_txt->Text + "','" + sec_txt->Text + "', '" + price_txt->Text + "' ,'" + amount_txt->Text + "','" + info_txt->Text + "','" + img_txt->Text + "','" + author_txt->Text + "');", conData);
+	MySqlCommand^ cmdDB = gcnew MySqlCommand("INSERT INTO `book_store`.`books`(`book_id`,`title`,`pages` ,`section`,`price`,`amount`,`info`,`img`,`author`) VALUES('" + id_txt->Text + "','" + title_txt->Text + "','" + pag_txt->Text + "','" + sec_txt->Text + "', '" + price_txt->Text + "' ,'" + amount_txt->Text + "','" + info_txt->Text + "','"
+											+ "Image\\SignIn.jpg" + "','" + author_txt->Text + "');", conData);
 	MySqlDataReader^ myRender;
 
 	try {
@@ -498,7 +478,7 @@ System::Void BEBS::AdminMenu::button1_Click_1(System::Object^ sender, System::Ev
 		while (myRender->Read()) {
 
 		}
-		this->Hide();
+		this->~AdminMenu();
 		BEBS::AdminMenu renderPage;
 		renderPage.ShowDialog();
 	}
@@ -506,6 +486,9 @@ System::Void BEBS::AdminMenu::button1_Click_1(System::Object^ sender, System::Ev
 		MessageBox::Show(ex->Message);
 	}
 }
+
+
+
 System::Void BEBS::AdminMenu::listBox_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 	String^ listVal = listBox->Text;
 
@@ -527,11 +510,11 @@ System::Void BEBS::AdminMenu::listBox_SelectedIndexChanged(System::Object^ sende
 			String^ vamount = myRender->GetInt32("amount").ToString();
 			String^ vpublish_date = myRender->GetDateTime("publish_date").ToString();
 			String^ vinfo = myRender->GetString("info");
-			String^ vimg = myRender->GetString("img");
+			String^ vimg = "Image\\books\\" + myRender->GetString("img");
 			String^ vauthor = myRender->GetString("author");
 			//this->img->BackgroundImage = Image::FromFile("Image\\cpp1.jpg");
 			//String^ vimg = myRender->GetString("img");
-			this->img->BackgroundImage = Image::FromFile(vimg);
+			this->img->ImageLocation = vimg;
 
 
 
@@ -541,7 +524,7 @@ System::Void BEBS::AdminMenu::listBox_SelectedIndexChanged(System::Object^ sende
 			sec_txt->Text = vsection;
 			price_txt->Text = vprice;
 			info_txt->Text = vinfo;
-			img_txt->Text = vimg;
+	
 			amount_txt->Text = vamount;
 			author_txt->Text = vauthor;
 			date_txt->Text = vpublish_date;
@@ -616,7 +599,7 @@ System::Void BEBS::AdminMenu::comboBox1_SelectedIndexChanged(System::Object^ sen
 			String^ vamount = myRender->GetInt32("amount").ToString();
 			String^ vpublish_date = myRender->GetDateTime("publish_date").ToString();
 			String^ vinfo = myRender->GetString("info");
-			String^ vimg = myRender->GetString("img");
+			String^ vimg = itemPath + myRender->GetString("img");
 			String^ vauthor = myRender->GetString("author");
 
 			//set vals to text box
@@ -625,7 +608,6 @@ System::Void BEBS::AdminMenu::comboBox1_SelectedIndexChanged(System::Object^ sen
 			sec_txt->Text = vsection;
 			price_txt->Text = vprice;
 			info_txt->Text = vinfo;
-			img_txt->Text = vimg;
 			amount_txt->Text = vamount;
 			author_txt->Text = vauthor;
 			date_txt->Text = vpublish_date;
@@ -639,8 +621,11 @@ System::Void BEBS::AdminMenu::comboBox1_SelectedIndexChanged(System::Object^ sen
 
 System::Void BEBS::AdminMenu::Update_Click(System::Object^ sender, System::EventArgs^ e) {
 	MySQL db;
+	strP imgL = sec_txt->Text+ id_txt->Text + System::IO::Path::GetExtension(img->ImageLocation);
+	
+	img->Image->Save(itemPath + imgL);
 	db.updateBook(title_txt->Text ,pag_txt->Text ,sec_txt->Text, price_txt->Text  ,
-					amount_txt->Text , info_txt->Text ,img_txt->Text , id_txt->Text );
+					amount_txt->Text , info_txt->Text , imgL, author_txt->Text, id_txt->Text );
 	this->~AdminMenu();
 	BEBS::AdminMenu renderPage;
 	renderPage.ShowDialog();
@@ -648,7 +633,7 @@ System::Void BEBS::AdminMenu::Update_Click(System::Object^ sender, System::Event
 System::Void BEBS::AdminMenu::Delete_Click(System::Object^ sender, System::EventArgs^ e) {
 	MySQL db;
 	db.deleteBook(id_txt->Text);
-	this->Hide();
+	this->~AdminMenu();
 	BEBS::AdminMenu renderPage;
 	renderPage.ShowDialog();
 }
@@ -656,24 +641,24 @@ System::Void BEBS::AdminMenu::Delete_Click(System::Object^ sender, System::Event
 
 
 System::Void BEBS::AdminMenu::Sales_Click(System::Object^ sender, System::EventArgs^ e) {
-	this->Hide();
-	BEBS::SalesControl sales(this);
+	this->~AdminMenu();
+	BEBS::SalesControl sales;
 	sales.ShowDialog();
 }
 System::Void BEBS::AdminMenu::Profit_Click(System::Object^ sender, System::EventArgs^ e) {
-	this->Hide();
-	BEBS::ProfitControl nextPag(this);
-	nextPag.ShowDialog();
+	this->~AdminMenu();
+	BEBS::ProfitControl profit;
+	profit.ShowDialog();
 }
 System::Void BEBS::AdminMenu::Orders_Click(System::Object^ sender, System::EventArgs^ e) {
-	this->Hide();
-	BEBS::OrdersControl nextPag(this);
+	this->~AdminMenu();
+	BEBS::OrdersControl nextPag;
 	nextPag.ShowDialog();
 }
 System::Void BEBS::AdminMenu::Discount_Click(System::Object^ sender, System::EventArgs^ e) {
-	this->Hide();
-	BEBS::DiscountControl nextPag(this);
-	nextPag.ShowDialog();
+	this->~AdminMenu();
+	BEBS::DiscountControl discount;
+	discount.ShowDialog();
 }
 
 System::Void BEBS::AdminMenu::pictureBox1_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -683,7 +668,15 @@ System::Void BEBS::AdminMenu::pictureBox1_Click(System::Object^ sender, System::
 }
 
 
+System::Void BEBS::AdminMenu::img_Click(System::Object^ sender, System::EventArgs^ e) {
+	System::Windows::Forms::OpenFileDialog^ ofd= (gcnew System::Windows::Forms::OpenFileDialog());
+	ofd->Filter = L"\"JPEG|*.jpg|PNG |*.png|All Files|*.*\"";
+	if (ofd->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+	{
+		img->ImageLocation = ofd->FileName;
+	}
 
+}
 
 
 

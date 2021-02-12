@@ -12,7 +12,8 @@ namespace BEBS {
 		~AdminMenu();
 
 	private:
-
+		
+		String^ itemPath = ("Image\\books\\");
 		Form^ lastForm;
 		System::Windows::Forms::ListBox^ listBox;
 		System::Windows::Forms::PictureBox^ img;
@@ -41,11 +42,11 @@ namespace BEBS {
 		System::Windows::Forms::Label^ label2;
 		System::Windows::Forms::Label^ label3;
 		System::Windows::Forms::TextBox^ author_txt;
-		System::Windows::Forms::TextBox^ img_txt;
+
 		System::Windows::Forms::TextBox^ date_txt;
 		System::Windows::Forms::Label^ label4;
 		System::Windows::Forms::Button^ Delete;
-		System::Windows::Forms::Label^ label5;
+
 	private: System::Windows::Forms::PictureBox^ HomePage;
 
 
@@ -68,7 +69,7 @@ namespace BEBS {
 		System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e);
 		System::Void button1_Click(System::Object^ sender, System::EventArgs^ e);
 		//image text -> add / / image//books//
-		System::Void button1_Click_1(System::Object^ sender, System::EventArgs^ e);
+		System::Void saveClick(System::Object^ sender, System::EventArgs^ e);
 		System::Void listBox_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e);
 		System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e);
 		System::Void label2_Click(System::Object^ sender, System::EventArgs^ e);
@@ -84,5 +85,6 @@ namespace BEBS {
 		System::Void AdminMenu_Load(System::Object^ sender, System::EventArgs^ e);
 		System::Void pictureBox1_Click(System::Object^ sender, System::EventArgs^ e);
 		System::Void HomePage_Click(System::Object^ sender, System::EventArgs^ e);
+		System::Void img_Click(System::Object^ sender, System::EventArgs^ e);
 	};
 }

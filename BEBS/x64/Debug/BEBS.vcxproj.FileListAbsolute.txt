@@ -1,13 +1,13 @@
-C:\Users\gal\Desktop\BEBS\BEBS\x64\Debug\BEBS.vcxprojAssemblyReference.cache
 C:\Users\gal\Desktop\BEBS\BEBS\x64\Debug\BEBS.AdminMenu.resources
 C:\Users\gal\Desktop\BEBS\BEBS\x64\Debug\BEBS.DiscountControl.resources
 C:\Users\gal\Desktop\BEBS\BEBS\x64\Debug\BEBS.HomePage.resources
 C:\Users\gal\Desktop\BEBS\BEBS\x64\Debug\BEBS.LogInMenu.resources
 C:\Users\gal\Desktop\BEBS\BEBS\x64\Debug\BEBS.OrdersControl.resources
 C:\Users\gal\Desktop\BEBS\BEBS\x64\Debug\BEBS.ProfitControl.resources
+C:\Users\gal\Desktop\BEBS\BEBS\x64\Debug\BEBS.RegisterMenu.resources
 C:\Users\gal\Desktop\BEBS\BEBS\x64\Debug\BEBS.SalesControl.resources
 C:\Users\gal\Desktop\BEBS\BEBS\x64\Debug\BEBS.ShoppingMenu.resources
 C:\Users\gal\Desktop\BEBS\BEBS\x64\Debug\BEBS.UsersControl.resources
 C:\Users\gal\Desktop\BEBS\BEBS\x64\Debug\BEBS.vcxproj.GenerateResource.cache
 C:\Users\gal\Desktop\BEBS\BEBS\x64\Debug\BEBS.vcxproj.CopyComplete
-C:\Users\gal\Desktop\BEBS\BEBS\x64\Debug\BEBS.RegisterMenu.resources
+C:\Users\gal\Desktop\BEBS\BEBS\x64\Debug\BEBS.vcxprojAssemblyReference.cache

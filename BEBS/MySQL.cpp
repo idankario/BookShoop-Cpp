@@ -107,7 +107,7 @@ Book^ getBookMyRender(MySqlDataReader^ myRender)
 	amount = myRender->GetString("amount");
 	publishDate = myRender->GetString("publish_date");
 	info = myRender->GetString("info");
-	img = myRender->GetString("img");
+	img = "Image\\books\\"+ myRender->GetString("img");
 	authorName = myRender->GetString("author");
 	return gcnew Book(bookId, title, pages, section, price, amount, publishDate, info,img, authorName,nullptr);
 }
@@ -141,8 +141,8 @@ Book^ MySQL::getListOfBook()
 }
 Book^ MySQL::getSearchListBook(strP s)
 {
-	MySqlCommand^ cmdDB = gcnew MySqlCommand("select * from book_store.books WHERE amount > 1 and title LIKE '%" 
-											+ s + "%' or pages LIKE '%" + s + "%' or section LIKE '%" + s + "%';", conData);
+	MySqlCommand^ cmdDB = gcnew MySqlCommand("SELECT * FROM book_store.books WHERE amount > 1 and CONCAT(`book_id`,`title`,`pages`, `section`,"+
+											"`price`,`amount`,`publish_date`+,`info`,`img`,`author`) LIKE '%"+s+"%';", conData);
 	Book^ head = nullptr;
 	Book^ next = nullptr;
 
@@ -191,19 +191,13 @@ void MySQL::deleteBook(strP id)
 		MessageBox::Show(ex->Message);
 	}
 }
-void MySQL::updateBook(strP title, strP page, strP section, strP price, strP amount,strP info,
-						strP img, strP id)
+void MySQL::updateBook(strP title, strP page, strP section, strP price, strP amount,strP info, 
+						strP img, strP author, strP id)
 {
-
-
 	MySqlCommand^ cmdDB = gcnew MySqlCommand("update book_store.books set title='" + title + "',pages='" + page + "',section='" + section + "',price= '" + 
-											price + "' ,amount='" + amount + "',info='" + info + "',img='"
-											+ img + "' where book_id='" + id + "' ;", conData);
-	MySqlDataReader^ myRender;
-
-	
-
-
+											price + "' ,amount='" + amount + "',info='" + info + "',author='" + author +
+											"',img='" + img + "' where book_id='" + id + "' ;", conData);
+	MySqlDataReader^ myRender; 
 	try {
 		conData->Open();
 		myRender = cmdDB->ExecuteReader();
