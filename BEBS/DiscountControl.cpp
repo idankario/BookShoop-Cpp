@@ -28,7 +28,6 @@ BEBS::DiscountControl::~DiscountControl()
 void BEBS::DiscountControl::InitializeComponent(void)
 {
 	System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(DiscountControl::typeid));
-	this->label5 = (gcnew System::Windows::Forms::Label());
 	this->discount = (gcnew System::Windows::Forms::TextBox());
 	this->start = (gcnew System::Windows::Forms::TextBox());
 	this->end = (gcnew System::Windows::Forms::TextBox());
@@ -46,21 +45,14 @@ void BEBS::DiscountControl::InitializeComponent(void)
 	this->label7 = (gcnew System::Windows::Forms::Label());
 	this->listBox2 = (gcnew System::Windows::Forms::ListBox());
 	this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
+	this->UpdateInventoryButton = (gcnew System::Windows::Forms::Button());
+	this->DiscountButton = (gcnew System::Windows::Forms::Button());
+	this->OrderButton = (gcnew System::Windows::Forms::Button());
+	this->UsersButton = (gcnew System::Windows::Forms::Button());
+	this->SalesButton = (gcnew System::Windows::Forms::Button());
+	this->ProfitButton = (gcnew System::Windows::Forms::Button());
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->HomePage))->BeginInit();
 	this->SuspendLayout();
-	// 
-	// label5
-	// 
-	this->label5->AutoSize = true;
-	this->label5->BackColor = System::Drawing::Color::Transparent;
-	this->label5->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-		static_cast<System::Byte>(0)));
-	this->label5->ForeColor = System::Drawing::Color::White;
-	this->label5->Location = System::Drawing::Point(47, 39);
-	this->label5->Name = L"label5";
-	this->label5->Size = System::Drawing::Size(130, 24);
-	this->label5->TabIndex = 28;
-	this->label5->Text = L"BEBS Discounts";
 	// 
 	// discount
 	// 
@@ -181,12 +173,12 @@ void BEBS::DiscountControl::InitializeComponent(void)
 	this->HomePage->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"HomePage.BackgroundImage")));
 	this->HomePage->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 	this->HomePage->Cursor = System::Windows::Forms::Cursors::Hand;
-	this->HomePage->Location = System::Drawing::Point(988, 39);
+	this->HomePage->Location = System::Drawing::Point(1005, 23);
 	this->HomePage->Name = L"HomePage";
 	this->HomePage->Size = System::Drawing::Size(40, 40);
 	this->HomePage->TabIndex = 38;
 	this->HomePage->TabStop = false;
-	this->HomePage->Click += gcnew System::EventHandler(this, &DiscountControl::HomePage_Click);
+
 	// 
 	// id_tet
 	// 
@@ -273,11 +265,110 @@ void BEBS::DiscountControl::InitializeComponent(void)
 	this->comboBox1->TabIndex = 46;
 	this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &DiscountControl::comboBox1_SelectedIndexChanged);
 	// 
+	// UpdateInventoryButton
+	// 
+	this->UpdateInventoryButton->BackColor = System::Drawing::SystemColors::ActiveCaption;
+	this->UpdateInventoryButton->Cursor = System::Windows::Forms::Cursors::Hand;
+	this->UpdateInventoryButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold,
+		System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+	this->UpdateInventoryButton->ForeColor = System::Drawing::SystemColors::HighlightText;
+	this->UpdateInventoryButton->Location = System::Drawing::Point(817, 12);
+	this->UpdateInventoryButton->Name = L"UpdateInventoryButton";
+	this->UpdateInventoryButton->Size = System::Drawing::Size(104, 50);
+	this->UpdateInventoryButton->TabIndex = 52;
+	this->UpdateInventoryButton->Text = L"Update Inventory";
+	this->UpdateInventoryButton->UseVisualStyleBackColor = false;
+	// 
+	// DiscountButton
+	// 
+	this->DiscountButton->BackColor = System::Drawing::Color::Gray;
+	this->DiscountButton->Cursor = System::Windows::Forms::Cursors::Default;
+	this->DiscountButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+		static_cast<System::Byte>(0)));
+	this->DiscountButton->ForeColor = System::Drawing::SystemColors::HighlightText;
+	this->DiscountButton->Location = System::Drawing::Point(257, 12);
+	this->DiscountButton->Name = L"DiscountButton";
+	this->DiscountButton->Size = System::Drawing::Size(118, 50);
+	this->DiscountButton->TabIndex = 51;
+	this->DiscountButton->Text = L"Discount";
+	this->DiscountButton->UseVisualStyleBackColor = false;
+	// 
+	// OrderButton
+	// 
+	this->OrderButton->BackColor = System::Drawing::SystemColors::ActiveCaption;
+	this->OrderButton->Cursor = System::Windows::Forms::Cursors::Hand;
+	this->OrderButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+		static_cast<System::Byte>(0)));
+	this->OrderButton->ForeColor = System::Drawing::SystemColors::HighlightText;
+	this->OrderButton->Location = System::Drawing::Point(381, 12);
+	this->OrderButton->Name = L"OrderButton";
+	this->OrderButton->Size = System::Drawing::Size(109, 50);
+	this->OrderButton->TabIndex = 50;
+	this->OrderButton->Text = L"Orders";
+	this->OrderButton->UseVisualStyleBackColor = false;
+	// 
+	// UsersButton
+	// 
+	this->UsersButton->BackColor = System::Drawing::SystemColors::ActiveCaption;
+	this->UsersButton->Cursor = System::Windows::Forms::Cursors::Hand;
+	this->UsersButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+		static_cast<System::Byte>(0)));
+	this->UsersButton->ForeColor = System::Drawing::SystemColors::HighlightText;
+	this->UsersButton->Location = System::Drawing::Point(496, 12);
+	this->UsersButton->Name = L"UsersButton";
+	this->UsersButton->Size = System::Drawing::Size(93, 50);
+	this->UsersButton->TabIndex = 49;
+	this->UsersButton->Text = L"Users";
+	this->UsersButton->UseVisualStyleBackColor = false;
+	// 
+	// SalesButton
+	// 
+	this->SalesButton->BackColor = System::Drawing::SystemColors::ActiveCaption;
+	this->SalesButton->Cursor = System::Windows::Forms::Cursors::Hand;
+	this->SalesButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+		static_cast<System::Byte>(0)));
+	this->SalesButton->ForeColor = System::Drawing::SystemColors::HighlightText;
+	this->SalesButton->Location = System::Drawing::Point(595, 12);
+	this->SalesButton->Name = L"SalesButton";
+	this->SalesButton->Size = System::Drawing::Size(106, 50);
+	this->SalesButton->TabIndex = 48;
+	this->SalesButton->Text = L"Sales";
+	this->SalesButton->UseVisualStyleBackColor = false;
+	// 
+	// ProfitButton
+	// 
+	this->ProfitButton->BackColor = System::Drawing::SystemColors::ActiveCaption;
+	this->ProfitButton->Cursor = System::Windows::Forms::Cursors::Hand;
+	this->ProfitButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+		static_cast<System::Byte>(0)));
+	this->ProfitButton->ForeColor = System::Drawing::SystemColors::HighlightText;
+	this->ProfitButton->Location = System::Drawing::Point(707, 12);
+	this->ProfitButton->Name = L"ProfitButton";
+	this->ProfitButton->Size = System::Drawing::Size(104, 50);
+	this->ProfitButton->TabIndex = 47;
+	this->ProfitButton->Text = L"Profit";
+	this->ProfitButton->UseVisualStyleBackColor = false;
+	this->UpdateInventoryButton->Click += gcnew System::EventHandler(this, &DiscountControl::InventoryClick);
+	this->OrderButton->Click += gcnew System::EventHandler(this, &DiscountControl::OrdersClick);
+	this->UsersButton->Click += gcnew System::EventHandler(this, &DiscountControl::UsersClick);
+	this->SalesButton->Click += gcnew System::EventHandler(this, &DiscountControl::SalesClick);
+	this->ProfitButton->Click += gcnew System::EventHandler(this, &DiscountControl::ProfitClick);
+	this->HomePage->Click += gcnew System::EventHandler(this, &DiscountControl::HomePageClick);
+
+
+
+	// 
 	// DiscountControl
 	// 
 	this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::None;
 	this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 	this->ClientSize = System::Drawing::Size(1076, 536);
+	this->Controls->Add(this->UpdateInventoryButton);
+	this->Controls->Add(this->DiscountButton);
+	this->Controls->Add(this->OrderButton);
+	this->Controls->Add(this->UsersButton);
+	this->Controls->Add(this->SalesButton);
+	this->Controls->Add(this->ProfitButton);
 	this->Controls->Add(this->comboBox1);
 	this->Controls->Add(this->listBox2);
 	this->Controls->Add(this->label7);
@@ -295,10 +386,10 @@ void BEBS::DiscountControl::InitializeComponent(void)
 	this->Controls->Add(this->end);
 	this->Controls->Add(this->start);
 	this->Controls->Add(this->discount);
-	this->Controls->Add(this->label5);
 	this->Name = L"DiscountControl";
+	this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 	this->Text = L"DiscountControl";
-	this->Load += gcnew System::EventHandler(this, &DiscountControl::DiscountControl_Load);
+
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->HomePage))->EndInit();
 	this->ResumeLayout(false);
 	this->PerformLayout();
@@ -309,7 +400,7 @@ System::Void BEBS::DiscountControl::listBox1_SelectedIndexChanged(System::Object
 }
 
 Void BEBS::DiscountControl::fillListBox(void) {
-	String^ con = L"datasource=localhost; port=3306; username=root; password=shanilevi24";
+	
 	MySqlConnection^ conData = gcnew MySqlConnection(con);
 	MySqlCommand^ cmdDB = gcnew MySqlCommand("select * from book_store.discounts  where (date_from >= '2018-01-01' and  date_until <= '2021-01-17');", conData);
 	MySqlDataReader^ myRender;
@@ -333,7 +424,7 @@ Void BEBS::DiscountControl::fillListBox(void) {
 
 
 Void BEBS::DiscountControl::fillListBox2(void) {
-	String^ con = L"datasource=localhost; port=3306; username=root; password=shanilevi24";
+	
 	MySqlConnection^ conData = gcnew MySqlConnection(con);
 	MySqlCommand^ cmdDB = gcnew MySqlCommand("select * from book_store.discounts where (date_from >= '2021-01-18' and  date_until <= '2021-12-30');", conData);
 	MySqlDataReader^ myRender;
@@ -357,7 +448,7 @@ Void BEBS::DiscountControl::fillListBox2(void) {
 }
 
 Void BEBS::DiscountControl::fillCurrent(void) {
-	String^ con = L"datasource=localhost; port=3306; username=root; password=shanilevi24";
+
 	MySqlConnection^ conData = gcnew MySqlConnection(con);
 	MySqlCommand^ cmdDB = gcnew MySqlCommand("select * from book_store.discounts  where (date_from >= '2020-12-30' and  date_until <= '2021-02-20');", conData);
 	MySqlDataReader^ myRender;
@@ -382,7 +473,6 @@ Void BEBS::DiscountControl::fillCurrent(void) {
 	}
 }
 System::Void BEBS::DiscountControl::SAVE_Click(System::Object^ sender, System::EventArgs^ e) {
-	String^ con = L"datasource=localhost; port=3306; username=root; password=shanilevi24";
 	MySqlConnection^ conData = gcnew MySqlConnection(con);
 
 	int^ vId;
@@ -427,7 +517,7 @@ System::Void BEBS::DiscountControl::SAVE_Click(System::Object^ sender, System::E
 System::Void BEBS::DiscountControl::comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 	String^ listVal = comboBox1->Text;
 
-	String^ con = L"datasource=localhost; port=3306; username=root; password=shanilevi24";
+
 	MySqlConnection^ conData = gcnew MySqlConnection(con);
 	MySqlCommand^ cmdDB = gcnew MySqlCommand("select * from book_store.discounts where discount_id='" + listVal + "';", conData);
 	MySqlDataReader^ myRender;
@@ -455,7 +545,7 @@ System::Void BEBS::DiscountControl::comboBox1_SelectedIndexChanged(System::Objec
 	}
 }
 System::Void BEBS::DiscountControl::edit_Click(System::Object^ sender, System::EventArgs^ e) {
-	String^ con = L"datasource=localhost; port=3306; username=root; password=shanilevi24";
+
 	MySqlConnection^ conData = gcnew MySqlConnection(con);
 	MySqlCommand^ cmdDB = gcnew MySqlCommand("update book_store.discounts set discount_id='" + id_tet->Text + "',percent='" + discount->Text + "',date_from='" + start->Text + "',date_until='" + end->Text + "' where discount_id='" + id_tet->Text + "';", conData);
 	MySqlDataReader^ myRender;
@@ -476,7 +566,7 @@ System::Void BEBS::DiscountControl::edit_Click(System::Object^ sender, System::E
 	}
 }
 System::Void BEBS::DiscountControl::block_Click(System::Object^ sender, System::EventArgs^ e) {
-	String^ con = L"datasource=localhost; port=3306; username=root; password=shanilevi24";
+	
 	MySqlConnection^ conData = gcnew MySqlConnection(con);
 	MySqlCommand^ cmdDB = gcnew MySqlCommand("delete from book_store.books where discounts='" + id_tet->Text + "' ;", conData);
 	MySqlDataReader^ myRender;
@@ -496,10 +586,36 @@ System::Void BEBS::DiscountControl::block_Click(System::Object^ sender, System::
 		MessageBox::Show(ex->Message);
 	}
 }
-System::Void BEBS::DiscountControl::HomePage_Click(System::Object^ sender, System::EventArgs^ e) {
+
+
+
+System::Void BEBS::DiscountControl::InventoryClick(System::Object^ sender, System::EventArgs^ e) {
 	this->~DiscountControl();
-	lastForm->Show();
+	BEBS::AdminMenu admin;
+	admin.ShowDialog();
 }
-System::Void BEBS::DiscountControl::DiscountControl_Load(System::Object^ sender, System::EventArgs^ e) {
+System::Void BEBS::DiscountControl::OrdersClick(System::Object^ sender, System::EventArgs^ e) {
+	this->~DiscountControl();
+	BEBS::OrdersControl order;
+	order.ShowDialog();
 }
-	
+System::Void BEBS::DiscountControl::UsersClick(System::Object^ sender, System::EventArgs^ e) {
+	this->~DiscountControl();
+	BEBS::UsersControl users;
+	users.ShowDialog();
+}
+System::Void BEBS::DiscountControl::SalesClick(System::Object^ sender, System::EventArgs^ e) {
+	this->~DiscountControl();
+	BEBS::SalesControl sales;
+	sales.ShowDialog();
+}
+System::Void BEBS::DiscountControl::ProfitClick(System::Object^ sender, System::EventArgs^ e) {
+	this->~DiscountControl();
+	BEBS::ProfitControl profit;
+	profit.ShowDialog();
+}
+System::Void BEBS::DiscountControl::HomePageClick(System::Object^ sender, System::EventArgs^ e) {
+	this->~DiscountControl();
+	BEBS::HomePage HomePage;
+	HomePage.ShowDialog();
+}

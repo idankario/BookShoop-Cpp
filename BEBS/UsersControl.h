@@ -36,11 +36,17 @@ namespace BEBS {
 
 		System::Windows::Forms::DataGridView^ userPurchesTable;
 		
-		System::Windows::Forms::Label^ label5;
+
 
 		System::Windows::Forms::Button^ block;
 		System::ComponentModel::Container^ components;
-		int countList2 = 0;
+	private: System::Windows::Forms::Button^ UpdateInventoryButton;
+	private: System::Windows::Forms::Button^ DiscountButton;
+	private: System::Windows::Forms::Button^ OrderButton;
+	private: System::Windows::Forms::Button^ UsersButton;
+	private: System::Windows::Forms::Button^ SalesButton;
+	private: System::Windows::Forms::Button^ ProfitButton;
+		   int countList2 = 0;
 #pragma region Windows Form Designer generated code
 		/// <summary>
 		/// Required method for Designer support - do not modify
@@ -60,7 +66,15 @@ namespace BEBS {
 		System::Void dataGridView1_CellContentClick_1(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e);
 		System::Void block_Click(System::Object^ sender, System::EventArgs^ e);
 		System::Void edit_Click(System::Object^ sender, System::EventArgs^ e);
-		System::Void HomePage_Click(System::Object^ sender, System::EventArgs^ e);
-		System::Void UsersControl_Load(System::Object^ sender, System::EventArgs^ e) ;
+
+		String^ con = L"datasource=localhost; port=3306; username=root; password=bebs";
+		System::Void InventoryClick(System::Object^ sender, System::EventArgs^ e);
+		System::Void DiscountClick(System::Object^ sender, System::EventArgs^ e);
+		System::Void ProfitClick(System::Object^ sender, System::EventArgs^ e);
+		System::Void SalesClick(System::Object^ sender, System::EventArgs^ e);
+		System::Void OrdersClick(System::Object^ sender, System::EventArgs^ e);
+		System::Void HomePageClick(System::Object^ sender, System::EventArgs^ e);
+
+
 	};
 }

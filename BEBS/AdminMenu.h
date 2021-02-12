@@ -29,14 +29,20 @@ namespace BEBS {
 		System::Windows::Forms::TextBox^ amount_txt;
 		System::Windows::Forms::TextBox^ info_txt;
 		System::Windows::Forms::TextBox^ title_txt;
-		System::Windows::Forms::Button^ Profit;
-		System::Windows::Forms::Button^ Sales;
-		System::Windows::Forms::Button^ Users;
-		System::Windows::Forms::Button^ Orders;
-		System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::Button^ ProfitButton;
+
+	private: System::Windows::Forms::Button^ SalesButton;
+
+	private: System::Windows::Forms::Button^ UsersButton;
+
+	private: System::Windows::Forms::Button^ OrderButton;
+
+
+		String^ con = L"datasource=localhost; port=3306; username=root; password=bebs";
 		System::Windows::Forms::Button^ SAVE;
 		System::Windows::Forms::Button^ Update;
-		System::Windows::Forms::Button^ Discount;
+		System::Windows::Forms::Button^ DiscountButton;
+
 		System::Windows::Forms::ComboBox^ comboBox1;
 		System::Windows::Forms::TextBox^ pag_txt;
 		System::Windows::Forms::Label^ label2;
@@ -47,9 +53,8 @@ namespace BEBS {
 		System::Windows::Forms::Label^ label4;
 		System::Windows::Forms::Button^ Delete;
 
-	private: System::Windows::Forms::PictureBox^ HomePage;
-
-
+		System::Windows::Forms::PictureBox^ HomePage;
+		System::Windows::Forms::Button^ UpdateInventoryButton;
 		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
@@ -64,27 +69,22 @@ namespace BEBS {
 
 #pragma endregion
 	private:
-		System::Void label1_Click(System::Object^ sender, System::EventArgs^ e);
-		System::Void label1_Click_1(System::Object^ sender, System::EventArgs^ e);
-		System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e);
-		System::Void button1_Click(System::Object^ sender, System::EventArgs^ e);
 		//image text -> add / / image//books//
-		System::Void saveClick(System::Object^ sender, System::EventArgs^ e);
 		System::Void listBox_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e);
 		System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e);
-		System::Void label2_Click(System::Object^ sender, System::EventArgs^ e);
-		System::Void label3_Click(System::Object^ sender, System::EventArgs^ e);
-		System::Void label4_Click(System::Object^ sender, System::EventArgs^ e);
-		System::Void author_txt_TextChanged(System::Object^ sender, System::EventArgs^ e);
+
+		System::Void saveClick(System::Object^ sender, System::EventArgs^ e);
 		System::Void Update_Click(System::Object^ sender, System::EventArgs^ e);
 		System::Void Delete_Click(System::Object^ sender, System::EventArgs^ e);
-		System::Void Sales_Click(System::Object^ sender, System::EventArgs^ e);
-		System::Void Profit_Click(System::Object^ sender, System::EventArgs^ e);
-		System::Void Orders_Click(System::Object^ sender, System::EventArgs^ e);
-		System::Void Discount_Click(System::Object^ sender, System::EventArgs^ e);
-		System::Void AdminMenu_Load(System::Object^ sender, System::EventArgs^ e);
-		System::Void pictureBox1_Click(System::Object^ sender, System::EventArgs^ e);
-		System::Void HomePage_Click(System::Object^ sender, System::EventArgs^ e);
-		System::Void img_Click(System::Object^ sender, System::EventArgs^ e);
+
+		System::Void DiscountClick(System::Object^ sender, System::EventArgs^ e);
+		System::Void OrdersClick(System::Object^ sender, System::EventArgs^ e);
+		System::Void UsersClick(System::Object^ sender, System::EventArgs^ e);
+		System::Void SalesClick(System::Object^ sender, System::EventArgs^ e);
+		System::Void ProfitClick(System::Object^ sender, System::EventArgs^ e);
+		
+		
+		System::Void HomePageClick(System::Object^ sender, System::EventArgs^ e);
+		System::Void itemImageClick(System::Object^ sender, System::EventArgs^ e);
 	};
 }

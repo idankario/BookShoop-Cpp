@@ -14,7 +14,7 @@ namespace BEBS {
 	
 	private:  
 		Form^ lastForm;
-		System::Windows::Forms::Label^ label5;
+
 		System::Windows::Forms::TextBox^ discount;
 		System::Windows::Forms::TextBox^ start;
 		System::Windows::Forms::TextBox^ end;
@@ -33,7 +33,13 @@ namespace BEBS {
 		System::Windows::Forms::ListBox^ listBox2;
 		System::Windows::Forms::ComboBox^ comboBox1;
 		System::ComponentModel::Container^ components;
-		
+		System::Windows::Forms::Button^ UpdateInventoryButton;
+		System::Windows::Forms::Button^ DiscountButton;
+		System::Windows::Forms::Button^ OrderButton;
+		System::Windows::Forms::Button^ UsersButton;
+		System::Windows::Forms::Button^ SalesButton;
+		System::Windows::Forms::Button^ ProfitButton;
+		String^ con = L"datasource=localhost; port=3306; username=root; password=bebs";
 #pragma region Windows Form Designer generated code
 		/// <summary>
 		/// Required method for Designer support - do not modify
@@ -51,8 +57,13 @@ namespace BEBS {
 		System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e);
 		System::Void edit_Click(System::Object^ sender, System::EventArgs^ e);
 		System::Void block_Click(System::Object^ sender, System::EventArgs^ e);
-		System::Void HomePage_Click(System::Object^ sender, System::EventArgs^ e);
-		System::Void DiscountControl_Load(System::Object^ sender, System::EventArgs^ e);
-	
+
+		System::Void InventoryClick(System::Object^ sender, System::EventArgs^ e);
+		System::Void OrdersClick(System::Object^ sender, System::EventArgs^ e);
+		System::Void UsersClick(System::Object^ sender, System::EventArgs^ e);
+		System::Void SalesClick(System::Object^ sender, System::EventArgs^ e);
+		System::Void ProfitClick(System::Object^ sender, System::EventArgs^ e);
+		System::Void HomePageClick(System::Object^ sender, System::EventArgs^ e);
+
 	};
 }

@@ -37,14 +37,18 @@ BEBS::SalesControl::~SalesControl()
 			System::Windows::Forms::DataVisualization::Charting::Series^ series3 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			this->chart1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
 			this->HomePage = (gcnew System::Windows::Forms::PictureBox());
-			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->chart2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
 			this->chart3 = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
-			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->Quarterly = (gcnew System::Windows::Forms::Button());
 			this->weekly = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->UpdateInventoryButton = (gcnew System::Windows::Forms::Button());
+			this->DiscountButton = (gcnew System::Windows::Forms::Button());
+			this->OrderButton = (gcnew System::Windows::Forms::Button());
+			this->UsersButton = (gcnew System::Windows::Forms::Button());
+			this->SalesButton = (gcnew System::Windows::Forms::Button());
+			this->ProfitButton = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->HomePage))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart2))->BeginInit();
@@ -75,26 +79,12 @@ BEBS::SalesControl::~SalesControl()
 			this->HomePage->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"HomePage.BackgroundImage")));
 			this->HomePage->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->HomePage->Cursor = System::Windows::Forms::Cursors::Hand;
-			this->HomePage->Location = System::Drawing::Point(994, 27);
+			this->HomePage->Location = System::Drawing::Point(1000, 10);
 			this->HomePage->Name = L"HomePage";
 			this->HomePage->Size = System::Drawing::Size(40, 40);
 			this->HomePage->TabIndex = 11;
 			this->HomePage->TabStop = false;
-			this->HomePage->Click += gcnew System::EventHandler(this, &SalesControl::HomePage_Click);
-			// 
-			// label5
-			// 
-			this->label5->AutoSize = true;
-			this->label5->BackColor = System::Drawing::Color::Transparent;
-			this->label5->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label5->ForeColor = System::Drawing::Color::White;
-			this->label5->Location = System::Drawing::Point(47, 27);
-			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(104, 24);
-			this->label5->TabIndex = 26;
-			this->label5->Text = L"BEBS Sales ";
-			this->label5->Click += gcnew System::EventHandler(this, &SalesControl::label5_Click);
+			this->HomePage->Click += gcnew System::EventHandler(this, &SalesControl::HomePageClick);
 			// 
 			// label1
 			// 
@@ -145,29 +135,17 @@ BEBS::SalesControl::~SalesControl()
 			this->chart3->TabIndex = 29;
 			this->chart3->Text = L"chart3";
 			// 
-			// label2
-			// 
-			this->label2->AutoSize = true;
-			this->label2->BackColor = System::Drawing::Color::Transparent;
-			this->label2->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label2->ForeColor = System::Drawing::Color::White;
-			this->label2->Location = System::Drawing::Point(541, 76);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(104, 24);
-			this->label2->TabIndex = 30;
-			this->label2->Text = L"BEBS Sales ";
-			// 
 			// Quarterly
 			// 
 			this->Quarterly->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
 				static_cast<System::Int32>(static_cast<System::Byte>(192)));
+			this->Quarterly->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->Quarterly->FlatAppearance->BorderColor = System::Drawing::Color::White;
 			this->Quarterly->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->Quarterly->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->Quarterly->ForeColor = System::Drawing::Color::White;
-			this->Quarterly->Location = System::Drawing::Point(370, 99);
+			this->Quarterly->Location = System::Drawing::Point(370, 113);
 			this->Quarterly->Name = L"Quarterly";
 			this->Quarterly->Size = System::Drawing::Size(141, 50);
 			this->Quarterly->TabIndex = 31;
@@ -179,12 +157,13 @@ BEBS::SalesControl::~SalesControl()
 			// 
 			this->weekly->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
 				static_cast<System::Int32>(static_cast<System::Byte>(192)));
+			this->weekly->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->weekly->FlatAppearance->BorderColor = System::Drawing::Color::White;
 			this->weekly->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->weekly->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->weekly->ForeColor = System::Drawing::Color::White;
-			this->weekly->Location = System::Drawing::Point(53, 99);
+			this->weekly->Location = System::Drawing::Point(53, 113);
 			this->weekly->Name = L"weekly";
 			this->weekly->Size = System::Drawing::Size(141, 50);
 			this->weekly->TabIndex = 32;
@@ -196,12 +175,13 @@ BEBS::SalesControl::~SalesControl()
 			// 
 			this->button2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
 				static_cast<System::Int32>(static_cast<System::Byte>(192)));
+			this->button2->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->button2->FlatAppearance->BorderColor = System::Drawing::Color::White;
 			this->button2->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->button2->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button2->ForeColor = System::Drawing::Color::White;
-			this->button2->Location = System::Drawing::Point(212, 99);
+			this->button2->Location = System::Drawing::Point(212, 113);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(141, 50);
 			this->button2->TabIndex = 33;
@@ -209,25 +189,119 @@ BEBS::SalesControl::~SalesControl()
 			this->button2->UseVisualStyleBackColor = false;
 			this->button2->Click += gcnew System::EventHandler(this, &SalesControl::button2_Click);
 			// 
+			// UpdateInventoryButton
+			// 
+			this->UpdateInventoryButton->BackColor = System::Drawing::SystemColors::ActiveCaption;
+			this->UpdateInventoryButton->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->UpdateInventoryButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->UpdateInventoryButton->ForeColor = System::Drawing::SystemColors::HighlightText;
+			this->UpdateInventoryButton->Location = System::Drawing::Point(817, 12);
+			this->UpdateInventoryButton->Name = L"UpdateInventoryButton";
+			this->UpdateInventoryButton->Size = System::Drawing::Size(104, 50);
+			this->UpdateInventoryButton->TabIndex = 46;
+			this->UpdateInventoryButton->Text = L"Update Inventory";
+			this->UpdateInventoryButton->UseVisualStyleBackColor = false;
+			this->UpdateInventoryButton->Click += gcnew System::EventHandler(this, &SalesControl::InventoryClick);
+			// 
+			// DiscountButton
+			// 
+			this->DiscountButton->BackColor = System::Drawing::SystemColors::ActiveCaption;
+			this->DiscountButton->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->DiscountButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->DiscountButton->ForeColor = System::Drawing::SystemColors::HighlightText;
+			this->DiscountButton->Location = System::Drawing::Point(256, 12);
+			this->DiscountButton->Name = L"DiscountButton";
+			this->DiscountButton->Size = System::Drawing::Size(118, 50);
+			this->DiscountButton->TabIndex = 45;
+			this->DiscountButton->Text = L"Discount";
+			this->DiscountButton->UseVisualStyleBackColor = false;
+			this->DiscountButton->Click += gcnew System::EventHandler(this, &SalesControl::DiscountClick);
+			// 
+			// OrderButton
+			// 
+			this->OrderButton->BackColor = System::Drawing::SystemColors::ActiveCaption;
+			this->OrderButton->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->OrderButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->OrderButton->ForeColor = System::Drawing::SystemColors::HighlightText;
+			this->OrderButton->Location = System::Drawing::Point(381, 12);
+			this->OrderButton->Name = L"OrderButton";
+			this->OrderButton->Size = System::Drawing::Size(109, 50);
+			this->OrderButton->TabIndex = 44;
+			this->OrderButton->Text = L"Orders";
+			this->OrderButton->UseVisualStyleBackColor = false;
+			this->OrderButton->Click += gcnew System::EventHandler(this, &SalesControl::OrdersClick);
+			// 
+			// UsersButton
+			// 
+			this->UsersButton->BackColor = System::Drawing::SystemColors::ActiveCaption;
+			this->UsersButton->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->UsersButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->UsersButton->ForeColor = System::Drawing::SystemColors::HighlightText;
+			this->UsersButton->Location = System::Drawing::Point(496, 12);
+			this->UsersButton->Name = L"UsersButton";
+			this->UsersButton->Size = System::Drawing::Size(93, 50);
+			this->UsersButton->TabIndex = 43;
+			this->UsersButton->Text = L"Users";
+			this->UsersButton->UseVisualStyleBackColor = false;
+			this->UsersButton->Click += gcnew System::EventHandler(this, &SalesControl::UsersClick);
+			// 
+			// SalesButton
+			// 
+			this->SalesButton->BackColor = System::Drawing::Color::Gray;
+			this->SalesButton->Cursor = System::Windows::Forms::Cursors::Default;
+			this->SalesButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->SalesButton->ForeColor = System::Drawing::SystemColors::HighlightText;
+			this->SalesButton->Location = System::Drawing::Point(595, 12);
+			this->SalesButton->Name = L"SalesButton";
+			this->SalesButton->Size = System::Drawing::Size(106, 50);
+			this->SalesButton->TabIndex = 42;
+			this->SalesButton->Text = L"Sales";
+			this->SalesButton->UseVisualStyleBackColor = false;
+			// 
+			// ProfitButton
+			// 
+			this->ProfitButton->BackColor = System::Drawing::SystemColors::ActiveCaption;
+			this->ProfitButton->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->ProfitButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->ProfitButton->ForeColor = System::Drawing::SystemColors::HighlightText;
+			this->ProfitButton->Location = System::Drawing::Point(707, 12);
+			this->ProfitButton->Name = L"ProfitButton";
+			this->ProfitButton->Size = System::Drawing::Size(104, 50);
+			this->ProfitButton->TabIndex = 41;
+			this->ProfitButton->Text = L"Profit";
+			this->ProfitButton->UseVisualStyleBackColor = false;
+			this->ProfitButton->Click += gcnew System::EventHandler(this, &SalesControl::ProfitClick);
+			// 
 			// SalesControl
 			// 
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::None;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
-			this->ClientSize = System::Drawing::Size(1076, 536);
+			this->ClientSize = System::Drawing::Size(1082, 536);
+			this->Controls->Add(this->UpdateInventoryButton);
+			this->Controls->Add(this->DiscountButton);
+			this->Controls->Add(this->OrderButton);
+			this->Controls->Add(this->UsersButton);
+			this->Controls->Add(this->SalesButton);
+			this->Controls->Add(this->ProfitButton);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->weekly);
 			this->Controls->Add(this->Quarterly);
-			this->Controls->Add(this->label2);
 			this->Controls->Add(this->chart3);
 			this->Controls->Add(this->chart2);
 			this->Controls->Add(this->label1);
-			this->Controls->Add(this->label5);
 			this->Controls->Add(this->HomePage);
 			this->Controls->Add(this->chart1);
 			this->ForeColor = System::Drawing::SystemColors::ControlText;
 			this->Name = L"SalesControl";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"SalesControl";
-			this->Load += gcnew System::EventHandler(this, &SalesControl::SalesControl_Load);
+			this->Click += gcnew System::EventHandler(this, &SalesControl::UsersClick);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart1))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->HomePage))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart2))->EndInit();
@@ -242,7 +316,6 @@ BEBS::SalesControl::~SalesControl()
 		//this->chart1->Series["Books"]->Points->AddXY("max2", 45);
 		//this->chart1->Series["Books"]->Points->AddXY("max3", 15);
 
-		String^ con = L"datasource=localhost; port=3306; username=root; password=shanilevi24";
 		MySqlConnection^ conData = gcnew MySqlConnection(con);
 		MySqlCommand^ cmdDB = gcnew MySqlCommand("select * from book_store.books;", conData);
 		MySqlDataReader^ myRender;
@@ -265,7 +338,7 @@ BEBS::SalesControl::~SalesControl()
 System::Void BEBS::SalesControl::label5_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 System::Void BEBS::SalesControl::button2_Click(System::Object^ sender, System::EventArgs^ e) {
-		String^ con = L"datasource=localhost; port=3306; username=root; password=shanilevi24";
+		
 		MySqlConnection^ conData = gcnew MySqlConnection(con);
 
 		//select count(bl.book_id), bl.book_id, b.title from book_store.book_list bl inner join book_store.shoping_carts s on bl.shoping_cart_id = s.shoping_cart_id inner join book_store.books b on bl.book_id = b.book_id WHERE  done = 'yes' and MONTH(order_date) = 11 and Year(order_date) = 2020 group by b.book_id;
@@ -314,7 +387,6 @@ System::Void BEBS::SalesControl::button2_Click(System::Object^ sender, System::E
 		}
 	}
 System::Void BEBS::SalesControl::weekly_Click(System::Object^ sender, System::EventArgs^ e) {
-		String^ con = L"datasource=localhost; port=3306; username=root; password=shanilevi24";
 		MySqlConnection^ conData = gcnew MySqlConnection(con);
 		//select count(bl.book_id), bl.book_id, b.title, order_date from book_store.book_list bl inner join book_store.shoping_carts s on bl.shoping_cart_id = s.shoping_cart_id inner join book_store.books b on bl.book_id = b.book_id WHERE  done = 'yes' and (order_date >= '2020-11-01' and order_date <= '2020-11-20') group by b.book_id;
 		MySqlCommand^ cmdDB = gcnew MySqlCommand("select count(bl.book_id), bl.book_id, b.title, order_date from book_store.book_list bl inner join book_store.shoping_carts s on bl.shoping_cart_id = s.shoping_cart_id inner join book_store.books b on bl.book_id = b.book_id WHERE  done = 'yes' and (order_date >= '2020-11-01' and order_date <= '2020-11-20') group by b.book_id;", conData);
@@ -364,7 +436,6 @@ System::Void BEBS::SalesControl::weekly_Click(System::Object^ sender, System::Ev
 	}
 
 Void BEBS::SalesControl::fillAll(void) {
-		String^ con = L"datasource=localhost; port=3306; username=root; password=shanilevi24";
 		MySqlConnection^ conData = gcnew MySqlConnection(con);
 		MySqlCommand^ cmdDB = gcnew MySqlCommand("select count(bl.book_id), bl.book_id, b.title, order_date from book_store.book_list bl inner join book_store.shoping_carts s on bl.shoping_cart_id = s.shoping_cart_id inner join book_store.books b on bl.book_id = b.book_id WHERE  done = 'yes' and (order_date >= '2020-11-01' and order_date <= '2020-11-20') group by b.book_id;", conData);
 		MySqlDataReader^ myRender;
@@ -393,7 +464,6 @@ Void BEBS::SalesControl::fillAll(void) {
 System::Void BEBS::SalesControl::chart1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 System::Void BEBS::SalesControl::Quarterly_Click(System::Object^ sender, System::EventArgs^ e) {
-		String^ con = L"datasource=localhost; port=3306; username=root; password=shanilevi24";
 		MySqlConnection^ conData = gcnew MySqlConnection(con);
 
 		MySqlCommand^ cmdDB = gcnew MySqlCommand("select count(bl.book_id), bl.book_id, b.title from book_store.book_list bl inner join book_store.shoping_carts s on bl.shoping_cart_id = s.shoping_cart_id inner join book_store.books b on bl.book_id = b.book_id WHERE  done = 'yes' and (order_date >= '2020-06-01' and order_date <= '2021-01-01') group by b.book_id;", conData);
@@ -439,9 +509,38 @@ System::Void BEBS::SalesControl::Quarterly_Click(System::Object^ sender, System:
 			MessageBox::Show(ex->Message);
 		}
 	}
-System::Void BEBS::SalesControl::SalesControl_Load(System::Object^ sender, System::EventArgs^ e) {
-	}
-System::Void BEBS::SalesControl::HomePage_Click(System::Object^ sender, System::EventArgs^ e) {
-		this->~SalesControl();
-		lastForm->Show();
-	}
+
+
+
+System::Void BEBS::SalesControl::InventoryClick(System::Object^ sender, System::EventArgs^ e) {
+	this->~SalesControl();
+	BEBS::AdminMenu admin;
+	admin.ShowDialog();
+}
+System::Void BEBS::SalesControl::DiscountClick(System::Object^ sender, System::EventArgs^ e) {
+	this->~SalesControl();
+	BEBS::DiscountControl nextPag;
+	nextPag.ShowDialog();
+}
+System::Void BEBS::SalesControl::UsersClick(System::Object^ sender, System::EventArgs^ e) {
+	this->~SalesControl();
+	BEBS::UsersControl users;
+	users.ShowDialog();
+}
+
+System::Void BEBS::SalesControl::ProfitClick(System::Object^ sender, System::EventArgs^ e) {
+	this->~SalesControl();
+	BEBS::ProfitControl profit;
+	profit.ShowDialog();
+}
+System::Void BEBS::SalesControl::HomePageClick(System::Object^ sender, System::EventArgs^ e) {
+	this->~SalesControl();
+	BEBS::HomePage HomePage;
+	HomePage.ShowDialog();
+}
+
+System::Void BEBS::SalesControl::OrdersClick(System::Object^ sender, System::EventArgs^ e) {
+	this->~SalesControl();
+	BEBS::OrdersControl order;
+	order.ShowDialog();
+}

@@ -30,7 +30,6 @@ BEBS::OrdersControl::~OrdersControl()
 void BEBS::OrdersControl::InitializeComponent(void)
 {
 	System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(OrdersControl::typeid));
-	this->label5 = (gcnew System::Windows::Forms::Label());
 	this->weekly = (gcnew System::Windows::Forms::Button());
 	this->provider_txt = (gcnew System::Windows::Forms::TextBox());
 	this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
@@ -49,21 +48,14 @@ void BEBS::OrdersControl::InitializeComponent(void)
 	this->label6 = (gcnew System::Windows::Forms::Label());
 	this->label7 = (gcnew System::Windows::Forms::Label());
 	this->HomePage = (gcnew System::Windows::Forms::PictureBox());
+	this->UpdateInventoryButton = (gcnew System::Windows::Forms::Button());
+	this->DiscountButton = (gcnew System::Windows::Forms::Button());
+	this->OrderButton = (gcnew System::Windows::Forms::Button());
+	this->UsersButton = (gcnew System::Windows::Forms::Button());
+	this->SalesButton = (gcnew System::Windows::Forms::Button());
+	this->ProfitButton = (gcnew System::Windows::Forms::Button());
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->HomePage))->BeginInit();
 	this->SuspendLayout();
-	// 
-	// label5
-	// 
-	this->label5->AutoSize = true;
-	this->label5->BackColor = System::Drawing::Color::Transparent;
-	this->label5->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-		static_cast<System::Byte>(0)));
-	this->label5->ForeColor = System::Drawing::Color::White;
-	this->label5->Location = System::Drawing::Point(54, 43);
-	this->label5->Name = L"label5";
-	this->label5->Size = System::Drawing::Size(166, 24);
-	this->label5->TabIndex = 28;
-	this->label5->Text = L"BEBS Actives Orders";
 	// 
 	// weekly
 	// 
@@ -74,9 +66,9 @@ void BEBS::OrdersControl::InitializeComponent(void)
 	this->weekly->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->weekly->ForeColor = System::Drawing::Color::White;
-	this->weekly->Location = System::Drawing::Point(795, 437);
+	this->weekly->Location = System::Drawing::Point(801, 445);
 	this->weekly->Name = L"weekly";
-	this->weekly->Size = System::Drawing::Size(251, 62);
+	this->weekly->Size = System::Drawing::Size(173, 50);
 	this->weekly->TabIndex = 34;
 	this->weekly->Text = L"Add new order";
 	this->weekly->UseVisualStyleBackColor = false;
@@ -88,7 +80,7 @@ void BEBS::OrdersControl::InitializeComponent(void)
 	this->provider_txt->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->provider_txt->ForeColor = System::Drawing::Color::White;
-	this->provider_txt->Location = System::Drawing::Point(694, 127);
+	this->provider_txt->Location = System::Drawing::Point(359, 133);
 	this->provider_txt->Name = L"provider_txt";
 	this->provider_txt->Size = System::Drawing::Size(280, 34);
 	this->provider_txt->TabIndex = 35;
@@ -98,7 +90,7 @@ void BEBS::OrdersControl::InitializeComponent(void)
 	this->comboBox1->BackColor = System::Drawing::Color::Black;
 	this->comboBox1->ForeColor = System::Drawing::Color::White;
 	this->comboBox1->FormattingEnabled = true;
-	this->comboBox1->Location = System::Drawing::Point(60, 135);
+	this->comboBox1->Location = System::Drawing::Point(729, 143);
 	this->comboBox1->Name = L"comboBox1";
 	this->comboBox1->Size = System::Drawing::Size(280, 24);
 	this->comboBox1->TabIndex = 36;
@@ -109,7 +101,7 @@ void BEBS::OrdersControl::InitializeComponent(void)
 	this->order_id->AutoSize = true;
 	this->order_id->BackColor = System::Drawing::Color::Transparent;
 	this->order_id->ForeColor = System::Drawing::Color::White;
-	this->order_id->Location = System::Drawing::Point(689, 199);
+	this->order_id->Location = System::Drawing::Point(354, 205);
 	this->order_id->Name = L"order_id";
 	this->order_id->Size = System::Drawing::Size(71, 17);
 	this->order_id->TabIndex = 37;
@@ -119,7 +111,7 @@ void BEBS::OrdersControl::InitializeComponent(void)
 	// 
 	this->Update->BackColor = System::Drawing::Color::Gold;
 	this->Update->ForeColor = System::Drawing::Color::White;
-	this->Update->Location = System::Drawing::Point(60, 437);
+	this->Update->Location = System::Drawing::Point(55, 445);
 	this->Update->Name = L"Update";
 	this->Update->Size = System::Drawing::Size(162, 50);
 	this->Update->TabIndex = 38;
@@ -131,7 +123,7 @@ void BEBS::OrdersControl::InitializeComponent(void)
 	// 
 	this->button1->BackColor = System::Drawing::Color::Red;
 	this->button1->ForeColor = System::Drawing::Color::White;
-	this->button1->Location = System::Drawing::Point(247, 437);
+	this->button1->Location = System::Drawing::Point(242, 445);
 	this->button1->Name = L"button1";
 	this->button1->Size = System::Drawing::Size(162, 50);
 	this->button1->TabIndex = 39;
@@ -145,7 +137,7 @@ void BEBS::OrdersControl::InitializeComponent(void)
 	this->book_txt->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->book_txt->ForeColor = System::Drawing::Color::White;
-	this->book_txt->Location = System::Drawing::Point(694, 227);
+	this->book_txt->Location = System::Drawing::Point(359, 233);
 	this->book_txt->Name = L"book_txt";
 	this->book_txt->Size = System::Drawing::Size(280, 34);
 	this->book_txt->TabIndex = 40;
@@ -155,7 +147,7 @@ void BEBS::OrdersControl::InitializeComponent(void)
 	this->label1->AutoSize = true;
 	this->label1->BackColor = System::Drawing::Color::Transparent;
 	this->label1->ForeColor = System::Drawing::Color::White;
-	this->label1->Location = System::Drawing::Point(689, 99);
+	this->label1->Location = System::Drawing::Point(354, 105);
 	this->label1->Name = L"label1";
 	this->label1->Size = System::Drawing::Size(61, 17);
 	this->label1->TabIndex = 41;
@@ -167,7 +159,7 @@ void BEBS::OrdersControl::InitializeComponent(void)
 	this->status_txt->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->status_txt->ForeColor = System::Drawing::Color::White;
-	this->status_txt->Location = System::Drawing::Point(694, 319);
+	this->status_txt->Location = System::Drawing::Point(359, 325);
 	this->status_txt->Name = L"status_txt";
 	this->status_txt->Size = System::Drawing::Size(280, 34);
 	this->status_txt->TabIndex = 42;
@@ -178,7 +170,7 @@ void BEBS::OrdersControl::InitializeComponent(void)
 	this->id_txt->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->id_txt->ForeColor = System::Drawing::Color::White;
-	this->id_txt->Location = System::Drawing::Point(390, 127);
+	this->id_txt->Location = System::Drawing::Point(55, 133);
 	this->id_txt->Name = L"id_txt";
 	this->id_txt->Size = System::Drawing::Size(280, 34);
 	this->id_txt->TabIndex = 43;
@@ -189,7 +181,7 @@ void BEBS::OrdersControl::InitializeComponent(void)
 	this->date_txt->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->date_txt->ForeColor = System::Drawing::Color::White;
-	this->date_txt->Location = System::Drawing::Point(390, 227);
+	this->date_txt->Location = System::Drawing::Point(55, 233);
 	this->date_txt->Name = L"date_txt";
 	this->date_txt->Size = System::Drawing::Size(280, 34);
 	this->date_txt->TabIndex = 44;
@@ -200,7 +192,7 @@ void BEBS::OrdersControl::InitializeComponent(void)
 	this->amount_txt->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->amount_txt->ForeColor = System::Drawing::Color::White;
-	this->amount_txt->Location = System::Drawing::Point(390, 319);
+	this->amount_txt->Location = System::Drawing::Point(55, 325);
 	this->amount_txt->Name = L"amount_txt";
 	this->amount_txt->Size = System::Drawing::Size(280, 34);
 	this->amount_txt->TabIndex = 45;
@@ -210,7 +202,7 @@ void BEBS::OrdersControl::InitializeComponent(void)
 	this->label2->AutoSize = true;
 	this->label2->BackColor = System::Drawing::Color::Transparent;
 	this->label2->ForeColor = System::Drawing::Color::White;
-	this->label2->Location = System::Drawing::Point(689, 291);
+	this->label2->Location = System::Drawing::Point(354, 297);
 	this->label2->Name = L"label2";
 	this->label2->Size = System::Drawing::Size(89, 17);
 	this->label2->TabIndex = 46;
@@ -221,7 +213,7 @@ void BEBS::OrdersControl::InitializeComponent(void)
 	this->label3->AutoSize = true;
 	this->label3->BackColor = System::Drawing::Color::Transparent;
 	this->label3->ForeColor = System::Drawing::Color::White;
-	this->label3->Location = System::Drawing::Point(385, 99);
+	this->label3->Location = System::Drawing::Point(50, 105);
 	this->label3->Name = L"label3";
 	this->label3->Size = System::Drawing::Size(60, 17);
 	this->label3->TabIndex = 47;
@@ -232,7 +224,7 @@ void BEBS::OrdersControl::InitializeComponent(void)
 	this->label4->AutoSize = true;
 	this->label4->BackColor = System::Drawing::Color::Transparent;
 	this->label4->ForeColor = System::Drawing::Color::White;
-	this->label4->Location = System::Drawing::Point(385, 199);
+	this->label4->Location = System::Drawing::Point(50, 205);
 	this->label4->Name = L"label4";
 	this->label4->Size = System::Drawing::Size(79, 17);
 	this->label4->TabIndex = 48;
@@ -244,7 +236,7 @@ void BEBS::OrdersControl::InitializeComponent(void)
 	this->label6->AutoSize = true;
 	this->label6->BackColor = System::Drawing::Color::Transparent;
 	this->label6->ForeColor = System::Drawing::Color::White;
-	this->label6->Location = System::Drawing::Point(385, 291);
+	this->label6->Location = System::Drawing::Point(50, 297);
 	this->label6->Name = L"label6";
 	this->label6->Size = System::Drawing::Size(56, 17);
 	this->label6->TabIndex = 49;
@@ -257,7 +249,7 @@ void BEBS::OrdersControl::InitializeComponent(void)
 	this->label7->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->label7->ForeColor = System::Drawing::Color::White;
-	this->label7->Location = System::Drawing::Point(54, 99);
+	this->label7->Location = System::Drawing::Point(725, 114);
 	this->label7->Name = L"label7";
 	this->label7->Size = System::Drawing::Size(104, 24);
 	this->label7->TabIndex = 50;
@@ -268,19 +260,114 @@ void BEBS::OrdersControl::InitializeComponent(void)
 	this->HomePage->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"HomePage.BackgroundImage")));
 	this->HomePage->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 	this->HomePage->Cursor = System::Windows::Forms::Cursors::Hand;
-	this->HomePage->Location = System::Drawing::Point(1006, 36);
+	this->HomePage->Location = System::Drawing::Point(1005, 23);
 	this->HomePage->Name = L"HomePage";
 	this->HomePage->Size = System::Drawing::Size(40, 40);
 	this->HomePage->TabIndex = 51;
 	this->HomePage->TabStop = false;
-	this->HomePage->Click += gcnew System::EventHandler(this, &OrdersControl::HomePage_Click);
+	this->HomePage->Click += gcnew System::EventHandler(this, &OrdersControl::HomePageClick);
+	// 
+	// UpdateInventoryButton
+	// 
+	this->UpdateInventoryButton->BackColor = System::Drawing::SystemColors::ActiveCaption;
+	this->UpdateInventoryButton->Cursor = System::Windows::Forms::Cursors::Hand;
+	this->UpdateInventoryButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold,
+		System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+	this->UpdateInventoryButton->ForeColor = System::Drawing::SystemColors::HighlightText;
+	this->UpdateInventoryButton->Location = System::Drawing::Point(817, 12);
+	this->UpdateInventoryButton->Name = L"UpdateInventoryButton";
+	this->UpdateInventoryButton->Size = System::Drawing::Size(104, 50);
+	this->UpdateInventoryButton->TabIndex = 58;
+	this->UpdateInventoryButton->Text = L"Update Inventory";
+	this->UpdateInventoryButton->UseVisualStyleBackColor = false;
+	this->UpdateInventoryButton->Click += gcnew System::EventHandler(this, &OrdersControl::InventoryClick);
+	// 
+	// DiscountButton
+	// 
+	this->DiscountButton->BackColor = System::Drawing::SystemColors::ActiveCaption;
+	this->DiscountButton->Cursor = System::Windows::Forms::Cursors::Hand;
+	this->DiscountButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+		static_cast<System::Byte>(0)));
+	this->DiscountButton->ForeColor = System::Drawing::SystemColors::HighlightText;
+	this->DiscountButton->Location = System::Drawing::Point(257, 12);
+	this->DiscountButton->Name = L"DiscountButton";
+	this->DiscountButton->Size = System::Drawing::Size(118, 50);
+	this->DiscountButton->TabIndex = 57;
+	this->DiscountButton->Text = L"Discount";
+	this->DiscountButton->UseVisualStyleBackColor = false;
+	this->DiscountButton->Click += gcnew System::EventHandler(this, &OrdersControl::DiscountClick);
+	// 
+	// OrderButton
+	// 
+	this->OrderButton->BackColor = System::Drawing::Color::Gray;
+	this->OrderButton->Cursor = System::Windows::Forms::Cursors::Default;
+	this->OrderButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+		static_cast<System::Byte>(0)));
+	this->OrderButton->ForeColor = System::Drawing::SystemColors::HighlightText;
+	this->OrderButton->Location = System::Drawing::Point(381, 12);
+	this->OrderButton->Name = L"OrderButton";
+	this->OrderButton->Size = System::Drawing::Size(109, 50);
+	this->OrderButton->TabIndex = 56;
+	this->OrderButton->Text = L"Orders";
+	this->OrderButton->UseVisualStyleBackColor = false;
+	// 
+	// UsersButton
+	// 
+	this->UsersButton->BackColor = System::Drawing::SystemColors::ActiveCaption;
+	this->UsersButton->Cursor = System::Windows::Forms::Cursors::Hand;
+	this->UsersButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+		static_cast<System::Byte>(0)));
+	this->UsersButton->ForeColor = System::Drawing::SystemColors::HighlightText;
+	this->UsersButton->Location = System::Drawing::Point(496, 12);
+	this->UsersButton->Name = L"UsersButton";
+	this->UsersButton->Size = System::Drawing::Size(93, 50);
+	this->UsersButton->TabIndex = 55;
+	this->UsersButton->Text = L"Users";
+	this->UsersButton->UseVisualStyleBackColor = false;
+	this->UsersButton->Click += gcnew System::EventHandler(this, &OrdersControl::UsersClick);
+	// 
+	// SalesButton
+	// 
+	this->SalesButton->BackColor = System::Drawing::SystemColors::ActiveCaption;
+	this->SalesButton->Cursor = System::Windows::Forms::Cursors::Hand;
+	this->SalesButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+		static_cast<System::Byte>(0)));
+	this->SalesButton->ForeColor = System::Drawing::SystemColors::HighlightText;
+	this->SalesButton->Location = System::Drawing::Point(595, 12);
+	this->SalesButton->Name = L"SalesButton";
+	this->SalesButton->Size = System::Drawing::Size(106, 50);
+	this->SalesButton->TabIndex = 54;
+	this->SalesButton->Text = L"Sales";
+	this->SalesButton->UseVisualStyleBackColor = false;
+	this->SalesButton->Click += gcnew System::EventHandler(this, &OrdersControl::SalesClick);
+	// 
+	// ProfitButton
+	// 
+	this->ProfitButton->BackColor = System::Drawing::SystemColors::ActiveCaption;
+	this->ProfitButton->Cursor = System::Windows::Forms::Cursors::Hand;
+	this->ProfitButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+		static_cast<System::Byte>(0)));
+	this->ProfitButton->ForeColor = System::Drawing::SystemColors::HighlightText;
+	this->ProfitButton->Location = System::Drawing::Point(707, 12);
+	this->ProfitButton->Name = L"ProfitButton";
+	this->ProfitButton->Size = System::Drawing::Size(104, 50);
+	this->ProfitButton->TabIndex = 53;
+	this->ProfitButton->Text = L"Profit";
+	this->ProfitButton->UseVisualStyleBackColor = false;
+	this->ProfitButton->Click += gcnew System::EventHandler(this, &OrdersControl::ProfitClick);
 	// 
 	// OrdersControl
 	// 
 	this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::None;
 	this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 	this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-	this->ClientSize = System::Drawing::Size(1076, 536);
+	this->ClientSize = System::Drawing::Size(1082, 536);
+	this->Controls->Add(this->UpdateInventoryButton);
+	this->Controls->Add(this->DiscountButton);
+	this->Controls->Add(this->OrderButton);
+	this->Controls->Add(this->UsersButton);
+	this->Controls->Add(this->SalesButton);
+	this->Controls->Add(this->ProfitButton);
 	this->Controls->Add(this->HomePage);
 	this->Controls->Add(this->label7);
 	this->Controls->Add(this->label6);
@@ -299,10 +386,9 @@ void BEBS::OrdersControl::InitializeComponent(void)
 	this->Controls->Add(this->comboBox1);
 	this->Controls->Add(this->provider_txt);
 	this->Controls->Add(this->weekly);
-	this->Controls->Add(this->label5);
 	this->Name = L"OrdersControl";
+	this->StartPosition = System::Windows::Forms::FormStartPosition::CenterParent;
 	this->Text = L"OrdersControl";
-	this->Load += gcnew System::EventHandler(this, &OrdersControl::OrdersControl_Load);
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->HomePage))->EndInit();
 	this->ResumeLayout(false);
 	this->PerformLayout();
@@ -313,8 +399,6 @@ System::Void BEBS::OrdersControl::label4_Click(System::Object^ sender, System::E
 	}
 System::Void BEBS::OrdersControl::comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 		String^ comboVal = comboBox1->Text;
-
-		String^ con = L"datasource=localhost; port=3306; username=root; password=shanilevi24";
 		MySqlConnection^ conData = gcnew MySqlConnection(con);
 		MySqlCommand^ cmdDB = gcnew MySqlCommand("select * from book_store.orders_from_provider op inner join book_store.books b on op.book_id = b.book_id  where order_provider_id='" + comboVal + "';", conData);
 		MySqlDataReader^ myRender;
@@ -345,7 +429,7 @@ System::Void BEBS::OrdersControl::comboBox1_SelectedIndexChanged(System::Object^
 		}
 	}
 Void BEBS::OrdersControl::fillCom(void) {
-		String^ con = L"datasource=localhost; port=3306; username=root; password=shanilevi24";
+		
 		MySqlConnection^ conData = gcnew MySqlConnection(con);
 		MySqlCommand^ cmdDB = gcnew MySqlCommand("select * from book_store.orders_from_provider op inner join book_store.books b on op.book_id = b.book_id  where order_status='active';", conData);
 		MySqlDataReader^ myRender;
@@ -364,7 +448,7 @@ Void BEBS::OrdersControl::fillCom(void) {
 		}
 	}
  System::Void BEBS::OrdersControl::Update_Click(System::Object^ sender, System::EventArgs^ e) {
-		String^ con = L"datasource=localhost; port=3306; username=root; password=shanilevi24";
+		
 		MySqlConnection^ conData = gcnew MySqlConnection(con);
 		MySqlCommand^ cmdDB = gcnew MySqlCommand("update book_store.orders_from_provider set amount='" + amount_txt->Text + "',provider='" + provider_txt->Text + "',order_status='" + status_txt->Text + "',order_date='" + date_txt->Text + "' where order_provider_id='" + id_txt->Text + "' ;", conData);
 		MySqlDataReader^ myRender;
@@ -385,7 +469,7 @@ Void BEBS::OrdersControl::fillCom(void) {
 		}
 	}
 System::Void BEBS::OrdersControl::button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		String^ con = L"datasource=localhost; port=3306; username=root; password=shanilevi24";
+		
 		MySqlConnection^ conData = gcnew MySqlConnection(con);
 		MySqlCommand^ cmdDB = gcnew MySqlCommand("delete from book_store.orders_from_provider where order_provider_id='" + id_txt->Text + "' ;", conData);
 		MySqlDataReader^ myRender;
@@ -408,10 +492,35 @@ System::Void BEBS::OrdersControl::button1_Click(System::Object^ sender, System::
 System::Void BEBS::OrdersControl::weekly_Click(System::Object^ sender, System::EventArgs^ e) {
 		MessageBox::Show("Page in process");
 	}
-System::Void BEBS::OrdersControl::OrdersControl_Load(System::Object^ sender, System::EventArgs^ e) {
-	}
-System::Void BEBS::OrdersControl::HomePage_Click(System::Object^ sender, System::EventArgs^ e) {
-		this->~OrdersControl();
-		lastForm->Show();
-	}
 
+
+System::Void BEBS::OrdersControl::InventoryClick(System::Object^ sender, System::EventArgs^ e) {
+	this->~OrdersControl();
+	BEBS::AdminMenu admin;
+	admin.ShowDialog();
+}
+System::Void BEBS::OrdersControl::DiscountClick(System::Object^ sender, System::EventArgs^ e) {
+	this->~OrdersControl();
+	BEBS::DiscountControl nextPag;
+	nextPag.ShowDialog();
+}
+System::Void BEBS::OrdersControl::UsersClick(System::Object^ sender, System::EventArgs^ e) {
+	this->~OrdersControl();
+	BEBS::UsersControl users;
+	users.ShowDialog();
+}
+System::Void BEBS::OrdersControl::SalesClick(System::Object^ sender, System::EventArgs^ e) {
+	this->~OrdersControl();
+	BEBS::SalesControl sales;
+	sales.ShowDialog();
+}
+System::Void BEBS::OrdersControl::ProfitClick(System::Object^ sender, System::EventArgs^ e) {
+	this->~OrdersControl();
+	BEBS::ProfitControl profit;
+	profit.ShowDialog();
+}
+System::Void BEBS::OrdersControl::HomePageClick(System::Object^ sender, System::EventArgs^ e) {
+	this->~OrdersControl();
+	BEBS::HomePage HomePage;
+	HomePage.ShowDialog();
+}
