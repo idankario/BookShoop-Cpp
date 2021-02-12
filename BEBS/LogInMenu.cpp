@@ -85,7 +85,7 @@ void BEBS::LogInMenu::InitializeComponent(void)
 	this->TextPassword->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->TextPassword->ForeColor = System::Drawing::Color::White;
-	this->TextPassword->Location = System::Drawing::Point(82, 255);
+	this->TextPassword->Location = System::Drawing::Point(82, 265);
 	this->TextPassword->Margin = System::Windows::Forms::Padding(5);
 	this->TextPassword->Multiline = true;
 	this->TextPassword->Name = L"TextPassword";
@@ -102,7 +102,7 @@ void BEBS::LogInMenu::InitializeComponent(void)
 	this->PasswordLabel->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->PasswordLabel->ForeColor = System::Drawing::Color::White;
-	this->PasswordLabel->Location = System::Drawing::Point(79, 228);
+	this->PasswordLabel->Location = System::Drawing::Point(79, 238);
 	this->PasswordLabel->Name = L"PasswordLabel";
 	this->PasswordLabel->Size = System::Drawing::Size(87, 24);
 	this->PasswordLabel->TabIndex = 3;
@@ -118,7 +118,7 @@ void BEBS::LogInMenu::InitializeComponent(void)
 	this->LogIn->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->LogIn->ForeColor = System::Drawing::Color::White;
-	this->LogIn->Location = System::Drawing::Point(83, 400);
+	this->LogIn->Location = System::Drawing::Point(83, 443);
 	this->LogIn->Name = L"LogIn";
 	this->LogIn->Size = System::Drawing::Size(127, 50);
 	this->LogIn->TabIndex = 0;
@@ -136,7 +136,7 @@ void BEBS::LogInMenu::InitializeComponent(void)
 	this->Register->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->Register->ForeColor = System::Drawing::Color::White;
-	this->Register->Location = System::Drawing::Point(234, 400);
+	this->Register->Location = System::Drawing::Point(234, 443);
 	this->Register->Name = L"Register";
 	this->Register->Size = System::Drawing::Size(127, 50);
 	this->Register->TabIndex = 11;
@@ -153,7 +153,7 @@ void BEBS::LogInMenu::InitializeComponent(void)
 	this->Back->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->Back->ForeColor = System::Drawing::Color::Blue;
-	this->Back->Location = System::Drawing::Point(389, 400);
+	this->Back->Location = System::Drawing::Point(389, 443);
 	this->Back->Name = L"Back";
 	this->Back->Size = System::Drawing::Size(127, 50);
 	this->Back->TabIndex = 12;
@@ -178,7 +178,7 @@ void BEBS::LogInMenu::InitializeComponent(void)
 		static_cast<System::Byte>(0)));
 	this->ForgotPass->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
 		static_cast<System::Int32>(static_cast<System::Byte>(192)));
-	this->ForgotPass->Location = System::Drawing::Point(86, 334);
+	this->ForgotPass->Location = System::Drawing::Point(86, 344);
 	this->ForgotPass->Name = L"ForgotPass";
 	this->ForgotPass->Size = System::Drawing::Size(150, 23);
 	this->ForgotPass->TabIndex = 14;
@@ -190,7 +190,7 @@ void BEBS::LogInMenu::InitializeComponent(void)
 	this->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
 	this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 	this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-	this->ClientSize = System::Drawing::Size(1100, 583);
+	this->ClientSize = System::Drawing::Size(1133, 629);
 	this->Controls->Add(this->ForgotPass);
 	this->Controls->Add(this->label1);
 	this->Controls->Add(this->Back);

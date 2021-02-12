@@ -46,7 +46,8 @@ void BEBS::RegisterMenu::InitializeComponent(void)
 	this->textPhone = (gcnew System::Windows::Forms::TextBox());
 	this->labelPhone = (gcnew System::Windows::Forms::Label());
 	this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
-
+	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->backButtonImage))->BeginInit();
+	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 	this->SuspendLayout();
 	// 
 	// textCondition
@@ -76,12 +77,12 @@ void BEBS::RegisterMenu::InitializeComponent(void)
 	// 
 	this->labelUser->AutoSize = true;
 	this->labelUser->BackColor = System::Drawing::Color::Transparent;
-	this->labelUser->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+	this->labelUser->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->labelUser->ForeColor = System::Drawing::Color::White;
-	this->labelUser->Location = System::Drawing::Point(79, 120);
+	this->labelUser->Location = System::Drawing::Point(79, 143);
 	this->labelUser->Name = L"labelUser";
-	this->labelUser->Size = System::Drawing::Size(160, 24);
+	this->labelUser->Size = System::Drawing::Size(165, 19);
 	this->labelUser->TabIndex = 0;
 	this->labelUser->Text = L"Email (User Name) :";
 	// 
@@ -91,7 +92,7 @@ void BEBS::RegisterMenu::InitializeComponent(void)
 	this->textUser->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->textUser->ForeColor = System::Drawing::Color::White;
-	this->textUser->Location = System::Drawing::Point(269, 120);
+	this->textUser->Location = System::Drawing::Point(269, 143);
 	this->textUser->Name = L"textUser";
 	this->textUser->Size = System::Drawing::Size(280, 30);
 	this->textUser->TabIndex = 1;
@@ -102,7 +103,7 @@ void BEBS::RegisterMenu::InitializeComponent(void)
 	this->textPass->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->textPass->ForeColor = System::Drawing::Color::White;
-	this->textPass->Location = System::Drawing::Point(269, 191);
+	this->textPass->Location = System::Drawing::Point(269, 226);
 	this->textPass->Name = L"textPass";
 	this->textPass->Size = System::Drawing::Size(280, 30);
 	this->textPass->TabIndex = 3;
@@ -111,12 +112,12 @@ void BEBS::RegisterMenu::InitializeComponent(void)
 	// 
 	this->labelPass->AutoSize = true;
 	this->labelPass->BackColor = System::Drawing::Color::Transparent;
-	this->labelPass->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+	this->labelPass->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->labelPass->ForeColor = System::Drawing::Color::White;
-	this->labelPass->Location = System::Drawing::Point(79, 191);
+	this->labelPass->Location = System::Drawing::Point(79, 226);
 	this->labelPass->Name = L"labelPass";
-	this->labelPass->Size = System::Drawing::Size(92, 24);
+	this->labelPass->Size = System::Drawing::Size(98, 19);
 	this->labelPass->TabIndex = 2;
 	this->labelPass->Text = L"Password :";
 	// 
@@ -124,12 +125,12 @@ void BEBS::RegisterMenu::InitializeComponent(void)
 	// 
 	this->labelName->AutoSize = true;
 	this->labelName->BackColor = System::Drawing::Color::Transparent;
-	this->labelName->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+	this->labelName->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->labelName->ForeColor = System::Drawing::Color::White;
-	this->labelName->Location = System::Drawing::Point(79, 260);
+	this->labelName->Location = System::Drawing::Point(79, 307);
 	this->labelName->Name = L"labelName";
-	this->labelName->Size = System::Drawing::Size(60, 24);
+	this->labelName->Size = System::Drawing::Size(59, 19);
 	this->labelName->TabIndex = 4;
 	this->labelName->Text = L"Name:";
 	// 
@@ -138,10 +139,10 @@ void BEBS::RegisterMenu::InitializeComponent(void)
 	this->CreateAcount->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
 		static_cast<System::Int32>(static_cast<System::Byte>(192)));
 	this->CreateAcount->Cursor = System::Windows::Forms::Cursors::Hand;
-	this->CreateAcount->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+	this->CreateAcount->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->CreateAcount->ForeColor = System::Drawing::Color::White;
-	this->CreateAcount->Location = System::Drawing::Point(79, 444);
+	this->CreateAcount->Location = System::Drawing::Point(79, 546);
 	this->CreateAcount->Name = L"CreateAcount";
 	this->CreateAcount->Size = System::Drawing::Size(127, 50);
 	this->CreateAcount->TabIndex = 6;
@@ -192,12 +193,12 @@ void BEBS::RegisterMenu::InitializeComponent(void)
 	this->checkConditation->AutoSize = true;
 	this->checkConditation->BackColor = System::Drawing::Color::Black;
 	this->checkConditation->Cursor = System::Windows::Forms::Cursors::Hand;
-	this->checkConditation->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 10.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+	this->checkConditation->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->checkConditation->ForeColor = System::Drawing::Color::White;
-	this->checkConditation->Location = System::Drawing::Point(79, 380);
+	this->checkConditation->Location = System::Drawing::Point(89, 471);
 	this->checkConditation->Name = L"checkConditation";
-	this->checkConditation->Size = System::Drawing::Size(125, 27);
+	this->checkConditation->Size = System::Drawing::Size(140, 23);
 	this->checkConditation->TabIndex = 9;
 	this->checkConditation->Text = L"I agree to the ";
 	this->checkConditation->UseVisualStyleBackColor = false;
@@ -207,12 +208,12 @@ void BEBS::RegisterMenu::InitializeComponent(void)
 	this->ConditionText->AutoSize = true;
 	this->ConditionText->BackColor = System::Drawing::Color::Black;
 	this->ConditionText->Cursor = System::Windows::Forms::Cursors::Hand;
-	this->ConditionText->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+	this->ConditionText->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->ConditionText->ForeColor = System::Drawing::Color::Blue;
-	this->ConditionText->Location = System::Drawing::Point(192, 384);
+	this->ConditionText->Location = System::Drawing::Point(192, 475);
 	this->ConditionText->Name = L"ConditionText";
-	this->ConditionText->Size = System::Drawing::Size(187, 23);
+	this->ConditionText->Size = System::Drawing::Size(190, 19);
 	this->ConditionText->TabIndex = 10;
 	this->ConditionText->Text = L"Terms and Condiations";
 	this->ConditionText->Click += gcnew System::EventHandler(this, &RegisterMenu::ConditionText_Click);
@@ -223,7 +224,7 @@ void BEBS::RegisterMenu::InitializeComponent(void)
 	this->textName->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->textName->ForeColor = System::Drawing::Color::White;
-	this->textName->Location = System::Drawing::Point(269, 260);
+	this->textName->Location = System::Drawing::Point(269, 307);
 	this->textName->Name = L"textName";
 	this->textName->Size = System::Drawing::Size(280, 30);
 	this->textName->TabIndex = 13;
@@ -234,7 +235,7 @@ void BEBS::RegisterMenu::InitializeComponent(void)
 	this->textPhone->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->textPhone->ForeColor = System::Drawing::Color::White;
-	this->textPhone->Location = System::Drawing::Point(269, 322);
+	this->textPhone->Location = System::Drawing::Point(269, 381);
 	this->textPhone->Name = L"textPhone";
 	this->textPhone->Size = System::Drawing::Size(280, 30);
 	this->textPhone->TabIndex = 5;
@@ -243,19 +244,19 @@ void BEBS::RegisterMenu::InitializeComponent(void)
 	// 
 	this->labelPhone->AutoSize = true;
 	this->labelPhone->BackColor = System::Drawing::Color::Transparent;
-	this->labelPhone->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+	this->labelPhone->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->labelPhone->ForeColor = System::Drawing::Color::White;
-	this->labelPhone->Location = System::Drawing::Point(79, 322);
+	this->labelPhone->Location = System::Drawing::Point(79, 381);
 	this->labelPhone->Name = L"labelPhone";
-	this->labelPhone->Size = System::Drawing::Size(62, 24);
+	this->labelPhone->Size = System::Drawing::Size(65, 19);
 	this->labelPhone->TabIndex = 14;
 	this->labelPhone->Text = L"Phone:";
 	// 
 	// pictureBox1
 	// 
 	this->pictureBox1->BackColor = System::Drawing::Color::Black;
-	this->pictureBox1->Location = System::Drawing::Point(70, 380);
+	this->pictureBox1->Location = System::Drawing::Point(80, 471);
 	this->pictureBox1->Name = L"pictureBox1";
 	this->pictureBox1->Size = System::Drawing::Size(309, 32);
 	this->pictureBox1->TabIndex = 15;
@@ -267,7 +268,7 @@ void BEBS::RegisterMenu::InitializeComponent(void)
 	this->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
 	this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 	this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-	this->ClientSize = System::Drawing::Size(1100, 583);
+	this->ClientSize = System::Drawing::Size(1133, 629);
 	this->Controls->Add(this->ConditionText);
 	this->Controls->Add(this->checkConditation);
 	this->Controls->Add(this->pictureBox1);

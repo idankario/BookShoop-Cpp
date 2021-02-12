@@ -52,10 +52,10 @@ BEBS::ProfitControl::~ProfitControl()
 			this->weekly->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->weekly->FlatAppearance->BorderColor = System::Drawing::Color::White;
 			this->weekly->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->weekly->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->weekly->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->weekly->ForeColor = System::Drawing::Color::White;
-			this->weekly->Location = System::Drawing::Point(67, 98);
+			this->weekly->Location = System::Drawing::Point(69, 135);
 			this->weekly->Name = L"weekly";
 			this->weekly->Size = System::Drawing::Size(141, 50);
 			this->weekly->TabIndex = 33;
@@ -70,10 +70,10 @@ BEBS::ProfitControl::~ProfitControl()
 			this->button2->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->button2->FlatAppearance->BorderColor = System::Drawing::Color::White;
 			this->button2->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->button2->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->button2->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button2->ForeColor = System::Drawing::Color::White;
-			this->button2->Location = System::Drawing::Point(232, 98);
+			this->button2->Location = System::Drawing::Point(234, 135);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(141, 50);
 			this->button2->TabIndex = 34;
@@ -88,10 +88,10 @@ BEBS::ProfitControl::~ProfitControl()
 			this->Quarterly->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->Quarterly->FlatAppearance->BorderColor = System::Drawing::Color::White;
 			this->Quarterly->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->Quarterly->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->Quarterly->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->Quarterly->ForeColor = System::Drawing::Color::White;
-			this->Quarterly->Location = System::Drawing::Point(391, 98);
+			this->Quarterly->Location = System::Drawing::Point(393, 135);
 			this->Quarterly->Name = L"Quarterly";
 			this->Quarterly->Size = System::Drawing::Size(141, 50);
 			this->Quarterly->TabIndex = 35;
@@ -105,7 +105,7 @@ BEBS::ProfitControl::~ProfitControl()
 			this->chart1->ChartAreas->Add(chartArea1);
 			legend1->Name = L"Legend1";
 			this->chart1->Legends->Add(legend1);
-			this->chart1->Location = System::Drawing::Point(569, 98);
+			this->chart1->Location = System::Drawing::Point(557, 135);
 			this->chart1->Name = L"chart1";
 			series1->ChartArea = L"ChartArea1";
 			series1->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Pie;
@@ -113,7 +113,7 @@ BEBS::ProfitControl::~ProfitControl()
 			series1->Legend = L"Legend1";
 			series1->Name = L"Books";
 			this->chart1->Series->Add(series1);
-			this->chart1->Size = System::Drawing::Size(465, 395);
+			this->chart1->Size = System::Drawing::Size(435, 400);
 			this->chart1->TabIndex = 36;
 			this->chart1->Text = L"chart1";
 			// 
@@ -132,19 +132,19 @@ BEBS::ProfitControl::~ProfitControl()
 			// 
 			this->dataGridView1->BackgroundColor = System::Drawing::Color::White;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Location = System::Drawing::Point(67, 168);
+			this->dataGridView1->Location = System::Drawing::Point(67, 222);
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->RowHeadersWidth = 72;
 			this->dataGridView1->RowTemplate->Height = 31;
-			this->dataGridView1->Size = System::Drawing::Size(483, 325);
+			this->dataGridView1->Size = System::Drawing::Size(465, 313);
 			this->dataGridView1->TabIndex = 38;
 			// 
 			// UpdateInventoryButton
 			// 
 			this->UpdateInventoryButton->BackColor = System::Drawing::SystemColors::ActiveCaption;
 			this->UpdateInventoryButton->Cursor = System::Windows::Forms::Cursors::Hand;
-			this->UpdateInventoryButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold,
-				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->UpdateInventoryButton->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->UpdateInventoryButton->ForeColor = System::Drawing::SystemColors::HighlightText;
 			this->UpdateInventoryButton->Location = System::Drawing::Point(817, 12);
 			this->UpdateInventoryButton->Name = L"UpdateInventoryButton";
@@ -158,7 +158,7 @@ BEBS::ProfitControl::~ProfitControl()
 			// 
 			this->DiscountButton->BackColor = System::Drawing::SystemColors::ActiveCaption;
 			this->DiscountButton->Cursor = System::Windows::Forms::Cursors::Hand;
-			this->DiscountButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->DiscountButton->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->DiscountButton->ForeColor = System::Drawing::SystemColors::HighlightText;
 			this->DiscountButton->Location = System::Drawing::Point(257, 12);
@@ -173,7 +173,7 @@ BEBS::ProfitControl::~ProfitControl()
 			// 
 			this->OrderButton->BackColor = System::Drawing::SystemColors::ActiveCaption;
 			this->OrderButton->Cursor = System::Windows::Forms::Cursors::Hand;
-			this->OrderButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->OrderButton->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->OrderButton->ForeColor = System::Drawing::SystemColors::HighlightText;
 			this->OrderButton->Location = System::Drawing::Point(381, 12);
@@ -188,7 +188,7 @@ BEBS::ProfitControl::~ProfitControl()
 			// 
 			this->UsersButton->BackColor = System::Drawing::SystemColors::ActiveCaption;
 			this->UsersButton->Cursor = System::Windows::Forms::Cursors::Hand;
-			this->UsersButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->UsersButton->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->UsersButton->ForeColor = System::Drawing::SystemColors::HighlightText;
 			this->UsersButton->Location = System::Drawing::Point(496, 12);
@@ -203,7 +203,7 @@ BEBS::ProfitControl::~ProfitControl()
 			// 
 			this->SalesButton->BackColor = System::Drawing::SystemColors::ActiveCaption;
 			this->SalesButton->Cursor = System::Windows::Forms::Cursors::Hand;
-			this->SalesButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->SalesButton->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->SalesButton->ForeColor = System::Drawing::SystemColors::HighlightText;
 			this->SalesButton->Location = System::Drawing::Point(595, 12);
@@ -218,7 +218,7 @@ BEBS::ProfitControl::~ProfitControl()
 			// 
 			this->ProfitButton->BackColor = System::Drawing::Color::Gray;
 			this->ProfitButton->Cursor = System::Windows::Forms::Cursors::Default;
-			this->ProfitButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->ProfitButton->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->ProfitButton->ForeColor = System::Drawing::SystemColors::HighlightText;
 			this->ProfitButton->Location = System::Drawing::Point(707, 12);
@@ -227,13 +227,13 @@ BEBS::ProfitControl::~ProfitControl()
 			this->ProfitButton->TabIndex = 59;
 			this->ProfitButton->Text = L"Profit";
 			this->ProfitButton->UseVisualStyleBackColor = false;
-
 			// 
 			// ProfitControl
 			// 
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::None;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
-			this->ClientSize = System::Drawing::Size(1082, 536);
+			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->ClientSize = System::Drawing::Size(1115, 582);
 			this->Controls->Add(this->UpdateInventoryButton);
 			this->Controls->Add(this->DiscountButton);
 			this->Controls->Add(this->OrderButton);
@@ -246,6 +246,8 @@ BEBS::ProfitControl::~ProfitControl()
 			this->Controls->Add(this->Quarterly);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->weekly);
+			this->Font = (gcnew System::Drawing::Font(L"Arial", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->Name = L"ProfitControl";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"ProfitControl";

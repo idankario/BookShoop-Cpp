@@ -86,5 +86,7 @@ namespace BEBS {
 		
 		System::Void HomePageClick(System::Object^ sender, System::EventArgs^ e);
 		System::Void itemImageClick(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void AdminMenu_Load(System::Object^ sender, System::EventArgs^ e) {
+	}
 	};
 }

@@ -22,7 +22,6 @@ void BEBS::HomePage::InitializeComponent(void)
 	this->LogIn = (gcnew System::Windows::Forms::Button());
 	this->buttonShopping = (gcnew System::Windows::Forms::Button());
 	this->SuspendLayout();
-
 	// 
 	// labelSign
 	// 
@@ -48,7 +47,7 @@ void BEBS::HomePage::InitializeComponent(void)
 	this->Register->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->Register->ForeColor = System::Drawing::Color::White;
-	this->Register->Location = System::Drawing::Point(118, 194);
+	this->Register->Location = System::Drawing::Point(118, 211);
 	this->Register->Name = L"Register";
 	this->Register->Size = System::Drawing::Size(308, 50);
 	this->Register->TabIndex = 0;
@@ -66,7 +65,7 @@ void BEBS::HomePage::InitializeComponent(void)
 	this->LogIn->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->LogIn->ForeColor = System::Drawing::Color::White;
-	this->LogIn->Location = System::Drawing::Point(118, 113);
+	this->LogIn->Location = System::Drawing::Point(118, 119);
 	this->LogIn->Name = L"LogIn";
 	this->LogIn->Size = System::Drawing::Size(308, 50);
 	this->LogIn->TabIndex = 1;
@@ -84,7 +83,7 @@ void BEBS::HomePage::InitializeComponent(void)
 	this->buttonShopping->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->buttonShopping->ForeColor = System::Drawing::Color::White;
-	this->buttonShopping->Location = System::Drawing::Point(118, 276);
+	this->buttonShopping->Location = System::Drawing::Point(118, 303);
 	this->buttonShopping->Name = L"buttonShopping";
 	this->buttonShopping->Size = System::Drawing::Size(308, 50);
 	this->buttonShopping->TabIndex = 2;
@@ -96,7 +95,7 @@ void BEBS::HomePage::InitializeComponent(void)
 	// 
 	this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 	this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-	this->ClientSize = System::Drawing::Size(1100, 583);
+	this->ClientSize = System::Drawing::Size(1133, 629);
 	this->Controls->Add(this->labelSign);
 	this->Controls->Add(this->buttonShopping);
 	this->Controls->Add(this->Register);

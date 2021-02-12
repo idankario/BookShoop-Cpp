@@ -7,7 +7,6 @@ public:
     Book():Item() {}
     Book(strP bookId, strP title, strP pages, strP section, strP price, strP amount, strP publishDate, strP info, strP img, strP authorId, Item^ next);
     strP getTitle();
-   
     strP getBookId();
     strP getPages();
     strP getSection();

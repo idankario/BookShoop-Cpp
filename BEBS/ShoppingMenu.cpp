@@ -247,7 +247,7 @@ void BEBS::ShoppingMenu::InitializeComponent(void)
 	// 
 	this->picItems->BackColor = System::Drawing::Color::Transparent;
 	this->picItems->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-	this->picItems->Location = System::Drawing::Point(28, 118);
+	this->picItems->Location = System::Drawing::Point(28, 142);
 	this->picItems->Name = L"picItems";
 	this->picItems->Size = System::Drawing::Size(567, 378);
 	this->picItems->TabIndex = 14;
@@ -261,7 +261,7 @@ void BEBS::ShoppingMenu::InitializeComponent(void)
 	this->titleItem1->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->titleItem1->ForeColor = System::Drawing::Color::White;
-	this->titleItem1->Location = System::Drawing::Point(160, 143);
+	this->titleItem1->Location = System::Drawing::Point(160, 167);
 	this->titleItem1->Name = L"titleItem1";
 	this->titleItem1->Size = System::Drawing::Size(0, 20);
 	this->titleItem1->TabIndex = 19;
@@ -273,7 +273,7 @@ void BEBS::ShoppingMenu::InitializeComponent(void)
 	this->titleItem2->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->titleItem2->ForeColor = System::Drawing::Color::White;
-	this->titleItem2->Location = System::Drawing::Point(374, 143);
+	this->titleItem2->Location = System::Drawing::Point(374, 167);
 	this->titleItem2->Name = L"titleItem2";
 	this->titleItem2->Size = System::Drawing::Size(0, 20);
 	this->titleItem2->TabIndex = 20;
@@ -285,7 +285,7 @@ void BEBS::ShoppingMenu::InitializeComponent(void)
 	this->titleItem3->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->titleItem3->ForeColor = System::Drawing::Color::White;
-	this->titleItem3->Location = System::Drawing::Point(155, 328);
+	this->titleItem3->Location = System::Drawing::Point(155, 352);
 	this->titleItem3->Name = L"titleItem3";
 	this->titleItem3->Size = System::Drawing::Size(0, 20);
 	this->titleItem3->TabIndex = 21;
@@ -297,7 +297,7 @@ void BEBS::ShoppingMenu::InitializeComponent(void)
 	this->titleItem4->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->titleItem4->ForeColor = System::Drawing::Color::White;
-	this->titleItem4->Location = System::Drawing::Point(376, 328);
+	this->titleItem4->Location = System::Drawing::Point(376, 352);
 	this->titleItem4->Name = L"titleItem4";
 	this->titleItem4->Size = System::Drawing::Size(0, 20);
 	this->titleItem4->TabIndex = 22;
@@ -309,7 +309,7 @@ void BEBS::ShoppingMenu::InitializeComponent(void)
 	this->PriceItem1->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->PriceItem1->ForeColor = System::Drawing::Color::White;
-	this->PriceItem1->Location = System::Drawing::Point(160, 273);
+	this->PriceItem1->Location = System::Drawing::Point(160, 297);
 	this->PriceItem1->Name = L"PriceItem1";
 	this->PriceItem1->Size = System::Drawing::Size(0, 20);
 	this->PriceItem1->TabIndex = 23;
@@ -321,7 +321,7 @@ void BEBS::ShoppingMenu::InitializeComponent(void)
 	this->PriceItem2->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->PriceItem2->ForeColor = System::Drawing::Color::White;
-	this->PriceItem2->Location = System::Drawing::Point(374, 273);
+	this->PriceItem2->Location = System::Drawing::Point(374, 297);
 	this->PriceItem2->Name = L"PriceItem2";
 	this->PriceItem2->Size = System::Drawing::Size(0, 20);
 	this->PriceItem2->TabIndex = 24;
@@ -333,7 +333,7 @@ void BEBS::ShoppingMenu::InitializeComponent(void)
 	this->PriceItem3->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->PriceItem3->ForeColor = System::Drawing::Color::White;
-	this->PriceItem3->Location = System::Drawing::Point(160, 459);
+	this->PriceItem3->Location = System::Drawing::Point(160, 483);
 	this->PriceItem3->Name = L"PriceItem3";
 	this->PriceItem3->Size = System::Drawing::Size(0, 20);
 	this->PriceItem3->TabIndex = 25;
@@ -345,7 +345,7 @@ void BEBS::ShoppingMenu::InitializeComponent(void)
 	this->PriceItem4->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->PriceItem4->ForeColor = System::Drawing::Color::White;
-	this->PriceItem4->Location = System::Drawing::Point(374, 459);
+	this->PriceItem4->Location = System::Drawing::Point(374, 483);
 	this->PriceItem4->Name = L"PriceItem4";
 	this->PriceItem4->Size = System::Drawing::Size(0, 20);
 	this->PriceItem4->TabIndex = 26;
@@ -355,7 +355,7 @@ void BEBS::ShoppingMenu::InitializeComponent(void)
 	this->ArrowL->BackColor = System::Drawing::Color::Transparent;
 	this->ArrowL->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"ArrowL.BackgroundImage")));
 	this->ArrowL->Cursor = System::Windows::Forms::Cursors::Hand;
-	this->ArrowL->Location = System::Drawing::Point(36, 271);
+	this->ArrowL->Location = System::Drawing::Point(36, 295);
 	this->ArrowL->Name = L"ArrowL";
 	this->ArrowL->Size = System::Drawing::Size(70, 60);
 	this->ArrowL->TabIndex = 31;
@@ -368,7 +368,7 @@ void BEBS::ShoppingMenu::InitializeComponent(void)
 	this->ArrowR->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"ArrowR.BackgroundImage")));
 	this->ArrowR->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 	this->ArrowR->Cursor = System::Windows::Forms::Cursors::Hand;
-	this->ArrowR->Location = System::Drawing::Point(517, 271);
+	this->ArrowR->Location = System::Drawing::Point(517, 295);
 	this->ArrowR->Name = L"ArrowR";
 	this->ArrowR->Size = System::Drawing::Size(70, 60);
 	this->ArrowR->TabIndex = 32;
@@ -380,7 +380,7 @@ void BEBS::ShoppingMenu::InitializeComponent(void)
 	this->item1->BackColor = System::Drawing::Color::Transparent;
 	this->item1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 	this->item1->Cursor = System::Windows::Forms::Cursors::Hand;
-	this->item1->Location = System::Drawing::Point(158, 165);
+	this->item1->Location = System::Drawing::Point(158, 189);
 	this->item1->Name = L"item1";
 	this->item1->Size = System::Drawing::Size(110, 109);
 	this->item1->TabIndex = 33;
@@ -391,7 +391,7 @@ void BEBS::ShoppingMenu::InitializeComponent(void)
 	this->item2->BackColor = System::Drawing::Color::Transparent;
 	this->item2->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 	this->item2->Cursor = System::Windows::Forms::Cursors::Hand;
-	this->item2->Location = System::Drawing::Point(374, 165);
+	this->item2->Location = System::Drawing::Point(374, 189);
 	this->item2->Name = L"item2";
 	this->item2->Size = System::Drawing::Size(110, 109);
 	this->item2->TabIndex = 34;
@@ -402,7 +402,7 @@ void BEBS::ShoppingMenu::InitializeComponent(void)
 	this->item3->BackColor = System::Drawing::Color::Transparent;
 	this->item3->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 	this->item3->Cursor = System::Windows::Forms::Cursors::Hand;
-	this->item3->Location = System::Drawing::Point(158, 347);
+	this->item3->Location = System::Drawing::Point(158, 371);
 	this->item3->Name = L"item3";
 	this->item3->Size = System::Drawing::Size(110, 109);
 	this->item3->TabIndex = 35;
@@ -413,7 +413,7 @@ void BEBS::ShoppingMenu::InitializeComponent(void)
 	this->item4->BackColor = System::Drawing::Color::Transparent;
 	this->item4->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 	this->item4->Cursor = System::Windows::Forms::Cursors::Hand;
-	this->item4->Location = System::Drawing::Point(374, 347);
+	this->item4->Location = System::Drawing::Point(374, 371);
 	this->item4->Name = L"item4";
 	this->item4->Size = System::Drawing::Size(110, 109);
 	this->item4->TabIndex = 36;
@@ -437,7 +437,7 @@ void BEBS::ShoppingMenu::InitializeComponent(void)
 	this->addItem2->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->addItem2->ForeColor = System::Drawing::Color::White;
-	this->addItem2->Location = System::Drawing::Point(439, 277);
+	this->addItem2->Location = System::Drawing::Point(439, 301);
 	this->addItem2->Name = L"addItem2";
 	this->addItem2->Size = System::Drawing::Size(42, 19);
 	this->addItem2->TabIndex = 38;
@@ -453,7 +453,7 @@ void BEBS::ShoppingMenu::InitializeComponent(void)
 	this->addItem1->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->addItem1->ForeColor = System::Drawing::Color::White;
-	this->addItem1->Location = System::Drawing::Point(226, 277);
+	this->addItem1->Location = System::Drawing::Point(226, 301);
 	this->addItem1->Name = L"addItem1";
 	this->addItem1->Size = System::Drawing::Size(42, 19);
 	this->addItem1->TabIndex = 39;
@@ -469,7 +469,7 @@ void BEBS::ShoppingMenu::InitializeComponent(void)
 	this->addItem3->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->addItem3->ForeColor = System::Drawing::Color::White;
-	this->addItem3->Location = System::Drawing::Point(226, 459);
+	this->addItem3->Location = System::Drawing::Point(226, 483);
 	this->addItem3->Name = L"addItem3";
 	this->addItem3->Size = System::Drawing::Size(42, 19);
 	this->addItem3->TabIndex = 40;
@@ -485,7 +485,7 @@ void BEBS::ShoppingMenu::InitializeComponent(void)
 	this->addItem4->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->addItem4->ForeColor = System::Drawing::Color::White;
-	this->addItem4->Location = System::Drawing::Point(439, 459);
+	this->addItem4->Location = System::Drawing::Point(439, 483);
 	this->addItem4->Name = L"addItem4";
 	this->addItem4->Size = System::Drawing::Size(42, 19);
 	this->addItem4->TabIndex = 41;
@@ -498,7 +498,7 @@ void BEBS::ShoppingMenu::InitializeComponent(void)
 	this->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
 	this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 	this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-	this->ClientSize = System::Drawing::Size(1100, 583);
+	this->ClientSize = System::Drawing::Size(1133, 629);
 	this->Controls->Add(this->addItem4);
 	this->Controls->Add(this->addItem3);
 	this->Controls->Add(this->addItem1);

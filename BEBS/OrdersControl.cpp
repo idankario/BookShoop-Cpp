@@ -61,12 +61,13 @@ void BEBS::OrdersControl::InitializeComponent(void)
 	// 
 	this->weekly->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
 		static_cast<System::Int32>(static_cast<System::Byte>(192)));
+	this->weekly->Cursor = System::Windows::Forms::Cursors::Hand;
 	this->weekly->FlatAppearance->BorderColor = System::Drawing::Color::White;
 	this->weekly->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-	this->weekly->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+	this->weekly->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->weekly->ForeColor = System::Drawing::Color::White;
-	this->weekly->Location = System::Drawing::Point(801, 445);
+	this->weekly->Location = System::Drawing::Point(801, 485);
 	this->weekly->Name = L"weekly";
 	this->weekly->Size = System::Drawing::Size(173, 50);
 	this->weekly->TabIndex = 34;
@@ -110,8 +111,11 @@ void BEBS::OrdersControl::InitializeComponent(void)
 	// Update
 	// 
 	this->Update->BackColor = System::Drawing::Color::Gold;
+	this->Update->Cursor = System::Windows::Forms::Cursors::Hand;
+	this->Update->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+		static_cast<System::Byte>(0)));
 	this->Update->ForeColor = System::Drawing::Color::White;
-	this->Update->Location = System::Drawing::Point(55, 445);
+	this->Update->Location = System::Drawing::Point(55, 485);
 	this->Update->Name = L"Update";
 	this->Update->Size = System::Drawing::Size(162, 50);
 	this->Update->TabIndex = 38;
@@ -122,8 +126,11 @@ void BEBS::OrdersControl::InitializeComponent(void)
 	// button1
 	// 
 	this->button1->BackColor = System::Drawing::Color::Red;
+	this->button1->Cursor = System::Windows::Forms::Cursors::Hand;
+	this->button1->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+		static_cast<System::Byte>(0)));
 	this->button1->ForeColor = System::Drawing::Color::White;
-	this->button1->Location = System::Drawing::Point(242, 445);
+	this->button1->Location = System::Drawing::Point(242, 485);
 	this->button1->Name = L"button1";
 	this->button1->Size = System::Drawing::Size(162, 50);
 	this->button1->TabIndex = 39;
@@ -271,8 +278,8 @@ void BEBS::OrdersControl::InitializeComponent(void)
 	// 
 	this->UpdateInventoryButton->BackColor = System::Drawing::SystemColors::ActiveCaption;
 	this->UpdateInventoryButton->Cursor = System::Windows::Forms::Cursors::Hand;
-	this->UpdateInventoryButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold,
-		System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+	this->UpdateInventoryButton->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+		static_cast<System::Byte>(0)));
 	this->UpdateInventoryButton->ForeColor = System::Drawing::SystemColors::HighlightText;
 	this->UpdateInventoryButton->Location = System::Drawing::Point(817, 12);
 	this->UpdateInventoryButton->Name = L"UpdateInventoryButton";
@@ -286,7 +293,7 @@ void BEBS::OrdersControl::InitializeComponent(void)
 	// 
 	this->DiscountButton->BackColor = System::Drawing::SystemColors::ActiveCaption;
 	this->DiscountButton->Cursor = System::Windows::Forms::Cursors::Hand;
-	this->DiscountButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+	this->DiscountButton->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->DiscountButton->ForeColor = System::Drawing::SystemColors::HighlightText;
 	this->DiscountButton->Location = System::Drawing::Point(257, 12);
@@ -301,7 +308,7 @@ void BEBS::OrdersControl::InitializeComponent(void)
 	// 
 	this->OrderButton->BackColor = System::Drawing::Color::Gray;
 	this->OrderButton->Cursor = System::Windows::Forms::Cursors::Default;
-	this->OrderButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+	this->OrderButton->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->OrderButton->ForeColor = System::Drawing::SystemColors::HighlightText;
 	this->OrderButton->Location = System::Drawing::Point(381, 12);
@@ -315,7 +322,7 @@ void BEBS::OrdersControl::InitializeComponent(void)
 	// 
 	this->UsersButton->BackColor = System::Drawing::SystemColors::ActiveCaption;
 	this->UsersButton->Cursor = System::Windows::Forms::Cursors::Hand;
-	this->UsersButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+	this->UsersButton->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->UsersButton->ForeColor = System::Drawing::SystemColors::HighlightText;
 	this->UsersButton->Location = System::Drawing::Point(496, 12);
@@ -330,7 +337,7 @@ void BEBS::OrdersControl::InitializeComponent(void)
 	// 
 	this->SalesButton->BackColor = System::Drawing::SystemColors::ActiveCaption;
 	this->SalesButton->Cursor = System::Windows::Forms::Cursors::Hand;
-	this->SalesButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+	this->SalesButton->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->SalesButton->ForeColor = System::Drawing::SystemColors::HighlightText;
 	this->SalesButton->Location = System::Drawing::Point(595, 12);
@@ -345,7 +352,7 @@ void BEBS::OrdersControl::InitializeComponent(void)
 	// 
 	this->ProfitButton->BackColor = System::Drawing::SystemColors::ActiveCaption;
 	this->ProfitButton->Cursor = System::Windows::Forms::Cursors::Hand;
-	this->ProfitButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+	this->ProfitButton->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->ProfitButton->ForeColor = System::Drawing::SystemColors::HighlightText;
 	this->ProfitButton->Location = System::Drawing::Point(707, 12);
@@ -361,7 +368,7 @@ void BEBS::OrdersControl::InitializeComponent(void)
 	this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::None;
 	this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 	this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-	this->ClientSize = System::Drawing::Size(1082, 536);
+	this->ClientSize = System::Drawing::Size(1115, 582);
 	this->Controls->Add(this->UpdateInventoryButton);
 	this->Controls->Add(this->DiscountButton);
 	this->Controls->Add(this->OrderButton);

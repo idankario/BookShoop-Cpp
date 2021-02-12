@@ -88,18 +88,19 @@ void BEBS::UsersControl::InitializeComponent(void)
 	this->HomePage->Size = System::Drawing::Size(40, 40);
 	this->HomePage->TabIndex = 10;
 	this->HomePage->TabStop = false;
-
+	this->HomePage->Click += gcnew System::EventHandler(this, &UsersControl::HomePageClick);
 	// 
 	// edit
 	// 
 	this->edit->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(192)),
 		static_cast<System::Int32>(static_cast<System::Byte>(0)));
-	this->edit->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+	this->edit->Cursor = System::Windows::Forms::Cursors::Hand;
+	this->edit->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->edit->ForeColor = System::Drawing::Color::White;
-	this->edit->Location = System::Drawing::Point(200, 464);
+	this->edit->Location = System::Drawing::Point(200, 500);
 	this->edit->Name = L"edit";
-	this->edit->Size = System::Drawing::Size(127, 50);
+	this->edit->Size = System::Drawing::Size(116, 50);
 	this->edit->TabIndex = 12;
 	this->edit->Text = L"Edit";
 	this->edit->UseVisualStyleBackColor = false;
@@ -150,12 +151,12 @@ void BEBS::UsersControl::InitializeComponent(void)
 	// 
 	this->textName->AutoSize = true;
 	this->textName->BackColor = System::Drawing::Color::Transparent;
-	this->textName->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+	this->textName->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->textName->ForeColor = System::Drawing::Color::White;
 	this->textName->Location = System::Drawing::Point(30, 77);
 	this->textName->Name = L"textName";
-	this->textName->Size = System::Drawing::Size(94, 24);
+	this->textName->Size = System::Drawing::Size(95, 19);
 	this->textName->TabIndex = 21;
 	this->textName->Text = L"User Name";
 	// 
@@ -163,12 +164,12 @@ void BEBS::UsersControl::InitializeComponent(void)
 	// 
 	this->textEmail->AutoSize = true;
 	this->textEmail->BackColor = System::Drawing::Color::Transparent;
-	this->textEmail->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+	this->textEmail->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->textEmail->ForeColor = System::Drawing::Color::White;
 	this->textEmail->Location = System::Drawing::Point(30, 169);
 	this->textEmail->Name = L"textEmail";
-	this->textEmail->Size = System::Drawing::Size(51, 24);
+	this->textEmail->Size = System::Drawing::Size(51, 19);
 	this->textEmail->TabIndex = 22;
 	this->textEmail->Text = L"Email";
 	this->textEmail->Click += gcnew System::EventHandler(this, &UsersControl::label1_Click);
@@ -177,12 +178,12 @@ void BEBS::UsersControl::InitializeComponent(void)
 	// 
 	this->textJoinDate->AutoSize = true;
 	this->textJoinDate->BackColor = System::Drawing::Color::Transparent;
-	this->textJoinDate->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+	this->textJoinDate->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->textJoinDate->ForeColor = System::Drawing::Color::White;
 	this->textJoinDate->Location = System::Drawing::Point(30, 267);
 	this->textJoinDate->Name = L"textJoinDate";
-	this->textJoinDate->Size = System::Drawing::Size(79, 24);
+	this->textJoinDate->Size = System::Drawing::Size(83, 19);
 	this->textJoinDate->TabIndex = 23;
 	this->textJoinDate->Text = L"Join Date";
 	// 
@@ -190,12 +191,12 @@ void BEBS::UsersControl::InitializeComponent(void)
 	// 
 	this->textStatus->AutoSize = true;
 	this->textStatus->BackColor = System::Drawing::Color::Transparent;
-	this->textStatus->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+	this->textStatus->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->textStatus->ForeColor = System::Drawing::Color::White;
 	this->textStatus->Location = System::Drawing::Point(30, 362);
 	this->textStatus->Name = L"textStatus";
-	this->textStatus->Size = System::Drawing::Size(57, 24);
+	this->textStatus->Size = System::Drawing::Size(60, 19);
 	this->textStatus->TabIndex = 24;
 	this->textStatus->Text = L"Status";
 	// 
@@ -203,12 +204,12 @@ void BEBS::UsersControl::InitializeComponent(void)
 	// 
 	this->textPurchases->AutoSize = true;
 	this->textPurchases->BackColor = System::Drawing::Color::Transparent;
-	this->textPurchases->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+	this->textPurchases->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->textPurchases->ForeColor = System::Drawing::Color::White;
-	this->textPurchases->Location = System::Drawing::Point(414, 285);
+	this->textPurchases->Location = System::Drawing::Point(414, 321);
 	this->textPurchases->Name = L"textPurchases";
-	this->textPurchases->Size = System::Drawing::Size(125, 24);
+	this->textPurchases->Size = System::Drawing::Size(134, 19);
 	this->textPurchases->TabIndex = 28;
 	this->textPurchases->Text = L"User Purchases";
 	// 
@@ -216,7 +217,7 @@ void BEBS::UsersControl::InitializeComponent(void)
 	// 
 	this->userPurchesTable->BackgroundColor = System::Drawing::Color::Black;
 	this->userPurchesTable->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-	this->userPurchesTable->Location = System::Drawing::Point(414, 315);
+	this->userPurchesTable->Location = System::Drawing::Point(414, 351);
 	this->userPurchesTable->Name = L"userPurchesTable";
 	this->userPurchesTable->RowHeadersWidth = 72;
 	this->userPurchesTable->RowTemplate->Height = 31;
@@ -228,12 +229,13 @@ void BEBS::UsersControl::InitializeComponent(void)
 	// 
 	this->block->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
 		static_cast<System::Int32>(static_cast<System::Byte>(0)));
-	this->block->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+	this->block->Cursor = System::Windows::Forms::Cursors::Hand;
+	this->block->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->block->ForeColor = System::Drawing::Color::White;
-	this->block->Location = System::Drawing::Point(34, 464);
+	this->block->Location = System::Drawing::Point(34, 500);
 	this->block->Name = L"block";
-	this->block->Size = System::Drawing::Size(127, 50);
+	this->block->Size = System::Drawing::Size(116, 50);
 	this->block->TabIndex = 11;
 	this->block->Text = L"Block";
 	this->block->UseVisualStyleBackColor = false;
@@ -243,8 +245,8 @@ void BEBS::UsersControl::InitializeComponent(void)
 	// 
 	this->UpdateInventoryButton->BackColor = System::Drawing::SystemColors::ActiveCaption;
 	this->UpdateInventoryButton->Cursor = System::Windows::Forms::Cursors::Hand;
-	this->UpdateInventoryButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold,
-		System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+	this->UpdateInventoryButton->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+		static_cast<System::Byte>(0)));
 	this->UpdateInventoryButton->ForeColor = System::Drawing::SystemColors::HighlightText;
 	this->UpdateInventoryButton->Location = System::Drawing::Point(817, 12);
 	this->UpdateInventoryButton->Name = L"UpdateInventoryButton";
@@ -252,12 +254,13 @@ void BEBS::UsersControl::InitializeComponent(void)
 	this->UpdateInventoryButton->TabIndex = 70;
 	this->UpdateInventoryButton->Text = L"Update Inventory";
 	this->UpdateInventoryButton->UseVisualStyleBackColor = false;
+	this->UpdateInventoryButton->Click += gcnew System::EventHandler(this, &UsersControl::InventoryClick);
 	// 
 	// DiscountButton
 	// 
 	this->DiscountButton->BackColor = System::Drawing::SystemColors::ActiveCaption;
 	this->DiscountButton->Cursor = System::Windows::Forms::Cursors::Hand;
-	this->DiscountButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+	this->DiscountButton->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->DiscountButton->ForeColor = System::Drawing::SystemColors::HighlightText;
 	this->DiscountButton->Location = System::Drawing::Point(257, 12);
@@ -266,12 +269,13 @@ void BEBS::UsersControl::InitializeComponent(void)
 	this->DiscountButton->TabIndex = 69;
 	this->DiscountButton->Text = L"Discount";
 	this->DiscountButton->UseVisualStyleBackColor = false;
+	this->DiscountButton->Click += gcnew System::EventHandler(this, &UsersControl::DiscountClick);
 	// 
 	// OrderButton
 	// 
 	this->OrderButton->BackColor = System::Drawing::SystemColors::ActiveCaption;
 	this->OrderButton->Cursor = System::Windows::Forms::Cursors::Hand;
-	this->OrderButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+	this->OrderButton->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->OrderButton->ForeColor = System::Drawing::SystemColors::HighlightText;
 	this->OrderButton->Location = System::Drawing::Point(381, 12);
@@ -280,13 +284,13 @@ void BEBS::UsersControl::InitializeComponent(void)
 	this->OrderButton->TabIndex = 68;
 	this->OrderButton->Text = L"Orders";
 	this->OrderButton->UseVisualStyleBackColor = false;
-	
+	this->OrderButton->Click += gcnew System::EventHandler(this, &UsersControl::OrdersClick);
 	// 
 	// UsersButton
 	// 
 	this->UsersButton->BackColor = System::Drawing::Color::Gray;
 	this->UsersButton->Cursor = System::Windows::Forms::Cursors::Default;
-	this->UsersButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+	this->UsersButton->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->UsersButton->ForeColor = System::Drawing::SystemColors::HighlightText;
 	this->UsersButton->Location = System::Drawing::Point(496, 12);
@@ -300,7 +304,7 @@ void BEBS::UsersControl::InitializeComponent(void)
 	// 
 	this->SalesButton->BackColor = System::Drawing::SystemColors::ActiveCaption;
 	this->SalesButton->Cursor = System::Windows::Forms::Cursors::Hand;
-	this->SalesButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+	this->SalesButton->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->SalesButton->ForeColor = System::Drawing::SystemColors::HighlightText;
 	this->SalesButton->Location = System::Drawing::Point(595, 12);
@@ -309,12 +313,13 @@ void BEBS::UsersControl::InitializeComponent(void)
 	this->SalesButton->TabIndex = 66;
 	this->SalesButton->Text = L"Sales";
 	this->SalesButton->UseVisualStyleBackColor = false;
+	this->SalesButton->Click += gcnew System::EventHandler(this, &UsersControl::SalesClick);
 	// 
 	// ProfitButton
 	// 
 	this->ProfitButton->BackColor = System::Drawing::SystemColors::ActiveCaption;
 	this->ProfitButton->Cursor = System::Windows::Forms::Cursors::Hand;
-	this->ProfitButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+	this->ProfitButton->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->ProfitButton->ForeColor = System::Drawing::SystemColors::HighlightText;
 	this->ProfitButton->Location = System::Drawing::Point(707, 12);
@@ -323,20 +328,14 @@ void BEBS::UsersControl::InitializeComponent(void)
 	this->ProfitButton->TabIndex = 65;
 	this->ProfitButton->Text = L"Profit";
 	this->ProfitButton->UseVisualStyleBackColor = false;
-
-	this->UpdateInventoryButton->Click += gcnew System::EventHandler(this, &UsersControl::InventoryClick);
-	this->DiscountButton->Click += gcnew System::EventHandler(this, &UsersControl::DiscountClick);
-	this->OrderButton->Click += gcnew System::EventHandler(this, &UsersControl::OrdersClick);
-	this->SalesButton->Click += gcnew System::EventHandler(this, &UsersControl::SalesClick);
 	this->ProfitButton->Click += gcnew System::EventHandler(this, &UsersControl::ProfitClick);
-	this->HomePage->Click += gcnew System::EventHandler(this, &UsersControl::HomePageClick);
-
 	// 
 	// UsersControl
 	// 
 	this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::None;
 	this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
-	this->ClientSize = System::Drawing::Size(1082, 536);
+	this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+	this->ClientSize = System::Drawing::Size(1115, 582);
 	this->Controls->Add(this->UpdateInventoryButton);
 	this->Controls->Add(this->DiscountButton);
 	this->Controls->Add(this->OrderButton);
@@ -361,7 +360,6 @@ void BEBS::UsersControl::InitializeComponent(void)
 	this->Name = L"UsersControl";
 	this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 	this->Text = L"UsersControl";
-
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->HomePage))->EndInit();
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->userPurchesTable))->EndInit();
 	this->ResumeLayout(false);
