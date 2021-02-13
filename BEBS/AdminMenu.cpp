@@ -5,7 +5,7 @@ BEBS::AdminMenu::AdminMenu(void)
 {
 	InitializeComponent();
 	fillListBox();
-	fillCom();
+
 }
 
 
@@ -340,6 +340,7 @@ BEBS::AdminMenu::~AdminMenu()
 		this->comboBox1->Size = System::Drawing::Size(241, 28);
 		this->comboBox1->TabIndex = 23;
 		this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &AdminMenu::comboBox1_SelectedIndexChanged);
+		
 		// 
 		// pag_txt
 		// 
@@ -542,28 +543,7 @@ System::Void BEBS::AdminMenu::HomePageClick(System::Object^ sender, System::Even
 
 
 
-	   //image text -> add / / image//books//
-System::Void BEBS::AdminMenu::saveClick(System::Object^ sender, System::EventArgs^ e) {
-	MySqlConnection^ conData = gcnew MySqlConnection(con);
-	MySqlCommand^ cmdDB = gcnew MySqlCommand("INSERT INTO `book_store`.`books`(`book_id`,`title`,`pages` ,`section`,`price`,`amount`,`info`,`img`,`author`) VALUES('" + id_txt->Text + "','" + title_txt->Text + "','" + pag_txt->Text + "','" + sec_txt->Text + "', '" + price_txt->Text + "' ,'" + amount_txt->Text + "','" + info_txt->Text + "','"
-											+ "Image\\SignIn.jpg" + "','" + author_txt->Text + "');", conData);
-	MySqlDataReader^ myRender;
 
-	try {
-		conData->Open();
-		myRender = cmdDB->ExecuteReader();
-		MessageBox::Show("Added");
-		while (myRender->Read()) {
-
-		}
-		this->~AdminMenu();
-		BEBS::AdminMenu renderPage;
-		renderPage.ShowDialog();
-	}
-	catch (Exception^ ex) {
-		MessageBox::Show(ex->Message);
-	}
-}
 
 
 
@@ -633,25 +613,52 @@ Void BEBS::AdminMenu::fillListBox(void) {
 	}
 }
 
-Void BEBS::AdminMenu::fillCom(void) {
+System::Void BEBS::AdminMenu::Update_Click(System::Object^ sender, System::EventArgs^ e) {
+	MySQL db;
+	strP imgL = sec_txt->Text+ id_txt->Text + System::IO::Path::GetExtension(img->ImageLocation);
 	
-	MySqlConnection^ conData = gcnew MySqlConnection(con);
-	MySqlCommand^ cmdDB = gcnew MySqlCommand("select * from book_store.books;", conData);
-	MySqlDataReader^ myRender;
-
-	try {
-		conData->Open();
-		myRender = cmdDB->ExecuteReader();
-		while (myRender->Read()) {
-			String^ vTitle;
-			vTitle = myRender->GetString("title");
-			comboBox1->Items->Add(vTitle);
-		}
-	}
-	catch (Exception^ ex) {
-		MessageBox::Show(ex->Message);
-	}
+	img->Image->Save(itemPath + imgL);
+	db.updateBook(title_txt->Text ,pag_txt->Text ,sec_txt->Text, price_txt->Text  ,
+					amount_txt->Text , info_txt->Text , imgL, author_txt->Text, id_txt->Text );
+	this->~AdminMenu();
+	BEBS::AdminMenu renderPage;
+	renderPage.ShowDialog();
 }
+System::Void BEBS::AdminMenu::Delete_Click(System::Object^ sender, System::EventArgs^ e) {
+	MySQL db;
+	db.deleteBook(id_txt->Text);
+	this->~AdminMenu();
+	BEBS::AdminMenu renderPage;
+	renderPage.ShowDialog();
+}
+//image text -> add / / image//books//
+System::Void BEBS::AdminMenu::saveClick(System::Object^ sender, System::EventArgs^ e) {
+	MySQL db;
+	strP imgL = sec_txt->Text + id_txt->Text + System::IO::Path::GetExtension(img->ImageLocation);
+	this->author_txt->Text =  imgL;
+	img->Image->Save(itemPath + imgL);
+	db.createNewBook(title_txt->Text, pag_txt->Text, sec_txt->Text, price_txt->Text,
+		amount_txt->Text, info_txt->Text, imgL, author_txt->Text);
+	this->~AdminMenu();
+	BEBS::AdminMenu renderPage;
+	renderPage.ShowDialog();
+	
+}
+
+
+
+System::Void BEBS::AdminMenu::itemImageClick(System::Object^ sender, System::EventArgs^ e) {
+	System::Windows::Forms::OpenFileDialog^ ofd= (gcnew System::Windows::Forms::OpenFileDialog());
+	ofd->Filter = L"\"JPEG|*.jpg|PNG |*.png|All Files|*.*\"";
+	if (ofd->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+	{
+		img->ImageLocation = ofd->FileName;
+	}
+
+}
+
+
+
 
 
 System::Void BEBS::AdminMenu::comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
@@ -692,38 +699,3 @@ System::Void BEBS::AdminMenu::comboBox1_SelectedIndexChanged(System::Object^ sen
 		MessageBox::Show(ex->Message);
 	}
 }
-
-System::Void BEBS::AdminMenu::Update_Click(System::Object^ sender, System::EventArgs^ e) {
-	MySQL db;
-	strP imgL = sec_txt->Text+ id_txt->Text + System::IO::Path::GetExtension(img->ImageLocation);
-	
-	img->Image->Save(itemPath + imgL);
-	db.updateBook(title_txt->Text ,pag_txt->Text ,sec_txt->Text, price_txt->Text  ,
-					amount_txt->Text , info_txt->Text , imgL, author_txt->Text, id_txt->Text );
-	this->~AdminMenu();
-	BEBS::AdminMenu renderPage;
-	renderPage.ShowDialog();
-}
-System::Void BEBS::AdminMenu::Delete_Click(System::Object^ sender, System::EventArgs^ e) {
-	MySQL db;
-	db.deleteBook(id_txt->Text);
-	this->~AdminMenu();
-	BEBS::AdminMenu renderPage;
-	renderPage.ShowDialog();
-}
-
-
-
-
-System::Void BEBS::AdminMenu::itemImageClick(System::Object^ sender, System::EventArgs^ e) {
-	System::Windows::Forms::OpenFileDialog^ ofd= (gcnew System::Windows::Forms::OpenFileDialog());
-	ofd->Filter = L"\"JPEG|*.jpg|PNG |*.png|All Files|*.*\"";
-	if (ofd->ShowDialog() == System::Windows::Forms::DialogResult::OK)
-	{
-		img->ImageLocation = ofd->FileName;
-	}
-
-}
-
-
-

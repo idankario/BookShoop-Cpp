@@ -1,3 +1,26 @@
-﻿  BEBS.cpp
+﻿  pch.cpp
+  AdminMenu.cpp
+  AssemblyInfo.cpp
+  BEBS.cpp
+  Book.cpp
+  Coustomer.cpp
+  DiscountControl.cpp
+  HomePage.cpp
+  Inventory.cpp
+  Item.cpp
+  LogInMenu.cpp
+  Manager.cpp
+  MySQL.cpp
+  OrdersControl.cpp
+  ProfitControl.cpp
+  RegisterMenu.cpp
+  SalesControl.cpp
+  ShoppingMenu.cpp
+  User.cpp
+  UsersControl.cpp
+C:\Users\gal\Desktop\BEBS\BEBS\UsersControl.cpp(376,19): warning C4101: 'myRender': unreferenced local variable
+C:\Users\gal\Desktop\BEBS\BEBS\UsersControl.cpp(429,21): warning C4101: 'myRender2': unreferenced local variable
+  Generating Code...
+  .NETFramework,Version=v4.7.2.AssemblyAttributes.cpp
   AdminMenu.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
   BEBS.vcxproj -> C:\Users\gal\Desktop\BEBS\x64\Debug\BEBS.exe

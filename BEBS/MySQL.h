@@ -21,6 +21,8 @@
 
 		void updateBook(strP title, strP page, strP section, strP price, strP amount, strP info,
 			strP img, strP author, strP id);
+		void createNewBook(strP title, strP page, strP section, strP price, strP amount, strP info,
+			strP img, strP author);
 		Boolean  addNewUser(strP email, strP password, strP name);
 		BindingSource^ GetBookTable();
 		BindingSource^ GetUserTable();

@@ -212,3 +212,21 @@ void MySQL::updateBook(strP title, strP page, strP section, strP price, strP amo
 	}
 }
 
+void  MySQL::createNewBook(strP title, strP page, strP section, strP price, strP amount, strP info,
+	strP img, strP author)
+{
+	MySqlCommand^ cmdDB = gcnew MySqlCommand("INSERT INTO `book_store`.`books`(`title`,`pages` ,`section`,`price`,`amount`,`info`,`img`,`author`) VALUES('" 
+											 + title + "','" + page + "','" + section + "', '" + price + "' ,'" + amount + "','" + info+ "','"
+											 + img + "','" + author + "');", conData);
+	MySqlDataReader^ myRender;
+	try {
+		conData->Open();
+		myRender = cmdDB->ExecuteReader();
+		while (myRender->Read()) {
+
+		}
+	}
+	catch (Exception^ ex) {
+		MessageBox::Show(ex->Message);
+	}
+}

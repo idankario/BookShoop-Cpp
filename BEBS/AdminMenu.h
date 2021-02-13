@@ -29,30 +29,22 @@ namespace BEBS {
 		System::Windows::Forms::TextBox^ amount_txt;
 		System::Windows::Forms::TextBox^ info_txt;
 		System::Windows::Forms::TextBox^ title_txt;
-	private: System::Windows::Forms::Button^ ProfitButton;
-
-	private: System::Windows::Forms::Button^ SalesButton;
-
-	private: System::Windows::Forms::Button^ UsersButton;
-
-	private: System::Windows::Forms::Button^ OrderButton;
-
-
+		System::Windows::Forms::Button^ ProfitButton;
+		System::Windows::Forms::Button^ SalesButton;
+		System::Windows::Forms::Button^ UsersButton;
+		System::Windows::Forms::Button^ OrderButton;
 		String^ con = L"datasource=localhost; port=3306; username=root; password=bebs";
 		System::Windows::Forms::Button^ SAVE;
 		System::Windows::Forms::Button^ Update;
 		System::Windows::Forms::Button^ DiscountButton;
-
 		System::Windows::Forms::ComboBox^ comboBox1;
 		System::Windows::Forms::TextBox^ pag_txt;
 		System::Windows::Forms::Label^ label2;
 		System::Windows::Forms::Label^ label3;
 		System::Windows::Forms::TextBox^ author_txt;
-
 		System::Windows::Forms::TextBox^ date_txt;
 		System::Windows::Forms::Label^ label4;
 		System::Windows::Forms::Button^ Delete;
-
 		System::Windows::Forms::PictureBox^ HomePage;
 		System::Windows::Forms::Button^ UpdateInventoryButton;
 		System::ComponentModel::Container^ components;
@@ -64,7 +56,7 @@ namespace BEBS {
 		/// </summary>
 		void InitializeComponent();
 		Void fillListBox(void);
-		Void fillCom(void);
+		
 
 
 #pragma endregion

@@ -130,6 +130,7 @@ Class MySQL: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     getInstaseUser(String, String): PrivateScope, Public, HideBySig
     deleteBook(String): PrivateScope, Public, HideBySig
     updateBook(String, String, String, String, String, String, String, String, String): PrivateScope, Public, HideBySig
+    createNewBook(String, String, String, String, String, String, String, String): PrivateScope, Public, HideBySig
     addNewUser(String, String, String): PrivateScope, Public, HideBySig
     GetBookTable(): PrivateScope, Public, HideBySig
     GetUserTable(): PrivateScope, Public, HideBySig
