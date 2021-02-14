@@ -636,9 +636,10 @@ System::Void BEBS::AdminMenu::saveClick(System::Object^ sender, System::EventArg
 	MySQL db;
 	strP imgL = sec_txt->Text + id_txt->Text + System::IO::Path::GetExtension(img->ImageLocation);
 	this->author_txt->Text =  imgL;
-	img->Image->Save(itemPath + imgL);
+
 	db.createNewBook(title_txt->Text, pag_txt->Text, sec_txt->Text, price_txt->Text,
 		amount_txt->Text, info_txt->Text, imgL, author_txt->Text);
+	img->Image->Save(itemPath + imgL);
 	this->~AdminMenu();
 	BEBS::AdminMenu renderPage;
 	renderPage.ShowDialog();

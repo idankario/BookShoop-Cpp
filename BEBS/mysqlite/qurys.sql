@@ -5,9 +5,18 @@ select user_name from users where email = 'idan@gmail.com' and pass=123;
 INSERT INTO `book_store`.`users`(`user_name`,`email`,`pass` )VALUES('Tomas Eily','tomas122@gmail.com',123 );
 -- 1 testing
 
-SELECT * FROM book_store.books ; 
 
- SELECT * FROM book_store.books WHERE amount>1 and title LIKE '%1%' or pages LIKE '%1%' or section LIKE '%1%';
+SELECT *  FROM (
+   select 
+         DATE_FORMAT(publish_date, '%m-%d-%Y') as publishDate
+FROM book_store.books
+   ) ; 
+
+
+
+SELECT DATE_FORMAT(publish_date, '%m-%d-%Y') as publishDate ,book_store.books.* FROM book_store.books; 
+
+ SELECT * FROM book_store.books WHERE amount>1 and CONCAT(`book_id`,`title`,`pages` ,`section`,`price`,`amount`,`publish_date`,`info`,`img`,`author`) LIKE '%HTML%' ;
 
 
 -- 1 register 

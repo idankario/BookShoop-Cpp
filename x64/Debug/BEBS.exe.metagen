@@ -89,7 +89,7 @@ Class Inventory: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     System.IDisposable
   Methods:
     getNumberItems(): PrivateScope, Public, HideBySig
-    initBookAndSendP(): PrivateScope, Public, HideBySig
+    setSearchList(Book): PrivateScope, Public, HideBySig
     BookLIndex(): PrivateScope, Public, HideBySig
     getBook(): PrivateScope, Public, HideBySig
     Dispose(): PrivateScope, Public, Final, Virtual, HideBySig
@@ -135,5 +135,5 @@ Class MySQL: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     GetBookTable(): PrivateScope, Public, HideBySig
     GetUserTable(): PrivateScope, Public, HideBySig
     getListOfBook(): PrivateScope, Public, HideBySig
-    getSearchListBook(String): PrivateScope, Public, HideBySig
+    searchBooks(String): PrivateScope, Public, HideBySig
     Dispose(): PrivateScope, Public, Final, Virtual, HideBySig

@@ -25,10 +25,8 @@ namespace BEBS {
 		System::Windows::Forms::Label^ labelPhone;
 		System::Windows::Forms::PictureBox^ backButtonImage;
 		System::Windows::Forms::Label^ backButton;
-
 		System::Windows::Forms::TextBox^ textCondition;
 		System::Windows::Forms::CheckBox^ checkConditation;
-
 		System::Windows::Forms::Button^ CreateAcount;
 		System::Windows::Forms::Panel^ panel;
 		System::Windows::Forms::Label^ ConditionText;
@@ -40,16 +38,9 @@ namespace BEBS {
 		void InitializeComponent(void);
 #pragma endregion
 	private: 
-		bool isValidEmail(String^ email);
+	
 
-		/*/Password should not contain any space.
-			Password should contain at least one digit(0 - 9)
-			Password length should be between 8 to 15 characters.
-			Password should contain at least one lowercase letter(a - z)
-			or one uppercase letter(A - Z).
-			white spaces don’t allowed in the entire string.
-		/**/
-		bool isGoodPass(String^ pass);
+
 		bool checkInaput(String^ email, String^ pass, String^ name);
 		System::Void ConditionText_Click(System::Object^ sender, System::EventArgs^ e);
 		System::Void BackLastGui_Click(System::Object^ sender, System::EventArgs^ e);

@@ -139,13 +139,14 @@ Book^ MySQL::getListOfBook()
 	conData->Close();
 	return head;
 }
-Book^ MySQL::getSearchListBook(strP s)
+Book^ MySQL::searchBooks(strP s)
 {
-	MySqlCommand^ cmdDB = gcnew MySqlCommand("SELECT * FROM book_store.books WHERE amount > 1 and CONCAT(`book_id`,`title`,`pages`, `section`,"+
-											"`price`,`amount`,`publish_date`+,`info`,`img`,`author`) LIKE '%"+s+"%';", conData);
+	MySqlCommand^ cmdDB = gcnew MySqlCommand("select * from book_store.books where amount>1 and CONCAT(`book_id`,`title`,`pages`, `section`,`price`,`amount`,`publish_date`,`info`,`img`,`author`) LIKE '%"+s+"%';", conData);
+/*	("SELECT * FROM book_store.books WHERE amount > 1 and CONCAT(`book_id`,`title`,`pages`, `section`,"+
+											"`price`,`amount`,`publish_date`+,`info`,`img`,`author`) LIKE '%'"+s+"'%';", conData);
+	*/
 	Book^ head = nullptr;
 	Book^ next = nullptr;
-
 	try {
 		conData->Open();
 		MySqlDataReader^ myRender = cmdDB->ExecuteReader();

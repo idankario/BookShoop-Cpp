@@ -307,34 +307,6 @@ System::Void BEBS::RegisterMenu::BackLastGui_Click(System::Object^ sender, Syste
 	lastForm->Show();
 }
 
-
-// Check if email is valid
-bool BEBS::RegisterMenu::isValidEmail(String^ email)
-{
-
-	// Regular expression definition 
-	Regex^ pattern = gcnew Regex("(\\w+)(\\.|_)?(\\w*)@(\\w+)(\\.(\\w+))+");
-
-	// Match the string pattern 
-	// with regular expression 
-	return pattern->IsMatch(email);
-}
-/*/Password should not contain any space.
-	Password should contain at least one digit(0 - 9)
-	Password length should be between 8 to 15 characters.
-	Password should contain at least one lowercase letter(a - z)
-	or one uppercase letter(A - Z).
-	white spaces don’t allowed in the entire string.
-/**/
-
-bool BEBS::RegisterMenu::isGoodPass(String^ pass) {
-	// Regular expression definition 
-	Regex^ pattern = gcnew Regex("^(?=\\S+$)(((?=.*[a-z][A-Z])|(?=.*[0-9]))|((?=.*[0-9])(?=.*[a-z][A-Z])))(?=.{8,15})");
-	// Match the string pattern 
-	// with regular expression 
-	return pattern->IsMatch(pass);
-}
-
 bool BEBS::RegisterMenu::checkInaput(String^ email, String^ pass, String^ name) {
 	if (!(isValidEmail(email)))
 	{
@@ -343,7 +315,7 @@ bool BEBS::RegisterMenu::checkInaput(String^ email, String^ pass, String^ name) 
 	}
 	if (!(isGoodPass(pass)))
 	{
-		MessageBox::Show(this->textUser->Text + " is not strong enagth: Password should not contain any space.\n" +
+		MessageBox::Show(this->textPass->Text + " is not strong enagth: Password should not contain any space.\n" +
 			"Password should contain at least one digit(0 - 9)\n" +
 			"Password length should be between 8 to 15 characters.\n" +
 			"Password should contain at least one lowercase letter(a - z) or one uppercase letter(A - Z).\n" +

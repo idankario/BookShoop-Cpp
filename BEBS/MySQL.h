@@ -27,7 +27,7 @@
 		BindingSource^ GetBookTable();
 		BindingSource^ GetUserTable();
 		Book^ getListOfBook();
-		Book^ getSearchListBook(strP s);
+		Book^ searchBooks(strP s);
 		//SELECT trackid, name FROM tracks WHERE name LIKE 'Wild%'
 	protected:
 		~MySQL();

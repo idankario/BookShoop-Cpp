@@ -5,8 +5,7 @@ Inventory::Inventory(){
 	head = db.getListOfBook();
 
 }
-
-Inventory::~Inventory()
+void deleteBook(Book^ head)
 {
 	Book^ tmp;
 	while (head != nullptr)
@@ -16,11 +15,14 @@ Inventory::~Inventory()
 		delete tmp;
 	}
 }
-
-Book^ Inventory::initBookAndSendP( )
+Inventory::~Inventory()
 {
-	this->~Inventory();
-	return head;
+	deleteBook(head);
+}
+
+void Inventory::setSearchList(Book^ bookList)
+{
+	head = bookList;
 
 }
 
@@ -39,7 +41,8 @@ Book^ Inventory::getBook()
 	if (head == nullptr)
 		return head;
 	int size = head->getNumItem();
-	if (++index == size)
+	index++;
+	if (index == size)
 		index = 0;
 	for (int i = 0; i != index; ++i)
 		b = safe_cast<Book^>(b->next);

@@ -41,12 +41,18 @@ namespace BEBS {
 		System::Windows::Forms::PictureBox^ ArrowL;
 		System::Windows::Forms::PictureBox^ ArrowR;
 		System::ComponentModel::Container^ components;
-		System::Windows::Forms::Label^ label1;
+
 		System::Windows::Forms::Label^ addItem2;
 		System::Windows::Forms::Label^ addItem1;
 		System::Windows::Forms::Label^ addItem3;
 		System::Windows::Forms::Label^ addItem4;
-		Coustomer^ user;
+
+
+
+
+
+
+		   Coustomer^ user;
 
   
 #pragma region Windows Form Designer generated code
@@ -83,5 +89,8 @@ namespace BEBS {
 		}
 
 		System::Void SearchIcon_Click(System::Object^ sender, System::EventArgs^ e);
+
+	private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+	}
 	};
 }

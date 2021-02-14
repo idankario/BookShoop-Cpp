@@ -135,7 +135,6 @@ void BEBS::ShoppingMenu::InitializeComponent(void)
 	this->item2 = (gcnew System::Windows::Forms::PictureBox());
 	this->item3 = (gcnew System::Windows::Forms::PictureBox());
 	this->item4 = (gcnew System::Windows::Forms::PictureBox());
-	this->label1 = (gcnew System::Windows::Forms::Label());
 	this->addItem2 = (gcnew System::Windows::Forms::Label());
 	this->addItem1 = (gcnew System::Windows::Forms::Label());
 	this->addItem3 = (gcnew System::Windows::Forms::Label());
@@ -419,15 +418,6 @@ void BEBS::ShoppingMenu::InitializeComponent(void)
 	this->item4->TabIndex = 36;
 	this->item4->TabStop = false;
 	// 
-	// label1
-	// 
-	this->label1->AutoSize = true;
-	this->label1->Location = System::Drawing::Point(0, 0);
-	this->label1->Name = L"label1";
-	this->label1->Size = System::Drawing::Size(46, 17);
-	this->label1->TabIndex = 37;
-	this->label1->Text = L"label1";
-	// 
 	// addItem2
 	// 
 	this->addItem2->AutoSize = true;
@@ -503,7 +493,6 @@ void BEBS::ShoppingMenu::InitializeComponent(void)
 	this->Controls->Add(this->addItem3);
 	this->Controls->Add(this->addItem1);
 	this->Controls->Add(this->addItem2);
-	this->Controls->Add(this->label1);
 	this->Controls->Add(this->item1);
 	this->Controls->Add(this->item2);
 	this->Controls->Add(this->item3);
@@ -569,8 +558,9 @@ System::Void BEBS::ShoppingMenu::SearchIcon_Click(System::Object^ sender, System
 	
 	if (!(this->TextSearch->Text == ""))
 	{
-		Book^ b=store.initBookAndSendP();
-		b=db.getSearchListBook(this->TextSearch->Text);
+		Book^ b = db.searchBooks(this->TextSearch->Text);
+		store.setSearchList(b);
+		
 	}
 }
 

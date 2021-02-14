@@ -13,18 +13,20 @@ public:
 	
 	int getNumberItems()
 	{
-		if (head == nullptr)
-			return 0;
-		else
-			return head->getNumItem();
+		if(searchList == nullptr)
+			if (head == nullptr)
+				return 0;
+			else
+				return head->getNumItem();
 	}
-	Book^ initBookAndSendP();
+	void setSearchList(Book^ bookList);
 	void BookLIndex();
 	Book^ getBook();
 protected:
 	~Inventory();
 private:
-	Book^ head;
+	static Book^ head;
+	Book^ searchList;
 	int index;
 	
 };
