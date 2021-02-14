@@ -22,6 +22,8 @@ public:
 	void setSearchList(Book^ bookList);
 	void BookLIndex();
 	Book^ getBook();
+	void  addListBook(System::Windows::Forms::ListBox^ listBox);
+	Book^ getBookByIndex(int index);
 protected:
 	~Inventory();
 private:

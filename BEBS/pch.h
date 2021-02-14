@@ -38,6 +38,11 @@ typedef String^ strP;
 
 #include "MySQL.h"
 #include <regex> 
+
+
+
+
+
 /*/Password should not contain any space.
 	Password should contain at least one digit(0 - 9)
 	Password length should be between 8 to 15 characters.

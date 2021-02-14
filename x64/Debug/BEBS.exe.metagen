@@ -48,6 +48,10 @@ Class Item: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     System.IDisposable
   Fields:
     Item next : Public
+    System.String productId : Public
+    System.String title : Public
+    System.String price : Public
+    System.String img : Public
   Methods:
     getNumItem(): PrivateScope, Public, HideBySig
     Dispose(): PrivateScope, Public, Final, Virtual, HideBySig
@@ -65,7 +69,7 @@ Class Book: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     getPublishDate(): PrivateScope, Public, HideBySig
     getInfo(): PrivateScope, Public, HideBySig
     getImg(): PrivateScope, Public, HideBySig
-    getAuthorId(): PrivateScope, Public, HideBySig
+    getAuthor(): PrivateScope, Public, HideBySig
 Class User: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     Void .ctor(System.String, System.String, System.String, System.String, System.String): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
@@ -92,6 +96,8 @@ Class Inventory: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     setSearchList(Book): PrivateScope, Public, HideBySig
     BookLIndex(): PrivateScope, Public, HideBySig
     getBook(): PrivateScope, Public, HideBySig
+    addListBook(ListBox): PrivateScope, Public, HideBySig
+    getBookByIndex(Int32): PrivateScope, Public, HideBySig
     Dispose(): PrivateScope, Public, Final, Virtual, HideBySig
 Class BEBS.DiscountControl: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form

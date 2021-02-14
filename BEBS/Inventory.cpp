@@ -25,7 +25,13 @@ void Inventory::setSearchList(Book^ bookList)
 	head = bookList;
 
 }
+void Inventory::addListBook(System::Windows::Forms::ListBox^ listBox)
+{
+	int size = head->getNumItem();
+	for(Book^ b = head; b!=nullptr; b = safe_cast<Book^>(b->next))
+		listBox->Items->Add(b->getTitle());
 
+}
 void Inventory::BookLIndex()
 {
 	int size = head->getNumItem();
@@ -48,7 +54,16 @@ Book^ Inventory::getBook()
 		b = safe_cast<Book^>(b->next);
 	return b;
 
-
-
-
+}
+Book^ Inventory::getBookByIndex(int index)
+{
+	int size = head->getNumItem();
+	Book^ b;
+	if (index <size)
+	{
+		b = head;
+		for (int i = 0; i != index; i++)
+			b = safe_cast<Book^>(b->next);
+	}
+	return b;
 }

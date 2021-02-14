@@ -10,10 +10,8 @@ namespace BEBS {
 
 	public:
 		ShoppingMenu(void);
-	
 		ShoppingMenu(Coustomer^ user);
 	protected:
-
 		~ShoppingMenu();
 
 	private: 
@@ -41,20 +39,11 @@ namespace BEBS {
 		System::Windows::Forms::PictureBox^ ArrowL;
 		System::Windows::Forms::PictureBox^ ArrowR;
 		System::ComponentModel::Container^ components;
-
 		System::Windows::Forms::Label^ addItem2;
 		System::Windows::Forms::Label^ addItem1;
 		System::Windows::Forms::Label^ addItem3;
 		System::Windows::Forms::Label^ addItem4;
-
-
-
-
-
-
-		   Coustomer^ user;
-
-  
+		Coustomer^ user;
 #pragma region Windows Form Designer generated code
 
 		void getItemL(void);

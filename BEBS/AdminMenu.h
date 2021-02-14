@@ -12,9 +12,8 @@ namespace BEBS {
 		~AdminMenu();
 
 	private:
-		
+		Inventory store;
 		String^ itemPath = ("Image\\books\\");
-		Form^ lastForm;
 		System::Windows::Forms::ListBox^ listBox;
 		System::Windows::Forms::PictureBox^ img;
 		System::Windows::Forms::Label^ book_id;
@@ -33,11 +32,9 @@ namespace BEBS {
 		System::Windows::Forms::Button^ SalesButton;
 		System::Windows::Forms::Button^ UsersButton;
 		System::Windows::Forms::Button^ OrderButton;
-		String^ con = L"datasource=localhost; port=3306; username=root; password=bebs";
 		System::Windows::Forms::Button^ SAVE;
 		System::Windows::Forms::Button^ Update;
 		System::Windows::Forms::Button^ DiscountButton;
-		System::Windows::Forms::ComboBox^ comboBox1;
 		System::Windows::Forms::TextBox^ pag_txt;
 		System::Windows::Forms::Label^ label2;
 		System::Windows::Forms::Label^ label3;
@@ -63,22 +60,15 @@ namespace BEBS {
 	private:
 		//image text -> add / / image//books//
 		System::Void listBox_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e);
-		System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e);
-
 		System::Void saveClick(System::Object^ sender, System::EventArgs^ e);
 		System::Void Update_Click(System::Object^ sender, System::EventArgs^ e);
 		System::Void Delete_Click(System::Object^ sender, System::EventArgs^ e);
-
 		System::Void DiscountClick(System::Object^ sender, System::EventArgs^ e);
 		System::Void OrdersClick(System::Object^ sender, System::EventArgs^ e);
 		System::Void UsersClick(System::Object^ sender, System::EventArgs^ e);
 		System::Void SalesClick(System::Object^ sender, System::EventArgs^ e);
 		System::Void ProfitClick(System::Object^ sender, System::EventArgs^ e);
-		
-		
 		System::Void HomePageClick(System::Object^ sender, System::EventArgs^ e);
 		System::Void itemImageClick(System::Object^ sender, System::EventArgs^ e);
-	private: System::Void AdminMenu_Load(System::Object^ sender, System::EventArgs^ e) {
-	}
 	};
 }

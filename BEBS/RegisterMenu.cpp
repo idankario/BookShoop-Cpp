@@ -24,8 +24,6 @@ BEBS::RegisterMenu::~RegisterMenu()
 	}
 }
 
-
-
 void BEBS::RegisterMenu::InitializeComponent(void)
 {
 	System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(RegisterMenu::typeid));
@@ -288,7 +286,6 @@ void BEBS::RegisterMenu::InitializeComponent(void)
 	this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 	this->Name = L"RegisterMenu";
 	this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
-	this->Load += gcnew System::EventHandler(this, &RegisterMenu::RegisterMenu_Load);
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->backButtonImage))->EndInit();
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 	this->ResumeLayout(false);
@@ -339,6 +336,3 @@ System::Void BEBS::RegisterMenu::buttonCondition_Click(System::Object^ sender, S
 
 
 
-
-System::Void BEBS::RegisterMenu::RegisterMenu_Load(System::Object^ sender, System::EventArgs^ e) {
-}

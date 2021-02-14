@@ -38,12 +38,9 @@ namespace BEBS {
 		void InitializeComponent(void);
 #pragma endregion
 	private: 
-	
-
 		System::Void ConditionText_Click(System::Object^ sender, System::EventArgs^ e);
 		System::Void BackLastGui_Click(System::Object^ sender, System::EventArgs^ e);
 		System::Void Next_Click(System::Object^ sender, System::EventArgs^ e);
 		System::Void buttonCondition_Click(System::Object^ sender, System::EventArgs^ e);
-		System::Void RegisterMenu_Load(System::Object^ sender, System::EventArgs^ e);
 };
 }

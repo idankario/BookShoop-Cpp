@@ -10,10 +10,10 @@ protected:
     
 public:
     Item^ next;
-    int getNumItem() { return size; }
+    int getNumItem() { return size; }    strP productId, title, price, img;
 protected:
    
-    strP productId, title, price, img;
+
     static int size;
  
 

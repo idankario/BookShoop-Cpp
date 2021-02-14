@@ -43,7 +43,6 @@ BEBS::AdminMenu::~AdminMenu()
 		this->SAVE = (gcnew System::Windows::Forms::Button());
 		this->Update = (gcnew System::Windows::Forms::Button());
 		this->DiscountButton = (gcnew System::Windows::Forms::Button());
-		this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 		this->pag_txt = (gcnew System::Windows::Forms::TextBox());
 		this->label2 = (gcnew System::Windows::Forms::Label());
 		this->label3 = (gcnew System::Windows::Forms::Label());
@@ -65,9 +64,9 @@ BEBS::AdminMenu::~AdminMenu()
 		this->listBox->ForeColor = System::Drawing::Color::White;
 		this->listBox->FormattingEnabled = true;
 		this->listBox->ItemHeight = 22;
-		this->listBox->Location = System::Drawing::Point(749, 161);
+		this->listBox->Location = System::Drawing::Point(749, 117);
 		this->listBox->Name = L"listBox";
-		this->listBox->Size = System::Drawing::Size(241, 290);
+		this->listBox->Size = System::Drawing::Size(241, 334);
 		this->listBox->TabIndex = 0;
 		this->listBox->SelectedIndexChanged += gcnew System::EventHandler(this, &AdminMenu::listBox_SelectedIndexChanged);
 		// 
@@ -330,18 +329,6 @@ BEBS::AdminMenu::~AdminMenu()
 		this->DiscountButton->UseVisualStyleBackColor = false;
 		this->DiscountButton->Click += gcnew System::EventHandler(this, &AdminMenu::DiscountClick);
 		// 
-		// comboBox1
-		// 
-		this->comboBox1->BackColor = System::Drawing::Color::Black;
-		this->comboBox1->ForeColor = System::Drawing::Color::White;
-		this->comboBox1->FormattingEnabled = true;
-		this->comboBox1->Location = System::Drawing::Point(749, 105);
-		this->comboBox1->Name = L"comboBox1";
-		this->comboBox1->Size = System::Drawing::Size(241, 28);
-		this->comboBox1->TabIndex = 23;
-		this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &AdminMenu::comboBox1_SelectedIndexChanged);
-		
-		// 
 		// pag_txt
 		// 
 		this->pag_txt->BackColor = System::Drawing::Color::Black;
@@ -471,7 +458,6 @@ BEBS::AdminMenu::~AdminMenu()
 		this->Controls->Add(this->label3);
 		this->Controls->Add(this->label2);
 		this->Controls->Add(this->pag_txt);
-		this->Controls->Add(this->comboBox1);
 		this->Controls->Add(this->DiscountButton);
 		this->Controls->Add(this->Update);
 		this->Controls->Add(this->SAVE);
@@ -499,7 +485,6 @@ BEBS::AdminMenu::~AdminMenu()
 		this->Name = L"AdminMenu";
 		this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 		this->Text = L"AdminMenu";
-		this->Load += gcnew System::EventHandler(this, &AdminMenu::AdminMenu_Load);
 		(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->img))->EndInit();
 		(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->HomePage))->EndInit();
 		this->ResumeLayout(false);
@@ -542,75 +527,26 @@ System::Void BEBS::AdminMenu::HomePageClick(System::Object^ sender, System::Even
 
 
 
-
-
-
-
-
 System::Void BEBS::AdminMenu::listBox_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
-	String^ listVal = listBox->Text;
-	MySqlConnection^ conData = gcnew MySqlConnection(con);
-	MySqlCommand^ cmdDB = gcnew MySqlCommand("select * from book_store.books where title='" + listVal + "';", conData);
-	MySqlDataReader^ myRender;
-
-	try {
-		conData->Open();
-		myRender = cmdDB->ExecuteReader();
-
-		if (myRender->Read()) {
-			String^ vId = myRender->GetInt32("book_id").ToString();
-			String^ vtitle = myRender->GetString("title");
-			String^ vpages = myRender->GetInt32("pages").ToString();
-			String^ vsection = myRender->GetString("section");
-			String^ vprice = myRender->GetInt32("price").ToString();
-			String^ vamount = myRender->GetInt32("amount").ToString();
-			String^ vpublish_date = myRender->GetDateTime("publish_date").ToString();
-			String^ vinfo = myRender->GetString("info");
-			String^ vimg = "Image\\books\\" + myRender->GetString("img");
-			String^ vauthor = myRender->GetString("author");
-			//this->img->BackgroundImage = Image::FromFile("Image\\cpp1.jpg");
-			//String^ vimg = myRender->GetString("img");
-			this->img->ImageLocation = vimg;
-
-
-
-			//set vals to text box
-			id_txt->Text = vId;
-			title_txt->Text = vtitle;
-			sec_txt->Text = vsection;
-			price_txt->Text = vprice;
-			info_txt->Text = vinfo;
-	
-			amount_txt->Text = vamount;
-			author_txt->Text = vauthor;
-			date_txt->Text = vpublish_date;
-			pag_txt->Text = vpages;
-
-		}
-	}
-	catch (Exception^ ex) {
-		MessageBox::Show(ex->Message);
+	Book^ b = store.getBookByIndex(listBox->SelectedIndex);
+	if (b != nullptr)
+		//set vals to text box
+	{
+		img->ImageLocation = b->getImg();
+		id_txt->Text = b->getBookId();
+		title_txt->Text = b->getTitle();
+		sec_txt->Text = b->getSection();
+		price_txt->Text = b->getPrice();
+		info_txt->Text = b->getInfo();
+		amount_txt->Text = b->getAmount();
+		author_txt->Text = b->getAuthor();
+		date_txt->Text = b->getPublishDate();
+		pag_txt->Text = b->getPages();
 	}
 }
 
 Void BEBS::AdminMenu::fillListBox(void) {
-	
-	MySqlConnection^ conData = gcnew MySqlConnection(con);
-	MySqlCommand^ cmdDB = gcnew MySqlCommand("select * from book_store.books;", conData);
-	MySqlDataReader^ myRender;
-
-	try {
-		conData->Open();
-		myRender = cmdDB->ExecuteReader();
-		while (myRender->Read()) {
-			String^ vTitle;
-			vTitle = myRender->GetString("title");
-			listBox->Items->Add(vTitle);
-		}
-	}
-	catch (Exception^ ex) {
-		MessageBox::Show(ex->Message);
-	}
+	store.addListBook(listBox);
 }
 
 System::Void BEBS::AdminMenu::Update_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -662,41 +598,3 @@ System::Void BEBS::AdminMenu::itemImageClick(System::Object^ sender, System::Eve
 
 
 
-System::Void BEBS::AdminMenu::comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
-	String^ comboVal = comboBox1->Text;
-	MySqlConnection^ conData = gcnew MySqlConnection(con);
-	MySqlCommand^ cmdDB = gcnew MySqlCommand("select * from book_store.books where title='" + comboVal + "';", conData);
-	MySqlDataReader^ myRender;
-
-	try {
-		conData->Open();
-		myRender = cmdDB->ExecuteReader();
-
-		if (myRender->Read()) {
-			String^ vId = myRender->GetInt32("book_id").ToString();
-			String^ vtitle = myRender->GetString("title");
-			String^ vpages = myRender->GetInt32("pages").ToString();
-			String^ vsection = myRender->GetString("section");
-			String^ vprice = myRender->GetInt32("price").ToString();
-			String^ vamount = myRender->GetInt32("amount").ToString();
-			String^ vpublish_date = myRender->GetDateTime("publish_date").ToString();
-			String^ vinfo = myRender->GetString("info");
-			String^ vimg = itemPath + myRender->GetString("img");
-			String^ vauthor = myRender->GetString("author");
-
-			//set vals to text box
-			id_txt->Text = vId;
-			title_txt->Text = vtitle;
-			sec_txt->Text = vsection;
-			price_txt->Text = vprice;
-			info_txt->Text = vinfo;
-			amount_txt->Text = vamount;
-			author_txt->Text = vauthor;
-			date_txt->Text = vpublish_date;
-			pag_txt->Text = vpages;
-		}
-	}
-	catch (Exception^ ex) {
-		MessageBox::Show(ex->Message);
-	}
-}

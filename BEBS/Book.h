@@ -15,10 +15,9 @@ public:
     strP getPublishDate();
     strP getInfo();
     strP getImg();
-    strP getAuthorId();
+    strP getAuthor();
 protected:
 	~Book(){}
 private:
-   
     strP pages, section,amount,publishDate,info,authorId;
 };
