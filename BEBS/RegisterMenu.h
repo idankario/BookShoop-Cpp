@@ -40,8 +40,6 @@ namespace BEBS {
 	private: 
 	
 
-
-		bool checkInaput(String^ email, String^ pass, String^ name);
 		System::Void ConditionText_Click(System::Object^ sender, System::EventArgs^ e);
 		System::Void BackLastGui_Click(System::Object^ sender, System::EventArgs^ e);
 		System::Void Next_Click(System::Object^ sender, System::EventArgs^ e);

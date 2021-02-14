@@ -58,11 +58,11 @@ inline  bool isValidEmail(String^ email)
 	Name should start with 3 char 
 	Name could contain _- or digit
 /**/
-inline bool isGoodName(String ^ pass) {
+inline bool isGoodName(String ^ name) {
 	// Regular expression definition 
 
-	Regex^ pattern = gcnew Regex("^[a-zA-Z]{3,}+([_ -]?[a-zA-Z0-9])*");
-	return pattern->IsMatch(pass);
+	Regex^ pattern = gcnew Regex("^[a-zA-Z]{3,}([_ -]?[a-zA-Z0-9])*");
+	return pattern->IsMatch(name);
 }
 inline bool isInteger(String^ number)
 {
@@ -88,5 +88,27 @@ inline bool isGoodPass(String^ pass) {
 	return pattern->IsMatch(pass);
 }
 
+inline bool isValidInfoUser(String^ email, String^ pass, String^ name) {
+	if (!(isValidEmail(email)))
+	{
+		MessageBox::Show("Email :" + email + " is :invalid");
+		return false;
+	}
+	if (!(isGoodPass(pass)))
+	{
+		MessageBox::Show(pass + " is not strong enagth:\n Password should not contain any space.\n" +
+			"Password should contain at least one digit(0 - 9)\n" +
+			"Password length should be between 8 to 15 characters.\n" +
+			"Password should contain at least one lowercase letter(a - z) or one uppercase letter(A - Z).\n" +
+			"white spaces don’t allowed in the entire string.\n");
+		return false;
+	}
+	if (!(isGoodName(name)))
+	{
+		MessageBox::Show("Name :" + name + " is :invalid");
+		return false;
 
+	}
+	return true;
+}
 #endif 

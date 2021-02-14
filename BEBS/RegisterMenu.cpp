@@ -105,6 +105,7 @@ void BEBS::RegisterMenu::InitializeComponent(void)
 	this->textPass->ForeColor = System::Drawing::Color::White;
 	this->textPass->Location = System::Drawing::Point(269, 226);
 	this->textPass->Name = L"textPass";
+	this->textPass->PasswordChar = '*';
 	this->textPass->Size = System::Drawing::Size(280, 30);
 	this->textPass->TabIndex = 3;
 	// 
@@ -307,39 +308,19 @@ System::Void BEBS::RegisterMenu::BackLastGui_Click(System::Object^ sender, Syste
 	lastForm->Show();
 }
 
-bool BEBS::RegisterMenu::checkInaput(String^ email, String^ pass, String^ name) {
-	if (!(isValidEmail(email)))
-	{
-		MessageBox::Show("Email :" + email + " is :invalid");
-		return false;
-	}
-	if (!(isGoodPass(pass)))
-	{
-		MessageBox::Show(this->textPass->Text + " is not strong enagth: Password should not contain any space.\n" +
-			"Password should contain at least one digit(0 - 9)\n" +
-			"Password length should be between 8 to 15 characters.\n" +
-			"Password should contain at least one lowercase letter(a - z) or one uppercase letter(A - Z).\n" +
-			"white spaces don’t allowed in the entire string.\n");
-		return false;
-	}
-	if (!this->checkConditation->Checked)
-	{
-		MessageBox::Show("You need to confirm our terms");
-		return false;
-	}
-	if (!(name == ""))
-		return true;
-	MessageBox::Show("Fill in your name");
-	return false;
 
-}
 
 System::Void BEBS::RegisterMenu::Next_Click(System::Object^ sender, System::EventArgs^ e) {
 	String^ email = this->textUser->Text;
 	String^ pass = this->textPass->Text;
-	String^ name = this->textPass->Text;
-	if (checkInaput(email, pass, name))
+	String^ name = this->textName->Text;
+	if (isValidInfoUser(email, pass, name))
 	{
+		if (!this->checkConditation->Checked)
+		{
+			MessageBox::Show("You need to confirm our terms");
+			return;
+		}
 		MySQL db;
 		if (db.addNewUser(email, pass, name)) {
 			MessageBox::Show("Conrgulition you are amember on our shop");
