@@ -139,6 +139,10 @@ void BEBS::ShoppingMenu::InitializeComponent(void)
 	this->addItem1 = (gcnew System::Windows::Forms::Label());
 	this->addItem3 = (gcnew System::Windows::Forms::Label());
 	this->addItem4 = (gcnew System::Windows::Forms::Label());
+	this->PayBill = (gcnew System::Windows::Forms::Button());
+	this->UserLabel = (gcnew System::Windows::Forms::Label());
+	this->Invoice = (gcnew System::Windows::Forms::ListBox());
+	this->totalPay = (gcnew System::Windows::Forms::TextBox());
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->CartIcon))->BeginInit();
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->SearchIcon))->BeginInit();
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->profile))->BeginInit();
@@ -482,6 +486,63 @@ void BEBS::ShoppingMenu::InitializeComponent(void)
 	this->addItem4->Text = L"ADD+";
 	this->addItem4->Click += gcnew System::EventHandler(this, &ShoppingMenu::addItem_Click4);
 	// 
+	// PayBill
+	// 
+	this->PayBill->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
+		static_cast<System::Int32>(static_cast<System::Byte>(192)));
+	this->PayBill->Cursor = System::Windows::Forms::Cursors::Hand;
+	this->PayBill->FlatAppearance->BorderColor = System::Drawing::Color::White;
+	this->PayBill->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+	this->PayBill->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+		static_cast<System::Byte>(0)));
+	this->PayBill->ForeColor = System::Drawing::Color::White;
+	this->PayBill->Location = System::Drawing::Point(882, 475);
+	this->PayBill->Name = L"PayBill";
+	this->PayBill->Size = System::Drawing::Size(249, 50);
+	this->PayBill->TabIndex = 44;
+	this->PayBill->Text = L"Pay  Bill";
+	this->PayBill->UseVisualStyleBackColor = false;
+	this->PayBill->Click += gcnew System::EventHandler(this, &ShoppingMenu::PayBillClick);
+	// 
+	// UserLabel
+	// 
+	this->UserLabel->AutoSize = true;
+	this->UserLabel->BackColor = System::Drawing::Color::Transparent;
+	this->UserLabel->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+		static_cast<System::Byte>(0)));
+	this->UserLabel->ForeColor = System::Drawing::Color::White;
+	this->UserLabel->Location = System::Drawing::Point(947, 249);
+	this->UserLabel->Name = L"UserLabel";
+	this->UserLabel->Size = System::Drawing::Size(137, 24);
+	this->UserLabel->TabIndex = 45;
+	this->UserLabel->Text = L"Invoice Payment";
+	// 
+	// Invoice
+	// 
+	this->Invoice->BackColor = System::Drawing::Color::White;
+	this->Invoice->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+		static_cast<System::Byte>(0)));
+	this->Invoice->ForeColor = System::Drawing::Color::Black;
+	this->Invoice->FormattingEnabled = true;
+	this->Invoice->ItemHeight = 19;
+	this->Invoice->Location = System::Drawing::Point(882, 276);
+	this->Invoice->Name = L"Invoice";
+	this->Invoice->Size = System::Drawing::Size(249, 156);
+	this->Invoice->TabIndex = 43;
+	this->Invoice->SelectedIndexChanged += gcnew System::EventHandler(this, &ShoppingMenu::listBox1_SelectedIndexChanged);
+	// 
+	// totalPay
+	// 
+	this->totalPay->BackColor = System::Drawing::Color::White;
+	this->totalPay->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+		static_cast<System::Byte>(0)));
+	this->totalPay->ForeColor = System::Drawing::Color::Black;
+	this->totalPay->Location = System::Drawing::Point(882, 424);
+	this->totalPay->Multiline = true;
+	this->totalPay->Name = L"totalPay";
+	this->totalPay->Size = System::Drawing::Size(249, 39);
+	this->totalPay->TabIndex = 46;
+	// 
 	// ShoppingMenu
 	// 
 	this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::None;
@@ -489,6 +550,10 @@ void BEBS::ShoppingMenu::InitializeComponent(void)
 	this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 	this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 	this->ClientSize = System::Drawing::Size(1133, 629);
+	this->Controls->Add(this->totalPay);
+	this->Controls->Add(this->UserLabel);
+	this->Controls->Add(this->PayBill);
+	this->Controls->Add(this->Invoice);
 	this->Controls->Add(this->addItem4);
 	this->Controls->Add(this->addItem3);
 	this->Controls->Add(this->addItem1);
@@ -555,7 +620,6 @@ System::Void BEBS::ShoppingMenu::profile_Click(System::Object^ sender, System::E
 }
 System::Void BEBS::ShoppingMenu::SearchIcon_Click(System::Object^ sender, System::EventArgs^ e) {
 	MySQL db;
-	
 	if (!(this->TextSearch->Text == ""))
 	{
 		Book^ b = db.searchBooks(this->TextSearch->Text);
@@ -567,3 +631,28 @@ System::Void BEBS::ShoppingMenu::SearchIcon_Click(System::Object^ sender, System
 System::Void BEBS::ShoppingMenu::pictureBox1_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 
+System::Void BEBS::ShoppingMenu::PayBillClick(System::Object^ sender, System::EventArgs^ e)
+{
+	this->~ShoppingMenu();
+	BEBS::HomePage HomePage;
+	HomePage.ShowDialog();
+
+}
+
+System::Void BEBS::ShoppingMenu::addItem_Click1(System::Object^ sender, System::EventArgs^ e) {
+	user->addItemToCart(item1->Name, titleItem1->Text, PriceItem1->Text, Invoice, totalPay);
+	
+}
+System::Void BEBS::ShoppingMenu::addItem_Click2(System::Object^ sender, System::EventArgs^ e) {
+	user->addItemToCart(item2->Name, titleItem2->Text, PriceItem2->Text, Invoice, totalPay);
+
+}
+
+System::Void BEBS::ShoppingMenu::addItem_Click3(System::Object^ sender, System::EventArgs^ e) {
+	user->addItemToCart(item3->Name, titleItem3->Text,PriceItem3->Text, Invoice, totalPay);
+
+}
+System::Void BEBS::ShoppingMenu::addItem_Click4(System::Object^ sender, System::EventArgs^ e) {
+
+	user->addItemToCart(item4->Name, titleItem4->Text,PriceItem4->Text, Invoice, totalPay);
+}

@@ -29,7 +29,7 @@ BEBS::ProfitControl::~ProfitControl()
 			System::Windows::Forms::DataVisualization::Charting::Series^ series1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(ProfitControl::typeid));
 			this->weekly = (gcnew System::Windows::Forms::Button());
-			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->Monthly = (gcnew System::Windows::Forms::Button());
 			this->Quarterly = (gcnew System::Windows::Forms::Button());
 			this->chart1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
 			this->HomePage = (gcnew System::Windows::Forms::PictureBox());
@@ -61,25 +61,25 @@ BEBS::ProfitControl::~ProfitControl()
 			this->weekly->TabIndex = 33;
 			this->weekly->Text = L"Weekly";
 			this->weekly->UseVisualStyleBackColor = false;
-			this->weekly->Click += gcnew System::EventHandler(this, &ProfitControl::weekly_Click);
+			this->weekly->Click += gcnew System::EventHandler(this, &ProfitControl::weeklyClick);
 			// 
-			// button2
+			// Monthly
 			// 
-			this->button2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
+			this->Monthly->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
 				static_cast<System::Int32>(static_cast<System::Byte>(192)));
-			this->button2->Cursor = System::Windows::Forms::Cursors::Hand;
-			this->button2->FlatAppearance->BorderColor = System::Drawing::Color::White;
-			this->button2->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->button2->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->Monthly->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->Monthly->FlatAppearance->BorderColor = System::Drawing::Color::White;
+			this->Monthly->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->Monthly->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button2->ForeColor = System::Drawing::Color::White;
-			this->button2->Location = System::Drawing::Point(234, 135);
-			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(141, 50);
-			this->button2->TabIndex = 34;
-			this->button2->Text = L"Monthly";
-			this->button2->UseVisualStyleBackColor = false;
-			this->button2->Click += gcnew System::EventHandler(this, &ProfitControl::button2_Click);
+			this->Monthly->ForeColor = System::Drawing::Color::White;
+			this->Monthly->Location = System::Drawing::Point(234, 135);
+			this->Monthly->Name = L"Monthly";
+			this->Monthly->Size = System::Drawing::Size(141, 50);
+			this->Monthly->TabIndex = 34;
+			this->Monthly->Text = L"Monthly";
+			this->Monthly->UseVisualStyleBackColor = false;
+			this->Monthly->Click += gcnew System::EventHandler(this, &ProfitControl::monthlyClick);
 			// 
 			// Quarterly
 			// 
@@ -97,7 +97,7 @@ BEBS::ProfitControl::~ProfitControl()
 			this->Quarterly->TabIndex = 35;
 			this->Quarterly->Text = L"Quarterly";
 			this->Quarterly->UseVisualStyleBackColor = false;
-			this->Quarterly->Click += gcnew System::EventHandler(this, &ProfitControl::Quarterly_Click);
+			this->Quarterly->Click += gcnew System::EventHandler(this, &ProfitControl::quarterlyClick);
 			// 
 			// chart1
 			// 
@@ -244,7 +244,7 @@ BEBS::ProfitControl::~ProfitControl()
 			this->Controls->Add(this->HomePage);
 			this->Controls->Add(this->chart1);
 			this->Controls->Add(this->Quarterly);
-			this->Controls->Add(this->button2);
+			this->Controls->Add(this->Monthly);
 			this->Controls->Add(this->weekly);
 			this->Font = (gcnew System::Drawing::Font(L"Arial", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
@@ -259,133 +259,23 @@ BEBS::ProfitControl::~ProfitControl()
 
 		}
 
-	System::Void BEBS::ProfitControl::weekly_Click(System::Object^ sender, System::EventArgs^ e) {
-		
-		MySqlConnection^ conData = gcnew MySqlConnection(con);
-		MySqlCommand^ cmdDB = gcnew MySqlCommand("select sum(b.price), b.title, bl.book_id from book_store.book_list bl inner join book_store.shoping_carts s on bl.shoping_cart_id = s.shoping_cart_id inner join book_store.books b on bl.book_id = b.book_id WHERE  done = 'yes' and (order_date >= '2020-11-01' and order_date <= '2020-11-20') group by b.price;", conData);
-		MySqlDataReader^ myRender;
-
-		this->chart1->Series["Books"]->Points->Clear();
-
-		try {
-			conData->Open();
-			myRender = cmdDB->ExecuteReader();
-			while (myRender->Read()) {
-				String^ vtitle = myRender->GetString("book_id");
-				String^ vprice = myRender->GetInt32("sum(b.price)").ToString();
-				this->chart1->Series["Books"]->Points->AddXY(vtitle, myRender->GetInt32("sum(b.price)"));
-			}
-			conData->Close();
-			conData->Open();
-			MySqlDataAdapter^ sda = gcnew MySqlDataAdapter();
-			sda->SelectCommand = cmdDB;
-			DataTable^ dbdataset = gcnew DataTable();
-			sda->Fill(dbdataset);
-			BindingSource^ bSorce = gcnew BindingSource();
-
-			bSorce->DataSource = dbdataset;
-			dataGridView1->DataSource = bSorce;
-			sda->Update(dbdataset);
-		}
-		catch (Exception^ ex) {
-			MessageBox::Show(ex->Message);
-		}
+	System::Void BEBS::ProfitControl::weeklyClick(System::Object^ sender, System::EventArgs^ e) {
+		MySQL db;
+		db.weeklyProfit(this->chart1, this->dataGridView1);
+	
 	}
 	Void BEBS::ProfitControl::fillAll(void) {
-		
-		MySqlConnection^ conData = gcnew MySqlConnection(con);
-		MySqlCommand^ cmdDB = gcnew MySqlCommand("select sum(b.price), b.title, bl.book_id from book_store.book_list bl inner join book_store.shoping_carts s on bl.shoping_cart_id = s.shoping_cart_id inner join book_store.books b on bl.book_id = b.book_id WHERE  done = 'yes' and (order_date >= '2020-11-01' and order_date <= '2020-11-20') group by b.price;", conData);
-		MySqlDataReader^ myRender;
-
-		this->chart1->Series["Books"]->Points->Clear();
-
-		try {
-			conData->Open();
-			myRender = cmdDB->ExecuteReader();
-			while (myRender->Read()) {
-				String^ vtitle = myRender->GetString("book_id");
-				String^ vprice = myRender->GetInt32("sum(b.price)").ToString();
-				this->chart1->Series["Books"]->Points->AddXY(vtitle, myRender->GetInt32("sum(b.price)"));
-			}
-			conData->Close();
-			conData->Open();
-			MySqlDataAdapter^ sda = gcnew MySqlDataAdapter();
-			sda->SelectCommand = cmdDB;
-			DataTable^ dbdataset = gcnew DataTable();
-			sda->Fill(dbdataset);
-			BindingSource^ bSorce = gcnew BindingSource();
-
-			bSorce->DataSource = dbdataset;
-			dataGridView1->DataSource = bSorce;
-			sda->Update(dbdataset);
-		}
-		catch (Exception^ ex) {
-			MessageBox::Show(ex->Message);
-		}
+		MySQL db;
+		db.weeklyProfit(this->chart1, this->dataGridView1);
 	}
-	System::Void BEBS::ProfitControl::button2_Click(System::Object^ sender, System::EventArgs^ e) {
-		
-		MySqlConnection^ conData = gcnew MySqlConnection(con);
-		MySqlCommand^ cmdDB = gcnew MySqlCommand("select sum(b.price), b.title, bl.book_id from book_store.book_list bl inner join book_store.shoping_carts s on bl.shoping_cart_id = s.shoping_cart_id inner join book_store.books b on bl.book_id = b.book_id WHERE  done = 'yes' and (MONTH(order_date)=11 and Year(order_date)=2020) group by b.price;", conData);
-		MySqlDataReader^ myRender;
 
-		this->chart1->Series["Books"]->Points->Clear();
-
-		try {
-			conData->Open();
-			myRender = cmdDB->ExecuteReader();
-			while (myRender->Read()) {
-				String^ vtitle = myRender->GetString("book_id");
-				String^ vprice = myRender->GetInt32("sum(b.price)").ToString();
-				this->chart1->Series["Books"]->Points->AddXY(vtitle, myRender->GetInt32("sum(b.price)"));
-			}
-			conData->Close();
-			conData->Open();
-			MySqlDataAdapter^ sda = gcnew MySqlDataAdapter();
-			sda->SelectCommand = cmdDB;
-			DataTable^ dbdataset = gcnew DataTable();
-			sda->Fill(dbdataset);
-			BindingSource^ bSorce = gcnew BindingSource();
-
-			bSorce->DataSource = dbdataset;
-			dataGridView1->DataSource = bSorce;
-			sda->Update(dbdataset);
-		}
-		catch (Exception^ ex) {
-			MessageBox::Show(ex->Message);
-		}
+	System::Void BEBS::ProfitControl::monthlyClick(System::Object^ sender, System::EventArgs^ e) {
+		MySQL db;
+		db.monthlyProfit(this->chart1, this->dataGridView1);
 	}
-	System::Void BEBS::ProfitControl::Quarterly_Click(System::Object^ sender, System::EventArgs^ e) {
-		
-		MySqlConnection^ conData = gcnew MySqlConnection(con);
-		MySqlCommand^ cmdDB = gcnew MySqlCommand("select sum(b.price), b.title, bl.book_id from book_store.book_list bl inner join book_store.shoping_carts s on bl.shoping_cart_id = s.shoping_cart_id inner join book_store.books b on bl.book_id = b.book_id WHERE  done = 'yes' and (order_date >= '2020-06-01' and order_date <= '2021-01-01') group by b.price;", conData);
-		MySqlDataReader^ myRender;
-
-		this->chart1->Series["Books"]->Points->Clear();
-
-		try {
-			conData->Open();
-			myRender = cmdDB->ExecuteReader();
-			while (myRender->Read()) {
-				String^ vtitle = myRender->GetString("book_id");
-				String^ vprice = myRender->GetInt32("sum(b.price)").ToString();
-				this->chart1->Series["Books"]->Points->AddXY(vtitle, myRender->GetInt32("sum(b.price)"));
-			}
-			conData->Close();
-			conData->Open();
-			MySqlDataAdapter^ sda = gcnew MySqlDataAdapter();
-			sda->SelectCommand = cmdDB;
-			DataTable^ dbdataset = gcnew DataTable();
-			sda->Fill(dbdataset);
-			BindingSource^ bSorce = gcnew BindingSource();
-
-			bSorce->DataSource = dbdataset;
-			dataGridView1->DataSource = bSorce;
-			sda->Update(dbdataset);
-		}
-		catch (Exception^ ex) {
-			MessageBox::Show(ex->Message);
-		}
+	System::Void BEBS::ProfitControl::quarterlyClick(System::Object^ sender, System::EventArgs^ e) {
+		MySQL db;
+		db.quarterlyProfit(this->chart1, this->dataGridView1);
 	}
 
 

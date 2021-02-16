@@ -21,9 +21,9 @@ namespace BEBS {
 		System::Windows::Forms::Label^ label2;
 		System::Windows::Forms::Label^ label1;
 		System::Windows::Forms::Label^ label3;
-		System::Windows::Forms::Button^ block;
+		System::Windows::Forms::Button^ Delete;
 		System::Windows::Forms::Button^ edit;
-		System::Windows::Forms::Button^ SAVE;
+		System::Windows::Forms::Button^ save;
 		System::Windows::Forms::PictureBox^ HomePage;
 		System::Windows::Forms::TextBox^ id_tet;
 		System::Windows::Forms::Label^ label4;

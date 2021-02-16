@@ -24,6 +24,7 @@ public:
 	Book^ getBook();
 	void  addListBook(System::Windows::Forms::ListBox^ listBox);
 	Book^ getBookByIndex(int index);
+	void addBookToInvoice(System::Windows::Forms::ListBox^ listBox);
 protected:
 	~Inventory();
 private:

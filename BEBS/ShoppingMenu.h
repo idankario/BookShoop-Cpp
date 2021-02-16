@@ -43,6 +43,10 @@ namespace BEBS {
 		System::Windows::Forms::Label^ addItem1;
 		System::Windows::Forms::Label^ addItem3;
 		System::Windows::Forms::Label^ addItem4;
+		System::Windows::Forms::Button^ PayBill;
+		System::Windows::Forms::Label^ UserLabel;
+		System::Windows::Forms::ListBox^ Invoice;
+		System::Windows::Forms::TextBox^ totalPay;
 		Coustomer^ user;
 #pragma region Windows Form Designer generated code
 
@@ -61,25 +65,18 @@ namespace BEBS {
 		
 		System::Void ArrowL_Click(System::Object^ sender, System::EventArgs^ e);
 		System::Void ArrowR_Click(System::Object^ sender, System::EventArgs^ e);
-		System::Void addItem_Click1(System::Object^ sender, System::EventArgs^ e) {
-			user->addItemToCart(this->item1->Name);
+		System::Void addItem_Click1(System::Object^ sender, System::EventArgs^ e);
+		System::Void addItem_Click2(System::Object^ sender, System::EventArgs^ e);
 
-		}
-		System::Void addItem_Click2(System::Object^ sender, System::EventArgs^ e) {
-			user->addItemToCart(this->item2->Name);
-
-		}
-
-		System::Void addItem_Click3(System::Object^ sender, System::EventArgs^ e) {
-			user->addItemToCart(this->item3->Name);
-		}
-		System::Void addItem_Click4(System::Object^ sender, System::EventArgs^ e) {
-			user->addItemToCart(this->item4->Name);
-		}
+		System::Void addItem_Click3(System::Object^ sender, System::EventArgs^ e);
+		System::Void addItem_Click4(System::Object^ sender, System::EventArgs^ e);
 
 		System::Void SearchIcon_Click(System::Object^ sender, System::EventArgs^ e);
 
 	private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
 	}
+	private: System::Void PayBillClick(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void listBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e)
+	{}
 	};
 }

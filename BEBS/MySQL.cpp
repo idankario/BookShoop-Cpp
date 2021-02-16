@@ -8,10 +8,9 @@ MySQL::MySQL()
 
 User^ MySQL::getInstaseUser(strP user, strP password)
 {
-	MySqlCommand^ cmdDB;
 	User^ t = nullptr;
 	//select * from book_store.users password and user
-	cmdDB = gcnew MySqlCommand("select  * from book_store.users where email = '" + user + "' and pass='" + password + "';", conData);
+	MySqlCommand^  cmdDB = gcnew MySqlCommand("select  * from book_store.users where email = '" + user + "' and pass='" + password + "';", conData);
 	try {
 		conData->Open();
 		MySqlDataReader^ myRender = cmdDB->ExecuteReader();
@@ -94,29 +93,22 @@ MySQL::~MySQL()
 }
 Book^ getBookMyRender(MySqlDataReader^ myRender)
 {
-	strP bookId, title, pages, section,
-		price, amount, publishDate, info,
-		img, authorName;
-
-	bookId = myRender->GetString("book_id");
-	title = myRender->GetString("title");
-	pages = myRender->GetString("pages");
-	section = myRender->GetString("section");
-
-	price = myRender->GetString("price");
-	amount = myRender->GetString("amount");
-	publishDate = myRender->GetString("publish_date");
-	info = myRender->GetString("info");
-	img = "Image\\books\\"+ myRender->GetString("img");
-	authorName = myRender->GetString("author");
+	strP bookId = myRender->GetString("book_id"),
+		title = myRender->GetString("title"),
+		pages = myRender->GetString("pages"),
+		section = myRender->GetString("section"),
+		price = myRender->GetString("price"),
+		amount = myRender->GetString("amount"),
+		publishDate = myRender->GetString("publish_date"),
+		info = myRender->GetString("info"),
+		img = "Image\\books\\" + myRender->GetString("img"),
+		authorName = myRender->GetString("author");
 	return gcnew Book(bookId, title, pages, section, price, amount, publishDate, info,img, authorName,nullptr);
 }
 Book^ MySQL::getListOfBook()
 {
 	MySqlCommand^ cmdDB = gcnew MySqlCommand("select * from book_store.books where amount>1;", conData);
-	Book^ head = nullptr;
-	Book^ next = nullptr;
-	
+	Book^ head = nullptr,^next = nullptr;
 	try {
 		conData->Open();
 		MySqlDataReader^ myRender = cmdDB->ExecuteReader();
@@ -142,11 +134,7 @@ Book^ MySQL::getListOfBook()
 Book^ MySQL::searchBooks(strP s)
 {
 	MySqlCommand^ cmdDB = gcnew MySqlCommand("select * from book_store.books where amount>1 and CONCAT(`book_id`,`title`,`pages`, `section`,`price`,`amount`,`publish_date`,`info`,`img`,`author`) LIKE '%"+s+"%';", conData);
-/*	("SELECT * FROM book_store.books WHERE amount > 1 and CONCAT(`book_id`,`title`,`pages`, `section`,"+
-											"`price`,`amount`,`publish_date`+,`info`,`img`,`author`) LIKE '%'"+s+"'%';", conData);
-	*/
-	Book^ head = nullptr;
-	Book^ next = nullptr;
+	Book^ head = nullptr, ^next = nullptr;
 	try {
 		conData->Open();
 		MySqlDataReader^ myRender = cmdDB->ExecuteReader();
@@ -174,11 +162,7 @@ void MySQL::deleteBook(strP id)
 {
 	MySqlCommand^ cmdDB = gcnew MySqlCommand("delete from book_store.books where book_id='" + id + "' ;", conData);
 	MySqlDataReader^ myRender;
-	Book^ head = nullptr;
-	Book^ next = nullptr;
-
-
-
+	Book^ head = nullptr, ^next = nullptr;
 	try {
 		conData->Open();
 		myRender = cmdDB->ExecuteReader();
@@ -192,8 +176,7 @@ void MySQL::deleteBook(strP id)
 		MessageBox::Show(ex->Message);
 	}
 }
-void MySQL::updateBook(strP title, strP page, strP section, strP price, strP amount,strP info, 
-						strP img, strP author, strP id)
+void MySQL::updateBook(strP title, strP page, strP section, strP price, strP amount,strP info, strP img, strP author, strP id)
 {
 	MySqlCommand^ cmdDB = gcnew MySqlCommand("update book_store.books set title='" + title + "',pages='" + page + "',section='" + section + "',price= '" + 
 											price + "' ,amount='" + amount + "',info='" + info + "',author='" + author +
@@ -230,4 +213,51 @@ void  MySQL::createNewBook(strP title, strP page, strP section, strP price, strP
 	catch (Exception^ ex) {
 		MessageBox::Show(ex->Message);
 	}
+}
+
+void MySQL::setValueChart(System::Windows::Forms::DataVisualization::Charting::Chart^ chart1, System::Windows::Forms::DataGridView^ dataGridView1, MySqlCommand^ cmdDB)
+{
+	MySqlDataReader^ myRender;
+	chart1->Series["Books"]->Points->Clear();
+	try {
+		conData->Open();
+		myRender = cmdDB->ExecuteReader();
+		while (myRender->Read()) {
+			String^ vtitle = myRender->GetString("book_id");
+			String^ vprice = myRender->GetInt32("sum(b.price)").ToString();
+			chart1->Series["Books"]->Points->AddXY(vtitle, myRender->GetInt32("sum(b.price)"));
+		}
+		conData->Close();
+		conData->Open();
+		MySqlDataAdapter^ sda = gcnew MySqlDataAdapter();
+		sda->SelectCommand = cmdDB;
+		DataTable^ dbdataset = gcnew DataTable();
+		sda->Fill(dbdataset);
+		BindingSource^ bSorce = gcnew BindingSource();
+		bSorce->DataSource = dbdataset;
+		dataGridView1->DataSource = bSorce;
+		sda->Update(dbdataset);
+	}
+	catch (Exception^ ex) {
+		MessageBox::Show(ex->Message);
+	}
+}
+
+void  MySQL::quarterlyProfit(System::Windows::Forms::DataVisualization::Charting::Chart^ chart1, System::Windows::Forms::DataGridView^ dataGridView1)
+{
+	MySqlCommand^ cmdDB = gcnew MySqlCommand("select sum(b.price), b.title, bl.book_id from book_store.book_list bl inner join book_store.shoping_carts s on bl.shoping_cart_id = s.shoping_cart_id inner join book_store.books b on bl.book_id = b.book_id WHERE  done = 'yes' and (order_date >= '2020-06-01' and order_date <= '2021-01-01') group by b.price;", conData);
+	setValueChart(chart1, dataGridView1, cmdDB);
+	
+}
+void  MySQL::monthlyProfit(System::Windows::Forms::DataVisualization::Charting::Chart^ chart1, System::Windows::Forms::DataGridView^ dataGridView1)
+{
+	MySqlCommand^ cmdDB = gcnew MySqlCommand("select sum(b.price), b.title, bl.book_id from book_store.book_list bl inner join book_store.shoping_carts s on bl.shoping_cart_id = s.shoping_cart_id inner join book_store.books b on bl.book_id = b.book_id WHERE  done = 'yes' and (MONTH(order_date)=11 and Year(order_date)=2020) group by b.price;", conData);
+	setValueChart(chart1, dataGridView1, cmdDB);
+
+}
+void  MySQL::weeklyProfit(System::Windows::Forms::DataVisualization::Charting::Chart^ chart1, System::Windows::Forms::DataGridView^ dataGridView1)
+{
+	MySqlCommand^ cmdDB = gcnew MySqlCommand("select sum(b.price), b.title, bl.book_id from book_store.book_list bl inner join book_store.shoping_carts s on bl.shoping_cart_id = s.shoping_cart_id inner join book_store.books b on bl.book_id = b.book_id WHERE  done = 'yes' and (order_date >= '2020-11-01' and order_date <= '2020-11-20') group by b.price;", conData);
+	setValueChart(chart1, dataGridView1, cmdDB);
+
 }

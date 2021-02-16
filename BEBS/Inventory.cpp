@@ -67,3 +67,10 @@ Book^ Inventory::getBookByIndex(int index)
 	}
 	return b;
 }
+void Inventory::addBookToInvoice(System::Windows::Forms::ListBox^ listBox)
+{
+	int size = head->getNumItem();
+	for (Book^ b = head; b != nullptr; b = safe_cast<Book^>(b->next))
+		listBox->Items->Add(b->getTitle());
+
+}

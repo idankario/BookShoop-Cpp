@@ -7,7 +7,7 @@ public:
     
     Coustomer(){}
 
-    void addItemToCart(String^ itemId);
+    void addItemToCart(strP itemId, strP name, strP price, System::Windows::Forms::ListBox^ listBox, System::Windows::Forms::TextBox^ totalPay);
 
     String^ getValue(String^ s)
     {
@@ -19,7 +19,8 @@ protected:
     
     }
 private:
+    int totalCart;
     Mymap cartShoping;
-
+    Mymap lineItems;
 };
 

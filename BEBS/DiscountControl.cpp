@@ -34,9 +34,9 @@ void BEBS::DiscountControl::InitializeComponent(void)
 	this->label2 = (gcnew System::Windows::Forms::Label());
 	this->label1 = (gcnew System::Windows::Forms::Label());
 	this->label3 = (gcnew System::Windows::Forms::Label());
-	this->block = (gcnew System::Windows::Forms::Button());
+	this->Delete = (gcnew System::Windows::Forms::Button());
 	this->edit = (gcnew System::Windows::Forms::Button());
-	this->SAVE = (gcnew System::Windows::Forms::Button());
+	this->save = (gcnew System::Windows::Forms::Button());
 	this->HomePage = (gcnew System::Windows::Forms::PictureBox());
 	this->id_tet = (gcnew System::Windows::Forms::TextBox());
 	this->label4 = (gcnew System::Windows::Forms::Label());
@@ -126,21 +126,21 @@ void BEBS::DiscountControl::InitializeComponent(void)
 	this->label3->TabIndex = 34;
 	this->label3->Text = L"Date End ::  YYYY-MM-DD";
 	// 
-	// block
+	// Delete
 	// 
-	this->block->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
+	this->Delete->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
 		static_cast<System::Int32>(static_cast<System::Byte>(0)));
-	this->block->Cursor = System::Windows::Forms::Cursors::Hand;
-	this->block->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+	this->Delete->Cursor = System::Windows::Forms::Cursors::Hand;
+	this->Delete->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
-	this->block->ForeColor = System::Drawing::Color::White;
-	this->block->Location = System::Drawing::Point(411, 497);
-	this->block->Name = L"block";
-	this->block->Size = System::Drawing::Size(127, 50);
-	this->block->TabIndex = 35;
-	this->block->Text = L"Delete";
-	this->block->UseVisualStyleBackColor = false;
-	this->block->Click += gcnew System::EventHandler(this, &DiscountControl::block_Click);
+	this->Delete->ForeColor = System::Drawing::Color::White;
+	this->Delete->Location = System::Drawing::Point(411, 497);
+	this->Delete->Name = L"Delete";
+	this->Delete->Size = System::Drawing::Size(127, 50);
+	this->Delete->TabIndex = 35;
+	this->Delete->Text = L"Delete";
+	this->Delete->UseVisualStyleBackColor = false;
+	this->Delete->Click += gcnew System::EventHandler(this, &DiscountControl::block_Click);
 	// 
 	// edit
 	// 
@@ -158,20 +158,20 @@ void BEBS::DiscountControl::InitializeComponent(void)
 	this->edit->UseVisualStyleBackColor = false;
 	this->edit->Click += gcnew System::EventHandler(this, &DiscountControl::edit_Click);
 	// 
-	// SAVE
+	// save
 	// 
-	this->SAVE->BackColor = System::Drawing::Color::Chartreuse;
-	this->SAVE->Cursor = System::Windows::Forms::Cursors::Hand;
-	this->SAVE->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+	this->save->BackColor = System::Drawing::Color::Chartreuse;
+	this->save->Cursor = System::Windows::Forms::Cursors::Hand;
+	this->save->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
-	this->SAVE->ForeColor = System::Drawing::Color::White;
-	this->SAVE->Location = System::Drawing::Point(53, 500);
-	this->SAVE->Name = L"SAVE";
-	this->SAVE->Size = System::Drawing::Size(144, 50);
-	this->SAVE->TabIndex = 37;
-	this->SAVE->Text = L"Add";
-	this->SAVE->UseVisualStyleBackColor = false;
-	this->SAVE->Click += gcnew System::EventHandler(this, &DiscountControl::SAVE_Click);
+	this->save->ForeColor = System::Drawing::Color::White;
+	this->save->Location = System::Drawing::Point(53, 500);
+	this->save->Name = L"save";
+	this->save->Size = System::Drawing::Size(144, 50);
+	this->save->TabIndex = 37;
+	this->save->Text = L"Add";
+	this->save->UseVisualStyleBackColor = false;
+	this->save->Click += gcnew System::EventHandler(this, &DiscountControl::SAVE_Click);
 	// 
 	// HomePage
 	// 
@@ -379,9 +379,9 @@ void BEBS::DiscountControl::InitializeComponent(void)
 	this->Controls->Add(this->label4);
 	this->Controls->Add(this->id_tet);
 	this->Controls->Add(this->HomePage);
-	this->Controls->Add(this->SAVE);
+	this->Controls->Add(this->save);
 	this->Controls->Add(this->edit);
-	this->Controls->Add(this->block);
+	this->Controls->Add(this->Delete);
 	this->Controls->Add(this->label3);
 	this->Controls->Add(this->label1);
 	this->Controls->Add(this->label2);

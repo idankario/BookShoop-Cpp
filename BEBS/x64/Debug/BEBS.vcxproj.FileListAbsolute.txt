@@ -1,3 +1,4 @@
+C:\Users\gal\Desktop\BEBS\BEBS\x64\Debug\BEBS.vcxprojAssemblyReference.cache
 C:\Users\gal\Desktop\BEBS\BEBS\x64\Debug\BEBS.AdminMenu.resources
 C:\Users\gal\Desktop\BEBS\BEBS\x64\Debug\BEBS.DiscountControl.resources
 C:\Users\gal\Desktop\BEBS\BEBS\x64\Debug\BEBS.HomePage.resources

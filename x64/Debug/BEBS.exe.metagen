@@ -84,7 +84,7 @@ Class Coustomer: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
     Void .ctor(System.String, System.String, System.String, System.String, System.String): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Methods:
-    addItemToCart(String): PrivateScope, Public, HideBySig
+    addItemToCart(String, String, String, ListBox, TextBox): PrivateScope, Public, HideBySig
     getValue(String): PrivateScope, Public, HideBySig
 Class Inventory: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     Void .ctor(Book): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
@@ -98,6 +98,7 @@ Class Inventory: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     getBook(): PrivateScope, Public, HideBySig
     addListBook(ListBox): PrivateScope, Public, HideBySig
     getBookByIndex(Int32): PrivateScope, Public, HideBySig
+    addBookToInvoice(ListBox): PrivateScope, Public, HideBySig
     Dispose(): PrivateScope, Public, Final, Virtual, HideBySig
 Class BEBS.DiscountControl: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
@@ -142,4 +143,8 @@ Class MySQL: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     GetUserTable(): PrivateScope, Public, HideBySig
     getListOfBook(): PrivateScope, Public, HideBySig
     searchBooks(String): PrivateScope, Public, HideBySig
+    setValueChart(Chart, DataGridView, MySqlCommand): PrivateScope, Public, HideBySig
+    quarterlyProfit(Chart, DataGridView): PrivateScope, Public, HideBySig
+    monthlyProfit(Chart, DataGridView): PrivateScope, Public, HideBySig
+    weeklyProfit(Chart, DataGridView): PrivateScope, Public, HideBySig
     Dispose(): PrivateScope, Public, Final, Virtual, HideBySig

@@ -28,6 +28,11 @@
 		BindingSource^ GetUserTable();
 		Book^ getListOfBook();
 		Book^ searchBooks(strP s);
+		void setValueChart(System::Windows::Forms::DataVisualization::Charting::Chart^ chart1, System::Windows::Forms::DataGridView^ dataGridView1, MySqlCommand^ cmdDB);
+		void quarterlyProfit(System::Windows::Forms::DataVisualization::Charting::Chart^ chart1, System::Windows::Forms::DataGridView^ dataGridView1);
+		void monthlyProfit(System::Windows::Forms::DataVisualization::Charting::Chart^ chart1, System::Windows::Forms::DataGridView^ dataGridView1);
+		void weeklyProfit(System::Windows::Forms::DataVisualization::Charting::Chart^ chart1, System::Windows::Forms::DataGridView^ dataGridView1);
+
 		//SELECT trackid, name FROM tracks WHERE name LIKE 'Wild%'
 	protected:
 		~MySQL();
