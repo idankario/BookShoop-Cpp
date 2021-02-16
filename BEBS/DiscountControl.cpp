@@ -274,7 +274,7 @@ void BEBS::DiscountControl::InitializeComponent(void)
 	// 
 	this->UpdateInventoryButton->BackColor = System::Drawing::SystemColors::ActiveCaption;
 	this->UpdateInventoryButton->Cursor = System::Windows::Forms::Cursors::Hand;
-	this->UpdateInventoryButton->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+	this->UpdateInventoryButton->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->UpdateInventoryButton->ForeColor = System::Drawing::SystemColors::HighlightText;
 	this->UpdateInventoryButton->Location = System::Drawing::Point(817, 12);
@@ -289,7 +289,7 @@ void BEBS::DiscountControl::InitializeComponent(void)
 	// 
 	this->DiscountButton->BackColor = System::Drawing::Color::Gray;
 	this->DiscountButton->Cursor = System::Windows::Forms::Cursors::Default;
-	this->DiscountButton->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+	this->DiscountButton->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->DiscountButton->ForeColor = System::Drawing::SystemColors::HighlightText;
 	this->DiscountButton->Location = System::Drawing::Point(257, 12);
@@ -303,7 +303,7 @@ void BEBS::DiscountControl::InitializeComponent(void)
 	// 
 	this->OrderButton->BackColor = System::Drawing::SystemColors::ActiveCaption;
 	this->OrderButton->Cursor = System::Windows::Forms::Cursors::Hand;
-	this->OrderButton->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+	this->OrderButton->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->OrderButton->ForeColor = System::Drawing::SystemColors::HighlightText;
 	this->OrderButton->Location = System::Drawing::Point(381, 12);
@@ -318,7 +318,7 @@ void BEBS::DiscountControl::InitializeComponent(void)
 	// 
 	this->UsersButton->BackColor = System::Drawing::SystemColors::ActiveCaption;
 	this->UsersButton->Cursor = System::Windows::Forms::Cursors::Hand;
-	this->UsersButton->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+	this->UsersButton->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->UsersButton->ForeColor = System::Drawing::SystemColors::HighlightText;
 	this->UsersButton->Location = System::Drawing::Point(496, 12);
@@ -333,7 +333,7 @@ void BEBS::DiscountControl::InitializeComponent(void)
 	// 
 	this->SalesButton->BackColor = System::Drawing::SystemColors::ActiveCaption;
 	this->SalesButton->Cursor = System::Windows::Forms::Cursors::Hand;
-	this->SalesButton->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+	this->SalesButton->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->SalesButton->ForeColor = System::Drawing::SystemColors::HighlightText;
 	this->SalesButton->Location = System::Drawing::Point(595, 12);
@@ -348,7 +348,7 @@ void BEBS::DiscountControl::InitializeComponent(void)
 	// 
 	this->ProfitButton->BackColor = System::Drawing::SystemColors::ActiveCaption;
 	this->ProfitButton->Cursor = System::Windows::Forms::Cursors::Hand;
-	this->ProfitButton->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+	this->ProfitButton->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->ProfitButton->ForeColor = System::Drawing::SystemColors::HighlightText;
 	this->ProfitButton->Location = System::Drawing::Point(707, 12);

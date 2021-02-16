@@ -313,9 +313,6 @@ BEBS::SalesControl::~SalesControl()
 		}
 
 	System::Void BEBS::SalesControl::button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		//this->chart1->Series["Books"]->Points->AddXY("max",25);
-		//this->chart1->Series["Books"]->Points->AddXY("max2", 45);
-		//this->chart1->Series["Books"]->Points->AddXY("max3", 15);
 
 		MySqlConnection^ conData = gcnew MySqlConnection(con);
 		MySqlCommand^ cmdDB = gcnew MySqlCommand("select * from book_store.books;", conData);

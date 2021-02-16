@@ -3,9 +3,7 @@
 BEBS::HomePage::HomePage(void)
 {
 	InitializeComponent();
-
 }
-
 BEBS::HomePage::~HomePage()
 {
 	if (components)

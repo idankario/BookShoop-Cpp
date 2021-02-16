@@ -520,21 +520,21 @@ void BEBS::ShoppingMenu::InitializeComponent(void)
 	// Invoice
 	// 
 	this->Invoice->BackColor = System::Drawing::Color::White;
-	this->Invoice->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+	this->Invoice->Font = (gcnew System::Drawing::Font(L"Arial", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->Invoice->ForeColor = System::Drawing::Color::Black;
 	this->Invoice->FormattingEnabled = true;
-	this->Invoice->ItemHeight = 19;
+	this->Invoice->ItemHeight = 16;
 	this->Invoice->Location = System::Drawing::Point(882, 276);
 	this->Invoice->Name = L"Invoice";
-	this->Invoice->Size = System::Drawing::Size(249, 156);
+	this->Invoice->Size = System::Drawing::Size(249, 148);
 	this->Invoice->TabIndex = 43;
 	this->Invoice->SelectedIndexChanged += gcnew System::EventHandler(this, &ShoppingMenu::listBox1_SelectedIndexChanged);
 	// 
 	// totalPay
 	// 
 	this->totalPay->BackColor = System::Drawing::Color::White;
-	this->totalPay->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+	this->totalPay->Font = (gcnew System::Drawing::Font(L"Arial", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->totalPay->ForeColor = System::Drawing::Color::Black;
 	this->totalPay->Location = System::Drawing::Point(882, 424);
