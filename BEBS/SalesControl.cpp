@@ -72,7 +72,7 @@ BEBS::SalesControl::~SalesControl()
 			this->chart1->Size = System::Drawing::Size(458, 342);
 			this->chart1->TabIndex = 0;
 			this->chart1->Text = L"chart1";
-			this->chart1->Click += gcnew System::EventHandler(this, &SalesControl::chart1_Click);
+		
 			// 
 			// HomePage
 			// 
@@ -109,7 +109,7 @@ BEBS::SalesControl::~SalesControl()
 			this->chart2->Name = L"chart2";
 			series2->ChartArea = L"ChartArea1";
 			series2->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
-			series2->Color = System::Drawing::Color::CornflowerBlue;
+			series2->Color = System::Drawing::Color::MidnightBlue;
 			series2->Legend = L"Legend1";
 			series2->Name = L"Books";
 			this->chart2->Series->Add(series2);
@@ -302,7 +302,6 @@ BEBS::SalesControl::~SalesControl()
 			this->Name = L"SalesControl";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"SalesControl";
-			this->Click += gcnew System::EventHandler(this, &SalesControl::UsersClick);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart1))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->HomePage))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart2))->EndInit();
@@ -333,8 +332,7 @@ BEBS::SalesControl::~SalesControl()
 		}
 
 	}
-System::Void BEBS::SalesControl::label5_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
+
 System::Void BEBS::SalesControl::button2_Click(System::Object^ sender, System::EventArgs^ e) {
 		
 		MySqlConnection^ conData = gcnew MySqlConnection(con);
@@ -438,10 +436,6 @@ Void BEBS::SalesControl::fillAll(void) {
 		MySqlCommand^ cmdDB = gcnew MySqlCommand("select count(bl.book_id), bl.book_id, b.title, order_date from book_store.book_list bl inner join book_store.shoping_carts s on bl.shoping_cart_id = s.shoping_cart_id inner join book_store.books b on bl.book_id = b.book_id WHERE  done = 'yes' and (order_date >= '2020-11-01' and order_date <= '2020-11-20') group by b.book_id;", conData);
 		MySqlDataReader^ myRender;
 
-		this->chart1->Series["Books_Amount"]->Points->Clear();
-		this->chart2->Series["Books"]->Points->Clear();
-		this->chart3->Series["Books"]->Points->Clear();
-
 		try {
 			conData->Open();
 			myRender = cmdDB->ExecuteReader();
@@ -459,8 +453,7 @@ Void BEBS::SalesControl::fillAll(void) {
 		}
 
 	}
-System::Void BEBS::SalesControl::chart1_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
+
 System::Void BEBS::SalesControl::Quarterly_Click(System::Object^ sender, System::EventArgs^ e) {
 		MySqlConnection^ conData = gcnew MySqlConnection(con);
 

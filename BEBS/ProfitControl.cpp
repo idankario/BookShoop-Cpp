@@ -251,7 +251,6 @@ BEBS::ProfitControl::~ProfitControl()
 			this->Name = L"ProfitControl";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"ProfitControl";
-			this->Click += gcnew System::EventHandler(this, &ProfitControl::HomePageClick);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart1))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->HomePage))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();

@@ -25,13 +25,13 @@ namespace BEBS {
 		System::Windows::Forms::Button^ Quarterly;
 		System::Windows::Forms::Button^ weekly;
 		System::Windows::Forms::Button^ button2;
-	private: System::Windows::Forms::Button^ UpdateInventoryButton;
-	private: System::Windows::Forms::Button^ DiscountButton;
-	private: System::Windows::Forms::Button^ OrderButton;
-	private: System::Windows::Forms::Button^ UsersButton;
-	private: System::Windows::Forms::Button^ SalesButton;
-	private: System::Windows::Forms::Button^ ProfitButton;
-		   System::ComponentModel::Container^ components;
+		System::Windows::Forms::Button^ UpdateInventoryButton;
+		System::Windows::Forms::Button^ DiscountButton;
+		System::Windows::Forms::Button^ OrderButton;
+		System::Windows::Forms::Button^ UsersButton;
+		System::Windows::Forms::Button^ SalesButton;
+		System::Windows::Forms::Button^ ProfitButton;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 	
@@ -39,11 +39,9 @@ namespace BEBS {
 #pragma endregion
 	private: 
 		System::Void button1_Click(System::Object^ sender, System::EventArgs^ e);
-		System::Void label5_Click(System::Object^ sender, System::EventArgs^ e);
 		System::Void button2_Click(System::Object^ sender, System::EventArgs^ e);
 		System::Void weekly_Click(System::Object^ sender, System::EventArgs^ e);
 		Void fillAll(void);	
-		System::Void chart1_Click(System::Object^ sender, System::EventArgs^ e);
 		System::Void Quarterly_Click(System::Object^ sender, System::EventArgs^ e);
 
 		System::Void InventoryClick(System::Object^ sender, System::EventArgs^ e);

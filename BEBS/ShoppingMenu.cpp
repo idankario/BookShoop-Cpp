@@ -580,7 +580,7 @@ void BEBS::ShoppingMenu::InitializeComponent(void)
 	this->Controls->Add(this->SearchIcon);
 	this->Controls->Add(this->CartIcon);
 	this->Controls->Add(this->TextSearch);
-	this->Cursor = System::Windows::Forms::Cursors::Hand;
+	this->Cursor = System::Windows::Forms::Cursors::Default;
 	this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 	this->Name = L"ShoppingMenu";
 	this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
