@@ -24,9 +24,9 @@ BEBS::ProfitControl::~ProfitControl()
 
 		void BEBS::ProfitControl::InitializeComponent(void)
 		{
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea1 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Legend^ legend1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea3 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^ legend3 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series3 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(ProfitControl::typeid));
 			this->weekly = (gcnew System::Windows::Forms::Button());
 			this->Monthly = (gcnew System::Windows::Forms::Button());
@@ -101,18 +101,18 @@ BEBS::ProfitControl::~ProfitControl()
 			// 
 			// chart1
 			// 
-			chartArea1->Name = L"ChartArea1";
-			this->chart1->ChartAreas->Add(chartArea1);
-			legend1->Name = L"Legend1";
-			this->chart1->Legends->Add(legend1);
+			chartArea3->Name = L"ChartArea1";
+			this->chart1->ChartAreas->Add(chartArea3);
+			legend3->Name = L"Legend1";
+			this->chart1->Legends->Add(legend3);
 			this->chart1->Location = System::Drawing::Point(557, 135);
 			this->chart1->Name = L"chart1";
-			series1->ChartArea = L"ChartArea1";
-			series1->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Pie;
-			series1->Color = System::Drawing::Color::Blue;
-			series1->Legend = L"Legend1";
-			series1->Name = L"Books";
-			this->chart1->Series->Add(series1);
+			series3->ChartArea = L"ChartArea1";
+			series3->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Pie;
+			series3->Color = System::Drawing::Color::Blue;
+			series3->Legend = L"Legend1";
+			series3->Name = L"Books";
+			this->chart1->Series->Add(series3);
 			this->chart1->Size = System::Drawing::Size(435, 400);
 			this->chart1->TabIndex = 36;
 			this->chart1->Text = L"chart1";
@@ -130,12 +130,23 @@ BEBS::ProfitControl::~ProfitControl()
 			// 
 			// dataGridView1
 			// 
+			this->dataGridView1->AllowUserToAddRows = false;
+			this->dataGridView1->AllowUserToDeleteRows = false;
+			this->dataGridView1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+				| System::Windows::Forms::AnchorStyles::Left)
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->dataGridView1->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
 			this->dataGridView1->BackgroundColor = System::Drawing::Color::White;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dataGridView1->Location = System::Drawing::Point(67, 222);
 			this->dataGridView1->Name = L"dataGridView1";
+			this->dataGridView1->ReadOnly = true;
 			this->dataGridView1->RowHeadersWidth = 72;
 			this->dataGridView1->RowTemplate->Height = 31;
+			this->dataGridView1->ShowCellErrors = false;
+			this->dataGridView1->ShowCellToolTips = false;
+			this->dataGridView1->ShowEditingIcon = false;
+			this->dataGridView1->ShowRowErrors = false;
 			this->dataGridView1->Size = System::Drawing::Size(465, 313);
 			this->dataGridView1->TabIndex = 38;
 			// 

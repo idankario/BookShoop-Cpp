@@ -16,13 +16,13 @@ namespace BEBS {
 		String^ itemPath = ("Image\\books\\");
 		System::Windows::Forms::ListBox^ listBox;
 		System::Windows::Forms::PictureBox^ img;
-		System::Windows::Forms::Label^ book_id;
+
 		System::Windows::Forms::Label^ title;
 		System::Windows::Forms::Label^ Price;
 		System::Windows::Forms::Label^ Section;
 		System::Windows::Forms::Label^ Amount;
 		System::Windows::Forms::Label^ Info;
-		System::Windows::Forms::TextBox^ id_txt;
+
 		System::Windows::Forms::TextBox^ price_txt;
 		System::Windows::Forms::TextBox^ sec_txt;
 		System::Windows::Forms::TextBox^ amount_txt;

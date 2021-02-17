@@ -17,14 +17,12 @@ namespace BEBS {
 		System::Windows::Forms::DataVisualization::Charting::Chart^ chart1;
 		Form^ lastForm;
 		System::Windows::Forms::PictureBox^ HomePage;
-
 		System::Windows::Forms::Label^ label1;
 		System::Windows::Forms::DataVisualization::Charting::Chart^ chart2;
 		System::Windows::Forms::DataVisualization::Charting::Chart^ chart3;
-
 		System::Windows::Forms::Button^ Quarterly;
 		System::Windows::Forms::Button^ weekly;
-		System::Windows::Forms::Button^ button2;
+		System::Windows::Forms::Button^ Monthly;
 		System::Windows::Forms::Button^ UpdateInventoryButton;
 		System::Windows::Forms::Button^ DiscountButton;
 		System::Windows::Forms::Button^ OrderButton;
@@ -38,18 +36,17 @@ namespace BEBS {
 		void InitializeComponent(void);
 #pragma endregion
 	private: 
-		System::Void button1_Click(System::Object^ sender, System::EventArgs^ e);
-		System::Void button2_Click(System::Object^ sender, System::EventArgs^ e);
-		System::Void weekly_Click(System::Object^ sender, System::EventArgs^ e);
-		Void fillAll(void);	
-		System::Void Quarterly_Click(System::Object^ sender, System::EventArgs^ e);
 
-		System::Void InventoryClick(System::Object^ sender, System::EventArgs^ e);
-		System::Void DiscountClick(System::Object^ sender, System::EventArgs^ e);
-		System::Void ProfitClick(System::Object^ sender, System::EventArgs^ e);
-		System::Void OrdersClick(System::Object^ sender, System::EventArgs^ e);
-		System::Void HomePageClick(System::Object^ sender, System::EventArgs^ e);
-		System::Void UsersClick(System::Object^ sender, System::EventArgs^ e);
+		System::Void monthlyClick(System::Object^ sender, System::EventArgs^ e);
+		System::Void weeklyClick(System::Object^ sender, System::EventArgs^ e);
+		Void fillAll(void);	
+		System::Void quarterlyClick(System::Object^ sender, System::EventArgs^ e);
+		System::Void inventoryClick(System::Object^ sender, System::EventArgs^ e);
+		System::Void discountClick(System::Object^ sender, System::EventArgs^ e);
+		System::Void profitClick(System::Object^ sender, System::EventArgs^ e);
+		System::Void ordersClick(System::Object^ sender, System::EventArgs^ e);
+		System::Void homePageClick(System::Object^ sender, System::EventArgs^ e);
+		System::Void usersClick(System::Object^ sender, System::EventArgs^ e);
 
 
 	};

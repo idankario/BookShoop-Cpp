@@ -24,13 +24,11 @@ BEBS::AdminMenu::~AdminMenu()
 		System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(AdminMenu::typeid));
 		this->listBox = (gcnew System::Windows::Forms::ListBox());
 		this->img = (gcnew System::Windows::Forms::PictureBox());
-		this->book_id = (gcnew System::Windows::Forms::Label());
 		this->title = (gcnew System::Windows::Forms::Label());
 		this->Price = (gcnew System::Windows::Forms::Label());
 		this->Section = (gcnew System::Windows::Forms::Label());
 		this->Amount = (gcnew System::Windows::Forms::Label());
 		this->Info = (gcnew System::Windows::Forms::Label());
-		this->id_txt = (gcnew System::Windows::Forms::TextBox());
 		this->price_txt = (gcnew System::Windows::Forms::TextBox());
 		this->sec_txt = (gcnew System::Windows::Forms::TextBox());
 		this->amount_txt = (gcnew System::Windows::Forms::TextBox());
@@ -81,18 +79,6 @@ BEBS::AdminMenu::~AdminMenu()
 		this->img->TabIndex = 1;
 		this->img->TabStop = false;
 		this->img->Click += gcnew System::EventHandler(this, &AdminMenu::itemImageClick);
-		// 
-		// book_id
-		// 
-		this->book_id->AutoSize = true;
-		this->book_id->BackColor = System::Drawing::Color::Transparent;
-		this->book_id->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-			static_cast<System::Byte>(0)));
-		this->book_id->Location = System::Drawing::Point(257, 387);
-		this->book_id->Name = L"book_id";
-		this->book_id->Size = System::Drawing::Size(72, 20);
-		this->book_id->TabIndex = 2;
-		this->book_id->Text = L"Book id";
 		// 
 		// title
 		// 
@@ -153,18 +139,6 @@ BEBS::AdminMenu::~AdminMenu()
 		this->Info->Size = System::Drawing::Size(40, 20);
 		this->Info->TabIndex = 7;
 		this->Info->Text = L"Info";
-		// 
-		// id_txt
-		// 
-		this->id_txt->BackColor = System::Drawing::Color::Black;
-		this->id_txt->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-			static_cast<System::Byte>(0)));
-		this->id_txt->ForeColor = System::Drawing::Color::White;
-		this->id_txt->Location = System::Drawing::Point(257, 417);
-		this->id_txt->Multiline = true;
-		this->id_txt->Name = L"id_txt";
-		this->id_txt->Size = System::Drawing::Size(162, 34);
-		this->id_txt->TabIndex = 8;
 		// 
 		// price_txt
 		// 
@@ -470,13 +444,11 @@ BEBS::AdminMenu::~AdminMenu()
 		this->Controls->Add(this->amount_txt);
 		this->Controls->Add(this->sec_txt);
 		this->Controls->Add(this->price_txt);
-		this->Controls->Add(this->id_txt);
 		this->Controls->Add(this->Info);
 		this->Controls->Add(this->Amount);
 		this->Controls->Add(this->Section);
 		this->Controls->Add(this->Price);
 		this->Controls->Add(this->title);
-		this->Controls->Add(this->book_id);
 		this->Controls->Add(this->img);
 		this->Controls->Add(this->listBox);
 		this->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
@@ -533,7 +505,7 @@ System::Void BEBS::AdminMenu::listBox_SelectedIndexChanged(System::Object^ sende
 		//set vals to text box
 	{
 		img->ImageLocation = b->getImg();
-		id_txt->Text = b->getBookId();
+		title_txt->Name = b->getBookId();
 		title_txt->Text = b->getTitle();
 		sec_txt->Text = b->getSection();
 		price_txt->Text = b->getPrice();
@@ -551,18 +523,18 @@ Void BEBS::AdminMenu::fillListBox(void) {
 
 System::Void BEBS::AdminMenu::Update_Click(System::Object^ sender, System::EventArgs^ e) {
 	MySQL db;
-	strP imgL = sec_txt->Text+ id_txt->Text + System::IO::Path::GetExtension(img->ImageLocation);
+	strP imgL = sec_txt->Text+ title_txt->Name + System::IO::Path::GetExtension(img->ImageLocation);
 	
 	img->Image->Save(itemPath + imgL);
 	db.updateBook(title_txt->Text ,pag_txt->Text ,sec_txt->Text, price_txt->Text  ,
-					amount_txt->Text , info_txt->Text , imgL, author_txt->Text, id_txt->Text );
+					amount_txt->Text , info_txt->Text , imgL, author_txt->Text, title_txt->Name);
 	this->~AdminMenu();
 	BEBS::AdminMenu renderPage;
 	renderPage.ShowDialog();
 }
 System::Void BEBS::AdminMenu::Delete_Click(System::Object^ sender, System::EventArgs^ e) {
 	MySQL db;
-	db.deleteBook(id_txt->Text);
+	db.deleteBook(title_txt->Name);
 	this->~AdminMenu();
 	BEBS::AdminMenu renderPage;
 	renderPage.ShowDialog();
@@ -570,7 +542,7 @@ System::Void BEBS::AdminMenu::Delete_Click(System::Object^ sender, System::Event
 //image text -> add / / image//books//
 System::Void BEBS::AdminMenu::saveClick(System::Object^ sender, System::EventArgs^ e) {
 	MySQL db;
-	strP imgL = sec_txt->Text + id_txt->Text + System::IO::Path::GetExtension(img->ImageLocation);
+	strP imgL = sec_txt->Text + title_txt->Name + System::IO::Path::GetExtension(img->ImageLocation);
 	this->author_txt->Text =  imgL;
 
 	db.createNewBook(title_txt->Text, pag_txt->Text, sec_txt->Text, price_txt->Text,

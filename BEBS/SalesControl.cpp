@@ -42,7 +42,7 @@ BEBS::SalesControl::~SalesControl()
 			this->chart3 = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
 			this->Quarterly = (gcnew System::Windows::Forms::Button());
 			this->weekly = (gcnew System::Windows::Forms::Button());
-			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->Monthly = (gcnew System::Windows::Forms::Button());
 			this->UpdateInventoryButton = (gcnew System::Windows::Forms::Button());
 			this->DiscountButton = (gcnew System::Windows::Forms::Button());
 			this->OrderButton = (gcnew System::Windows::Forms::Button());
@@ -66,13 +66,12 @@ BEBS::SalesControl::~SalesControl()
 			series1->ChartArea = L"ChartArea1";
 			series1->Color = System::Drawing::Color::MidnightBlue;
 			series1->Legend = L"Legend1";
-			series1->Name = L"Books_Amount";
+			series1->Name = L"Books";
 			series1->YValuesPerPoint = 2;
 			this->chart1->Series->Add(series1);
 			this->chart1->Size = System::Drawing::Size(458, 342);
 			this->chart1->TabIndex = 0;
 			this->chart1->Text = L"chart1";
-		
 			// 
 			// HomePage
 			// 
@@ -84,7 +83,7 @@ BEBS::SalesControl::~SalesControl()
 			this->HomePage->Size = System::Drawing::Size(40, 40);
 			this->HomePage->TabIndex = 11;
 			this->HomePage->TabStop = false;
-			this->HomePage->Click += gcnew System::EventHandler(this, &SalesControl::HomePageClick);
+			this->HomePage->Click += gcnew System::EventHandler(this, &SalesControl::homePageClick);
 			// 
 			// label1
 			// 
@@ -107,9 +106,13 @@ BEBS::SalesControl::~SalesControl()
 			this->chart2->Legends->Add(legend2);
 			this->chart2->Location = System::Drawing::Point(531, 137);
 			this->chart2->Name = L"chart2";
+			series2->BorderWidth = 5;
 			series2->ChartArea = L"ChartArea1";
 			series2->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
 			series2->Color = System::Drawing::Color::MidnightBlue;
+			series2->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			series2->LabelForeColor = System::Drawing::Color::MidnightBlue;
 			series2->Legend = L"Legend1";
 			series2->Name = L"Books";
 			this->chart2->Series->Add(series2);
@@ -151,7 +154,7 @@ BEBS::SalesControl::~SalesControl()
 			this->Quarterly->TabIndex = 31;
 			this->Quarterly->Text = L"Quarterly";
 			this->Quarterly->UseVisualStyleBackColor = false;
-			this->Quarterly->Click += gcnew System::EventHandler(this, &SalesControl::Quarterly_Click);
+			this->Quarterly->Click += gcnew System::EventHandler(this, &SalesControl::quarterlyClick);
 			// 
 			// weekly
 			// 
@@ -169,25 +172,25 @@ BEBS::SalesControl::~SalesControl()
 			this->weekly->TabIndex = 32;
 			this->weekly->Text = L"Weekly";
 			this->weekly->UseVisualStyleBackColor = false;
-			this->weekly->Click += gcnew System::EventHandler(this, &SalesControl::weekly_Click);
+			this->weekly->Click += gcnew System::EventHandler(this, &SalesControl::weeklyClick);
 			// 
-			// button2
+			// Monthly
 			// 
-			this->button2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
+			this->Monthly->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
 				static_cast<System::Int32>(static_cast<System::Byte>(192)));
-			this->button2->Cursor = System::Windows::Forms::Cursors::Hand;
-			this->button2->FlatAppearance->BorderColor = System::Drawing::Color::White;
-			this->button2->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->button2->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->Monthly->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->Monthly->FlatAppearance->BorderColor = System::Drawing::Color::White;
+			this->Monthly->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->Monthly->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button2->ForeColor = System::Drawing::Color::White;
-			this->button2->Location = System::Drawing::Point(212, 137);
-			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(141, 50);
-			this->button2->TabIndex = 33;
-			this->button2->Text = L"Monthly";
-			this->button2->UseVisualStyleBackColor = false;
-			this->button2->Click += gcnew System::EventHandler(this, &SalesControl::button2_Click);
+			this->Monthly->ForeColor = System::Drawing::Color::White;
+			this->Monthly->Location = System::Drawing::Point(212, 137);
+			this->Monthly->Name = L"Monthly";
+			this->Monthly->Size = System::Drawing::Size(141, 50);
+			this->Monthly->TabIndex = 33;
+			this->Monthly->Text = L"Monthly";
+			this->Monthly->UseVisualStyleBackColor = false;
+			this->Monthly->Click += gcnew System::EventHandler(this, &SalesControl::monthlyClick);
 			// 
 			// UpdateInventoryButton
 			// 
@@ -202,7 +205,7 @@ BEBS::SalesControl::~SalesControl()
 			this->UpdateInventoryButton->TabIndex = 46;
 			this->UpdateInventoryButton->Text = L"Update Inventory";
 			this->UpdateInventoryButton->UseVisualStyleBackColor = false;
-			this->UpdateInventoryButton->Click += gcnew System::EventHandler(this, &SalesControl::InventoryClick);
+			this->UpdateInventoryButton->Click += gcnew System::EventHandler(this, &SalesControl::inventoryClick);
 			// 
 			// DiscountButton
 			// 
@@ -217,7 +220,7 @@ BEBS::SalesControl::~SalesControl()
 			this->DiscountButton->TabIndex = 45;
 			this->DiscountButton->Text = L"Discount";
 			this->DiscountButton->UseVisualStyleBackColor = false;
-			this->DiscountButton->Click += gcnew System::EventHandler(this, &SalesControl::DiscountClick);
+			this->DiscountButton->Click += gcnew System::EventHandler(this, &SalesControl::discountClick);
 			// 
 			// OrderButton
 			// 
@@ -232,7 +235,7 @@ BEBS::SalesControl::~SalesControl()
 			this->OrderButton->TabIndex = 44;
 			this->OrderButton->Text = L"Orders";
 			this->OrderButton->UseVisualStyleBackColor = false;
-			this->OrderButton->Click += gcnew System::EventHandler(this, &SalesControl::OrdersClick);
+			this->OrderButton->Click += gcnew System::EventHandler(this, &SalesControl::ordersClick);
 			// 
 			// UsersButton
 			// 
@@ -247,7 +250,7 @@ BEBS::SalesControl::~SalesControl()
 			this->UsersButton->TabIndex = 43;
 			this->UsersButton->Text = L"Users";
 			this->UsersButton->UseVisualStyleBackColor = false;
-			this->UsersButton->Click += gcnew System::EventHandler(this, &SalesControl::UsersClick);
+			this->UsersButton->Click += gcnew System::EventHandler(this, &SalesControl::usersClick);
 			// 
 			// SalesButton
 			// 
@@ -276,7 +279,7 @@ BEBS::SalesControl::~SalesControl()
 			this->ProfitButton->TabIndex = 41;
 			this->ProfitButton->Text = L"Profit";
 			this->ProfitButton->UseVisualStyleBackColor = false;
-			this->ProfitButton->Click += gcnew System::EventHandler(this, &SalesControl::ProfitClick);
+			this->ProfitButton->Click += gcnew System::EventHandler(this, &SalesControl::profitClick);
 			// 
 			// SalesControl
 			// 
@@ -290,7 +293,7 @@ BEBS::SalesControl::~SalesControl()
 			this->Controls->Add(this->UsersButton);
 			this->Controls->Add(this->SalesButton);
 			this->Controls->Add(this->ProfitButton);
-			this->Controls->Add(this->button2);
+			this->Controls->Add(this->Monthly);
 			this->Controls->Add(this->weekly);
 			this->Controls->Add(this->Quarterly);
 			this->Controls->Add(this->chart3);
@@ -311,29 +314,9 @@ BEBS::SalesControl::~SalesControl()
 
 		}
 
-	System::Void BEBS::SalesControl::button1_Click(System::Object^ sender, System::EventArgs^ e) {
 
-		MySqlConnection^ conData = gcnew MySqlConnection(con);
-		MySqlCommand^ cmdDB = gcnew MySqlCommand("select * from book_store.books;", conData);
-		MySqlDataReader^ myRender;
 
-		try {
-			conData->Open();
-			myRender = cmdDB->ExecuteReader();
-			while (myRender->Read()) {
-				String^ vtitle = myRender->GetString("title");
-				String^ vprice = myRender->GetInt32("price").ToString();
-
-				this->chart1->Series["Books"]->Points->AddXY(vtitle, myRender->GetInt32("price"));
-			}
-		}
-		catch (Exception^ ex) {
-			MessageBox::Show(ex->Message);
-		}
-
-	}
-
-System::Void BEBS::SalesControl::button2_Click(System::Object^ sender, System::EventArgs^ e) {
+System::Void BEBS::SalesControl::monthlyClick(System::Object^ sender, System::EventArgs^ e) {
 		
 		MySqlConnection^ conData = gcnew MySqlConnection(con);
 
@@ -342,7 +325,7 @@ System::Void BEBS::SalesControl::button2_Click(System::Object^ sender, System::E
 		MySqlCommand^ cmdDB = gcnew MySqlCommand("select count(bl.book_id), bl.book_id, b.title from book_store.book_list bl inner join book_store.shoping_carts s on bl.shoping_cart_id = s.shoping_cart_id inner join book_store.books b on bl.book_id = b.book_id WHERE  done = 'yes' and MONTH(order_date) = 11 and Year(order_date) = 2020 group by b.book_id;", conData);
 		MySqlDataReader^ myRender;
 
-		this->chart1->Series["Books_Amount"]->Points->Clear();
+		this->chart1->Series["Books"]->Points->Clear();
 		this->chart2->Series["Books"]->Points->Clear();
 		this->chart3->Series["Books"]->Points->Clear();
 
@@ -353,7 +336,7 @@ System::Void BEBS::SalesControl::button2_Click(System::Object^ sender, System::E
 				String^ vtitle = myRender->GetString("title");
 				String^ vprice = myRender->GetInt32("count(bl.book_id)").ToString();
 
-				this->chart1->Series["Books_Amount"]->Points->AddXY(vtitle, myRender->GetInt32("count(bl.book_id)"));
+				this->chart1->Series["Books"]->Points->AddXY(vtitle, myRender->GetInt32("count(bl.book_id)"));
 				this->chart2->Series["Books"]->Points->AddXY(vtitle, myRender->GetInt32("count(bl.book_id)"));
 				this->chart3->Series["Books"]->Points->AddXY(vtitle, myRender->GetInt32("count(bl.book_id)"));
 			}
@@ -382,13 +365,13 @@ System::Void BEBS::SalesControl::button2_Click(System::Object^ sender, System::E
 			MessageBox::Show(ex->Message);
 		}
 	}
-System::Void BEBS::SalesControl::weekly_Click(System::Object^ sender, System::EventArgs^ e) {
+System::Void BEBS::SalesControl::weeklyClick(System::Object^ sender, System::EventArgs^ e) {
 		MySqlConnection^ conData = gcnew MySqlConnection(con);
 		//select count(bl.book_id), bl.book_id, b.title, order_date from book_store.book_list bl inner join book_store.shoping_carts s on bl.shoping_cart_id = s.shoping_cart_id inner join book_store.books b on bl.book_id = b.book_id WHERE  done = 'yes' and (order_date >= '2020-11-01' and order_date <= '2020-11-20') group by b.book_id;
 		MySqlCommand^ cmdDB = gcnew MySqlCommand("select count(bl.book_id), bl.book_id, b.title, order_date from book_store.book_list bl inner join book_store.shoping_carts s on bl.shoping_cart_id = s.shoping_cart_id inner join book_store.books b on bl.book_id = b.book_id WHERE  done = 'yes' and (order_date >= '2020-11-01' and order_date <= '2020-11-20') group by b.book_id;", conData);
 		MySqlDataReader^ myRender;
 
-		this->chart1->Series["Books_Amount"]->Points->Clear();
+		this->chart1->Series["Books"]->Points->Clear();
 		this->chart2->Series["Books"]->Points->Clear();
 		this->chart3->Series["Books"]->Points->Clear();
 
@@ -399,7 +382,7 @@ System::Void BEBS::SalesControl::weekly_Click(System::Object^ sender, System::Ev
 				String^ vtitle = myRender->GetString("title");
 				String^ vprice = myRender->GetInt32("count(bl.book_id)").ToString();
 
-				this->chart1->Series["Books_Amount"]->Points->AddXY(vtitle, myRender->GetInt32("count(bl.book_id)"));
+				this->chart1->Series["Books"]->Points->AddXY(vtitle, myRender->GetInt32("count(bl.book_id)"));
 				this->chart2->Series["Books"]->Points->AddXY(vtitle, myRender->GetInt32("count(bl.book_id)"));
 				this->chart3->Series["Books"]->Points->AddXY(vtitle, myRender->GetInt32("count(bl.book_id)"));
 
@@ -443,7 +426,7 @@ Void BEBS::SalesControl::fillAll(void) {
 				String^ vtitle = myRender->GetString("title");
 				String^ vprice = myRender->GetInt32("count(bl.book_id)").ToString();
 
-				this->chart1->Series["Books_Amount"]->Points->AddXY(vtitle, myRender->GetInt32("count(bl.book_id)"));
+				this->chart1->Series["Books"]->Points->AddXY(vtitle, myRender->GetInt32("count(bl.book_id)"));
 				this->chart2->Series["Books"]->Points->AddXY(vtitle, myRender->GetInt32("count(bl.book_id)"));
 				this->chart3->Series["Books"]->Points->AddXY(vtitle, myRender->GetInt32("count(bl.book_id)"));
 			}
@@ -454,13 +437,13 @@ Void BEBS::SalesControl::fillAll(void) {
 
 	}
 
-System::Void BEBS::SalesControl::Quarterly_Click(System::Object^ sender, System::EventArgs^ e) {
+System::Void BEBS::SalesControl::quarterlyClick(System::Object^ sender, System::EventArgs^ e) {
 		MySqlConnection^ conData = gcnew MySqlConnection(con);
 
 		MySqlCommand^ cmdDB = gcnew MySqlCommand("select count(bl.book_id), bl.book_id, b.title from book_store.book_list bl inner join book_store.shoping_carts s on bl.shoping_cart_id = s.shoping_cart_id inner join book_store.books b on bl.book_id = b.book_id WHERE  done = 'yes' and (order_date >= '2020-06-01' and order_date <= '2021-01-01') group by b.book_id;", conData);
 		MySqlDataReader^ myRender;
 
-		this->chart1->Series["Books_Amount"]->Points->Clear();
+		this->chart1->Series["Books"]->Points->Clear();
 		this->chart2->Series["Books"]->Points->Clear();
 		this->chart3->Series["Books"]->Points->Clear();
 
@@ -471,7 +454,7 @@ System::Void BEBS::SalesControl::Quarterly_Click(System::Object^ sender, System:
 				String^ vtitle = myRender->GetString("title");
 				String^ vprice = myRender->GetInt32("count(bl.book_id)").ToString();
 
-				this->chart1->Series["Books_Amount"]->Points->AddXY(vtitle, myRender->GetInt32("count(bl.book_id)"));
+				this->chart1->Series["Books"]->Points->AddXY(vtitle, myRender->GetInt32("count(bl.book_id)"));
 				this->chart2->Series["Books"]->Points->AddXY(vtitle, myRender->GetInt32("count(bl.book_id)"));
 				this->chart3->Series["Books"]->Points->AddXY(vtitle, myRender->GetInt32("count(bl.book_id)"));
 			}
@@ -503,34 +486,34 @@ System::Void BEBS::SalesControl::Quarterly_Click(System::Object^ sender, System:
 
 
 
-System::Void BEBS::SalesControl::InventoryClick(System::Object^ sender, System::EventArgs^ e) {
+System::Void BEBS::SalesControl::inventoryClick(System::Object^ sender, System::EventArgs^ e) {
 	this->~SalesControl();
 	BEBS::AdminMenu admin;
 	admin.ShowDialog();
 }
-System::Void BEBS::SalesControl::DiscountClick(System::Object^ sender, System::EventArgs^ e) {
+System::Void BEBS::SalesControl::discountClick(System::Object^ sender, System::EventArgs^ e) {
 	this->~SalesControl();
 	BEBS::DiscountControl nextPag;
 	nextPag.ShowDialog();
 }
-System::Void BEBS::SalesControl::UsersClick(System::Object^ sender, System::EventArgs^ e) {
+System::Void BEBS::SalesControl::usersClick(System::Object^ sender, System::EventArgs^ e) {
 	this->~SalesControl();
 	BEBS::UsersControl users;
 	users.ShowDialog();
 }
 
-System::Void BEBS::SalesControl::ProfitClick(System::Object^ sender, System::EventArgs^ e) {
+System::Void BEBS::SalesControl::profitClick(System::Object^ sender, System::EventArgs^ e) {
 	this->~SalesControl();
 	BEBS::ProfitControl profit;
 	profit.ShowDialog();
 }
-System::Void BEBS::SalesControl::HomePageClick(System::Object^ sender, System::EventArgs^ e) {
+System::Void BEBS::SalesControl::homePageClick(System::Object^ sender, System::EventArgs^ e) {
 	this->~SalesControl();
 	BEBS::HomePage HomePage;
 	HomePage.ShowDialog();
 }
 
-System::Void BEBS::SalesControl::OrdersClick(System::Object^ sender, System::EventArgs^ e) {
+System::Void BEBS::SalesControl::ordersClick(System::Object^ sender, System::EventArgs^ e) {
 	this->~SalesControl();
 	BEBS::OrdersControl order;
 	order.ShowDialog();
