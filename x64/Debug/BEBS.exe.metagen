@@ -86,6 +86,7 @@ Class Coustomer: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   Methods:
     addItemToCart(String, String, String, ListBox, TextBox): PrivateScope, Public, HideBySig
     getValue(String): PrivateScope, Public, HideBySig
+    getId(): PrivateScope, Public, HideBySig
 Class Inventory: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     Void .ctor(Book): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
@@ -147,4 +148,6 @@ Class MySQL: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     quarterlyProfit(Chart, DataGridView): PrivateScope, Public, HideBySig
     monthlyProfit(Chart, DataGridView): PrivateScope, Public, HideBySig
     weeklyProfit(Chart, DataGridView): PrivateScope, Public, HideBySig
+    getPassqord(String): PrivateScope, Public, HideBySig
+    insertPurchase(String, String, String, String): PrivateScope, Public, HideBySig
     Dispose(): PrivateScope, Public, Final, Virtual, HideBySig

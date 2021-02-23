@@ -12,7 +12,7 @@ public:
     strP getName();
 protected:
 	~User();
-private:
+protected:
     strP userRole, userId, email, name,  lastActivity;
 
 };

@@ -5,7 +5,10 @@ Coustomer::Coustomer(strP userRole, strP userId, strP email, strP name, strP las
 {
 
 }
-
+strP Coustomer::getValue(strP s)
+{
+	return cartShoping[s].ToString();
+}
 void Coustomer::addItemToCart(strP itemId, strP name,strP price,System::Windows::Forms::ListBox^ listBox, System::Windows::Forms::TextBox^ totalPay)
 {
 	int p = Convert::ToInt32(price);
@@ -32,4 +35,8 @@ void Coustomer::addItemToCart(strP itemId, strP name,strP price,System::Windows:
 	}
 	else
 		listBox->Items->Add(name + " : " + cartShoping[itemId] + "x" + price + "   " + priceItem);
+}
+strP Coustomer::getId()
+{
+	return this->userId;
 }

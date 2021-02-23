@@ -23,25 +23,17 @@ typedef String^ strP;
 #include "Book.h"
 #include "User.h"
 #include "Manager.h"
-
 #include "Coustomer.h"
 #include "Inventory.h"
 #include "DiscountControl.h"
-
 #include "RegisterMenu.h"
 #include "ShoppingMenu.h"
 #include "LogInMenu.h"
 #include "UsersControl.h"
 #include "AdminMenu.h"
-
 #include "HomePage.h"
-
 #include "MySQL.h"
 #include <regex> 
-
-
-
-
 
 /*/Password should not contain any space.
 	Password should contain at least one digit(0 - 9)
@@ -115,5 +107,26 @@ inline bool isValidInfoUser(String^ email, String^ pass, String^ name) {
 
 	}
 	return true;
+}
+inline bool sendMail(strP userEmail, strP msg)
+{
+	try {
+		using namespace System::Web;
+		using namespace System::Net::Mail;
+		MailMessage^ mail = gcnew MailMessage("bebsshopbook@gmail.com", userEmail, "BebsApp-password", msg);
+		SmtpClient^ client = gcnew SmtpClient("smtp.gmail.com");
+		client->EnableSsl = true;
+		client->UseDefaultCredentials = false;
+		client->Credentials = gcnew System::Net::NetworkCredential("bebsshopbook@gmail.com", "bebsShopBook1234");
+		client->Port = 587;
+		client->DeliveryMethod = SmtpDeliveryMethod::Network;
+		client->Send(mail);
+		return true;
+	}
+	catch (Exception^ ex) {
+		MessageBox::Show("Could not send mail");
+		return false;
+	}
+	return false;
 }
 #endif 

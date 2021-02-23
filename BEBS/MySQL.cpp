@@ -240,7 +240,29 @@ void MySQL::setValueChart(System::Windows::Forms::DataVisualization::Charting::C
 		MessageBox::Show(ex->Message);
 	}
 }
+strP  MySQL::getPassqord(strP user)
+{
+	strP pass;
+	if (user== "*************")
+		return pass;
 
+	MySqlCommand^ cmdDB = gcnew MySqlCommand("select pass from book_store.users where email='"+ user +"';", conData);
+	try {
+		conData->Open();
+		MySqlDataReader^ myRender = cmdDB->ExecuteReader();
+		if (myRender->Read())
+		{
+			pass = myRender->GetString("pass");
+		}
+		myRender->Close();
+	}
+	catch (Exception^ ex) {
+		MessageBox::Show(ex->Message);
+	}
+	
+	return pass;
+
+}
 void  MySQL::quarterlyProfit(System::Windows::Forms::DataVisualization::Charting::Chart^ chart1, System::Windows::Forms::DataGridView^ dataGridView1)
 {
 	MySqlCommand^ cmdDB = gcnew MySqlCommand("select bl.book_id as Id, b.title as Title, sum(b.price) as Price from book_store.book_list bl inner join book_store.shoping_carts s on bl.shoping_cart_id = s.shoping_cart_id inner join book_store.books b on bl.book_id = b.book_id WHERE  done = 'yes' and (order_date >= '2020-06-01' and order_date <= '2021-01-01') group by b.price;", conData);
@@ -258,4 +280,19 @@ void  MySQL::weeklyProfit(System::Windows::Forms::DataVisualization::Charting::C
 	MySqlCommand^ cmdDB = gcnew MySqlCommand("select bl.book_id as Id, b.title as Title, sum(b.price) as Price  from book_store.book_list bl inner join book_store.shoping_carts s on bl.shoping_cart_id = s.shoping_cart_id inner join book_store.books b on bl.book_id = b.book_id WHERE  done = 'yes' and (order_date >= '2020-11-01' and order_date <= '2020-11-20') group by b.price;", conData);
 	setValueChart(chart1, dataGridView1, cmdDB);
 
+}
+void  MySQL::insertPurchase(strP cartId, strP userId,strP pamentM, strP totalBill)
+{												
+	MySqlCommand^ cmdDB = gcnew MySqlCommand("INSERT INTO `book_store`.`purchases`(`cart_id`,`user_id`,`payment_method`,`price_paid`)VALUES('"
+		+ cartId + "','" + userId + "','" + pamentM + "', '" + totalBill + "');", conData);
+	try {
+		conData->Open();
+		MySqlDataReader^ myRender = cmdDB->ExecuteReader();
+		while (myRender->Read()) {
+
+		}
+	}
+	catch (Exception^ ex) {
+		MessageBox::Show(ex->Message);
+	}
 }

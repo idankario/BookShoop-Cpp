@@ -62,11 +62,12 @@ CREATE TABLE book_list (
 );
 
 CREATE TABLE purchases (
-    purchase_id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
-    user_id SMALLINT UNSIGNED NOT NULL,
-    payment_method VARCHAR(45),
+    purchase_id SMALLINT UNSIGNED AUTO_INCREMENT,
+    cart_id VARCHAR(4) NOT NULL,
+    user_id VARCHAR(10) NOT NULL,
+    payment_method VARCHAR(45) NOT NULL,
     pyment_date DATETIME DEFAULT CURRENT_TIMESTAMP,
-    price_paid SMALLINT UNSIGNED NOT NULL,
+    price_paid VARCHAR(45) NOT NULL,
     PRIMARY KEY (purchase_id)
 );
 CREATE TABLE orders_from_provider (

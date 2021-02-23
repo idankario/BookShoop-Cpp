@@ -47,5 +47,7 @@ namespace BEBS {
 			System::Void LogInMenu_Load(System::Object^ sender, System::EventArgs^ e);
 			System::Void TextUser_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 		}
+
+	private: System::Void ForgotPass_Click(System::Object^ sender, System::EventArgs^ e);
 	};
 }

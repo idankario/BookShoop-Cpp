@@ -219,6 +219,7 @@ void BEBS::UsersControl::InitializeComponent(void)
 	this->userPurchesTable->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 	this->userPurchesTable->Location = System::Drawing::Point(414, 351);
 	this->userPurchesTable->Name = L"userPurchesTable";
+	this->userPurchesTable->ReadOnly = true;
 	this->userPurchesTable->RowHeadersWidth = 72;
 	this->userPurchesTable->RowTemplate->Height = 31;
 	this->userPurchesTable->Size = System::Drawing::Size(461, 196);

@@ -174,6 +174,7 @@ void BEBS::LogInMenu::InitializeComponent(void)
 	// 
 	this->ForgotPass->AutoSize = true;
 	this->ForgotPass->BackColor = System::Drawing::Color::Transparent;
+	this->ForgotPass->Cursor = System::Windows::Forms::Cursors::Hand;
 	this->ForgotPass->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->ForgotPass->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
@@ -183,6 +184,7 @@ void BEBS::LogInMenu::InitializeComponent(void)
 	this->ForgotPass->Size = System::Drawing::Size(150, 23);
 	this->ForgotPass->TabIndex = 14;
 	this->ForgotPass->Text = L"Forgot Password\?";
+	this->ForgotPass->Click += gcnew System::EventHandler(this, &LogInMenu::ForgotPass_Click);
 	// 
 	// LogInMenu
 	// 
@@ -255,4 +257,18 @@ System::Void BEBS::LogInMenu::TextUser_Click(System::Object^ sender, System::Eve
 
 
 System::Void BEBS::LogInMenu::LogInMenu_Load(System::Object^ sender, System::EventArgs^ e) {
+}
+
+System::Void BEBS::LogInMenu::ForgotPass_Click(System::Object^ sender, System::EventArgs^ e) {
+	strP userEmail = TextUser->Text;
+	MySQL db;
+	strP password = db.getPassqord(userEmail);;
+	if (password != nullptr)
+	{
+		if(sendMail(userEmail, "Your password is:" + password))
+			MessageBox::Show("We send passsword to your mail");
+
+	}
+	else
+		MessageBox::Show("Could not find this user");
 }

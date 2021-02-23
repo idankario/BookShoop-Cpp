@@ -1,10 +1,10 @@
 use book_store;
 
 -- users																								
-INSERT INTO `book_store`.`users`(`user_role`,`user_id`,`email`,`pass`,`user_name`, `last_activity`,`join_date`,`user_status`)VALUES('Buyer',1,'idan@gmail.com',123,'Idan Ryrman','2019-10-10','2018-10-10','active');
-INSERT INTO `book_store`.`users`(`user_role`,`user_id`,`email`,`pass`,`user_name`, `last_activity`,`join_date`,`user_status`)VALUES('Buyer',2,'sarah@gmail.com',123,'Sarah Hopman','2020-10-20','2018-10-10','Unregistered');
-INSERT INTO `book_store`.`users`(`user_role`,`user_id`,`email`,`pass`,`user_name`, `last_activity`,`join_date`,`user_status`)VALUES('Admin',3,'tomas@gmail.com',123,'Tomas Eily','2019-01-01','2017-01-01','active');
-INSERT INTO `book_store`.`users`(`user_role`,`user_id`,`email`,`pass`,`user_name`, `last_activity`,`join_date`,`user_status`)VALUES('Buyer',4,'shani@gmail.com',123,'Shani Queen' ,'2019-01-01','2019-01-01','active');
+INSERT INTO `book_store`.`users`(`user_role`,`user_id`,`email`,`pass`,`user_name`, `last_activity`,`join_date`,`user_status`)VALUES('Buyer',1,'idan@gmail.com','123','Idan Ryrman','2019-10-10','2018-10-10','active');
+INSERT INTO `book_store`.`users`(`user_role`,`user_id`,`email`,`pass`,`user_name`, `last_activity`,`join_date`,`user_status`)VALUES('Buyer',2,'sarah@gmail.com','123','Sarah Hopman','2020-10-20','2018-10-10','Unregistered');
+INSERT INTO `book_store`.`users`(`user_role`,`user_id`,`email`,`pass`,`user_name`, `last_activity`,`join_date`,`user_status`)VALUES('Admin',3,'tomas@gmail.com','123','Tomas Eily','2019-01-01','2017-01-01','active');
+INSERT INTO `book_store`.`users`(`user_role`,`user_id`,`email`,`pass`,`user_name`, `last_activity`,`join_date`,`user_status`)VALUES('Buyer',4,'shani@gmail.com','123','Shani Queen' ,'2019-01-01','2019-01-01','active');
 
 
 -- discounts
@@ -65,25 +65,24 @@ INSERT INTO `book_store`.`book_list`(`book_list_id`,`shoping_cart_id`,`book_id`,
 INSERT INTO `book_store`.`book_list`(`book_list_id`,`shoping_cart_id`,`book_id`,`user_id`,`done`) VALUES(12,102,4,2,'yes');-- shoping_carts
 
 
-
-
+  
 -- purchases
-INSERT INTO `book_store`.`purchases`(`purchase_id`,`user_id`,`payment_method`,`pyment_date`,`price_paid`) VALUES(1,1, 'Bit', '2020-11-02', 370);
-INSERT INTO `book_store`.`purchases`(`purchase_id`,`user_id`,`payment_method`,`pyment_date`,`price_paid`) VALUES(2,1, 'Bit', '2020-11-19', 850);
-INSERT INTO `book_store`.`purchases`(`purchase_id`,`user_id`,`payment_method`,`pyment_date`,`price_paid`) VALUES(3,1, 'Card', '2020-12-22', 45);
-INSERT INTO `book_store`.`purchases`(`purchase_id`,`user_id`,`payment_method`,`pyment_date`,`price_paid`) VALUES(4,1, 'Cash', '2021-01-10', 60);
-INSERT INTO `book_store`.`purchases`(`purchase_id`,`user_id`,`payment_method`,`pyment_date`,`price_paid`) VALUES(5,1, 'Bit', '2021-01-16', 1090);
-INSERT INTO `book_store`.`purchases`(`purchase_id`,`user_id`,`payment_method`,`pyment_date`,`price_paid`) VALUES(6,2, 'Cash', '2020-07-03', 100);
-INSERT INTO `book_store`.`purchases`(`purchase_id`,`user_id`,`payment_method`,`pyment_date`,`price_paid`) VALUES(7,2, 'Bit', '2020-09-30', 580);
-INSERT INTO `book_store`.`purchases`(`purchase_id`,`user_id`,`payment_method`,`pyment_date`,`price_paid`) VALUES(8,1, 'Bit', '2020-12-19', 320);
-INSERT INTO `book_store`.`purchases`(`purchase_id`,`user_id`,`payment_method`,`pyment_date`,`price_paid`) VALUES(9,1, 'Bit', '2020-12-19', 499);
-INSERT INTO `book_store`.`purchases`(`purchase_id`,`user_id`,`payment_method`,`pyment_date`,`price_paid`) VALUES(10,2, 'Bit', '2020-10-31', 39);
+INSERT INTO `book_store`.`purchases`(`purchase_id`,`cart_id`,`user_id`,`payment_method`,`pyment_date`,`price_paid`) VALUES(1,'1','1', 'Bit', '2020-11-02', '370');
+INSERT INTO `book_store`.`purchases`(`purchase_id`,`cart_id`,`user_id`,`payment_method`,`pyment_date`,`price_paid`) VALUES(2,'1','1', 'Bit', '2020-11-19', '850');
+INSERT INTO `book_store`.`purchases`(`purchase_id`,`cart_id`,`user_id`,`payment_method`,`pyment_date`,`price_paid`) VALUES(3,'1','1', 'Card', '2020-12-22', '45');
+INSERT INTO `book_store`.`purchases`(`purchase_id`,`cart_id`,`user_id`,`payment_method`,`pyment_date`,`price_paid`) VALUES(4,'1','1', 'Cash', '2021-01-10', '60');
+INSERT INTO `book_store`.`purchases`(`purchase_id`,`cart_id`,`user_id`,`payment_method`,`pyment_date`,`price_paid`) VALUES(5,'1','1', 'Bit', '2021-01-16', '1090');
+INSERT INTO `book_store`.`purchases`(`purchase_id`,`cart_id`,`user_id`,`payment_method`,`pyment_date`,`price_paid`) VALUES(6,'1','2', 'Cash', '2020-07-03', '100');
+INSERT INTO `book_store`.`purchases`(`purchase_id`,`cart_id`,`user_id`,`payment_method`,`pyment_date`,`price_paid`) VALUES(7,'1','2', 'Bit', '2020-09-30', '580');
+INSERT INTO `book_store`.`purchases`(`purchase_id`,`cart_id`,`user_id`,`payment_method`,`pyment_date`,`price_paid`) VALUES(8,'1','1', 'Bit', '2020-12-19', '320');
+INSERT INTO `book_store`.`purchases`(`purchase_id`,`cart_id`,`user_id`,`payment_method`,`pyment_date`,`price_paid`) VALUES(9,'1','1', 'Bit', '2020-12-19', '499');
+INSERT INTO `book_store`.`purchases`(`purchase_id`,`cart_id`,`user_id`,`payment_method`,`pyment_date`,`price_paid`) VALUES(10,'1','2', 'Bit', '2020-10-31', '39');
 
-INSERT INTO `book_store`.`purchases`(`purchase_id`,`user_id`,`payment_method`,`pyment_date`,`price_paid`) VALUES(11,100, 'Bit', '2020-04-01', 1039);
-INSERT INTO `book_store`.`purchases`(`purchase_id`,`user_id`,`payment_method`,`pyment_date`,`price_paid`) VALUES(12,100, 'Bit', '2020-08-18', 3359);
-INSERT INTO `book_store`.`purchases`(`purchase_id`,`user_id`,`payment_method`,`pyment_date`,`price_paid`) VALUES(13,100, 'Bit', '2020-02-27', 609);
-INSERT INTO `book_store`.`purchases`(`purchase_id`,`user_id`,`payment_method`,`pyment_date`,`price_paid`) VALUES(14,100, 'Bit', '2020-01-08', 893);
-INSERT INTO `book_store`.`purchases`(`purchase_id`,`user_id`,`payment_method`,`pyment_date`,`price_paid`) VALUES(15,100, 'Bit', '2020-03-09', 4859);
+INSERT INTO `book_store`.`purchases`(`purchase_id`,`cart_id`,`user_id`,`payment_method`,`pyment_date`,`price_paid`) VALUES(11,'1','4', 'Bit', '2021-02-15', '1039');
+INSERT INTO `book_store`.`purchases`(`purchase_id`,`cart_id`,`user_id`,`payment_method`,`pyment_date`,`price_paid`) VALUES(12,'1','4', 'Bit', '2021-02-18', '3359');
+INSERT INTO `book_store`.`purchases`(`purchase_id`,`cart_id`,`user_id`,`payment_method`,`pyment_date`,`price_paid`) VALUES(13,'1','4', 'Bit', '2020-02-19', '609');
+INSERT INTO `book_store`.`purchases`(`purchase_id`,`cart_id`,`user_id`,`payment_method`,`pyment_date`,`price_paid`) VALUES(14,'1','4', 'Bit', '2020-01-08', '893');
+INSERT INTO `book_store`.`purchases`(`purchase_id`,`cart_id`,`user_id`,`payment_method`,`pyment_date`,`price_paid`) VALUES(15,'1','4', 'Bit', '2020-03-09', '350');
 
 -- orders_from_provider
 INSERT INTO `book_store`.`orders_from_provider`(`order_provider_id`,`book_id`,`amount`,`provider`,`order_date`,`order_status`) VALUES(1,1,2,'Dolev','2020-12-01','active'); 

@@ -16,6 +16,7 @@ namespace BEBS {
 
 	private: 
 		Inventory store;
+		strP cartId = "1";
 		System::Windows::Forms::TextBox^ TextSearch;
 		System::Windows::Forms::PictureBox^ CartIcon;
 		System::Windows::Forms::PictureBox^ SearchIcon;
@@ -60,23 +61,14 @@ namespace BEBS {
 		System::Void HomePage_Click(System::Object^ sender, System::EventArgs^ e);
 		System::Void profile_Click(System::Object^ sender, System::EventArgs^ e);
 		System::Void pictureBox1_Click(System::Object^ sender, System::EventArgs^ e);
-		System::Void TextSearch_TextChanged(System::Object^ sender, System::EventArgs^ e) {	
-		}
-		
 		System::Void ArrowL_Click(System::Object^ sender, System::EventArgs^ e);
 		System::Void ArrowR_Click(System::Object^ sender, System::EventArgs^ e);
 		System::Void addItem_Click1(System::Object^ sender, System::EventArgs^ e);
 		System::Void addItem_Click2(System::Object^ sender, System::EventArgs^ e);
-
 		System::Void addItem_Click3(System::Object^ sender, System::EventArgs^ e);
 		System::Void addItem_Click4(System::Object^ sender, System::EventArgs^ e);
-
 		System::Void SearchIcon_Click(System::Object^ sender, System::EventArgs^ e);
+		System::Void PayBillClick(System::Object^ sender, System::EventArgs^ e);
 
-	private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
-	}
-	private: System::Void PayBillClick(System::Object^ sender, System::EventArgs^ e);
-	private: System::Void listBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e)
-	{}
 	};
 }

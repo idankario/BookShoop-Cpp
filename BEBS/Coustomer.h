@@ -8,12 +8,9 @@ public:
     Coustomer(){}
 
     void addItemToCart(strP itemId, strP name, strP price, System::Windows::Forms::ListBox^ listBox, System::Windows::Forms::TextBox^ totalPay);
-
-    String^ getValue(String^ s)
-    {
-        return cartShoping[s].ToString();
-    }
-    
+   
+    strP getValue(strP s);
+    strP getId();
 protected:
     ~Coustomer() {
     
