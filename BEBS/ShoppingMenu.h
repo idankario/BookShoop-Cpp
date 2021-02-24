@@ -70,5 +70,9 @@ namespace BEBS {
 		System::Void SearchIcon_Click(System::Object^ sender, System::EventArgs^ e);
 		System::Void PayBillClick(System::Object^ sender, System::EventArgs^ e);
 
+	private: System::Void Invoice_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+
+
+	}
 	};
 }

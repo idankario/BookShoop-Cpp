@@ -25,7 +25,6 @@ CREATE TABLE discounts (
 );
 CREATE TABLE books (
     book_id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
-    
     title VARCHAR(200) NOT NULL,
     pages SMALLINT UNSIGNED NOT NULL,
     section VARCHAR(100) NOT NULL,
@@ -48,17 +47,15 @@ CREATE TABLE shoping_carts (
 
 CREATE TABLE book_list (
     book_list_id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
-    shoping_cart_id SMALLINT UNSIGNED NOT NULL,
+    purchase_id SMALLINT UNSIGNED NOT NULL,
     book_id SMALLINT UNSIGNED NOT NULL,
-    user_id SMALLINT UNSIGNED NOT NULL,
-    done VARCHAR(10) DEFAULT 'no',
+    price VARCHAR(100) NOT NULL,
+    amount  SMALLINT UNSIGNED NOT NULL,
     PRIMARY KEY (book_list_id),
-    FOREIGN KEY (shoping_cart_id)
-	REFERENCES shoping_carts (shoping_cart_id),
+    FOREIGN KEY (purchase_id)
+	REFERENCES purchases (purchase_id),
     FOREIGN KEY (book_id)
-	REFERENCES books (book_id),
-    FOREIGN KEY (user_id)
-	REFERENCES users (user_id)
+	REFERENCES books (book_id)
 );
 
 CREATE TABLE purchases (
@@ -82,35 +79,6 @@ CREATE TABLE orders_from_provider (
 	REFERENCES books (book_id)
 );
 
--- CREATE TABLE customers
--- (
--- customer_id smallint unsigned NOT NULL AUTO_INCREMENT,
--- is_member boolean NOT NULL, 
--- user_id smallint unsigned,
--- PRIMARY KEY (customer_id),
--- FOREIGN KEY (user_id) REFERENCES users (user_id)
--- );
-
--- CREATE TABLE authors
--- (
--- author_id smallint unsigned NOT NULL AUTO_INCREMENT,
--- first_name varchar(45),
--- last_name varchar(45),
--- PRIMARY KEY (author_id)
--- );
-
-
-
-
--- CREATE TABLE book_list -- for user orders 
--- (
--- book_list_id smallint unsigned NOT NULL AUTO_INCREMENT,
--- book_id smallint unsigned NOT NULL,
--- customer_id smallint unsigned NOT NULL,
--- PRIMARY KEY (book_list_id),
--- FOREIGN KEY (book_id) REFERENCES books (book_id),
--- FOREIGN KEY (customer_id) REFERENCES customers (customer_id)
--- );
 
 
 

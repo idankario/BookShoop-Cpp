@@ -281,18 +281,42 @@ void  MySQL::weeklyProfit(System::Windows::Forms::DataVisualization::Charting::C
 	setValueChart(chart1, dataGridView1, cmdDB);
 
 }
-void  MySQL::insertPurchase(strP cartId, strP userId,strP pamentM, strP totalBill)
-{												
+int  MySQL::insertPurchase(strP cartId, strP userId,strP pamentM, strP totalBill)
+{		
+	
 	MySqlCommand^ cmdDB = gcnew MySqlCommand("INSERT INTO `book_store`.`purchases`(`cart_id`,`user_id`,`payment_method`,`price_paid`)VALUES('"
 		+ cartId + "','" + userId + "','" + pamentM + "', '" + totalBill + "');", conData);
 	try {
+
 		conData->Open();
 		MySqlDataReader^ myRender = cmdDB->ExecuteReader();
 		while (myRender->Read()) {
 
 		}
+		myRender->Close();
 	}
 	catch (Exception^ ex) {
 		MessageBox::Show(ex->Message);
 	}
+	int purchaseId;
+	MySqlCommand^ cmdDB1 = gcnew MySqlCommand("SELECT max(purchase_id) as id from book_store.purchases ;", conData);
+	try {
+		MySqlDataReader^ myRender = cmdDB1->ExecuteReader();
+		if (myRender->Read()) {
+			purchaseId = myRender->GetInt32("id");
+		}
+		myRender->Close();
+	}
+	catch (Exception^ ex) {
+		MessageBox::Show(ex->Message);
+	}
+	return purchaseId;
+}
+void MySQL::insertBookList(int idP, int itemId, int amount, strP price)
+{
+
+	MySqlCommand^ cmdDB = gcnew MySqlCommand("INSERT INTO `book_store`.`book_list`(`purchase_id`,`book_id`,`amount`,`price`)VALUES('"
+		+ idP + "','" + itemId + "','" + amount + "', '" + price + "');", conData);
+
+
 }

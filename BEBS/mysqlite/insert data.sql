@@ -51,18 +51,18 @@ INSERT INTO `book_store`.`books`(`book_id`,`title`,`pages` ,`section`,`price`,`a
 																																	'html51.jpg',"David");
 
 -- book_list thet paied
-INSERT INTO `book_store`.`book_list`(`book_list_id`,`shoping_cart_id`,`book_id`,`user_id`,`done`) VALUES(1,1,1,1,'yes'); -- books of customer 1 is [1-5]
-INSERT INTO `book_store`.`book_list`(`book_list_id`,`shoping_cart_id`,`book_id`,`user_id`,`done` ) VALUES(2,1,2,1,'yes');
-INSERT INTO `book_store`.`book_list`(`book_list_id`,`shoping_cart_id`,`book_id`,`user_id`,`done` ) VALUES(3,1,3,1,'yes');
-INSERT INTO `book_store`.`book_list`(`book_list_id`,`shoping_cart_id`,`book_id`,`user_id`,`done` ) VALUES(4,1,4,1,'yes');
-INSERT INTO `book_store`.`book_list`(`book_list_id`,`shoping_cart_id`,`book_id`,`user_id`,`done` ) VALUES(5,1,5,1,'yes');
-INSERT INTO `book_store`.`book_list`(`book_list_id`,`shoping_cart_id`,`book_id`,`user_id`,`done`) VALUES(6,2,1,2,'yes'); -- books of customer 2 is [1,6,7]
-INSERT INTO `book_store`.`book_list`(`book_list_id`,`shoping_cart_id`,`book_id`,`user_id`,`done` ) VALUES(7,2,6,2,'yes');
-INSERT INTO `book_store`.`book_list`(`book_list_id`,`shoping_cart_id`,`book_id`,`user_id`,`done` ) VALUES(8,2,7,2,'yes');
-INSERT INTO `book_store`.`book_list`(`book_list_id`,`shoping_cart_id`,`book_id`,`user_id`,`done`) VALUES(9,100,8,1,'yes'); -- books of customer 3 is [8,10]
-INSERT INTO `book_store`.`book_list`(`book_list_id`,`shoping_cart_id`,`book_id`,`user_id`,`done`) VALUES(10,100,6,2,'yes');-- shoping_carts
-INSERT INTO `book_store`.`book_list`(`book_list_id`,`shoping_cart_id`,`book_id`,`user_id`,`done`) VALUES(11,101,5,1,'yes');-- shoping_carts
-INSERT INTO `book_store`.`book_list`(`book_list_id`,`shoping_cart_id`,`book_id`,`user_id`,`done`) VALUES(12,102,4,2,'yes');-- shoping_carts
+INSERT INTO `book_store`.`book_list`(`book_list_id`,`purchase_id`,`book_id`,`price`,`amount`) VALUES(1,1,1,'110','2');
+INSERT INTO `book_store`.`book_list`(`book_list_id`,`purchase_id`,`book_id`,`price`,`amount`) VALUES(2,1,2,'55','1');
+INSERT INTO `book_store`.`book_list`(`book_list_id`,`purchase_id`,`book_id`,`price`,`amount`) VALUES(3,1,3,'350','4');
+INSERT INTO `book_store`.`book_list`(`book_list_id`,`purchase_id`,`book_id`,`price`,`amount`) VALUES(4,1,4,'1100','6');
+INSERT INTO `book_store`.`book_list`(`book_list_id`,`purchase_id`,`book_id`,`price`,`amount`) VALUES(5,1,5,'225','4');
+INSERT INTO `book_store`.`book_list`(`book_list_id`,`purchase_id`,`book_id`,`price`,`amount`) VALUES(6,2,1,'1100','6'); 
+INSERT INTO `book_store`.`book_list`(`book_list_id`,`purchase_id`,`book_id`,`price`,`amount`) VALUES(7,2,6,'550','5');
+INSERT INTO `book_store`.`book_list`(`book_list_id`,`purchase_id`,`book_id`,`price`,`amount`) VALUES(8,2,7,'400','6');
+INSERT INTO `book_store`.`book_list`(`book_list_id`,`purchase_id`,`book_id`,`price`,`amount`) VALUES(9,2,8,'100','1');
+INSERT INTO `book_store`.`book_list`(`book_list_id`,`purchase_id`,`book_id`,`price`,`amount`) VALUES(10,2,6,'110','2');
+INSERT INTO `book_store`.`book_list`(`book_list_id`,`purchase_id`,`book_id`,`price`,`amount`) VALUES(11,3,5,'220','3');
+INSERT INTO `book_store`.`book_list`(`book_list_id`,`purchase_id`,`book_id`,`price`,`amount`) VALUES(12,3,4,'170','3');
 
 
   

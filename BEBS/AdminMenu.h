@@ -1,17 +1,12 @@
 #pragma once
 
 namespace BEBS {
-
-
 	public ref class AdminMenu : public System::Windows::Forms::Form
 	{
 	public:
-
 		AdminMenu(void);
-
 	protected:
 		~AdminMenu();
-
 	private:
 		Inventory store;
 		String^ itemPath = ("Image\\books\\");
@@ -51,8 +46,6 @@ namespace BEBS {
 		/* fill List Box in table */
 		Void fillListBox(void);
 		
-
-
 #pragma endregion
 	private:
 		System::Void listBox_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e);

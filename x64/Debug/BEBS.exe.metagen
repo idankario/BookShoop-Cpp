@@ -85,6 +85,7 @@ Class Coustomer: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     Void .ctor(System.String, System.String, System.String, System.String, System.String): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Methods:
     addItemToCart(String, String, String, ListBox, TextBox): PrivateScope, Public, HideBySig
+    insertBookList(Int32, ListBox): PrivateScope, Public, HideBySig
     getValue(String): PrivateScope, Public, HideBySig
     getId(): PrivateScope, Public, HideBySig
 Class Inventory: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
@@ -150,4 +151,5 @@ Class MySQL: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     weeklyProfit(Chart, DataGridView): PrivateScope, Public, HideBySig
     getPassqord(String): PrivateScope, Public, HideBySig
     insertPurchase(String, String, String, String): PrivateScope, Public, HideBySig
+    insertBookList(Int32, Int32, Int32, String): PrivateScope, Public, HideBySig
     Dispose(): PrivateScope, Public, Final, Virtual, HideBySig

@@ -528,6 +528,7 @@ void BEBS::ShoppingMenu::InitializeComponent(void)
 	this->Invoice->Name = L"Invoice";
 	this->Invoice->Size = System::Drawing::Size(249, 148);
 	this->Invoice->TabIndex = 43;
+	this->Invoice->SelectedIndexChanged += gcnew System::EventHandler(this, &ShoppingMenu::Invoice_SelectedIndexChanged);
 	// 
 	// totalPay
 	// 
@@ -631,8 +632,11 @@ System::Void BEBS::ShoppingMenu::pictureBox1_Click(System::Object^ sender, Syste
 
 System::Void BEBS::ShoppingMenu::PayBillClick(System::Object^ sender, System::EventArgs^ e)
 {
+	if (totalPay->Text == nullptr)
+		return;
 	MySQL db;
-	db.insertPurchase(cartId, user->getId(),"Cash", totalPay->Text);
+	int idP=db.insertPurchase(cartId, user->getId(),"Cash", totalPay->Text);
+	user->insertBookList(idP, Invoice);;
 	this->~ShoppingMenu();
 	BEBS::HomePage HomePage;
 	HomePage.ShowDialog();

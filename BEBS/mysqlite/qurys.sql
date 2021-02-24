@@ -32,13 +32,13 @@ INSERT INTO `book_store`.`purchases`(`cart_id`,`user_id`,`payment_method`,`price
 INSERT INTO `book_store`.`shoping_carts`(`shoping_cart_id`,`customer_id`,`order_date`,`discount_id`) VALUES(4,4, '2020-11-02', null);
 
 INSERT INTO `book_store`.`purchases`(`cart_id`,`user_id`,`payment_method`,`pyment_date`,`price_paid`)VALUES('1','4', 'Bit', '350');
-('"
-+ cartId + "','" + userId + "','" + pamentM + "'"1200");
+
 -- get all books
 select * from book_store.books
-where amount >1
+where amount >1;
 -- order by amount asc limit 1 
-;
+
+SELECT max(purchase_id) from book_store.purchases ;
 
 
 
