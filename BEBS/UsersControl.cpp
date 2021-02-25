@@ -374,7 +374,7 @@ System::Void BEBS::UsersControl::dataGridView1_CellContentClick(System::Object^ 
 Void BEBS::UsersControl::fillCom(void) {
 	MySqlConnection^ conData = gcnew MySqlConnection(con);
 	MySqlCommand^ cmdDB = gcnew MySqlCommand("select user_name,email,join_date,user_role from book_store.users where user_role='buyer';", conData);
-	MySqlDataReader^ myRender;
+
 
 	try {
 		//conData->Open();
@@ -427,7 +427,7 @@ System::Void BEBS::UsersControl::listBox1_SelectedIndexChanged(System::Object^ s
 			//set list 2:
 			conData->Close();
 			MySqlCommand^ cmdDB2 = gcnew MySqlCommand("select pyment_date,price_paid,payment_method from book_store.purchases where user_id='" + vId + "';", conData);
-			MySqlDataReader^ myRender2;
+
 
 
 			try {

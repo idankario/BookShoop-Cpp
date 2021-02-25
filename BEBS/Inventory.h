@@ -16,8 +16,8 @@ public:
 		if(searchList == nullptr)
 			if (head == nullptr)
 				return 0;
-			else
-				return head->getNumItem();
+		return head->getNumItem();
+
 	}
 	void setSearchList(Book^ bookList);
 	void BookLIndex();

@@ -48,7 +48,6 @@ strP Coustomer::getId()
  */
 strP get_last_word( strP s) {
 	int index;
-		strP m;
 	int size = s->Length;
 	for (int i = 0; i < size; i++)
 		if (s[i]==' ')

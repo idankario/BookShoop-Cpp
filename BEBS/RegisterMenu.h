@@ -25,14 +25,26 @@ namespace BEBS {
 		System::Windows::Forms::Label^ labelPhone;
 		System::Windows::Forms::PictureBox^ backButtonImage;
 		System::Windows::Forms::Label^ backButton;
-		System::Windows::Forms::TextBox^ textCondition;
+		
 		System::Windows::Forms::CheckBox^ checkConditation;
 		System::Windows::Forms::Button^ CreateAcount;
-		System::Windows::Forms::Panel^ panel;
+	
 		System::Windows::Forms::Label^ ConditionText;
 		System::Windows::Forms::PictureBox^ pictureBox1;
-		System::Windows::Forms::Button^ buttonCondition;
+	private: System::Windows::Forms::Panel^ panel;
+	private: System::Windows::Forms::TextBox^ textCondition;
+
+
+
+
+	private: System::Windows::Forms::Label^ labelTerm;
+	private: System::Windows::Forms::Button^ closeCondition;
+
+
+
+
 		System::ComponentModel::Container^ components;
+
 
 #pragma region Windows Form Designer generated code
 		void InitializeComponent(void);
@@ -41,6 +53,7 @@ namespace BEBS {
 		System::Void ConditionText_Click(System::Object^ sender, System::EventArgs^ e);
 		System::Void BackLastGui_Click(System::Object^ sender, System::EventArgs^ e);
 		System::Void Next_Click(System::Object^ sender, System::EventArgs^ e);
-		System::Void buttonCondition_Click(System::Object^ sender, System::EventArgs^ e);
-};
+		System::Void closeConditionClick(System::Object^ sender, System::EventArgs^ e);
+
+	};
 }

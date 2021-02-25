@@ -124,7 +124,7 @@ inline bool sendMail(strP userEmail, strP msg)
 		return true;
 	}
 	catch (Exception^ ex) {
-		MessageBox::Show("Could not send mail");
+		MessageBox::Show("Could not send mail"+ex);
 		return false;
 	}
 	return false;
