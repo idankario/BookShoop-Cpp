@@ -267,7 +267,6 @@ void  MySQL::quarterlyProfit(System::Windows::Forms::DataVisualization::Charting
 {
 	MySqlCommand^ cmdDB = gcnew MySqlCommand("select  bl.book_id as Id, b.title as Title, sum(b.price) as Price  from book_store.book_list bl inner join book_store.purchases s on bl.purchase_id = s.purchase_id inner join book_store.books b on bl.book_id = b.book_id where pyment_date >= now()-interval 4 month group by b.price;", conData);
 	setValueChart(chart1, dataGridView1, cmdDB);
-	
 }
 void  MySQL::monthlyProfit(System::Windows::Forms::DataVisualization::Charting::Chart^ chart1, System::Windows::Forms::DataGridView^ dataGridView1)
 {
@@ -312,11 +311,26 @@ int  MySQL::insertPurchase(strP cartId, strP userId,strP pamentM, strP totalBill
 	}
 	return purchaseId;
 }
+int MySQL::getDiscount(strP id)
+{
+	MySqlCommand^ cmdDB = gcnew MySqlCommand("select max(percent) as p from book_store.discounts where now() >= date_from and now() <= date_until and user_id_discount ='" + id + "'|| user_id_discount = 'all';", conData);
+	int persent;
+	try {
+		MySqlDataReader^ myRender = cmdDB->ExecuteReader();
+		if (myRender->Read()) {
+			persent = myRender->GetInt32("p");
+		}
+		myRender->Close();
+	}
+	catch (Exception^ ex) {
+		MessageBox::Show(ex->Message);
+	}
+	return persent;
+}
 void MySQL::insertBookList(int idP, int itemId, int amount, strP price)
 {
 
 	MySqlCommand^ cmdDB = gcnew MySqlCommand("INSERT INTO `book_store`.`book_list`(`purchase_id`,`book_id`,`amount`,`price`)VALUES('"
 		+ idP + "','" + itemId + "','" + amount + "', '" + price + "');", conData);
-
 
 }

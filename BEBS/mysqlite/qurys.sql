@@ -37,12 +37,17 @@ INSERT INTO `book_store`.`purchases`(`cart_id`,`user_id`,`payment_method`,`pymen
 select * from book_store.books
 where amount >1;
 -- order by amount asc limit 1 
-
+select * from book_store.books where amount>1 and active_item=true;
+UPDATE  book_store.books SET  active_item = false WHERE book_id = '1';
 SELECT max(purchase_id) from book_store.purchases ;
 
+select  bl.book_id as Id, b.title as Title, sum(b.price) as Price  from book_store.book_list bl inner join book_store.purchases s on bl.purchase_id = s.purchase_id inner join book_store.books b on bl.book_id = b.book_id where pyment_date >= now()-interval 1 week group by b.price;
+select  bl.book_id as Id, b.title as Title, sum(b.price) as Price  from book_store.book_list bl inner join book_store.purchases s on bl.purchase_id = s.purchase_id inner join book_store.books b on bl.book_id = b.book_id where pyment_date >= now()-interval 1 month group by b.price;
 
 
-
+select count(bl.book_id), bl.book_id, b.title from book_store.book_list bl inner join book_store.purchases s on bl.purchase_id = s.purchase_id inner join book_store.books b on bl.book_id = b.book_id WHERE   MONTH(order_date) = 11 and Year(order_date) = 2020 group by b.book_id;
+		
+select max(percent) from book_store.discounts where now()>=date_from and now()<=date_until and user_id_discount=1||user_id_discount ='all';
 
 
 

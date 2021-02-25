@@ -31,7 +31,7 @@
 		void weeklyProfit(System::Windows::Forms::DataVisualization::Charting::Chart^ chart1, System::Windows::Forms::DataGridView^ dataGridView1);
 		strP getPassqord(strP user);
 		int insertPurchase(strP cartId,strP userId, strP pamentM, strP totalBill);
-		
+		int getDiscount(strP id);
 		void insertBookList(int idP,int itemId,int amount, strP price);
 		
 		//SELECT trackid, name FROM tracks WHERE name LIKE 'Wild%'

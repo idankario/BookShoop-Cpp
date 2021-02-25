@@ -1,7 +1,7 @@
 DROP DATABASE  IF EXISTS book_store ;
 CREATE DATABASE IF NOT EXISTS book_store ;
 USE book_store;
-SET FOREIGN_KEY_CHECKS = 0;
+SET FOREIGN_KEY_CHECKS=0;
 
 -- for login
 CREATE TABLE users (
@@ -19,12 +19,14 @@ CREATE TABLE users (
 CREATE TABLE discounts (
     discount_id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
     percent SMALLINT UNSIGNED NOT NULL,
+    user_id_discount VARCHAR(5) DEFAULT "all",
     date_from DATE NOT NULL,
     date_until DATE NOT NULL,
     PRIMARY KEY (discount_id)
 );
 CREATE TABLE books (
     book_id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+	active_item boolean DEFAULT true ,
     title VARCHAR(200) NOT NULL,
     pages SMALLINT UNSIGNED NOT NULL,
     section VARCHAR(100) NOT NULL,

@@ -151,5 +151,6 @@ Class MySQL: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     weeklyProfit(Chart, DataGridView): PrivateScope, Public, HideBySig
     getPassqord(String): PrivateScope, Public, HideBySig
     insertPurchase(String, String, String, String): PrivateScope, Public, HideBySig
+    getDiscount(String): PrivateScope, Public, HideBySig
     insertBookList(Int32, Int32, Int32, String): PrivateScope, Public, HideBySig
     Dispose(): PrivateScope, Public, Final, Virtual, HideBySig
