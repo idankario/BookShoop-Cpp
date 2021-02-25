@@ -320,9 +320,9 @@ System::Void BEBS::SalesControl::monthlyClick(System::Object^ sender, System::Ev
 		
 		MySqlConnection^ conData = gcnew MySqlConnection(con);
 
-		//select count(bl.book_id), bl.book_id, b.title from book_store.book_list bl inner join book_store.shoping_carts s on bl.shoping_cart_id = s.shoping_cart_id inner join book_store.books b on bl.book_id = b.book_id WHERE  done = 'yes' and MONTH(order_date) = 11 and Year(order_date) = 2020 group by b.book_id;
+		//select count(bl.book_id), bl.book_id, b.title from book_store.book_list bl inner join book_store.purchases s on bl.purchase_id = s.purchase_id inner join book_store.books b on bl.book_id = b.book_id WHERE   MONTH(pyment_date) = 11 and Year(pyment_date) = 2020 group by b.book_id;
 
-		MySqlCommand^ cmdDB = gcnew MySqlCommand("select count(bl.book_id), bl.book_id, b.title from book_store.book_list bl inner join book_store.shoping_carts s on bl.shoping_cart_id = s.shoping_cart_id inner join book_store.books b on bl.book_id = b.book_id WHERE  done = 'yes' and MONTH(order_date) = 11 and Year(order_date) = 2020 group by b.book_id;", conData);
+		MySqlCommand^ cmdDB = gcnew MySqlCommand("select count(bl.book_id), bl.book_id, b.title from book_store.book_list bl inner join book_store.purchases s on bl.purchase_id = s.purchase_id inner join book_store.books b on bl.book_id = b.book_id WHERE   MONTH(pyment_date) = 11 and Year(pyment_date) = 2020 group by b.book_id;", conData);
 		MySqlDataReader^ myRender;
 
 		this->chart1->Series["Books"]->Points->Clear();
@@ -344,7 +344,7 @@ System::Void BEBS::SalesControl::monthlyClick(System::Object^ sender, System::Ev
 			/*
 			conData->Close();
 			//peice:
-			MySqlCommand^ cmdDB2 = gcnew MySqlCommand("select sum(b.price), bl.book_id, b.title from book_store.book_list bl inner join book_store.shoping_carts s on bl.shoping_cart_id = s.shoping_cart_id inner join book_store.books b on bl.book_id = b.book_id WHERE  done = 'yes' and MONTH(order_date) = 11 and Year(order_date) = 2020 group by b.price;", conData);
+			MySqlCommand^ cmdDB2 = gcnew MySqlCommand("select sum(b.price), bl.book_id, b.title from book_store.book_list bl inner join book_store.purchases s on bl.purchase_id = s.purchase_id inner join book_store.books b on bl.book_id = b.book_id WHERE   MONTH(pyment_date) = 11 and Year(pyment_date) = 2020 group by b.price;", conData);
 			MySqlDataReader^ myRender2;
 			try {
 				conData->Open();
@@ -367,8 +367,8 @@ System::Void BEBS::SalesControl::monthlyClick(System::Object^ sender, System::Ev
 	}
 System::Void BEBS::SalesControl::weeklyClick(System::Object^ sender, System::EventArgs^ e) {
 		MySqlConnection^ conData = gcnew MySqlConnection(con);
-		//select count(bl.book_id), bl.book_id, b.title, order_date from book_store.book_list bl inner join book_store.shoping_carts s on bl.shoping_cart_id = s.shoping_cart_id inner join book_store.books b on bl.book_id = b.book_id WHERE  done = 'yes' and (order_date >= '2020-11-01' and order_date <= '2020-11-20') group by b.book_id;
-		MySqlCommand^ cmdDB = gcnew MySqlCommand("select count(bl.book_id), bl.book_id, b.title, order_date from book_store.book_list bl inner join book_store.shoping_carts s on bl.shoping_cart_id = s.shoping_cart_id inner join book_store.books b on bl.book_id = b.book_id WHERE  done = 'yes' and (order_date >= '2020-11-01' and order_date <= '2020-11-20') group by b.book_id;", conData);
+		//select count(bl.book_id), bl.book_id, b.title, pyment_date from book_store.book_list bl inner join book_store.purchases s on bl.purchase_id = s.purchase_id inner join book_store.books b on bl.book_id = b.book_id WHERE    (pyment_date >= '2020-11-01' and pyment_date <= '2020-11-20') group by b.book_id;
+		MySqlCommand^ cmdDB = gcnew MySqlCommand("select count(bl.book_id), bl.book_id, b.title, pyment_date from book_store.book_list bl inner join book_store.purchases s on bl.purchase_id = s.purchase_id inner join book_store.books b on bl.book_id = b.book_id  (pyment_date >= '2020-11-01' and pyment_date <= '2020-11-20') group by b.book_id;", conData);
 		MySqlDataReader^ myRender;
 
 		this->chart1->Series["Books"]->Points->Clear();
@@ -391,7 +391,7 @@ System::Void BEBS::SalesControl::weeklyClick(System::Object^ sender, System::Eve
 				conData->Close();
 				conData->Open();
 				//peice:
-				MySqlCommand^ cmdDB2 = gcnew MySqlCommand("select sum(b.price), bl.book_id, b.title from book_store.book_list bl inner join book_store.shoping_carts s on bl.shoping_cart_id = s.shoping_cart_id inner join book_store.books b on bl.book_id = b.book_id WHERE  done = 'yes' and (order_date >= '2020-11-01' and order_date <= '2020-11-20') group by b.price;", conData);
+				MySqlCommand^ cmdDB2 = gcnew MySqlCommand("select sum(b.price), bl.book_id, b.title from book_store.book_list bl inner join book_store.purchases s on bl.purchase_id = s.purchase_id inner join book_store.books b on bl.book_id = b.book_id WHERE   (pyment_date >= '2020-11-01' and pyment_date <= '2020-11-20') group by b.price;", conData);
 				MySqlDataReader^ myRender2;
 				try {
 					myRender2 = cmdDB2->ExecuteReader();
@@ -416,7 +416,7 @@ System::Void BEBS::SalesControl::weeklyClick(System::Object^ sender, System::Eve
 
 Void BEBS::SalesControl::fillAll(void) {
 		MySqlConnection^ conData = gcnew MySqlConnection(con);
-		MySqlCommand^ cmdDB = gcnew MySqlCommand("select count(bl.book_id), bl.book_id, b.title, order_date from book_store.book_list bl inner join book_store.shoping_carts s on bl.shoping_cart_id = s.shoping_cart_id inner join book_store.books b on bl.book_id = b.book_id WHERE  done = 'yes' and (order_date >= '2020-11-01' and order_date <= '2020-11-20') group by b.book_id;", conData);
+		MySqlCommand^ cmdDB = gcnew MySqlCommand("select count(bl.book_id), bl.book_id, b.title, pyment_date from book_store.book_list bl inner join book_store.purchases s on bl.purchase_id = s.purchase_id inner join book_store.books b on bl.book_id = b.book_id WHERE   (pyment_date >= '2020-11-01' and pyment_date <= '2020-11-20') group by b.book_id;", conData);
 		MySqlDataReader^ myRender;
 
 		try {
@@ -440,7 +440,7 @@ Void BEBS::SalesControl::fillAll(void) {
 System::Void BEBS::SalesControl::quarterlyClick(System::Object^ sender, System::EventArgs^ e) {
 		MySqlConnection^ conData = gcnew MySqlConnection(con);
 
-		MySqlCommand^ cmdDB = gcnew MySqlCommand("select count(bl.book_id), bl.book_id, b.title from book_store.book_list bl inner join book_store.shoping_carts s on bl.shoping_cart_id = s.shoping_cart_id inner join book_store.books b on bl.book_id = b.book_id WHERE  done = 'yes' and (order_date >= '2020-06-01' and order_date <= '2021-01-01') group by b.book_id;", conData);
+		MySqlCommand^ cmdDB = gcnew MySqlCommand("select count(bl.book_id), bl.book_id, b.title from book_store.book_list bl inner join book_store.purchases s on bl.purchase_id = s.purchase_id inner join book_store.books b on bl.book_id = b.book_id WHERE  (pyment_date >= '2020-06-01' and pyment_date <= '2021-01-01') group by b.book_id;", conData);
 		MySqlDataReader^ myRender;
 
 		this->chart1->Series["Books"]->Points->Clear();
@@ -462,7 +462,7 @@ System::Void BEBS::SalesControl::quarterlyClick(System::Object^ sender, System::
 			/*
 			conData->Close();
 			//peice:
-			MySqlCommand^ cmdDB2 = gcnew MySqlCommand("select sum(b.price), bl.book_id, b.title from book_store.book_list bl inner join book_store.shoping_carts s on bl.shoping_cart_id = s.shoping_cart_id inner join book_store.books b on bl.book_id = b.book_id WHERE  done = 'yes' and MONTH(order_date) = 11 and Year(order_date) = 2020 group by b.price;", conData);
+			MySqlCommand^ cmdDB2 = gcnew MySqlCommand("select sum(b.price), bl.book_id, b.title from book_store.book_list bl inner join book_store.purchases s on bl.purchase_id = s.purchase_id inner join book_store.books b on bl.book_id = b.book_id WHERE   MONTH(pyment_date) = 11 and Year(pyment_date) = 2020 group by b.price;", conData);
 			MySqlDataReader^ myRender2;
 			try {
 				conData->Open();

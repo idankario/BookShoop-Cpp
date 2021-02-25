@@ -4,7 +4,7 @@
 int main(array<String^>^ args) {
     Application::EnableVisualStyles();
     Application::SetCompatibleTextRenderingDefault(false);
-    BEBS::LogInMenu form;
+    BEBS::AdminMenu form;
     form.ShowDialog();
 
     return 0;

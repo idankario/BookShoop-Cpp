@@ -69,8 +69,9 @@ namespace BEBS {
 		System::Void addItem_Click4(System::Object^ sender, System::EventArgs^ e);
 		System::Void SearchIcon_Click(System::Object^ sender, System::EventArgs^ e);
 		System::Void PayBillClick(System::Object^ sender, System::EventArgs^ e);
+		void setPic(System::Windows::Forms::PictureBox^ pic, System::Windows::Forms::Label^ title, System::Windows::Forms::Label^ price);
 
-	private: System::Void Invoice_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+		System::Void Invoice_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 
 
 	}

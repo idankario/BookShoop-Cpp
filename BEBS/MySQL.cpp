@@ -107,7 +107,7 @@ Book^ getBookMyRender(MySqlDataReader^ myRender)
 }
 Book^ MySQL::getListOfBook()
 {
-	MySqlCommand^ cmdDB = gcnew MySqlCommand("select * from book_store.books where amount>1;", conData);
+	MySqlCommand^ cmdDB = gcnew MySqlCommand("select * from book_store.books where amount>1 and active_item=true;", conData);
 	Book^ head = nullptr,^next = nullptr;
 	try {
 		conData->Open();
@@ -160,7 +160,7 @@ Book^ MySQL::searchBooks(strP s)
 //SELECT trackid, name FROM tracks WHERE name LIKE 'Wild%'
 void MySQL::deleteBook(strP id)
 {
-	MySqlCommand^ cmdDB = gcnew MySqlCommand("delete from book_store.books where book_id='" + id + "' ;", conData);
+	MySqlCommand^ cmdDB = gcnew MySqlCommand("UPDATE  book_store.books SET  active_item = false WHERE book_id ='" + id + "' ;", conData);
 	MySqlDataReader^ myRender;
 	Book^ head = nullptr, ^next = nullptr;
 	try {
@@ -265,19 +265,19 @@ strP  MySQL::getPassqord(strP user)
 }
 void  MySQL::quarterlyProfit(System::Windows::Forms::DataVisualization::Charting::Chart^ chart1, System::Windows::Forms::DataGridView^ dataGridView1)
 {
-	MySqlCommand^ cmdDB = gcnew MySqlCommand("select bl.book_id as Id, b.title as Title, sum(b.price) as Price from book_store.book_list bl inner join book_store.shoping_carts s on bl.shoping_cart_id = s.shoping_cart_id inner join book_store.books b on bl.book_id = b.book_id WHERE  done = 'yes' and (order_date >= '2020-06-01' and order_date <= '2021-01-01') group by b.price;", conData);
+	MySqlCommand^ cmdDB = gcnew MySqlCommand("select  bl.book_id as Id, b.title as Title, sum(b.price) as Price  from book_store.book_list bl inner join book_store.purchases s on bl.purchase_id = s.purchase_id inner join book_store.books b on bl.book_id = b.book_id where pyment_date >= now()-interval 4 month group by b.price;", conData);
 	setValueChart(chart1, dataGridView1, cmdDB);
 	
 }
 void  MySQL::monthlyProfit(System::Windows::Forms::DataVisualization::Charting::Chart^ chart1, System::Windows::Forms::DataGridView^ dataGridView1)
 {
-	MySqlCommand^ cmdDB = gcnew MySqlCommand("select bl.book_id as Id, b.title as Title, sum(b.price) as Price  from book_store.book_list bl inner join book_store.shoping_carts s on bl.shoping_cart_id = s.shoping_cart_id inner join book_store.books b on bl.book_id = b.book_id WHERE  done = 'yes' and (MONTH(order_date)=11 and Year(order_date)=2020) group by b.price;", conData);
+	MySqlCommand^ cmdDB = gcnew MySqlCommand("select  bl.book_id as Id, b.title as Title, sum(b.price) as Price  from book_store.book_list bl inner join book_store.purchases s on bl.purchase_id = s.purchase_id inner join book_store.books b on bl.book_id = b.book_id where pyment_date >= now()-interval 1 month group by b.price;", conData);
 	setValueChart(chart1, dataGridView1, cmdDB);
 
 }
 void  MySQL::weeklyProfit(System::Windows::Forms::DataVisualization::Charting::Chart^ chart1, System::Windows::Forms::DataGridView^ dataGridView1)
 {
-	MySqlCommand^ cmdDB = gcnew MySqlCommand("select bl.book_id as Id, b.title as Title, sum(b.price) as Price  from book_store.book_list bl inner join book_store.shoping_carts s on bl.shoping_cart_id = s.shoping_cart_id inner join book_store.books b on bl.book_id = b.book_id WHERE  done = 'yes' and (order_date >= '2020-11-01' and order_date <= '2020-11-20') group by b.price;", conData);
+	MySqlCommand^ cmdDB = gcnew MySqlCommand("select  bl.book_id as Id, b.title as Title, sum(b.price) as Price  from book_store.book_list bl inner join book_store.purchases s on bl.purchase_id = s.purchase_id inner join book_store.books b on bl.book_id = b.book_id where pyment_date >= now()-interval 1 week group by b.price;", conData);
 	setValueChart(chart1, dataGridView1, cmdDB);
 
 }

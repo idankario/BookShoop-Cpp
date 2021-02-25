@@ -43,10 +43,10 @@ void Inventory::BookLIndex()
 }
 Book^ Inventory::getBook()
 {
-	Book^ b = head;
-	if (head == nullptr)
-		return head;
 	int size = head->getNumItem();
+	if (size <2)
+		return head;
+	Book^ b = head;
 	index++;
 	if (index == size)
 		index = 0;
