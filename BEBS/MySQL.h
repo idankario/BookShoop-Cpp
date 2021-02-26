@@ -33,6 +33,9 @@
 		int insertPurchase(strP cartId,strP userId, strP pamentM, strP totalBill);
 		int getDiscount(strP id);
 		void insertBookList(int idP,int itemId,int amount, strP price);
+		void disactiveDiscount(strP id);
+		Boolean executeCmd(MySqlCommand^ cmdDB);
+		void updateDiscount(strP id,strP percent,strP dateStart,strP dateEnd);
 		
 		//SELECT trackid, name FROM tracks WHERE name LIKE 'Wild%'
 	protected:

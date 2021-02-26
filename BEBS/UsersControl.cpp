@@ -48,7 +48,6 @@ void BEBS::UsersControl::InitializeComponent(void)
 	this->DiscountButton = (gcnew System::Windows::Forms::Button());
 	this->OrderButton = (gcnew System::Windows::Forms::Button());
 	this->UsersButton = (gcnew System::Windows::Forms::Button());
-	this->SalesButton = (gcnew System::Windows::Forms::Button());
 	this->ProfitButton = (gcnew System::Windows::Forms::Button());
 	textBoxStatus = (gcnew System::Windows::Forms::TextBox());
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->HomePage))->BeginInit();
@@ -249,7 +248,7 @@ void BEBS::UsersControl::InitializeComponent(void)
 	this->UpdateInventoryButton->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->UpdateInventoryButton->ForeColor = System::Drawing::SystemColors::HighlightText;
-	this->UpdateInventoryButton->Location = System::Drawing::Point(817, 12);
+	this->UpdateInventoryButton->Location = System::Drawing::Point(705, 12);
 	this->UpdateInventoryButton->Name = L"UpdateInventoryButton";
 	this->UpdateInventoryButton->Size = System::Drawing::Size(104, 50);
 	this->UpdateInventoryButton->TabIndex = 70;
@@ -301,21 +300,6 @@ void BEBS::UsersControl::InitializeComponent(void)
 	this->UsersButton->Text = L"Users";
 	this->UsersButton->UseVisualStyleBackColor = false;
 	// 
-	// SalesButton
-	// 
-	this->SalesButton->BackColor = System::Drawing::SystemColors::ActiveCaption;
-	this->SalesButton->Cursor = System::Windows::Forms::Cursors::Hand;
-	this->SalesButton->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-		static_cast<System::Byte>(0)));
-	this->SalesButton->ForeColor = System::Drawing::SystemColors::HighlightText;
-	this->SalesButton->Location = System::Drawing::Point(595, 12);
-	this->SalesButton->Name = L"SalesButton";
-	this->SalesButton->Size = System::Drawing::Size(106, 50);
-	this->SalesButton->TabIndex = 66;
-	this->SalesButton->Text = L"Sales";
-	this->SalesButton->UseVisualStyleBackColor = false;
-	this->SalesButton->Click += gcnew System::EventHandler(this, &UsersControl::SalesClick);
-	// 
 	// ProfitButton
 	// 
 	this->ProfitButton->BackColor = System::Drawing::SystemColors::ActiveCaption;
@@ -323,7 +307,7 @@ void BEBS::UsersControl::InitializeComponent(void)
 	this->ProfitButton->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->ProfitButton->ForeColor = System::Drawing::SystemColors::HighlightText;
-	this->ProfitButton->Location = System::Drawing::Point(707, 12);
+	this->ProfitButton->Location = System::Drawing::Point(595, 12);
 	this->ProfitButton->Name = L"ProfitButton";
 	this->ProfitButton->Size = System::Drawing::Size(104, 50);
 	this->ProfitButton->TabIndex = 65;
@@ -341,7 +325,6 @@ void BEBS::UsersControl::InitializeComponent(void)
 	this->Controls->Add(this->DiscountButton);
 	this->Controls->Add(this->OrderButton);
 	this->Controls->Add(this->UsersButton);
-	this->Controls->Add(this->SalesButton);
 	this->Controls->Add(this->ProfitButton);
 	this->Controls->Add(this->userPurchesTable);
 	this->Controls->Add(this->textPurchases);
@@ -557,11 +540,6 @@ System::Void BEBS::UsersControl::OrdersClick(System::Object^ sender, System::Eve
 	this->~UsersControl();
 	BEBS::OrdersControl order;
 	order.ShowDialog();
-}
-System::Void BEBS::UsersControl::SalesClick(System::Object^ sender, System::EventArgs^ e) {
-	this->~UsersControl();
-	BEBS::SalesControl sales;
-	sales.ShowDialog();
 }
 System::Void BEBS::UsersControl::ProfitClick(System::Object^ sender, System::EventArgs^ e) {
 	this->~UsersControl();

@@ -22,6 +22,7 @@ CREATE TABLE discounts (
     user_id_discount VARCHAR(5) DEFAULT "all",
     date_from DATE NOT NULL,
     date_until DATE NOT NULL,
+    active_discount boolean DEFAULT true ,
     PRIMARY KEY (discount_id)
 );
 CREATE TABLE books (

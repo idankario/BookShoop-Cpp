@@ -5,7 +5,30 @@ MySQL::MySQL()
 	constr = "datasource=localhost; port=3306; username=root; password=bebs";
 	conData = gcnew MySqlConnection(constr);
 }
+MySQL::~MySQL()
+{
 
+}
+strP  MySQL::getPassqord(strP user)
+{
+	strP pass;
+	if (user == "*************")
+		return pass;
+	MySqlCommand^ cmdDB = gcnew MySqlCommand("select pass from book_store.users where email='" + user + "';", conData);
+	try {
+		conData->Open();
+		MySqlDataReader^ myRender = cmdDB->ExecuteReader();
+		if (myRender->Read())
+		{
+			pass = myRender->GetString("pass");
+		}
+		myRender->Close();
+	}
+	catch (Exception^ ex) {
+		MessageBox::Show(ex->Message);
+	}
+	return pass;
+}
 User^ MySQL::getInstaseUser(strP user, strP password)
 {
 	User^ t = nullptr;
@@ -34,24 +57,6 @@ User^ MySQL::getInstaseUser(strP user, strP password)
 	conData->Close();
 	return t;
 }
-Boolean  MySQL::addNewUser(strP email, strP password, strP name)
-{
-	MySqlCommand^ cmdDB;
-	cmdDB = gcnew MySqlCommand("INSERT INTO `book_store`.`users`(`user_name`,`email`,`pass`)VALUES('" + name + "','" + email + "','" + password + "');", conData);
-	try {
-		conData->Open();
-		MySqlDataReader^ my_reader = cmdDB->ExecuteReader();
-		my_reader->Close();
-	}
-	catch (Exception^ ex) {
-		MessageBox::Show(ex->Message);
-		return false;
-	}
-	conData->Close();
-	return true;
-}
-
-
 BindingSource^ MySQL::GetBookTable()
 {
 	BindingSource^ bSource = gcnew BindingSource();
@@ -68,8 +73,6 @@ BindingSource^ MySQL::GetBookTable()
 	}
 	return bSource;
 }
-
-
 BindingSource^ MySQL::GetUserTable()
 {
 	BindingSource^ bSource = gcnew BindingSource();
@@ -86,11 +89,6 @@ BindingSource^ MySQL::GetUserTable()
 	}
 	return bSource;
 }
-
-MySQL::~MySQL()
-{
-
-}
 Book^ getBookMyRender(MySqlDataReader^ myRender)
 {
 	strP bookId = myRender->GetString("book_id"),
@@ -103,38 +101,12 @@ Book^ getBookMyRender(MySqlDataReader^ myRender)
 		info = myRender->GetString("info"),
 		img = "Image\\books\\" + myRender->GetString("img"),
 		authorName = myRender->GetString("author");
-	return gcnew Book(bookId, title, pages, section, price, amount, publishDate, info,img, authorName,nullptr);
+	return gcnew Book(bookId, title, pages, section, price, amount, publishDate, info, img, authorName, nullptr);
 }
 Book^ MySQL::getListOfBook()
 {
 	MySqlCommand^ cmdDB = gcnew MySqlCommand("select * from book_store.books where amount>1 and active_item=true;", conData);
-	Book^ head = nullptr,^next = nullptr;
-	try {
-		conData->Open();
-		MySqlDataReader^ myRender = cmdDB->ExecuteReader();
-		if (myRender->Read())
-		{
-			head = getBookMyRender(myRender);
-			next = head;
-		}
-		while (myRender->Read())
-		{
-			next->next = getBookMyRender(myRender);
-			next = safe_cast<Book^>(next->next);
-		}
-		
-		myRender->Close();
-	}
-	catch (Exception^ ex) {
-		MessageBox::Show(ex->Message);
-	}
-	conData->Close();
-	return head;
-}
-Book^ MySQL::searchBooks(strP s)
-{
-	MySqlCommand^ cmdDB = gcnew MySqlCommand("select * from book_store.books where amount>1 and CONCAT(`book_id`,`title`,`pages`, `section`,`price`,`amount`,`publish_date`,`info`,`img`,`author`) LIKE '%"+s+"%';", conData);
-	Book^ head = nullptr, ^next = nullptr;
+	Book^ head = nullptr, ^ next = nullptr;
 	try {
 		conData->Open();
 		MySqlDataReader^ myRender = cmdDB->ExecuteReader();
@@ -158,145 +130,86 @@ Book^ MySQL::searchBooks(strP s)
 	return head;
 }
 //SELECT trackid, name FROM tracks WHERE name LIKE 'Wild%'
-void MySQL::deleteBook(strP id)
+Book^ MySQL::searchBooks(strP s)
 {
-	MySqlCommand^ cmdDB = gcnew MySqlCommand("UPDATE  book_store.books SET  active_item = false WHERE book_id ='" + id + "' ;", conData);
-	MySqlDataReader^ myRender;
-	Book^ head = nullptr, ^next = nullptr;
+	MySqlCommand^ cmdDB = gcnew MySqlCommand("select * from book_store.books where amount>1 and CONCAT(`book_id`,`title`,`pages`, `section`,`price`,`amount`,`publish_date`,`info`,`img`,`author`) LIKE '%" + s + "%';", conData);
+	Book^ head = nullptr, ^ next = nullptr;
 	try {
 		conData->Open();
-		myRender = cmdDB->ExecuteReader();
-		MessageBox::Show("Deleted");
-		while (myRender->Read()) {
-
+		MySqlDataReader^ myRender = cmdDB->ExecuteReader();
+		if (myRender->Read())
+		{
+			head = getBookMyRender(myRender);
+			next = head;
+		}
+		while (myRender->Read())
+		{
+			next->next = getBookMyRender(myRender);
+			next = safe_cast<Book^>(next->next);
 		}
 
+		myRender->Close();
 	}
 	catch (Exception^ ex) {
 		MessageBox::Show(ex->Message);
 	}
+	conData->Close();
+	return head;
+}
+Boolean MySQL::executeCmd(MySqlCommand^ cmdDB)
+{
+	MySqlDataReader^ myRender;
+	conData->Open();
+	try {
+		myRender = cmdDB->ExecuteReader();
+		while (myRender->Read());
+	}
+	catch (Exception^ ex) {
+		MessageBox::Show(ex->Message);
+		return false;
+	}
+	myRender->Close();
+	conData->Close();
+	return true;
+}
+Boolean  MySQL::addNewUser(strP email, strP password, strP name)
+{
+	MySqlCommand^ cmdDB;
+	cmdDB = gcnew MySqlCommand("INSERT INTO `book_store`.`users`(`user_name`,`email`,`pass`)VALUES('" + name + "','" + email + "','" + password + "');", conData);
+	Boolean s = executeCmd(cmdDB);
+	return s;
+}
+void MySQL::deleteBook(strP id)
+{
+	MySqlCommand^ cmdDB = gcnew MySqlCommand("UPDATE  book_store.books SET  active_item = false WHERE book_id ='" + id + "' ;", conData);
+	conData->Open();
+	if(executeCmd(cmdDB))
+		MessageBox::Show("Book Disactive");
+	conData->Close();
 }
 void MySQL::updateBook(strP title, strP page, strP section, strP price, strP amount,strP info, strP img, strP author, strP id)
 {
 	MySqlCommand^ cmdDB = gcnew MySqlCommand("update book_store.books set title='" + title + "',pages='" + page + "',section='" + section + "',price= '" + 
 											price + "' ,amount='" + amount + "',info='" + info + "',author='" + author +
 											"',img='" + img + "' where book_id='" + id + "' ;", conData);
-	MySqlDataReader^ myRender; 
-	try {
-		conData->Open();
-		myRender = cmdDB->ExecuteReader();
-		MessageBox::Show("Update");
-		while (myRender->Read()) {
-
-		}
-
-	}
-	catch (Exception^ ex) {
-		MessageBox::Show(ex->Message);
-	}
+	if (executeCmd(cmdDB))
+		MessageBox::Show("Book Update");
 }
 
 void  MySQL::createNewBook(strP title, strP page, strP section, strP price, strP amount, strP info,
 	strP img, strP author)
 {
 	MySqlCommand^ cmdDB = gcnew MySqlCommand("INSERT INTO `book_store`.`books`(`title`,`pages` ,`section`,`price`,`amount`,`info`,`img`,`author`) VALUES('" 
-											 + title + "','" + page + "','" + section + "', '" + price + "' ,'" + amount + "','" + info+ "','"
-											 + img + "','" + author + "');", conData);
-	MySqlDataReader^ myRender;
-	try {
-		conData->Open();
-		myRender = cmdDB->ExecuteReader();
-		while (myRender->Read()) {
-
-		}
-	}
-	catch (Exception^ ex) {
-		MessageBox::Show(ex->Message);
-	}
+											 + title + "','" + page + "','" + section + "', '" + price + "' ,'" + amount + "','" + info+ "','"+ img + "','" + author + "');", conData);
+	if (executeCmd(cmdDB))
+		MessageBox::Show("Crete new Book Success");
 }
 
-void MySQL::setValueChart(System::Windows::Forms::DataVisualization::Charting::Chart^ chart1, System::Windows::Forms::DataGridView^ dataGridView1, MySqlCommand^ cmdDB)
+int  MySQL::insertPurchase(strP cartId, strP userId, strP pamentM, strP totalBill)
 {
-	MySqlDataReader^ myRender;
-	chart1->Series["Books"]->Points->Clear();
-	try {
-		conData->Open();
-		myRender = cmdDB->ExecuteReader();
-		while (myRender->Read()) {
-			chart1->Series["Books"]->Points->AddXY(myRender->GetString("Id"), myRender->GetInt32("Price"));
-		}
-		conData->Close();
-	
-		MySqlDataAdapter^ sda = gcnew MySqlDataAdapter();
-		sda->SelectCommand = cmdDB;
-		DataTable^ dbdataset = gcnew DataTable();
-		sda->Fill(dbdataset);
-		BindingSource^ bSorce = gcnew BindingSource();
-		bSorce->DataSource = dbdataset;
-		dataGridView1->DataSource = bSorce;
-		sda->Update(dbdataset);
-	}
-	catch (Exception^ ex) {
-		MessageBox::Show(ex->Message);
-	}
-}
-strP  MySQL::getPassqord(strP user)
-{
-	strP pass;
-	if (user== "*************")
-		return pass;
-
-	MySqlCommand^ cmdDB = gcnew MySqlCommand("select pass from book_store.users where email='"+ user +"';", conData);
-	try {
-		conData->Open();
-		MySqlDataReader^ myRender = cmdDB->ExecuteReader();
-		if (myRender->Read())
-		{
-			pass = myRender->GetString("pass");
-		}
-		myRender->Close();
-	}
-	catch (Exception^ ex) {
-		MessageBox::Show(ex->Message);
-	}
-	
-	return pass;
-
-}
-void  MySQL::quarterlyProfit(System::Windows::Forms::DataVisualization::Charting::Chart^ chart1, System::Windows::Forms::DataGridView^ dataGridView1)
-{
-	MySqlCommand^ cmdDB = gcnew MySqlCommand("select  bl.book_id as Id, b.title as Title, sum(b.price) as Price  from book_store.book_list bl inner join book_store.purchases s on bl.purchase_id = s.purchase_id inner join book_store.books b on bl.book_id = b.book_id where pyment_date >= now()-interval 4 month group by b.price;", conData);
-	setValueChart(chart1, dataGridView1, cmdDB);
-}
-void  MySQL::monthlyProfit(System::Windows::Forms::DataVisualization::Charting::Chart^ chart1, System::Windows::Forms::DataGridView^ dataGridView1)
-{
-	MySqlCommand^ cmdDB = gcnew MySqlCommand("select  bl.book_id as Id, b.title as Title, sum(b.price) as Price  from book_store.book_list bl inner join book_store.purchases s on bl.purchase_id = s.purchase_id inner join book_store.books b on bl.book_id = b.book_id where pyment_date >= now()-interval 1 month group by b.price;", conData);
-	setValueChart(chart1, dataGridView1, cmdDB);
-
-}
-void  MySQL::weeklyProfit(System::Windows::Forms::DataVisualization::Charting::Chart^ chart1, System::Windows::Forms::DataGridView^ dataGridView1)
-{
-	MySqlCommand^ cmdDB = gcnew MySqlCommand("select  bl.book_id as Id, b.title as Title, sum(b.price) as Price  from book_store.book_list bl inner join book_store.purchases s on bl.purchase_id = s.purchase_id inner join book_store.books b on bl.book_id = b.book_id where pyment_date >= now()-interval 1 week group by b.price;", conData);
-	setValueChart(chart1, dataGridView1, cmdDB);
-
-}
-int  MySQL::insertPurchase(strP cartId, strP userId,strP pamentM, strP totalBill)
-{		
-	
 	MySqlCommand^ cmdDB = gcnew MySqlCommand("INSERT INTO `book_store`.`purchases`(`cart_id`,`user_id`,`payment_method`,`price_paid`)VALUES('"
 		+ cartId + "','" + userId + "','" + pamentM + "', '" + totalBill + "');", conData);
-	try {
-
-		conData->Open();
-		MySqlDataReader^ myRender = cmdDB->ExecuteReader();
-		while (myRender->Read()) {
-
-		}
-		myRender->Close();
-	}
-	catch (Exception^ ex) {
-		MessageBox::Show(ex->Message);
-	}
+	executeCmd(cmdDB);
 	int purchaseId;
 	MySqlCommand^ cmdDB1 = gcnew MySqlCommand("SELECT max(purchase_id) as id from book_store.purchases ;", conData);
 	try {
@@ -329,8 +242,71 @@ int MySQL::getDiscount(strP id)
 }
 void MySQL::insertBookList(int idP, int itemId, int amount, strP price)
 {
-
 	MySqlCommand^ cmdDB = gcnew MySqlCommand("INSERT INTO `book_store`.`book_list`(`purchase_id`,`book_id`,`amount`,`price`)VALUES('"
 		+ idP + "','" + itemId + "','" + amount + "', '" + price + "');", conData);
+	executeCmd(cmdDB);
+}
+void MySQL::disactiveDiscount(strP id)
+{
+	MySqlCommand^ cmdDB = gcnew MySqlCommand("UPDATE  book_store.discounts SET  active_discount = false where discount_id='" + id + "' ;", conData);
+	MySqlDataReader^ myRender;
+	if (executeCmd(cmdDB))
+		MessageBox::Show("Disactive Discount");
+
+}
+void  MySQL::updateDiscount(strP id, strP percent, strP dateStart, strP dateEnd)
+{
+	MySqlCommand^ cmdDB = gcnew MySqlCommand("UPDATE  book_store.discounts SET percent='" + percent + "',date_from='" 
+											+ dateStart + "',date_until='" + dateEnd + "'where discount_id='" + id + "' ;", conData);
+	MySqlDataReader^ myRender;
+	if (executeCmd(cmdDB))
+		MessageBox::Show("Update Discount");
+}
+
+
+
+
+
+
+void MySQL::setValueChart(System::Windows::Forms::DataVisualization::Charting::Chart^ chart1, System::Windows::Forms::DataGridView^ dataGridView1, MySqlCommand^ cmdDB)
+{
+	MySqlDataReader^ myRender;
+	chart1->Series["Books"]->Points->Clear();
+	try {
+		conData->Open();
+		myRender = cmdDB->ExecuteReader();
+		while (myRender->Read()) {
+			chart1->Series["Books"]->Points->AddXY(myRender->GetString("Id"), myRender->GetInt32("Price"));
+		}
+		conData->Close();
+		MySqlDataAdapter^ sda = gcnew MySqlDataAdapter();
+		sda->SelectCommand = cmdDB;
+		DataTable^ dbdataset = gcnew DataTable();
+		sda->Fill(dbdataset);
+		BindingSource^ bSorce = gcnew BindingSource();
+		bSorce->DataSource = dbdataset;
+		dataGridView1->DataSource = bSorce;
+		sda->Update(dbdataset);
+	}
+	catch (Exception^ ex) {
+		MessageBox::Show(ex->Message);
+	}
+}
+
+void  MySQL::quarterlyProfit(System::Windows::Forms::DataVisualization::Charting::Chart^ chart1, System::Windows::Forms::DataGridView^ dataGridView1)
+{
+	MySqlCommand^ cmdDB = gcnew MySqlCommand("select  bl.book_id as Id, b.title as Title, sum(b.price) as Price  from book_store.book_list bl inner join book_store.purchases s on bl.purchase_id = s.purchase_id inner join book_store.books b on bl.book_id = b.book_id where pyment_date >= now()-interval 4 month group by b.price;", conData);
+	setValueChart(chart1, dataGridView1, cmdDB);
+}
+void  MySQL::monthlyProfit(System::Windows::Forms::DataVisualization::Charting::Chart^ chart1, System::Windows::Forms::DataGridView^ dataGridView1)
+{
+	MySqlCommand^ cmdDB = gcnew MySqlCommand("select  bl.book_id as Id, b.title as Title, sum(b.price) as Price  from book_store.book_list bl inner join book_store.purchases s on bl.purchase_id = s.purchase_id inner join book_store.books b on bl.book_id = b.book_id where pyment_date >= now()-interval 1 month group by b.price;", conData);
+	setValueChart(chart1, dataGridView1, cmdDB);
+
+}
+void  MySQL::weeklyProfit(System::Windows::Forms::DataVisualization::Charting::Chart^ chart1, System::Windows::Forms::DataGridView^ dataGridView1)
+{
+	MySqlCommand^ cmdDB = gcnew MySqlCommand("select  bl.book_id as Id, b.title as Title, sum(b.price) as Price  from book_store.book_list bl inner join book_store.purchases s on bl.purchase_id = s.purchase_id inner join book_store.books b on bl.book_id = b.book_id where pyment_date >= now()-interval 1 week group by b.price;", conData);
+	setValueChart(chart1, dataGridView1, cmdDB);
 
 }

@@ -153,4 +153,7 @@ Class MySQL: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     insertPurchase(String, String, String, String): PrivateScope, Public, HideBySig
     getDiscount(String): PrivateScope, Public, HideBySig
     insertBookList(Int32, Int32, Int32, String): PrivateScope, Public, HideBySig
+    disactiveDiscount(String): PrivateScope, Public, HideBySig
+    executeCmd(MySqlCommand): PrivateScope, Public, HideBySig
+    updateDiscount(String, String, String, String): PrivateScope, Public, HideBySig
     Dispose(): PrivateScope, Public, Final, Virtual, HideBySig

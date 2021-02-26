@@ -11,6 +11,8 @@
   LogInMenu.cpp
   Manager.cpp
   MySQL.cpp
+C:\Users\gal\Desktop\BEBS\BEBS\MySQL.cpp(252,19): warning C4101: 'myRender': unreferenced local variable
+C:\Users\gal\Desktop\BEBS\BEBS\MySQL.cpp(261,19): warning C4101: 'myRender': unreferenced local variable
   OrdersControl.cpp
   ProfitControl.cpp
   RegisterMenu.cpp
@@ -19,6 +21,5 @@
   User.cpp
   UsersControl.cpp
   Generating Code...
-  .NETFramework,Version=v4.7.2.AssemblyAttributes.cpp
   AdminMenu.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
   BEBS.vcxproj -> C:\Users\gal\Desktop\BEBS\x64\Debug\BEBS.exe

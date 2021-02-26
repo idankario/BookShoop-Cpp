@@ -25,17 +25,13 @@ BEBS::SalesControl::~SalesControl()
 
 		void BEBS::SalesControl::InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(SalesControl::typeid));
 			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea1 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
 			System::Windows::Forms::DataVisualization::Charting::Legend^ legend1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
 			System::Windows::Forms::DataVisualization::Charting::Series^ series1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
-			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(SalesControl::typeid));
 			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea2 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
 			System::Windows::Forms::DataVisualization::Charting::Legend^ legend2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
 			System::Windows::Forms::DataVisualization::Charting::Series^ series2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea3 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Legend^ legend3 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series3 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
-			this->chart1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
 			this->HomePage = (gcnew System::Windows::Forms::PictureBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->chart2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
@@ -49,29 +45,10 @@ BEBS::SalesControl::~SalesControl()
 			this->UsersButton = (gcnew System::Windows::Forms::Button());
 			this->SalesButton = (gcnew System::Windows::Forms::Button());
 			this->ProfitButton = (gcnew System::Windows::Forms::Button());
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->HomePage))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart2))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart3))->BeginInit();
 			this->SuspendLayout();
-			// 
-			// chart1
-			// 
-			chartArea1->Name = L"ChartArea1";
-			this->chart1->ChartAreas->Add(chartArea1);
-			legend1->Name = L"Legend1";
-			this->chart1->Legends->Add(legend1);
-			this->chart1->Location = System::Drawing::Point(53, 206);
-			this->chart1->Name = L"chart1";
-			series1->ChartArea = L"ChartArea1";
-			series1->Color = System::Drawing::Color::MidnightBlue;
-			series1->Legend = L"Legend1";
-			series1->Name = L"Books";
-			series1->YValuesPerPoint = 2;
-			this->chart1->Series->Add(series1);
-			this->chart1->Size = System::Drawing::Size(458, 342);
-			this->chart1->TabIndex = 0;
-			this->chart1->Text = L"chart1";
 			// 
 			// HomePage
 			// 
@@ -100,40 +77,40 @@ BEBS::SalesControl::~SalesControl()
 			// 
 			// chart2
 			// 
-			chartArea2->Name = L"ChartArea1";
-			this->chart2->ChartAreas->Add(chartArea2);
-			legend2->Name = L"Legend1";
-			this->chart2->Legends->Add(legend2);
+			chartArea1->Name = L"ChartArea1";
+			this->chart2->ChartAreas->Add(chartArea1);
+			legend1->Name = L"Legend1";
+			this->chart2->Legends->Add(legend1);
 			this->chart2->Location = System::Drawing::Point(531, 137);
 			this->chart2->Name = L"chart2";
-			series2->BorderWidth = 5;
-			series2->ChartArea = L"ChartArea1";
-			series2->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
-			series2->Color = System::Drawing::Color::MidnightBlue;
-			series2->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			series1->BorderWidth = 5;
+			series1->ChartArea = L"ChartArea1";
+			series1->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
+			series1->Color = System::Drawing::Color::MidnightBlue;
+			series1->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			series2->LabelForeColor = System::Drawing::Color::MidnightBlue;
-			series2->Legend = L"Legend1";
-			series2->Name = L"Books";
-			this->chart2->Series->Add(series2);
+			series1->LabelForeColor = System::Drawing::Color::MidnightBlue;
+			series1->Legend = L"Legend1";
+			series1->Name = L"Books";
+			this->chart2->Series->Add(series1);
 			this->chart2->Size = System::Drawing::Size(465, 168);
 			this->chart2->TabIndex = 28;
 			this->chart2->Text = L"chart2";
 			// 
 			// chart3
 			// 
-			chartArea3->Name = L"ChartArea1";
-			this->chart3->ChartAreas->Add(chartArea3);
-			legend3->Name = L"Legend1";
-			this->chart3->Legends->Add(legend3);
+			chartArea2->Name = L"ChartArea1";
+			this->chart3->ChartAreas->Add(chartArea2);
+			legend2->Name = L"Legend1";
+			this->chart3->Legends->Add(legend2);
 			this->chart3->Location = System::Drawing::Point(531, 347);
 			this->chart3->Name = L"chart3";
-			series3->ChartArea = L"ChartArea1";
-			series3->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Pie;
-			series3->Color = System::Drawing::Color::Blue;
-			series3->Legend = L"Legend1";
-			series3->Name = L"Books";
-			this->chart3->Series->Add(series3);
+			series2->ChartArea = L"ChartArea1";
+			series2->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Pie;
+			series2->Color = System::Drawing::Color::Blue;
+			series2->Legend = L"Legend1";
+			series2->Name = L"Books";
+			this->chart3->Series->Add(series2);
 			this->chart3->Size = System::Drawing::Size(465, 201);
 			this->chart3->TabIndex = 29;
 			this->chart3->Text = L"chart3";
@@ -300,12 +277,10 @@ BEBS::SalesControl::~SalesControl()
 			this->Controls->Add(this->chart2);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->HomePage);
-			this->Controls->Add(this->chart1);
 			this->ForeColor = System::Drawing::SystemColors::ControlText;
 			this->Name = L"SalesControl";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"SalesControl";
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart1))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->HomePage))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart2))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart3))->EndInit();
@@ -325,7 +300,7 @@ System::Void BEBS::SalesControl::monthlyClick(System::Object^ sender, System::Ev
 		MySqlCommand^ cmdDB = gcnew MySqlCommand("select count(bl.book_id), bl.book_id, b.title from book_store.book_list bl inner join book_store.purchases s on bl.purchase_id = s.purchase_id inner join book_store.books b on bl.book_id = b.book_id WHERE   MONTH(pyment_date) = 11 and Year(pyment_date) = 2020 group by b.book_id;", conData);
 		MySqlDataReader^ myRender;
 
-		this->chart1->Series["Books"]->Points->Clear();
+		
 		this->chart2->Series["Books"]->Points->Clear();
 		this->chart3->Series["Books"]->Points->Clear();
 
@@ -336,7 +311,6 @@ System::Void BEBS::SalesControl::monthlyClick(System::Object^ sender, System::Ev
 				String^ vtitle = myRender->GetString("title");
 				String^ vprice = myRender->GetInt32("count(bl.book_id)").ToString();
 
-				this->chart1->Series["Books"]->Points->AddXY(vtitle, myRender->GetInt32("count(bl.book_id)"));
 				this->chart2->Series["Books"]->Points->AddXY(vtitle, myRender->GetInt32("count(bl.book_id)"));
 				this->chart3->Series["Books"]->Points->AddXY(vtitle, myRender->GetInt32("count(bl.book_id)"));
 			}
@@ -371,7 +345,7 @@ System::Void BEBS::SalesControl::weeklyClick(System::Object^ sender, System::Eve
 		MySqlCommand^ cmdDB = gcnew MySqlCommand("select count(bl.book_id), bl.book_id, b.title, pyment_date from book_store.book_list bl inner join book_store.purchases s on bl.purchase_id = s.purchase_id inner join book_store.books b on bl.book_id = b.book_id  (pyment_date >= '2020-11-01' and pyment_date <= '2020-11-20') group by b.book_id;", conData);
 		MySqlDataReader^ myRender;
 
-		this->chart1->Series["Books"]->Points->Clear();
+		
 		this->chart2->Series["Books"]->Points->Clear();
 		this->chart3->Series["Books"]->Points->Clear();
 
@@ -382,7 +356,7 @@ System::Void BEBS::SalesControl::weeklyClick(System::Object^ sender, System::Eve
 				String^ vtitle = myRender->GetString("title");
 				String^ vprice = myRender->GetInt32("count(bl.book_id)").ToString();
 
-				this->chart1->Series["Books"]->Points->AddXY(vtitle, myRender->GetInt32("count(bl.book_id)"));
+				\
 				this->chart2->Series["Books"]->Points->AddXY(vtitle, myRender->GetInt32("count(bl.book_id)"));
 				this->chart3->Series["Books"]->Points->AddXY(vtitle, myRender->GetInt32("count(bl.book_id)"));
 
@@ -426,7 +400,7 @@ Void BEBS::SalesControl::fillAll(void) {
 				String^ vtitle = myRender->GetString("title");
 				String^ vprice = myRender->GetInt32("count(bl.book_id)").ToString();
 
-				this->chart1->Series["Books"]->Points->AddXY(vtitle, myRender->GetInt32("count(bl.book_id)"));
+			
 				this->chart2->Series["Books"]->Points->AddXY(vtitle, myRender->GetInt32("count(bl.book_id)"));
 				this->chart3->Series["Books"]->Points->AddXY(vtitle, myRender->GetInt32("count(bl.book_id)"));
 			}
@@ -443,7 +417,7 @@ System::Void BEBS::SalesControl::quarterlyClick(System::Object^ sender, System::
 		MySqlCommand^ cmdDB = gcnew MySqlCommand("select count(bl.book_id), bl.book_id, b.title from book_store.book_list bl inner join book_store.purchases s on bl.purchase_id = s.purchase_id inner join book_store.books b on bl.book_id = b.book_id WHERE  (pyment_date >= '2020-06-01' and pyment_date <= '2021-01-01') group by b.book_id;", conData);
 		MySqlDataReader^ myRender;
 
-		this->chart1->Series["Books"]->Points->Clear();
+		
 		this->chart2->Series["Books"]->Points->Clear();
 		this->chart3->Series["Books"]->Points->Clear();
 
@@ -454,7 +428,7 @@ System::Void BEBS::SalesControl::quarterlyClick(System::Object^ sender, System::
 				String^ vtitle = myRender->GetString("title");
 				String^ vprice = myRender->GetInt32("count(bl.book_id)").ToString();
 
-				this->chart1->Series["Books"]->Points->AddXY(vtitle, myRender->GetInt32("count(bl.book_id)"));
+				
 				this->chart2->Series["Books"]->Points->AddXY(vtitle, myRender->GetInt32("count(bl.book_id)"));
 				this->chart3->Series["Books"]->Points->AddXY(vtitle, myRender->GetInt32("count(bl.book_id)"));
 			}

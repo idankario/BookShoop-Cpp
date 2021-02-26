@@ -23,7 +23,6 @@ namespace BEBS {
 		System::Windows::Forms::TextBox^ info_txt;
 		System::Windows::Forms::TextBox^ title_txt;
 		System::Windows::Forms::Button^ ProfitButton;
-		System::Windows::Forms::Button^ SalesButton;
 		System::Windows::Forms::Button^ UsersButton;
 		System::Windows::Forms::Button^ OrderButton;
 		System::Windows::Forms::Button^ SAVE;
@@ -55,7 +54,6 @@ namespace BEBS {
 		System::Void DiscountClick(System::Object^ sender, System::EventArgs^ e);
 		System::Void OrdersClick(System::Object^ sender, System::EventArgs^ e);
 		System::Void UsersClick(System::Object^ sender, System::EventArgs^ e);
-		System::Void SalesClick(System::Object^ sender, System::EventArgs^ e);
 		System::Void ProfitClick(System::Object^ sender, System::EventArgs^ e);
 		System::Void HomePageClick(System::Object^ sender, System::EventArgs^ e);
 		System::Void itemImageClick(System::Object^ sender, System::EventArgs^ e);

@@ -24,10 +24,13 @@ BEBS::ProfitControl::~ProfitControl()
 
 		void BEBS::ProfitControl::InitializeComponent(void)
 		{
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea3 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Legend^ legend3 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series3 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea1 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^ legend1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(ProfitControl::typeid));
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea2 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^ legend2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			this->weekly = (gcnew System::Windows::Forms::Button());
 			this->Monthly = (gcnew System::Windows::Forms::Button());
 			this->Quarterly = (gcnew System::Windows::Forms::Button());
@@ -38,11 +41,12 @@ BEBS::ProfitControl::~ProfitControl()
 			this->DiscountButton = (gcnew System::Windows::Forms::Button());
 			this->OrderButton = (gcnew System::Windows::Forms::Button());
 			this->UsersButton = (gcnew System::Windows::Forms::Button());
-			this->SalesButton = (gcnew System::Windows::Forms::Button());
 			this->ProfitButton = (gcnew System::Windows::Forms::Button());
+			this->chart2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->HomePage))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart2))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// weekly
@@ -101,19 +105,19 @@ BEBS::ProfitControl::~ProfitControl()
 			// 
 			// chart1
 			// 
-			chartArea3->Name = L"ChartArea1";
-			this->chart1->ChartAreas->Add(chartArea3);
-			legend3->Name = L"Legend1";
-			this->chart1->Legends->Add(legend3);
-			this->chart1->Location = System::Drawing::Point(557, 135);
+			chartArea1->Name = L"ChartArea1";
+			this->chart1->ChartAreas->Add(chartArea1);
+			legend1->Name = L"Legend1";
+			this->chart1->Legends->Add(legend1);
+			this->chart1->Location = System::Drawing::Point(438, 222);
 			this->chart1->Name = L"chart1";
-			series3->ChartArea = L"ChartArea1";
-			series3->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Pie;
-			series3->Color = System::Drawing::Color::Blue;
-			series3->Legend = L"Legend1";
-			series3->Name = L"Books";
-			this->chart1->Series->Add(series3);
-			this->chart1->Size = System::Drawing::Size(435, 400);
+			series1->ChartArea = L"ChartArea1";
+			series1->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Pie;
+			series1->Color = System::Drawing::Color::Blue;
+			series1->Legend = L"Legend1";
+			series1->Name = L"Books";
+			this->chart1->Series->Add(series1);
+			this->chart1->Size = System::Drawing::Size(317, 313);
 			this->chart1->TabIndex = 36;
 			this->chart1->Text = L"chart1";
 			// 
@@ -147,7 +151,7 @@ BEBS::ProfitControl::~ProfitControl()
 			this->dataGridView1->ShowCellToolTips = false;
 			this->dataGridView1->ShowEditingIcon = false;
 			this->dataGridView1->ShowRowErrors = false;
-			this->dataGridView1->Size = System::Drawing::Size(465, 313);
+			this->dataGridView1->Size = System::Drawing::Size(356, 313);
 			this->dataGridView1->TabIndex = 38;
 			// 
 			// UpdateInventoryButton
@@ -157,7 +161,7 @@ BEBS::ProfitControl::~ProfitControl()
 			this->UpdateInventoryButton->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->UpdateInventoryButton->ForeColor = System::Drawing::SystemColors::HighlightText;
-			this->UpdateInventoryButton->Location = System::Drawing::Point(817, 12);
+			this->UpdateInventoryButton->Location = System::Drawing::Point(707, 12);
 			this->UpdateInventoryButton->Name = L"UpdateInventoryButton";
 			this->UpdateInventoryButton->Size = System::Drawing::Size(104, 50);
 			this->UpdateInventoryButton->TabIndex = 64;
@@ -210,21 +214,6 @@ BEBS::ProfitControl::~ProfitControl()
 			this->UsersButton->UseVisualStyleBackColor = false;
 			this->UsersButton->Click += gcnew System::EventHandler(this, &ProfitControl::UsersClick);
 			// 
-			// SalesButton
-			// 
-			this->SalesButton->BackColor = System::Drawing::SystemColors::ActiveCaption;
-			this->SalesButton->Cursor = System::Windows::Forms::Cursors::Hand;
-			this->SalesButton->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->SalesButton->ForeColor = System::Drawing::SystemColors::HighlightText;
-			this->SalesButton->Location = System::Drawing::Point(595, 12);
-			this->SalesButton->Name = L"SalesButton";
-			this->SalesButton->Size = System::Drawing::Size(106, 50);
-			this->SalesButton->TabIndex = 60;
-			this->SalesButton->Text = L"Sales";
-			this->SalesButton->UseVisualStyleBackColor = false;
-			this->SalesButton->Click += gcnew System::EventHandler(this, &ProfitControl::SalesClick);
-			// 
 			// ProfitButton
 			// 
 			this->ProfitButton->BackColor = System::Drawing::Color::Gray;
@@ -232,12 +221,30 @@ BEBS::ProfitControl::~ProfitControl()
 			this->ProfitButton->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->ProfitButton->ForeColor = System::Drawing::SystemColors::HighlightText;
-			this->ProfitButton->Location = System::Drawing::Point(707, 12);
+			this->ProfitButton->Location = System::Drawing::Point(597, 12);
 			this->ProfitButton->Name = L"ProfitButton";
 			this->ProfitButton->Size = System::Drawing::Size(104, 50);
 			this->ProfitButton->TabIndex = 59;
 			this->ProfitButton->Text = L"Profit";
 			this->ProfitButton->UseVisualStyleBackColor = false;
+			// 
+			// chart2
+			// 
+			chartArea2->Name = L"ChartArea1";
+			this->chart2->ChartAreas->Add(chartArea2);
+			legend2->Name = L"Legend1";
+			this->chart2->Legends->Add(legend2);
+			this->chart2->Location = System::Drawing::Point(774, 222);
+			this->chart2->Name = L"chart2";
+			series2->ChartArea = L"ChartArea1";
+			series2->Color = System::Drawing::Color::MidnightBlue;
+			series2->Legend = L"Legend1";
+			series2->Name = L"Books";
+			series2->YValuesPerPoint = 2;
+			this->chart2->Series->Add(series2);
+			this->chart2->Size = System::Drawing::Size(329, 313);
+			this->chart2->TabIndex = 65;
+			this->chart2->Text = L"chart2";
 			// 
 			// ProfitControl
 			// 
@@ -245,11 +252,11 @@ BEBS::ProfitControl::~ProfitControl()
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->ClientSize = System::Drawing::Size(1115, 582);
+			this->Controls->Add(this->chart2);
 			this->Controls->Add(this->UpdateInventoryButton);
 			this->Controls->Add(this->DiscountButton);
 			this->Controls->Add(this->OrderButton);
 			this->Controls->Add(this->UsersButton);
-			this->Controls->Add(this->SalesButton);
 			this->Controls->Add(this->ProfitButton);
 			this->Controls->Add(this->dataGridView1);
 			this->Controls->Add(this->HomePage);
@@ -265,6 +272,7 @@ BEBS::ProfitControl::~ProfitControl()
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart1))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->HomePage))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart2))->EndInit();
 			this->ResumeLayout(false);
 
 		}
@@ -303,11 +311,6 @@ BEBS::ProfitControl::~ProfitControl()
 		this->~ProfitControl();
 		BEBS::UsersControl users;
 		users.ShowDialog();
-	}
-	System::Void BEBS::ProfitControl::SalesClick(System::Object^ sender, System::EventArgs^ e) {
-		this->~ProfitControl();
-		BEBS::SalesControl sales;
-		sales.ShowDialog();
 	}
 	System::Void BEBS::ProfitControl::OrdersClick(System::Object^ sender, System::EventArgs^ e) {
 		this->~ProfitControl();

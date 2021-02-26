@@ -14,7 +14,7 @@ namespace BEBS {
 		~SalesControl();
 	private: 
 		String^ con = L"datasource=localhost; port=3306; username=root; password=bebs";
-		System::Windows::Forms::DataVisualization::Charting::Chart^ chart1;
+
 		Form^ lastForm;
 		System::Windows::Forms::PictureBox^ HomePage;
 		System::Windows::Forms::Label^ label1;

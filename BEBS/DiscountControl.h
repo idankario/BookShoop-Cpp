@@ -37,7 +37,6 @@ namespace BEBS {
 		System::Windows::Forms::Button^ DiscountButton;
 		System::Windows::Forms::Button^ OrderButton;
 		System::Windows::Forms::Button^ UsersButton;
-		System::Windows::Forms::Button^ SalesButton;
 		System::Windows::Forms::Button^ ProfitButton;
 		String^ con = L"datasource=localhost; port=3306; username=root; password=bebs";
 #pragma region Windows Form Designer generated code
@@ -55,13 +54,12 @@ namespace BEBS {
 		System::Void SAVE_Click(System::Object^ sender, System::EventArgs^ e);
 		System::Void listBox2_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e);
 		System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e);
-		System::Void edit_Click(System::Object^ sender, System::EventArgs^ e);
+		System::Void updateClick(System::Object^ sender, System::EventArgs^ e);
 		System::Void block_Click(System::Object^ sender, System::EventArgs^ e);
 
 		System::Void InventoryClick(System::Object^ sender, System::EventArgs^ e);
 		System::Void OrdersClick(System::Object^ sender, System::EventArgs^ e);
 		System::Void UsersClick(System::Object^ sender, System::EventArgs^ e);
-		System::Void SalesClick(System::Object^ sender, System::EventArgs^ e);
 		System::Void ProfitClick(System::Object^ sender, System::EventArgs^ e);
 		System::Void HomePageClick(System::Object^ sender, System::EventArgs^ e);
 

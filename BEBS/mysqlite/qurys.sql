@@ -48,6 +48,6 @@ select  bl.book_id as Id, b.title as Title, sum(b.price) as Price  from book_sto
 select count(bl.book_id), bl.book_id, b.title from book_store.book_list bl inner join book_store.purchases s on bl.purchase_id = s.purchase_id inner join book_store.books b on bl.book_id = b.book_id WHERE   MONTH(order_date) = 11 and Year(order_date) = 2020 group by b.book_id;
 		
 select max(percent) from book_store.discounts where now()>=date_from and now()<=date_until and user_id_discount=1||user_id_discount ='all';
-
+UPDATE  book_store.discounts SET  active_discount = false where discount_id=1;
 
 
