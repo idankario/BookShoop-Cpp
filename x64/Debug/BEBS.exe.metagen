@@ -157,7 +157,7 @@ Class MySQL: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     disactiveDiscount(Int32): PrivateScope, Public, HideBySig
     fillListDiscountExpired(ListBox): PrivateScope, Public, HideBySig
     updateDiscount(String, String, String, String): PrivateScope, Public, HideBySig
-    saveDiscount(TextBox, TextBox, TextBox): PrivateScope, Public, HideBySig
-    setValueDiscountFiled(Int32, TextBox, TextBox, TextBox): PrivateScope, Public, HideBySig
+    saveDiscount(TextBox, String, String): PrivateScope, Public, HideBySig
+    setValueDiscountFiled(Int32, TextBox, DateTimePicker, DateTimePicker): PrivateScope, Public, HideBySig
     executeCmd(MySqlCommand): PrivateScope, Public, HideBySig
     Dispose(): PrivateScope, Public, Final, Virtual, HideBySig

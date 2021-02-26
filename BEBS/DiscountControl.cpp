@@ -4,7 +4,6 @@ BEBS::DiscountControl::DiscountControl(void)
 	InitializeComponent();
 	fillListBox();
 	fillListBox2();
-	MySQL db;
 }
 BEBS::DiscountControl::DiscountControl(Form^ lastForm)
 {
@@ -12,7 +11,6 @@ BEBS::DiscountControl::DiscountControl(Form^ lastForm)
 	InitializeComponent();
 	fillListBox();
 	fillListBox2();
-	MySQL db;
 }
 BEBS::DiscountControl::~DiscountControl()
 {
@@ -25,8 +23,6 @@ void BEBS::DiscountControl::InitializeComponent(void)
 {
 	System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(DiscountControl::typeid));
 	this->discount = (gcnew System::Windows::Forms::TextBox());
-	this->start = (gcnew System::Windows::Forms::TextBox());
-	this->end = (gcnew System::Windows::Forms::TextBox());
 	this->label2 = (gcnew System::Windows::Forms::Label());
 	this->label1 = (gcnew System::Windows::Forms::Label());
 	this->label3 = (gcnew System::Windows::Forms::Label());
@@ -43,41 +39,24 @@ void BEBS::DiscountControl::InitializeComponent(void)
 	this->OrderButton = (gcnew System::Windows::Forms::Button());
 	this->UsersButton = (gcnew System::Windows::Forms::Button());
 	this->ProfitButton = (gcnew System::Windows::Forms::Button());
+	this->dateTimeStart = (gcnew System::Windows::Forms::DateTimePicker());
+	this->dateTimeEnd = (gcnew System::Windows::Forms::DateTimePicker());
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->HomePage))->BeginInit();
 	this->SuspendLayout();
 	// 
 	// discount
 	// 
-	this->discount->BackColor = System::Drawing::Color::Black;
-	this->discount->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+	this->discount->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+		| System::Windows::Forms::AnchorStyles::Left)
+		| System::Windows::Forms::AnchorStyles::Right));
+	this->discount->BackColor = System::Drawing::Color::White;
+	this->discount->Font = (gcnew System::Drawing::Font(L"Arial", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
-	this->discount->ForeColor = System::Drawing::Color::White;
+	this->discount->ForeColor = System::Drawing::Color::Black;
 	this->discount->Location = System::Drawing::Point(51, 131);
 	this->discount->Name = L"discount";
-	this->discount->Size = System::Drawing::Size(485, 34);
+	this->discount->Size = System::Drawing::Size(336, 30);
 	this->discount->TabIndex = 29;
-	// 
-	// start
-	// 
-	this->start->BackColor = System::Drawing::Color::Black;
-	this->start->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-		static_cast<System::Byte>(0)));
-	this->start->ForeColor = System::Drawing::Color::White;
-	this->start->Location = System::Drawing::Point(53, 244);
-	this->start->Name = L"start";
-	this->start->Size = System::Drawing::Size(485, 34);
-	this->start->TabIndex = 30;
-	// 
-	// end
-	// 
-	this->end->BackColor = System::Drawing::Color::Black;
-	this->end->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-		static_cast<System::Byte>(0)));
-	this->end->ForeColor = System::Drawing::Color::White;
-	this->end->Location = System::Drawing::Point(53, 342);
-	this->end->Name = L"end";
-	this->end->Size = System::Drawing::Size(485, 34);
-	this->end->TabIndex = 31;
 	// 
 	// label2
 	// 
@@ -300,12 +279,58 @@ void BEBS::DiscountControl::InitializeComponent(void)
 	this->ProfitButton->UseVisualStyleBackColor = false;
 	this->ProfitButton->Click += gcnew System::EventHandler(this, &DiscountControl::ProfitClick);
 	// 
+	// dateTimeStart
+	// 
+	this->dateTimeStart->AccessibleRole = System::Windows::Forms::AccessibleRole::None;
+	this->dateTimeStart->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+		| System::Windows::Forms::AnchorStyles::Left)
+		| System::Windows::Forms::AnchorStyles::Right));
+	this->dateTimeStart->CalendarMonthBackground = System::Drawing::Color::Black;
+	this->dateTimeStart->CalendarTitleBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)),
+		static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(255)));
+	this->dateTimeStart->CalendarTitleForeColor = System::Drawing::Color::Black;
+	this->dateTimeStart->CalendarTrailingForeColor = System::Drawing::Color::Gray;
+	this->dateTimeStart->Cursor = System::Windows::Forms::Cursors::WaitCursor;
+	this->dateTimeStart->CustomFormat = L"                 yyyy-MM-dd";
+	this->dateTimeStart->Font = (gcnew System::Drawing::Font(L"Arial", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+		static_cast<System::Byte>(0)));
+	this->dateTimeStart->Format = System::Windows::Forms::DateTimePickerFormat::Custom;
+	this->dateTimeStart->ImeMode = System::Windows::Forms::ImeMode::NoControl;
+	this->dateTimeStart->Location = System::Drawing::Point(53, 251);
+	this->dateTimeStart->Margin = System::Windows::Forms::Padding(20);
+	this->dateTimeStart->MinDate = System::DateTime(2020, 1, 10, 0, 0, 0, 0);
+	this->dateTimeStart->Name = L"dateTimeStart";
+	this->dateTimeStart->Size = System::Drawing::Size(334, 30);
+	this->dateTimeStart->TabIndex = 100;
+	this->dateTimeStart->UseWaitCursor = true;
+	this->dateTimeStart->Value = System::DateTime(2021, 2, 26, 20, 56, 35, 0);
+	// 
+	// dateTimeEnd
+	// 
+	this->dateTimeEnd->CalendarMonthBackground = System::Drawing::Color::Black;
+	this->dateTimeEnd->Cursor = System::Windows::Forms::Cursors::WaitCursor;
+	this->dateTimeEnd->CustomFormat = L"                 yyyy-MM-dd";
+	this->dateTimeEnd->Font = (gcnew System::Drawing::Font(L"Arial", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+		static_cast<System::Byte>(0)));
+	this->dateTimeEnd->Format = System::Windows::Forms::DateTimePickerFormat::Custom;
+	this->dateTimeEnd->ImeMode = System::Windows::Forms::ImeMode::NoControl;
+	this->dateTimeEnd->Location = System::Drawing::Point(51, 342);
+	this->dateTimeEnd->Margin = System::Windows::Forms::Padding(20);
+	this->dateTimeEnd->MinDate = System::DateTime(2021, 2, 27, 0, 0, 0, 0);
+	this->dateTimeEnd->Name = L"dateTimeEnd";
+	this->dateTimeEnd->Size = System::Drawing::Size(334, 30);
+	this->dateTimeEnd->TabIndex = 101;
+	this->dateTimeEnd->UseWaitCursor = true;
+	this->dateTimeEnd->Value = System::DateTime(2021, 2, 27, 0, 0, 0, 0);
+	// 
 	// DiscountControl
 	// 
 	this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::None;
 	this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 	this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 	this->ClientSize = System::Drawing::Size(1115, 582);
+	this->Controls->Add(this->dateTimeEnd);
+	this->Controls->Add(this->dateTimeStart);
 	this->Controls->Add(this->UpdateInventoryButton);
 	this->Controls->Add(this->DiscountButton);
 	this->Controls->Add(this->OrderButton);
@@ -322,8 +347,6 @@ void BEBS::DiscountControl::InitializeComponent(void)
 	this->Controls->Add(this->label3);
 	this->Controls->Add(this->label1);
 	this->Controls->Add(this->label2);
-	this->Controls->Add(this->end);
-	this->Controls->Add(this->start);
 	this->Controls->Add(this->discount);
 	this->Name = L"DiscountControl";
 	this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
@@ -347,23 +370,31 @@ Void BEBS::DiscountControl::fillListBox2(void) {
 
 
 System::Void BEBS::DiscountControl::SAVE_Click(System::Object^ sender, System::EventArgs^ e) {
-	MySQL db;
-	db.saveDiscount(discount,start,end);
-	this->~DiscountControl();
-	BEBS::DiscountControl renderPage;
-	renderPage.ShowDialog();
+	if (dateTimeEnd->Text > dateTimeStart->Text && dateTimeStart->Text > System::DateTime::Today)
+	{
+		MySQL db;
+		db.saveDiscount(discount, dateTimeStart->Text, dateTimeEnd->Text);
+		this->~DiscountControl();
+		BEBS::DiscountControl renderPage;
+		renderPage.ShowDialog();
+	}
+	else
+		MessageBox::Show("Check date");
 }
 System::Void BEBS::DiscountControl::listBox2_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e)
 {
 	int idD =(*line)[listBox2->SelectedIndex.ToString()];
 	MySQL db;
-	db.setValueDiscountFiled(idD,discount, start, end);
+	db.setValueDiscountFiled(idD,discount, dateTimeStart, dateTimeEnd);
 	discount->Name = idD.ToString();
 }
 
 System::Void BEBS::DiscountControl::updateClick(System::Object^ sender, System::EventArgs^ e) {
 	MySQL db;
-	db.updateDiscount(discount->Name, discount->Text, start->Text, end->Text);
+	db.updateDiscount(discount->Name, discount->Text, dateTimeStart->Text, dateTimeEnd->Text);
+	this->~DiscountControl();
+	BEBS::DiscountControl renderPage;
+	renderPage.ShowDialog();
 }
 System::Void BEBS::DiscountControl::deleteClick(System::Object^ sender, System::EventArgs^ e) {
 	MySQL db;

@@ -61,7 +61,7 @@ inline bool isGoodName(String ^ name) {
 	Regex^ pattern = gcnew Regex("^[a-zA-Z]{3,}([_ -]?[a-zA-Z0-9])*");
 	return pattern->IsMatch(name);
 }
-inline bool isInteger(String^ number)
+inline bool isNumber(String^ number)
 {
 
 	// Regular expression definition 

@@ -11,9 +11,7 @@
 	public:
 		String^ constr;
 		MySqlConnection^ conData;
-
 		MySQL();
-		
 		User^ getInstaseUser(strP user, strP password);
 		void deleteBook(strP s);
 		void updateBook(strP title, strP page, strP section, strP price, strP amount, strP info,strP img, strP author, strP id);
@@ -37,8 +35,8 @@
 	
 		void updateDiscount(strP id,strP percent,strP dateStart,strP dateEnd);
 
-		void saveDiscount(System::Windows::Forms::TextBox^ discount, System::Windows::Forms::TextBox^ start, System::Windows::Forms::TextBox^ end);
-		void setValueDiscountFiled(int idD, System::Windows::Forms::TextBox^ discount, System::Windows::Forms::TextBox^ start, System::Windows::Forms::TextBox^ end);
+		void saveDiscount(System::Windows::Forms::TextBox^ discount, strP start, strP end);
+		void setValueDiscountFiled(int idD, System::Windows::Forms::TextBox^ discount, System::Windows::Forms::DateTimePicker^ start, System::Windows::Forms::DateTimePicker^ end);
 		Boolean executeCmd(MySqlCommand^ cmdDB);
 		
 		//SELECT trackid, name FROM tracks WHERE name LIKE 'Wild%'
