@@ -5,7 +5,6 @@
 // Do not add files here that you will be updating frequently as this negates the performance advantage.
 #ifndef PCH_H // include guard
 #define PCH_H
-
 using namespace MySql::Data::MySqlClient;
 using namespace System;
 using namespace System::ComponentModel;
@@ -16,6 +15,7 @@ using namespace System::Drawing;
 using namespace System::Text::RegularExpressions;
 typedef String^ strP;
 #include <cliext/map>
+typedef cliext::map<String^, int> mapSI;
 #include "ProfitControl.h"
 #include "OrdersControl.h"
 #include "SalesControl.h"

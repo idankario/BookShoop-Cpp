@@ -1,8 +1,7 @@
 #pragma once
-typedef cliext::map<String^, int> Mymap;
-
 public ref class Coustomer: User
 {
+    
 public:
     Coustomer(strP userRole, strP userId, strP email, strP name, strP lastActivity);
     
@@ -17,7 +16,7 @@ protected:
     ~Coustomer(){}
 private:
     int totalCart;
-    Mymap cartShoping;
-    Mymap lineItems;
+    mapSI cartShoping;
+    mapSI lineItems;
 };
 

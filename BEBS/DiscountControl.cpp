@@ -3,28 +3,24 @@ BEBS::DiscountControl::DiscountControl(void)
 {
 	InitializeComponent();
 	fillListBox();
-	fillCurrent();
 	fillListBox2();
+	MySQL db;
 }
 BEBS::DiscountControl::DiscountControl(Form^ lastForm)
 {
 	this->lastForm = lastForm;
 	InitializeComponent();
 	fillListBox();
-	fillCurrent();
 	fillListBox2();
+	MySQL db;
 }
-
 BEBS::DiscountControl::~DiscountControl()
-		{
-			if (components)
-			{
-				delete components;
-			}
-		}
-
-
-
+{
+	if (components)
+	{
+		delete components;
+	}
+}
 void BEBS::DiscountControl::InitializeComponent(void)
 {
 	System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(DiscountControl::typeid));
@@ -38,13 +34,10 @@ void BEBS::DiscountControl::InitializeComponent(void)
 	this->edit = (gcnew System::Windows::Forms::Button());
 	this->save = (gcnew System::Windows::Forms::Button());
 	this->HomePage = (gcnew System::Windows::Forms::PictureBox());
-	this->id_tet = (gcnew System::Windows::Forms::TextBox());
-	this->label4 = (gcnew System::Windows::Forms::Label());
 	this->listBox1 = (gcnew System::Windows::Forms::ListBox());
 	this->label6 = (gcnew System::Windows::Forms::Label());
 	this->label7 = (gcnew System::Windows::Forms::Label());
 	this->listBox2 = (gcnew System::Windows::Forms::ListBox());
-	this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 	this->UpdateInventoryButton = (gcnew System::Windows::Forms::Button());
 	this->DiscountButton = (gcnew System::Windows::Forms::Button());
 	this->OrderButton = (gcnew System::Windows::Forms::Button());
@@ -108,9 +101,9 @@ void BEBS::DiscountControl::InitializeComponent(void)
 	this->label1->ForeColor = System::Drawing::Color::White;
 	this->label1->Location = System::Drawing::Point(51, 207);
 	this->label1->Name = L"label1";
-	this->label1->Size = System::Drawing::Size(213, 24);
+	this->label1->Size = System::Drawing::Size(85, 24);
 	this->label1->TabIndex = 33;
-	this->label1->Text = L"Date Start :: YYYY-MM-DD";
+	this->label1->Text = L"Date Start";
 	// 
 	// label3
 	// 
@@ -121,9 +114,9 @@ void BEBS::DiscountControl::InitializeComponent(void)
 	this->label3->ForeColor = System::Drawing::Color::White;
 	this->label3->Location = System::Drawing::Point(47, 306);
 	this->label3->Name = L"label3";
-	this->label3->Size = System::Drawing::Size(212, 24);
+	this->label3->Size = System::Drawing::Size(84, 24);
 	this->label3->TabIndex = 34;
-	this->label3->Text = L"Date End ::  YYYY-MM-DD";
+	this->label3->Text = L"Date End ";
 	// 
 	// Delete
 	// 
@@ -139,7 +132,7 @@ void BEBS::DiscountControl::InitializeComponent(void)
 	this->Delete->TabIndex = 35;
 	this->Delete->Text = L"Delete";
 	this->Delete->UseVisualStyleBackColor = false;
-	this->Delete->Click += gcnew System::EventHandler(this, &DiscountControl::block_Click);
+	this->Delete->Click += gcnew System::EventHandler(this, &DiscountControl::deleteClick);
 	// 
 	// edit
 	// 
@@ -184,30 +177,6 @@ void BEBS::DiscountControl::InitializeComponent(void)
 	this->HomePage->TabStop = false;
 	this->HomePage->Click += gcnew System::EventHandler(this, &DiscountControl::HomePageClick);
 	// 
-	// id_tet
-	// 
-	this->id_tet->BackColor = System::Drawing::Color::Black;
-	this->id_tet->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-		static_cast<System::Byte>(0)));
-	this->id_tet->ForeColor = System::Drawing::Color::White;
-	this->id_tet->Location = System::Drawing::Point(53, 424);
-	this->id_tet->Name = L"id_tet";
-	this->id_tet->Size = System::Drawing::Size(485, 34);
-	this->id_tet->TabIndex = 40;
-	// 
-	// label4
-	// 
-	this->label4->AutoSize = true;
-	this->label4->BackColor = System::Drawing::Color::Transparent;
-	this->label4->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-		static_cast<System::Byte>(0)));
-	this->label4->ForeColor = System::Drawing::Color::White;
-	this->label4->Location = System::Drawing::Point(47, 388);
-	this->label4->Name = L"label4";
-	this->label4->Size = System::Drawing::Size(24, 24);
-	this->label4->TabIndex = 41;
-	this->label4->Text = L"Id";
-	// 
 	// listBox1
 	// 
 	this->listBox1->BackColor = System::Drawing::Color::Black;
@@ -218,7 +187,6 @@ void BEBS::DiscountControl::InitializeComponent(void)
 	this->listBox1->Name = L"listBox1";
 	this->listBox1->Size = System::Drawing::Size(310, 116);
 	this->listBox1->TabIndex = 42;
-	this->listBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &DiscountControl::listBox1_SelectedIndexChanged);
 	// 
 	// label6
 	// 
@@ -242,9 +210,9 @@ void BEBS::DiscountControl::InitializeComponent(void)
 	this->label7->ForeColor = System::Drawing::Color::White;
 	this->label7->Location = System::Drawing::Point(628, 89);
 	this->label7->Name = L"label7";
-	this->label7->Size = System::Drawing::Size(138, 24);
+	this->label7->Size = System::Drawing::Size(81, 24);
 	this->label7->TabIndex = 44;
-	this->label7->Text = L"Future  Discounts";
+	this->label7->Text = L"Discounts";
 	// 
 	// listBox2
 	// 
@@ -252,22 +220,11 @@ void BEBS::DiscountControl::InitializeComponent(void)
 	this->listBox2->ForeColor = System::Drawing::Color::White;
 	this->listBox2->FormattingEnabled = true;
 	this->listBox2->ItemHeight = 16;
-	this->listBox2->Location = System::Drawing::Point(628, 172);
+	this->listBox2->Location = System::Drawing::Point(628, 131);
 	this->listBox2->Name = L"listBox2";
 	this->listBox2->Size = System::Drawing::Size(310, 116);
 	this->listBox2->TabIndex = 45;
 	this->listBox2->SelectedIndexChanged += gcnew System::EventHandler(this, &DiscountControl::listBox2_SelectedIndexChanged);
-	// 
-	// comboBox1
-	// 
-	this->comboBox1->BackColor = System::Drawing::Color::Black;
-	this->comboBox1->ForeColor = System::Drawing::Color::White;
-	this->comboBox1->FormattingEnabled = true;
-	this->comboBox1->Location = System::Drawing::Point(628, 131);
-	this->comboBox1->Name = L"comboBox1";
-	this->comboBox1->Size = System::Drawing::Size(310, 24);
-	this->comboBox1->TabIndex = 46;
-	this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &DiscountControl::comboBox1_SelectedIndexChanged);
 	// 
 	// UpdateInventoryButton
 	// 
@@ -354,13 +311,10 @@ void BEBS::DiscountControl::InitializeComponent(void)
 	this->Controls->Add(this->OrderButton);
 	this->Controls->Add(this->UsersButton);
 	this->Controls->Add(this->ProfitButton);
-	this->Controls->Add(this->comboBox1);
 	this->Controls->Add(this->listBox2);
 	this->Controls->Add(this->label7);
 	this->Controls->Add(this->label6);
 	this->Controls->Add(this->listBox1);
-	this->Controls->Add(this->label4);
-	this->Controls->Add(this->id_tet);
 	this->Controls->Add(this->HomePage);
 	this->Controls->Add(this->save);
 	this->Controls->Add(this->edit);
@@ -380,161 +334,40 @@ void BEBS::DiscountControl::InitializeComponent(void)
 
 }
 
-System::Void BEBS::DiscountControl::listBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
-}
-
 Void BEBS::DiscountControl::fillListBox(void) {
-	
-	MySqlConnection^ conData = gcnew MySqlConnection(con);
-	MySqlCommand^ cmdDB = gcnew MySqlCommand("select * from book_store.discounts  where (date_from >= '2018-01-01' and  date_until <= '2021-01-17');", conData);
-	MySqlDataReader^ myRender;
-
-	try {
-		conData->Open();
-		myRender = cmdDB->ExecuteReader();
-		while (myRender->Read()) {
-			String^ vpercent = myRender->GetString("percent");
-			String^ vfrom = myRender->GetString("date_from");
-			String^ vuntil = myRender->GetString("date_until");
-			String^ vid = myRender->GetInt32("discount_id").ToString();
-
-			listBox1->Items->Add(vpercent + "% ,FROM " + vfrom + " TO " + vuntil);
-		}
-	}
-	catch (Exception^ ex) {
-		MessageBox::Show(ex->Message);
-	}
+	MySQL db;
+	db.fillListDiscountExpired(listBox1);
 }
 
 
 Void BEBS::DiscountControl::fillListBox2(void) {
-	
-	MySqlConnection^ conData = gcnew MySqlConnection(con);
-	MySqlCommand^ cmdDB = gcnew MySqlCommand("select * from book_store.discounts where (date_from >= '2021-01-18' and  date_until <= '2021-12-30');", conData);
-	MySqlDataReader^ myRender;
-
-	try {
-		conData->Open();
-		myRender = cmdDB->ExecuteReader();
-		while (myRender->Read()) {
-			String^ vpercent = myRender->GetString("percent");
-			String^ vfrom = myRender->GetString("date_from");
-			String^ vuntil = myRender->GetString("date_until");
-			String^ vid = myRender->GetInt32("discount_id").ToString();
-
-			listBox2->Items->Add(vid + " : " + vpercent + "% ,FROM " + vfrom + " TO " + vuntil);
-			comboBox1->Items->Add(vid);
-		}
-	}
-	catch (Exception^ ex) {
-		MessageBox::Show(ex->Message);
-	}
+	MySQL db;
+	db.fillListDiscount(listBox2, line);
 }
 
-Void BEBS::DiscountControl::fillCurrent(void) {
 
-	MySqlConnection^ conData = gcnew MySqlConnection(con);
-	MySqlCommand^ cmdDB = gcnew MySqlCommand("select * from book_store.discounts  where (date_from >= '2020-12-30' and  date_until <= '2021-02-20');", conData);
-	MySqlDataReader^ myRender;
-
-	try {
-		conData->Open();
-		myRender = cmdDB->ExecuteReader();
-		while (myRender->Read()) {
-			String^ vpercent = myRender->GetString("percent");
-			String^ vfrom = myRender->GetString("date_from");
-			String^ vuntil = myRender->GetString("date_until");
-			String^ vid = myRender->GetInt32("discount_id").ToString();
-
-			id_tet->Text = vid;
-			discount->Text = vpercent;
-			start->Text = vfrom;
-			end->Text = vuntil;
-		}
-	}
-	catch (Exception^ ex) {
-		MessageBox::Show(ex->Message);
-	}
-}
 System::Void BEBS::DiscountControl::SAVE_Click(System::Object^ sender, System::EventArgs^ e) {
-	MySqlConnection^ conData = gcnew MySqlConnection(con);
-
-	int^ vId;
-	//get id count
-	MySqlCommand^ cmdDB0 = gcnew MySqlCommand("select count(*) from book_store.discounts;", conData);
-	MySqlDataReader^ myRender0;
-	try {
-		conData->Open();
-		myRender0 = cmdDB0->ExecuteReader();
-		while (myRender0->Read()) {
-			vId = myRender0->GetInt32("count(*)") + 1;
-		}
-
-		conData->Close();
-		conData->Open();
-		MySqlCommand^ cmdDB = gcnew MySqlCommand("INSERT INTO `book_store`.`discounts`(`discount_id`,`percent`,`date_from` ,`date_until`) VALUES('" + vId + "','" + discount->Text + "','" + start->Text + "','" + end->Text + "');", conData);
-		MySqlDataReader^ myRender;
-		try {
-			myRender = cmdDB->ExecuteReader();
-			MessageBox::Show("Added");
-			while (myRender->Read()) {
-
-			}
-			this->Hide();
-			BEBS::DiscountControl renderPage;
-			renderPage.ShowDialog();
-		}
-		catch (Exception^ ex) {
-			MessageBox::Show(ex->Message);
-		}
-
-	}
-	catch (Exception^ ex) {
-		MessageBox::Show(ex->Message);
-	}
-
-
-
+	MySQL db;
+	db.saveDiscount(discount,start,end);
+	this->~DiscountControl();
+	BEBS::DiscountControl renderPage;
+	renderPage.ShowDialog();
 }
-	System::Void BEBS::DiscountControl::listBox2_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
-	}
-System::Void BEBS::DiscountControl::comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
-	String^ listVal = comboBox1->Text;
-
-
-	MySqlConnection^ conData = gcnew MySqlConnection(con);
-	MySqlCommand^ cmdDB = gcnew MySqlCommand("select * from book_store.discounts where discount_id='" + listVal + "';", conData);
-	MySqlDataReader^ myRender;
-
-	try {
-		conData->Open();
-		myRender = cmdDB->ExecuteReader();
-
-		if (myRender->Read()) {
-			String^ vId = myRender->GetInt32("discount_id").ToString();
-			String^ vpercent = myRender->GetInt32("percent").ToString();
-			String^ vdate_from = myRender->GetString("date_from");
-			String^ vdate_until = myRender->GetString("date_until");
-
-
-			//set vals to text box
-			id_tet->Text = vId;
-			discount->Text = vpercent;
-			start->Text = vdate_from;
-			end->Text = vdate_until;
-		}
-	}
-	catch (Exception^ ex) {
-		MessageBox::Show(ex->Message);
-	}
+System::Void BEBS::DiscountControl::listBox2_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e)
+{
+	int idD =(*line)[listBox2->SelectedIndex.ToString()];
+	MySQL db;
+	db.setValueDiscountFiled(idD,discount, start, end);
+	discount->Name = idD.ToString();
 }
+
 System::Void BEBS::DiscountControl::updateClick(System::Object^ sender, System::EventArgs^ e) {
 	MySQL db;
-	db.updateDiscount(id_tet->Text, discount->Text, start->Text, end->Text);
+	db.updateDiscount(discount->Name, discount->Text, start->Text, end->Text);
 }
-System::Void BEBS::DiscountControl::block_Click(System::Object^ sender, System::EventArgs^ e) {
+System::Void BEBS::DiscountControl::deleteClick(System::Object^ sender, System::EventArgs^ e) {
 	MySQL db;
-	db.disactiveDiscount(id_tet->Text);
+	db.disactiveDiscount((*line)[listBox2->SelectedIndex.ToString()]);
 	this->~DiscountControl();
 	BEBS::DiscountControl renderPage;
 	renderPage.ShowDialog();
@@ -567,3 +400,4 @@ System::Void BEBS::DiscountControl::HomePageClick(System::Object^ sender, System
 	BEBS::HomePage HomePage;
 	HomePage.ShowDialog();
 }
+

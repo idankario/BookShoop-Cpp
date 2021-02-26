@@ -1,6 +1,4 @@
-
 #pragma once
-
 	public ref class MySQL
 	{
 		/**
@@ -25,6 +23,7 @@
 		BindingSource^ GetUserTable();
 		Book^ getListOfBook();
 		Book^ searchBooks(strP s);
+		void fillListDiscount(System::Windows::Forms::ListBox^ listD, mapSI^ line);
 		void setValueChart(System::Windows::Forms::DataVisualization::Charting::Chart^ chart1, System::Windows::Forms::DataGridView^ dataGridView1, MySqlCommand^ cmdDB);
 		void quarterlyProfit(System::Windows::Forms::DataVisualization::Charting::Chart^ chart1, System::Windows::Forms::DataGridView^ dataGridView1);
 		void monthlyProfit(System::Windows::Forms::DataVisualization::Charting::Chart^ chart1, System::Windows::Forms::DataGridView^ dataGridView1);
@@ -33,16 +32,21 @@
 		int insertPurchase(strP cartId,strP userId, strP pamentM, strP totalBill);
 		int getDiscount(strP id);
 		void insertBookList(int idP,int itemId,int amount, strP price);
-		void disactiveDiscount(strP id);
-		Boolean executeCmd(MySqlCommand^ cmdDB);
+		void disactiveDiscount(int id);
+		void fillListDiscountExpired(System::Windows::Forms::ListBox^ listD);
+	
 		void updateDiscount(strP id,strP percent,strP dateStart,strP dateEnd);
+
+		void saveDiscount(System::Windows::Forms::TextBox^ discount, System::Windows::Forms::TextBox^ start, System::Windows::Forms::TextBox^ end);
+		void setValueDiscountFiled(int idD, System::Windows::Forms::TextBox^ discount, System::Windows::Forms::TextBox^ start, System::Windows::Forms::TextBox^ end);
+		Boolean executeCmd(MySqlCommand^ cmdDB);
 		
 		//SELECT trackid, name FROM tracks WHERE name LIKE 'Wild%'
 	protected:
 		~MySQL();
 
 
-
+	private:
 };
 
 

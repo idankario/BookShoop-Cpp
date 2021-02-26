@@ -213,6 +213,7 @@ int  MySQL::insertPurchase(strP cartId, strP userId, strP pamentM, strP totalBil
 	int purchaseId;
 	MySqlCommand^ cmdDB1 = gcnew MySqlCommand("SELECT max(purchase_id) as id from book_store.purchases ;", conData);
 	try {
+		conData->Open();
 		MySqlDataReader^ myRender = cmdDB1->ExecuteReader();
 		if (myRender->Read()) {
 			purchaseId = myRender->GetInt32("id");
@@ -222,16 +223,17 @@ int  MySQL::insertPurchase(strP cartId, strP userId, strP pamentM, strP totalBil
 	catch (Exception^ ex) {
 		MessageBox::Show(ex->Message);
 	}
+	conData->Close();
 	return purchaseId;
 }
 int MySQL::getDiscount(strP id)
 {
-	MySqlCommand^ cmdDB = gcnew MySqlCommand("select max(percent) as p from book_store.discounts where now() >= date_from and now() <= date_until and user_id_discount ='" + id + "'|| user_id_discount = 'all';", conData);
+	MySqlCommand^ cmdDB = gcnew MySqlCommand("select max(percent) as p from book_store.discounts where active_discount=true and now() >= date_from and now() <= date_until and user_id_discount ='" + id + "'|| user_id_discount = 'all';", conData);
 	int persent;
 	try {
 		MySqlDataReader^ myRender = cmdDB->ExecuteReader();
 		if (myRender->Read()) {
-			persent = myRender->GetInt32("p");
+			persent = Convert::ToInt32(myRender->GetString("p"));
 		}
 		myRender->Close();
 	}
@@ -246,10 +248,9 @@ void MySQL::insertBookList(int idP, int itemId, int amount, strP price)
 		+ idP + "','" + itemId + "','" + amount + "', '" + price + "');", conData);
 	executeCmd(cmdDB);
 }
-void MySQL::disactiveDiscount(strP id)
+void MySQL::disactiveDiscount(int id)
 {
 	MySqlCommand^ cmdDB = gcnew MySqlCommand("UPDATE  book_store.discounts SET  active_discount = false where discount_id='" + id + "' ;", conData);
-	MySqlDataReader^ myRender;
 	if (executeCmd(cmdDB))
 		MessageBox::Show("Disactive Discount");
 
@@ -258,7 +259,6 @@ void  MySQL::updateDiscount(strP id, strP percent, strP dateStart, strP dateEnd)
 {
 	MySqlCommand^ cmdDB = gcnew MySqlCommand("UPDATE  book_store.discounts SET percent='" + percent + "',date_from='" 
 											+ dateStart + "',date_until='" + dateEnd + "'where discount_id='" + id + "' ;", conData);
-	MySqlDataReader^ myRender;
 	if (executeCmd(cmdDB))
 		MessageBox::Show("Update Discount");
 }
@@ -308,5 +308,70 @@ void  MySQL::weeklyProfit(System::Windows::Forms::DataVisualization::Charting::C
 {
 	MySqlCommand^ cmdDB = gcnew MySqlCommand("select  bl.book_id as Id, b.title as Title, sum(b.price) as Price  from book_store.book_list bl inner join book_store.purchases s on bl.purchase_id = s.purchase_id inner join book_store.books b on bl.book_id = b.book_id where pyment_date >= now()-interval 1 week group by b.price;", conData);
 	setValueChart(chart1, dataGridView1, cmdDB);
+
+}
+
+void MySQL::fillListDiscountExpired(System::Windows::Forms::ListBox^ listD)
+{
+	MySqlCommand^ cmdDB = gcnew MySqlCommand("select user_id_discount, percent ,date_from as df  ,date_until as du  from book_store.discounts where active_discount=false or now()>date_until;", conData);
+	MySqlDataReader^ myRender;
+	try {
+		conData->Open();
+		myRender = cmdDB->ExecuteReader();
+		while (myRender->Read()) {
+			listD->Items->Add("Discount for "+ myRender->GetString("user_id_discount")+" "+myRender->GetString("percent") + "% ,FROM " + myRender->GetString("df") + " TO " + myRender->GetString("du"));
+		}
+	}
+	catch (Exception^ ex) {
+		MessageBox::Show(ex->Message);
+	}
+}
+void MySQL::fillListDiscount(System::Windows::Forms::ListBox^ listD, mapSI^ line)
+{
+	MySqlCommand^ cmdDB = gcnew MySqlCommand("select discount_id, user_id_discount,percent ,date_from as df  ,date_until as du  from book_store.discounts where active_discount=true and now()>=date_from and now()<=date_until;", conData);
+	MySqlDataReader^ myRender;
+	int n=0;
+	try {
+		conData->Open();
+		myRender = cmdDB->ExecuteReader();
+		
+		while (myRender->Read()) {
+			int id = myRender->GetUInt32("discount_id");
+			line->insert(mapSI::make_value(n.ToString(), id));
+			n++;
+			listD->Items->Add("Discount for " + myRender->GetString("user_id_discount") + " "+myRender->GetString("percent") + "% ,FROM " + myRender->GetString("df") + " TO " + myRender->GetString("du"));
+		}
+	}
+	catch (Exception^ ex) {
+		MessageBox::Show(ex->Message);
+	}
+
+
+}
+
+void MySQL::setValueDiscountFiled(int idD,System::Windows::Forms::TextBox^ discount, System::Windows::Forms::TextBox^ start, System::Windows::Forms::TextBox^ end)
+{
+	MySqlCommand^ cmdDB = gcnew MySqlCommand("select percent,date_from as df  ,date_until as du from book_store.discounts where discount_id='" + idD + "';", conData);
+	MySqlDataReader^ myRender;
+	try 
+	{
+		conData->Open();
+		myRender = cmdDB->ExecuteReader();
+		if (myRender->Read()) {
+			discount->Text = myRender->GetString("percent")+"%";
+			start->Text = myRender->GetString("df");
+			end->Text = myRender->GetString("du");
+		}
+	}
+	catch (Exception^ ex) {
+		MessageBox::Show(ex->Message);
+	}
+}
+void MySQL::saveDiscount(System::Windows::Forms::TextBox^ discount, System::Windows::Forms::TextBox^ start, System::Windows::Forms::TextBox^ end)
+{
+	MySqlCommand^ cmdDB = gcnew MySqlCommand("INSERT INTO `book_store`.`discounts`(`percent`,`date_from` ,`date_until`) VALUES('" + discount->Text +"','" + end + "','" + start + "');", conData);
+	if (executeCmd(cmdDB))
+		MessageBox::Show("Create new Discount Success");
+
 
 }

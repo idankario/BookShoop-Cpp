@@ -1,4 +1,6 @@
 ﻿  pch.cpp
+C:\Users\gal\Desktop\BEBS\BEBS\MySQL.h(26,77): warning C4677: 'fillListDiscount': signature of non-private member contains assembly private type 'cliext::map<System::String ^,int>'
+C:\Users\gal\Desktop\BEBS\BEBS\pch.h(18): message : see declaration of 'cliext::map<System::String ^,int>'
   AdminMenu.cpp
   AssemblyInfo.cpp
   BEBS.cpp
@@ -11,8 +13,6 @@
   LogInMenu.cpp
   Manager.cpp
   MySQL.cpp
-C:\Users\gal\Desktop\BEBS\BEBS\MySQL.cpp(252,19): warning C4101: 'myRender': unreferenced local variable
-C:\Users\gal\Desktop\BEBS\BEBS\MySQL.cpp(261,19): warning C4101: 'myRender': unreferenced local variable
   OrdersControl.cpp
   ProfitControl.cpp
   RegisterMenu.cpp

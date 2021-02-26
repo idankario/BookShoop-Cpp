@@ -16,8 +16,8 @@ void Coustomer::addItemToCart(strP itemId, strP name,strP price,System::Windows:
 	totalPay->Text = "Total Price: "+ totalCart;
 	if (cartShoping.count(itemId) == 0)
 	{
-		cartShoping.insert(Mymap::make_value(itemId, 1));
-		lineItems.insert(Mymap::make_value(itemId, listBox->Items->Count));
+		cartShoping.insert(mapSI::make_value(itemId, 1));
+		lineItems.insert(mapSI::make_value(itemId, listBox->Items->Count));
 	}
 	else
 		cartShoping[itemId]++;
@@ -57,7 +57,7 @@ strP get_last_word( strP s) {
 void Coustomer::insertBookList(int idP, System::Windows::Forms::ListBox^ invoice)
 {
 	MySQL db;
-	for (Mymap::iterator iter = cartShoping.begin(); iter != cartShoping.end(); iter++)
+	for (mapSI::iterator iter = cartShoping.begin(); iter != cartShoping.end(); iter++)
 	{
 		strP itemId = iter.get_ref()->first;
 		int amount = iter.get_ref()->second;
@@ -65,7 +65,7 @@ void Coustomer::insertBookList(int idP, System::Windows::Forms::ListBox^ invoice
 		strP price = get_last_word(invoice->Items[line]->ToString());
 		db.insertBookList(idP,int::Parse(itemId), amount, price);
 	}
-
+		
 }
 
 

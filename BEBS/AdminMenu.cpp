@@ -472,8 +472,6 @@ System::Void BEBS::AdminMenu::HomePageClick(System::Object^ sender, System::Even
 	HomePage.ShowDialog();
 }
 
-
-
 System::Void BEBS::AdminMenu::listBox_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 	Book^ b = store.getBookByIndex(listBox->SelectedIndex);
 	if (b != nullptr)
@@ -519,7 +517,6 @@ System::Void BEBS::AdminMenu::saveClick(System::Object^ sender, System::EventArg
 	MySQL db;
 	strP imgL = sec_txt->Text + title_txt->Name + System::IO::Path::GetExtension(img->ImageLocation);
 	this->author_txt->Text =  imgL;
-
 	db.createNewBook(title_txt->Text, pag_txt->Text, sec_txt->Text, price_txt->Text,
 		amount_txt->Text, info_txt->Text, imgL, author_txt->Text);
 	img->Image->Save(itemPath + imgL);
@@ -528,8 +525,6 @@ System::Void BEBS::AdminMenu::saveClick(System::Object^ sender, System::EventArg
 	renderPage.ShowDialog();
 	
 }
-
-
 
 System::Void BEBS::AdminMenu::itemImageClick(System::Object^ sender, System::EventArgs^ e) {
 	System::Windows::Forms::OpenFileDialog^ ofd= (gcnew System::Windows::Forms::OpenFileDialog());

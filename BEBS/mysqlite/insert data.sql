@@ -10,7 +10,7 @@ INSERT INTO `book_store`.`users`(`user_role`,`user_id`,`email`,`pass`,`user_name
 -- discounts
 INSERT INTO `book_store`.`discounts`(`discount_id`,`percent`,`date_from`,`date_until`,`user_id_discount`)VALUES(1, 15 ,'2020-11-02','2021-6-20','all');
 INSERT INTO `book_store`.`discounts`(`discount_id`,`percent`,`date_from`,`date_until`,`user_id_discount`)VALUES(2, 10 ,'2020-12-01','2021-12-20','all');
-INSERT INTO `book_store`.`discounts`(`discount_id`,`percent`,`date_from`,`date_until`,`user_id_discount`)VALUES(3, 10 ,'2020-12-30','2021-01-01','all');
+INSERT INTO `book_store`.`discounts`(`discount_id`,`percent`,`date_from`,`date_until`,`user_id_discount`)VALUES(3, 20 ,'2020-12-30','2021-01-01','all');
 
 -- shoping_carts
 INSERT INTO `book_store`.`shoping_carts`(`shoping_cart_id`,`order_date`,`discount_id`) VALUES(1, '2020-11-02', 1);
