@@ -28,7 +28,6 @@ BEBS::UsersControl::~UsersControl()
 
 void BEBS::UsersControl::InitializeComponent(void)
 {
-	System::Windows::Forms::TextBox^ textBoxStatus;
 	System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(UsersControl::typeid));
 	this->listBoxTable = (gcnew System::Windows::Forms::ListBox());
 	this->HomePage = (gcnew System::Windows::Forms::PictureBox());
@@ -49,31 +48,25 @@ void BEBS::UsersControl::InitializeComponent(void)
 	this->OrderButton = (gcnew System::Windows::Forms::Button());
 	this->UsersButton = (gcnew System::Windows::Forms::Button());
 	this->ProfitButton = (gcnew System::Windows::Forms::Button());
-	textBoxStatus = (gcnew System::Windows::Forms::TextBox());
+	this->textBoxStatus = (gcnew System::Windows::Forms::TextBox());
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->HomePage))->BeginInit();
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->userPurchesTable))->BeginInit();
 	this->SuspendLayout();
 	// 
-	// textBoxStatus
-	// 
-	textBoxStatus->BackColor = System::Drawing::Color::Black;
-	textBoxStatus->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-		static_cast<System::Byte>(0)));
-	textBoxStatus->ForeColor = System::Drawing::Color::White;
-	textBoxStatus->Location = System::Drawing::Point(36, 398);
-	textBoxStatus->Name = L"textBoxStatus";
-	textBoxStatus->Size = System::Drawing::Size(280, 34);
-	textBoxStatus->TabIndex = 19;
-	// 
 	// listBoxTable
 	// 
+	this->listBoxTable->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+		| System::Windows::Forms::AnchorStyles::Left)
+		| System::Windows::Forms::AnchorStyles::Right));
 	this->listBoxTable->BackColor = System::Drawing::Color::Black;
+	this->listBoxTable->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+		static_cast<System::Byte>(0)));
 	this->listBoxTable->ForeColor = System::Drawing::Color::White;
 	this->listBoxTable->FormattingEnabled = true;
-	this->listBoxTable->ItemHeight = 16;
-	this->listBoxTable->Location = System::Drawing::Point(414, 109);
+	this->listBoxTable->ItemHeight = 19;
+	this->listBoxTable->Location = System::Drawing::Point(511, 113);
 	this->listBoxTable->Name = L"listBoxTable";
-	this->listBoxTable->Size = System::Drawing::Size(310, 164);
+	this->listBoxTable->Size = System::Drawing::Size(310, 156);
 	this->listBoxTable->TabIndex = 20;
 	this->listBoxTable->SelectedIndexChanged += gcnew System::EventHandler(this, &UsersControl::listBox1_SelectedIndexChanged);
 	// 
@@ -206,7 +199,7 @@ void BEBS::UsersControl::InitializeComponent(void)
 	this->textPurchases->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->textPurchases->ForeColor = System::Drawing::Color::White;
-	this->textPurchases->Location = System::Drawing::Point(414, 321);
+	this->textPurchases->Location = System::Drawing::Point(511, 325);
 	this->textPurchases->Name = L"textPurchases";
 	this->textPurchases->Size = System::Drawing::Size(134, 19);
 	this->textPurchases->TabIndex = 28;
@@ -214,14 +207,17 @@ void BEBS::UsersControl::InitializeComponent(void)
 	// 
 	// userPurchesTable
 	// 
+	this->userPurchesTable->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+		| System::Windows::Forms::AnchorStyles::Left)
+		| System::Windows::Forms::AnchorStyles::Right));
 	this->userPurchesTable->BackgroundColor = System::Drawing::Color::Black;
 	this->userPurchesTable->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-	this->userPurchesTable->Location = System::Drawing::Point(414, 351);
+	this->userPurchesTable->Location = System::Drawing::Point(511, 355);
 	this->userPurchesTable->Name = L"userPurchesTable";
 	this->userPurchesTable->ReadOnly = true;
 	this->userPurchesTable->RowHeadersWidth = 72;
 	this->userPurchesTable->RowTemplate->Height = 31;
-	this->userPurchesTable->Size = System::Drawing::Size(461, 196);
+	this->userPurchesTable->Size = System::Drawing::Size(371, 168);
 	this->userPurchesTable->TabIndex = 30;
 	this->userPurchesTable->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &UsersControl::dataGridView1_CellContentClick_1);
 	// 
@@ -315,12 +311,24 @@ void BEBS::UsersControl::InitializeComponent(void)
 	this->ProfitButton->UseVisualStyleBackColor = false;
 	this->ProfitButton->Click += gcnew System::EventHandler(this, &UsersControl::ProfitClick);
 	// 
+	// textBoxStatus
+	// 
+	this->textBoxStatus->BackColor = System::Drawing::Color::Black;
+	this->textBoxStatus->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+		static_cast<System::Byte>(0)));
+	this->textBoxStatus->ForeColor = System::Drawing::Color::White;
+	this->textBoxStatus->Location = System::Drawing::Point(36, 403);
+	this->textBoxStatus->Name = L"textBoxStatus";
+	this->textBoxStatus->Size = System::Drawing::Size(280, 34);
+	this->textBoxStatus->TabIndex = 71;
+	// 
 	// UsersControl
 	// 
 	this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::None;
 	this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 	this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 	this->ClientSize = System::Drawing::Size(1115, 582);
+	this->Controls->Add(this->textBoxStatus);
 	this->Controls->Add(this->UpdateInventoryButton);
 	this->Controls->Add(this->DiscountButton);
 	this->Controls->Add(this->OrderButton);
@@ -332,7 +340,6 @@ void BEBS::UsersControl::InitializeComponent(void)
 	this->Controls->Add(this->textJoinDate);
 	this->Controls->Add(this->textEmail);
 	this->Controls->Add(this->textName);
-	this->Controls->Add(textBoxStatus);
 	this->Controls->Add(this->textBoxDate);
 	this->Controls->Add(this->textBoxEmail);
 	this->Controls->Add(this->textBoxlName);

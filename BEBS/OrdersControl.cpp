@@ -34,9 +34,9 @@ BEBS::OrdersControl::~OrdersControl()
 void BEBS::OrdersControl::InitializeComponent(void)
 {
 	System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(OrdersControl::typeid));
-	System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea1 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-	System::Windows::Forms::DataVisualization::Charting::Legend^ legend1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
-	System::Windows::Forms::DataVisualization::Charting::Series^ series1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+	System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea20 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+	System::Windows::Forms::DataVisualization::Charting::Legend^ legend20 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+	System::Windows::Forms::DataVisualization::Charting::Series^ series20 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 	this->weekly = (gcnew System::Windows::Forms::Button());
 	this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 	this->order_id = (gcnew System::Windows::Forms::Label());
@@ -50,13 +50,13 @@ void BEBS::OrdersControl::InitializeComponent(void)
 	this->UsersButton = (gcnew System::Windows::Forms::Button());
 	this->ProfitButton = (gcnew System::Windows::Forms::Button());
 	this->comboBox2 = (gcnew System::Windows::Forms::ComboBox());
-	this->chartBookAmount = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
 	this->OrderList = (gcnew System::Windows::Forms::DataGridView());
 	this->OrderListLabel = (gcnew System::Windows::Forms::Label());
-	this->label3 = (gcnew System::Windows::Forms::Label());
+	this->labelBookAmount = (gcnew System::Windows::Forms::Label());
+	this->chartBookAmount = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->HomePage))->BeginInit();
-	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chartBookAmount))->BeginInit();
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->OrderList))->BeginInit();
+	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chartBookAmount))->BeginInit();
 	this->SuspendLayout();
 	// 
 	// weekly
@@ -232,34 +232,18 @@ void BEBS::OrdersControl::InitializeComponent(void)
 	this->comboBox2->Size = System::Drawing::Size(280, 24);
 	this->comboBox2->TabIndex = 59;
 	// 
-	// chartBookAmount
-	// 
-	chartArea1->Name = L"ChartArea1";
-	this->chartBookAmount->ChartAreas->Add(chartArea1);
-	legend1->Name = L"Legend1";
-	this->chartBookAmount->Legends->Add(legend1);
-	this->chartBookAmount->Location = System::Drawing::Point(496, 325);
-	this->chartBookAmount->Name = L"chartBookAmount";
-	series1->ChartArea = L"ChartArea1";
-	series1->Color = System::Drawing::Color::MidnightBlue;
-	series1->Legend = L"Legend1";
-	series1->MarkerSize = 50;
-	series1->MarkerStep = 10;
-	series1->Name = L"Books";
-	series1->YValuesPerPoint = 2;
-	this->chartBookAmount->Series->Add(series1);
-	this->chartBookAmount->Size = System::Drawing::Size(574, 200);
-	this->chartBookAmount->TabIndex = 66;
-	this->chartBookAmount->Text = L"chart2";
-	// 
 	// OrderList
 	// 
+	this->OrderList->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+		| System::Windows::Forms::AnchorStyles::Left)
+		| System::Windows::Forms::AnchorStyles::Right));
 	this->OrderList->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-	this->OrderList->Location = System::Drawing::Point(496, 127);
+	this->OrderList->Location = System::Drawing::Point(439, 120);
 	this->OrderList->Name = L"OrderList";
-	this->OrderList->RowHeadersWidth = 51;
+	this->OrderList->ReadOnly = true;
+	this->OrderList->RowHeadersWidth = 100;
 	this->OrderList->RowTemplate->Height = 24;
-	this->OrderList->Size = System::Drawing::Size(574, 150);
+	this->OrderList->Size = System::Drawing::Size(502, 161);
 	this->OrderList->TabIndex = 67;
 	// 
 	// OrderListLabel
@@ -269,24 +253,45 @@ void BEBS::OrdersControl::InitializeComponent(void)
 	this->OrderListLabel->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->OrderListLabel->ForeColor = System::Drawing::Color::White;
-	this->OrderListLabel->Location = System::Drawing::Point(492, 102);
+	this->OrderListLabel->Location = System::Drawing::Point(435, 95);
 	this->OrderListLabel->Name = L"OrderListLabel";
 	this->OrderListLabel->Size = System::Drawing::Size(76, 22);
 	this->OrderListLabel->TabIndex = 68;
 	this->OrderListLabel->Text = L"OrderList";
 	// 
-	// label3
+	// labelBookAmount
 	// 
-	this->label3->AutoSize = true;
-	this->label3->BackColor = System::Drawing::Color::Transparent;
-	this->label3->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+	this->labelBookAmount->AutoSize = true;
+	this->labelBookAmount->BackColor = System::Drawing::Color::Transparent;
+	this->labelBookAmount->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
-	this->label3->ForeColor = System::Drawing::Color::White;
-	this->label3->Location = System::Drawing::Point(492, 300);
-	this->label3->Name = L"label3";
-	this->label3->Size = System::Drawing::Size(125, 22);
-	this->label3->TabIndex = 69;
-	this->label3->Text = L"CurrentBookList";
+	this->labelBookAmount->ForeColor = System::Drawing::Color::White;
+	this->labelBookAmount->Location = System::Drawing::Point(435, 284);
+	this->labelBookAmount->Name = L"labelBookAmount";
+	this->labelBookAmount->Size = System::Drawing::Size(190, 22);
+	this->labelBookAmount->TabIndex = 69;
+	this->labelBookAmount->Text = L"Current Book In The Shop";
+	// 
+	// chartBookAmount
+	// 
+	chartArea20->AxisX->Interval = 1;
+	chartArea20->AxisX->IsLabelAutoFit = false;
+	chartArea20->AxisX->LabelStyle->Angle = -90;
+	chartArea20->Name = L"ChartArea1";
+	this->chartBookAmount->ChartAreas->Add(chartArea20);
+	legend20->Name = L"Legend1";
+	this->chartBookAmount->Legends->Add(legend20);
+	this->chartBookAmount->Location = System::Drawing::Point(439, 309);
+	this->chartBookAmount->Name = L"chartBookAmount";
+	series20->ChartArea = L"ChartArea1";
+	series20->Color = System::Drawing::Color::MidnightBlue;
+	series20->Legend = L"Legend1";
+	series20->Name = L"B";
+	series20->YValuesPerPoint = 2;
+	this->chartBookAmount->Series->Add(series20);
+	this->chartBookAmount->Size = System::Drawing::Size(650, 236);
+	this->chartBookAmount->TabIndex = 70;
+	this->chartBookAmount->Text = L"chart2";
 	// 
 	// OrdersControl
 	// 
@@ -294,10 +299,10 @@ void BEBS::OrdersControl::InitializeComponent(void)
 	this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 	this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 	this->ClientSize = System::Drawing::Size(1115, 582);
-	this->Controls->Add(this->label3);
+	this->Controls->Add(this->chartBookAmount);
+	this->Controls->Add(this->labelBookAmount);
 	this->Controls->Add(this->OrderListLabel);
 	this->Controls->Add(this->OrderList);
-	this->Controls->Add(this->chartBookAmount);
 	this->Controls->Add(this->comboBox2);
 	this->Controls->Add(this->UpdateInventoryButton);
 	this->Controls->Add(this->DiscountButton);
@@ -315,8 +320,8 @@ void BEBS::OrdersControl::InitializeComponent(void)
 	this->StartPosition = System::Windows::Forms::FormStartPosition::CenterParent;
 	this->Text = L"OrdersControl";
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->HomePage))->EndInit();
-	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chartBookAmount))->EndInit();
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->OrderList))->EndInit();
+	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chartBookAmount))->EndInit();
 	this->ResumeLayout(false);
 	this->PerformLayout();
 

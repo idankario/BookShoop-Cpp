@@ -439,7 +439,7 @@ void MySQL::providerCom(System::Windows::Forms::ComboBox^ comboBox2) {
 void MySQL::booksByAmount2(System::Windows::Forms::DataVisualization::Charting::Chart^ chart2) {
 	MySqlCommand^ cmdDB = gcnew MySqlCommand("select title, amount from book_store.books ORDER BY amount asc;", conData);
 	MySqlDataReader^ myRender;
-	chart2->Series["Books"]->Points->Clear();
+	chart2->Series["B"]->Points->Clear();
 	try {
 		conData->Open();
 		myRender = cmdDB->ExecuteReader();
@@ -447,7 +447,7 @@ void MySQL::booksByAmount2(System::Windows::Forms::DataVisualization::Charting::
 		while (myRender->Read()) {
 			String^ vtitle = myRender->GetString("title");
 			String^ vprice = myRender->GetInt32("amount").ToString();
-			chart2->Series["Books"]->Points->AddXY(vtitle, myRender->GetInt32("amount"));
+			chart2->Series["B"]->Points->AddXY(vtitle, myRender->GetInt32("amount"));
 		}
 		conData->Close();
 	}

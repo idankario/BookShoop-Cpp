@@ -26,7 +26,7 @@ namespace BEBS {
 		System::Windows::Forms::TextBox^ textBoxlName;
 		System::Windows::Forms::TextBox^ textBoxEmail;
 		System::Windows::Forms::TextBox^ textBoxDate;
-		System::Windows::Forms::TextBox^ textBoxStatus;
+
 		System::Windows::Forms::Label^ textName;
 		System::Windows::Forms::Label^ textEmail;
 		System::Windows::Forms::Label^ textJoinDate;
@@ -40,6 +40,7 @@ namespace BEBS {
 		System::Windows::Forms::Button^ OrderButton;
 		System::Windows::Forms::Button^ UsersButton;
 		System::Windows::Forms::Button^ ProfitButton;
+	private: System::Windows::Forms::TextBox^ textBoxStatus;
 		   int countList2 = 0;
 #pragma region Windows Form Designer generated code
 		/// <summary>
