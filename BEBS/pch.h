@@ -18,7 +18,6 @@ typedef String^ strP;
 typedef cliext::map<String^, int> mapSI;
 #include "ProfitControl.h"
 #include "OrdersControl.h"
-#include "SalesControl.h"
 #include "Item.h"
 #include "Book.h"
 #include "User.h"

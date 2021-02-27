@@ -5,7 +5,6 @@
   BEBS.OrdersControl.resources - Embedded, ContainedInManifestFile, 
   BEBS.ProfitControl.resources - Embedded, ContainedInManifestFile, 
   BEBS.RegisterMenu.resources - Embedded, ContainedInManifestFile, 
-  BEBS.SalesControl.resources - Embedded, ContainedInManifestFile, 
   BEBS.ShoppingMenu.resources - Embedded, ContainedInManifestFile, 
   BEBS.UsersControl.resources - Embedded, ContainedInManifestFile, 
 ImageRuntimeVersion: v4.0.30319
@@ -36,10 +35,6 @@ Class BEBS.ProfitControl: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     Void .ctor(System.Windows.Forms.Form): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class BEBS.OrdersControl: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
-  :System.Windows.Forms.Form
-    Void .ctor(System.Windows.Forms.Form): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
-    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
-Class BEBS.SalesControl: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(System.Windows.Forms.Form): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
@@ -160,4 +155,21 @@ Class MySQL: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     saveDiscount(TextBox, String, String): PrivateScope, Public, HideBySig
     setValueDiscountFiled(Int32, TextBox, DateTimePicker, DateTimePicker): PrivateScope, Public, HideBySig
     executeCmd(MySqlCommand): PrivateScope, Public, HideBySig
+    setProviderCom(MySqlCommand, ComboBox): PrivateScope, Public, HideBySig
+    providerCom(ComboBox): PrivateScope, Public, HideBySig
+    booksCom(ComboBox): PrivateScope, Public, HideBySig
+    setBooksCom(MySqlCommand, ComboBox): PrivateScope, Public, HideBySig
+    booksByAmount2(Chart): PrivateScope, Public, HideBySig
+    setEditUser(MySqlCommand): PrivateScope, Public, HideBySig
+    editUser(TextBox, TextBox, TextBox): PrivateScope, Public, HideBySig
+    monthlySales(Chart): PrivateScope, Public, HideBySig
+    quarterlySales(Chart): PrivateScope, Public, HideBySig
+    weeklySales(Chart): PrivateScope, Public, HideBySig
+    setValueChart2(Chart, MySqlCommand): PrivateScope, Public, HideBySig
+    setBlockUser(MySqlCommand): PrivateScope, Public, HideBySig
+    blockUser(TextBox): PrivateScope, Public, HideBySig
+    setUsersTabel(ListBox, MySqlCommand): PrivateScope, Public, HideBySig
+    UsersList(ListBox): PrivateScope, Public, HideBySig
+    providerData(DataGridView): PrivateScope, Public, HideBySig
+    setValueGrid(DataGridView, MySqlCommand): PrivateScope, Public, HideBySig
     Dispose(): PrivateScope, Public, Final, Virtual, HideBySig

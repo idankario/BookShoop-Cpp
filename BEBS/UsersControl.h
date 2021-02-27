@@ -26,18 +26,13 @@ namespace BEBS {
 		System::Windows::Forms::TextBox^ textBoxlName;
 		System::Windows::Forms::TextBox^ textBoxEmail;
 		System::Windows::Forms::TextBox^ textBoxDate;
+		System::Windows::Forms::TextBox^ textBoxStatus;
 		System::Windows::Forms::Label^ textName;
 		System::Windows::Forms::Label^ textEmail;
 		System::Windows::Forms::Label^ textJoinDate;
 		System::Windows::Forms::Label^ textStatus;
 		System::Windows::Forms::Label^ textPurchases;
-
-		
-
 		System::Windows::Forms::DataGridView^ userPurchesTable;
-		
-
-
 		System::Windows::Forms::Button^ block;
 		System::ComponentModel::Container^ components;
 		System::Windows::Forms::Button^ UpdateInventoryButton;
@@ -64,7 +59,7 @@ namespace BEBS {
 		Void fillListBox(void) ;
 		System::Void dataGridView1_CellContentClick_1(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e);
 		System::Void block_Click(System::Object^ sender, System::EventArgs^ e);
-		System::Void edit_Click(System::Object^ sender, System::EventArgs^ e);
+		System::Void editClick(System::Object^ sender, System::EventArgs^ e);
 
 		String^ con = L"datasource=localhost; port=3306; username=root; password=bebs";
 		System::Void InventoryClick(System::Object^ sender, System::EventArgs^ e);

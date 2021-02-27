@@ -103,7 +103,7 @@ void BEBS::UsersControl::InitializeComponent(void)
 	this->edit->TabIndex = 12;
 	this->edit->Text = L"Edit";
 	this->edit->UseVisualStyleBackColor = false;
-	this->edit->Click += gcnew System::EventHandler(this, &UsersControl::edit_Click);
+	this->edit->Click += gcnew System::EventHandler(this, &UsersControl::editClick);
 	// 
 	// cartLabl
 	// 
@@ -430,32 +430,6 @@ System::Void BEBS::UsersControl::listBox1_SelectedIndexChanged(System::Object^ s
 				MessageBox::Show(ex->Message);
 			}
 
-			/*try {
-				conData->Open();
-				myRender2 = cmdDB2->ExecuteReader();
-				//remove each click
-				if (countList2 > 0) {
-					countList2--;
-					int i = 0;
-					for (; i <= countList2; i++) {
-						listBox2->Items->RemoveAt(countList2);
-						countList2--;
-					}
-				}
-				//set:
-				while (myRender2->Read()) {
-					String^ pId = myRender2->GetInt32("purchase_id").ToString();
-					String^ pprice = myRender2->GetString("price_paid");
-					String^ pdate = myRender2->GetString("pyment_date");
-					String^ pmethod = myRender2->GetString("payment_method");
-					countList2++;
-					listBox2->Items->Add(pId + ", " + pprice + ", " + pdate + ", " + pmethod);
-				}
-			}
-			catch (Exception^ ex) {
-				MessageBox::Show(ex->Message);
-			}
-			*/
 
 		}
 	}
@@ -465,64 +439,30 @@ System::Void BEBS::UsersControl::listBox1_SelectedIndexChanged(System::Object^ s
 }
 
 Void BEBS::UsersControl::fillListBox(void) {
-	MySqlConnection^ conData = gcnew MySqlConnection(con);
-	MySqlCommand^ cmdDB = gcnew MySqlCommand("select * from book_store.users where user_role='buyer';", conData);
-	MySqlDataReader^ myRender;
-
-	try {
-		conData->Open();
-		myRender = cmdDB->ExecuteReader();
-		while (myRender->Read()) {
-			String^ vName;
-			vName = myRender->GetString("user_name");
-			listBoxTable->Items->Add(vName);
-		}
-	}
-	catch (Exception^ ex) {
-		MessageBox::Show(ex->Message);
-	}
+	MySQL db;
+	db.UsersList(this->listBoxTable);
 }
 
 System::Void BEBS::UsersControl::dataGridView1_CellContentClick_1(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
 }
+
+
 System::Void BEBS::UsersControl::block_Click(System::Object^ sender, System::EventArgs^ e) {
-	MySqlConnection^ conData = gcnew MySqlConnection(con);
-	MySqlCommand^ cmdDB = gcnew MySqlCommand("update book_store.users set user_status='OFF' where email='" + textEmail->Text + "' ;", conData);
-	MySqlDataReader^ myRender;
-
-	try {
-		conData->Open();
-		myRender = cmdDB->ExecuteReader();
-		MessageBox::Show("Blocked");
-		while (myRender->Read()) {
-
-		}
+	MySQL db;
+	Boolean^ isOk = db.blockUser(this->textBoxEmail);
+	if (isOk) {
 		this->Hide();
 		BEBS::UsersControl renderPage;
 		renderPage.ShowDialog();
-	}
-	catch (Exception^ ex) {
-		MessageBox::Show(ex->Message);
 	}
 }
-System::Void BEBS::UsersControl::edit_Click(System::Object^ sender, System::EventArgs^ e) {
-	MySqlConnection^ conData = gcnew MySqlConnection(con);
-	MySqlCommand^ cmdDB = gcnew MySqlCommand("update book_store.users set user_name='" + textName->Text + "',user_status='" + textStatus->Text + "' where email='" + textEmail->Text + "' ;", conData);
-	MySqlDataReader^ myRender;
-
-	try {
-		conData->Open();
-		myRender = cmdDB->ExecuteReader();
-		MessageBox::Show("Edited");
-		while (myRender->Read()) {
-
-		}
+System::Void BEBS::UsersControl::editClick(System::Object^ sender, System::EventArgs^ e) {
+	MySQL db;
+	Boolean^ isOk = db.editUser(this->textBoxlName, this->textBoxEmail, this->textBoxStatus);
+	if (isOk) {
 		this->Hide();
 		BEBS::UsersControl renderPage;
 		renderPage.ShowDialog();
-	}
-	catch (Exception^ ex) {
-		MessageBox::Show(ex->Message);
 	}
 }
 

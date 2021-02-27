@@ -280,20 +280,24 @@ BEBS::ProfitControl::~ProfitControl()
 	System::Void BEBS::ProfitControl::weeklyClick(System::Object^ sender, System::EventArgs^ e) {
 		MySQL db;
 		db.weeklyProfit(this->chart1, this->dataGridView1);
+		db.weeklySales(this->chart2);
 	
 	}
 	Void BEBS::ProfitControl::fillAll(void) {
 		MySQL db;
 		db.quarterlyProfit(this->chart1, this->dataGridView1);
+		db.quarterlySales(this->chart2);
 	}
 
 	System::Void BEBS::ProfitControl::monthlyClick(System::Object^ sender, System::EventArgs^ e) {
 		MySQL db;
 		db.monthlyProfit(this->chart1, this->dataGridView1);
+		db.monthlySales(this->chart2);
 	}
 	System::Void BEBS::ProfitControl::quarterlyClick(System::Object^ sender, System::EventArgs^ e) {
 		MySQL db;
 		db.quarterlyProfit(this->chart1, this->dataGridView1);
+		db.quarterlySales(this->chart2);
 	}
 
 

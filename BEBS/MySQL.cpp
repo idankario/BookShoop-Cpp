@@ -316,6 +316,7 @@ void MySQL::fillListDiscountExpired(System::Windows::Forms::ListBox^ listD)
 		while (myRender->Read()) {
 			listD->Items->Add("Discount for "+ myRender->GetString("user_id_discount")+" "+myRender->GetString("percent") + "% ,FROM " + myRender->GetString("df") + " TO " + myRender->GetString("du"));
 		}
+		conData->Close();
 	}
 	catch (Exception^ ex) {
 		MessageBox::Show(ex->Message);
@@ -336,6 +337,7 @@ void MySQL::fillListDiscount(System::Windows::Forms::ListBox^ listD, mapSI^ line
 			n++;
 			listD->Items->Add("Discount for " + myRender->GetString("user_id_discount") + " "+myRender->GetString("percent") + "% ,FROM " + myRender->GetString("df") + " TO " + myRender->GetString("du"));
 		}
+		conData->Close();
 	}
 	catch (Exception^ ex) {
 		MessageBox::Show(ex->Message);
@@ -355,6 +357,7 @@ void MySQL::setValueDiscountFiled(int idD,System::Windows::Forms::TextBox^ disco
 			start->Text = myRender->GetString("df");
 			end->Text = myRender->GetString("du");
 		}
+		conData->Close();
 	}
 	catch (Exception^ ex) {
 		MessageBox::Show(ex->Message);
@@ -391,5 +394,199 @@ void MySQL::saveDiscount(System::Windows::Forms::TextBox^ discount, strP start, 
 	else
 		MessageBox::Show("Could Not Get number of discount");
 
+
+}
+
+void  MySQL::setBooksCom(MySqlCommand^ cmdDB, System::Windows::Forms::ComboBox^ comboBox1) {
+	MySqlDataReader^ myRender;
+
+	try {
+		conData->Open();
+		myRender = cmdDB->ExecuteReader();
+		while (myRender->Read()) {
+			String^ vt = myRender->GetString("title");
+			comboBox1->Items->Add(vt);
+		}
+		conData->Close();
+	}
+	catch (Exception^ ex) {
+		MessageBox::Show(ex->Message);
+	}
+}
+void  MySQL::booksCom(System::Windows::Forms::ComboBox^ comboBox1) {
+	MySqlCommand^ cmdDB = gcnew MySqlCommand("select title from book_store.books;", conData);
+	setBooksCom(cmdDB, comboBox1);
+}
+void MySQL::setProviderCom(MySqlCommand^ cmdDB, System::Windows::Forms::ComboBox^ comboBox2) {
+	MySqlDataReader^ myRender;
+	try {
+		conData->Open();
+		myRender = cmdDB->ExecuteReader();
+		while (myRender->Read()) {
+			String^ vt = myRender->GetString("provider");
+			comboBox2->Items->Add(vt);
+		}
+		conData->Close();
+	}
+	catch (Exception^ ex) {
+		MessageBox::Show(ex->Message);
+	}
+}
+void MySQL::providerCom(System::Windows::Forms::ComboBox^ comboBox2) {
+	MySqlCommand^ cmdDB = gcnew MySqlCommand("select provider from book_store.orders_from_provider;", conData);
+	setProviderCom(cmdDB, comboBox2);
+}
+void MySQL::booksByAmount2(System::Windows::Forms::DataVisualization::Charting::Chart^ chart2) {
+	MySqlCommand^ cmdDB = gcnew MySqlCommand("select title, amount from book_store.books ORDER BY amount asc;", conData);
+	MySqlDataReader^ myRender;
+	chart2->Series["Books"]->Points->Clear();
+	try {
+		conData->Open();
+		myRender = cmdDB->ExecuteReader();
+
+		while (myRender->Read()) {
+			String^ vtitle = myRender->GetString("title");
+			String^ vprice = myRender->GetInt32("amount").ToString();
+			chart2->Series["Books"]->Points->AddXY(vtitle, myRender->GetInt32("amount"));
+		}
+		conData->Close();
+	}
+	catch (Exception^ ex) {
+		MessageBox::Show(ex->Message);
+	}
+}
+Boolean^ MySQL::setEditUser(MySqlCommand^ cmdDB) {
+	MySqlDataReader^ myRender;
+
+	try {
+		conData->Open();
+		myRender = cmdDB->ExecuteReader();
+		MessageBox::Show("Edited");
+		while (myRender->Read()) {
+
+		}
+		conData->Close();
+		return true;
+	}
+	catch (Exception^ ex) {
+		MessageBox::Show(ex->Message);
+		return false;
+	}
+}
+Boolean^ MySQL::editUser(System::Windows::Forms::TextBox^ textBoxlName, System::Windows::Forms::TextBox^ textBoxEmail, System::Windows::Forms::TextBox^ textBoxSTA) {
+	MySqlCommand^ cmdDB = gcnew MySqlCommand("update book_store.users set user_name='" + textBoxlName->Text + "',user_status='" + textBoxSTA->Text + "' where email='" + textBoxEmail->Text + "' ;", conData);
+	Boolean^ isOk = setEditUser(cmdDB);
+	return isOk;
+}
+
+
+void  MySQL::quarterlySales(System::Windows::Forms::DataVisualization::Charting::Chart^ chart2)
+{
+	MySqlCommand^ cmdDB = gcnew MySqlCommand("select count(bl.book_id), b.title from book_store.book_list bl inner join book_store.books b on bl.book_id = b.book_id inner join book_store.purchases p on p.purchase_id=bl.purchase_id WHERE  pyment_date >= now()-interval 4 month group by b.book_id;", conData);
+	setValueChart2(chart2, cmdDB);
+
+}
+
+void  MySQL::weeklySales(System::Windows::Forms::DataVisualization::Charting::Chart^ chart2)
+{
+	MySqlCommand^ cmdDB = gcnew MySqlCommand("select count(bl.book_id), b.title from book_store.book_list bl inner join book_store.books b on bl.book_id = b.book_id inner join book_store.purchases p on p.purchase_id=bl.purchase_id WHERE  pyment_date >= now()-interval 1 week group by b.book_id;", conData);
+	setValueChart2(chart2, cmdDB);
+}
+
+void  MySQL::monthlySales(System::Windows::Forms::DataVisualization::Charting::Chart^ chart2)
+{
+	MySqlCommand^ cmdDB = gcnew MySqlCommand("select count(bl.book_id), b.title from book_store.book_list bl inner join book_store.books b on bl.book_id = b.book_id inner join book_store.purchases p on p.purchase_id=bl.purchase_id WHERE  pyment_date >= now()-interval 1 month group by b.book_id;", conData);
+	setValueChart2(chart2, cmdDB);
+}
+void MySQL::setValueChart2(System::Windows::Forms::DataVisualization::Charting::Chart^ chart2, MySqlCommand^ cmdDB)
+{
+	MySqlDataReader^ myRender;
+	chart2->Series["Books"]->Points->Clear();
+	try {
+		conData->Open();
+		myRender = cmdDB->ExecuteReader();
+
+		while (myRender->Read()) {
+			String^ vtitle = myRender->GetString("title");
+			String^ vprice = myRender->GetInt32("count(bl.book_id)").ToString();
+			chart2->Series["Books"]->Points->AddXY(vtitle, myRender->GetInt32("count(bl.book_id)"));
+		}
+		conData->Close();
+	}
+	catch (Exception^ ex) {
+		MessageBox::Show(ex->Message);
+	}
+}
+Boolean^ MySQL::setBlockUser(MySqlCommand^ cmdDB) {
+	MySqlDataReader^ myRender;
+	try {
+		conData->Open();
+		myRender = cmdDB->ExecuteReader();
+		MessageBox::Show("Blocked");
+		while (myRender->Read()) {
+
+		}
+		conData->Close();
+		return true;
+	}
+	catch (Exception^ ex) {
+		MessageBox::Show(ex->Message);
+		return false;
+	}
+
+}
+Boolean^ MySQL::blockUser(System::Windows::Forms::TextBox^ textBoxEmail) {
+	MySqlCommand^ cmdDB = gcnew MySqlCommand("update book_store.users set user_status='OFF' where email='" + textBoxEmail->Text + "' ;", conData);
+	Boolean^ isOk = setBlockUser(cmdDB);
+	return isOk;
+}
+//users control func
+void MySQL::setUsersTabel(System::Windows::Forms::ListBox^ listBoxTable, MySqlCommand^ cmdDB) {
+	MySqlDataReader^ myRender;
+	try {
+		conData->Open();
+		myRender = cmdDB->ExecuteReader();
+		while (myRender->Read()) {
+			String^ vName;
+			vName = myRender->GetString("user_name");
+			listBoxTable->Items->Add(vName);
+		}
+		conData->Close();
+	}
+	catch (Exception^ ex) {
+		MessageBox::Show(ex->Message);
+	}
+}
+void MySQL::UsersList(System::Windows::Forms::ListBox^ listBoxTable) {
+	MySqlCommand^ cmdDB = gcnew MySqlCommand("select * from book_store.users where user_role='buyer';", conData);
+	setUsersTabel(listBoxTable, cmdDB);
+}
+void MySQL::setValueGrid(System::Windows::Forms::DataGridView^ providerList, MySqlCommand^ cmdDB)
+{
+	MySqlDataReader^ myRender;
+	try {
+		conData->Open();
+		myRender = cmdDB->ExecuteReader();
+		while (myRender->Read()) {
+		}
+		conData->Close();
+
+		MySqlDataAdapter^ sda = gcnew MySqlDataAdapter();
+		sda->SelectCommand = cmdDB;
+		DataTable^ dbdataset = gcnew DataTable();
+		sda->Fill(dbdataset);
+		BindingSource^ bSorce = gcnew BindingSource();
+		bSorce->DataSource = dbdataset;
+		providerList->DataSource = bSorce;
+		sda->Update(dbdataset);
+	}
+	catch (Exception^ ex) {
+		MessageBox::Show(ex->Message);
+	}
+}
+void MySQL::providerData(System::Windows::Forms::DataGridView^ OrderList )
+{
+	MySqlCommand^ cmdDB = gcnew MySqlCommand("select p.amount as Amount ,b.title as Title, provider as Provider, DATE_FORMAT(order_date, '%d-%m-%Y') as Date from book_store.orders_from_provider p inner join book_store.books b on p.book_id = b.book_id;", conData);
+	setValueGrid(OrderList, cmdDB);
 
 }

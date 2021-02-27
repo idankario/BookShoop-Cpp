@@ -157,9 +157,6 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Resource.h" />
-    <ClInclude Include="SalesControl.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
     <ClInclude Include="ShoppingMenu.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -190,7 +187,6 @@
     </ClCompile>
     <ClCompile Include="ProfitControl.cpp" />
     <ClCompile Include="RegisterMenu.cpp" />
-    <ClCompile Include="SalesControl.cpp" />
     <ClCompile Include="ShoppingMenu.cpp" />
     <ClCompile Include="User.cpp" />
     <ClCompile Include="UsersControl.cpp" />
@@ -229,9 +225,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RegisterMenu.resx">
       <DependentUpon>RegisterMenu.h</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SalesControl.resx">
-      <DependentUpon>SalesControl.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ShoppingMenu.resx">
       <DependentUpon>ShoppingMenu.h</DependentUpon>
