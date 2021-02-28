@@ -15,8 +15,9 @@ namespace BEBS {
 		~OrdersControl();
 	private:  
 		Form^ lastForm;
-		System::Windows::Forms::Button^ weekly;
-		System::Windows::Forms::ComboBox^ comboBox1;
+		mapSI^ lineB = gcnew mapSI;
+		System::Windows::Forms::Button^ addNewOrder;
+		System::Windows::Forms::ComboBox^ listBook;
 		System::Windows::Forms::Label^ order_id;
 		System::Windows::Forms::Label^ label1;
 		System::Windows::Forms::TextBox^ amount_txt;
@@ -46,6 +47,7 @@ namespace BEBS {
 		void fillBooks(void);
 		void fillProviders(void);
 		void fillBookChart(void);
+		System::Void addNewOrder_Click(System::Object^ sender, System::EventArgs^ e);
 	};
 }
 

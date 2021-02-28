@@ -34,11 +34,11 @@ BEBS::OrdersControl::~OrdersControl()
 void BEBS::OrdersControl::InitializeComponent(void)
 {
 	System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(OrdersControl::typeid));
-	System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea1 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-	System::Windows::Forms::DataVisualization::Charting::Legend^ legend1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
-	System::Windows::Forms::DataVisualization::Charting::Series^ series1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
-	this->weekly = (gcnew System::Windows::Forms::Button());
-	this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
+	System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea2 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+	System::Windows::Forms::DataVisualization::Charting::Legend^ legend2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+	System::Windows::Forms::DataVisualization::Charting::Series^ series2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+	this->addNewOrder = (gcnew System::Windows::Forms::Button());
+	this->listBook = (gcnew System::Windows::Forms::ComboBox());
 	this->order_id = (gcnew System::Windows::Forms::Label());
 	this->label1 = (gcnew System::Windows::Forms::Label());
 	this->amount_txt = (gcnew System::Windows::Forms::TextBox());
@@ -59,32 +59,33 @@ void BEBS::OrdersControl::InitializeComponent(void)
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chartBookAmount))->BeginInit();
 	this->SuspendLayout();
 	// 
-	// weekly
+	// addNewOrder
 	// 
-	this->weekly->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
+	this->addNewOrder->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
 		static_cast<System::Int32>(static_cast<System::Byte>(192)));
-	this->weekly->Cursor = System::Windows::Forms::Cursors::Hand;
-	this->weekly->FlatAppearance->BorderColor = System::Drawing::Color::White;
-	this->weekly->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-	this->weekly->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+	this->addNewOrder->Cursor = System::Windows::Forms::Cursors::Hand;
+	this->addNewOrder->FlatAppearance->BorderColor = System::Drawing::Color::White;
+	this->addNewOrder->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+	this->addNewOrder->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
-	this->weekly->ForeColor = System::Drawing::Color::White;
-	this->weekly->Location = System::Drawing::Point(110, 450);
-	this->weekly->Name = L"weekly";
-	this->weekly->Size = System::Drawing::Size(173, 50);
-	this->weekly->TabIndex = 34;
-	this->weekly->Text = L"Add new order";
-	this->weekly->UseVisualStyleBackColor = false;
+	this->addNewOrder->ForeColor = System::Drawing::Color::White;
+	this->addNewOrder->Location = System::Drawing::Point(110, 450);
+	this->addNewOrder->Name = L"addNewOrder";
+	this->addNewOrder->Size = System::Drawing::Size(173, 50);
+	this->addNewOrder->TabIndex = 34;
+	this->addNewOrder->Text = L"Add new order";
+	this->addNewOrder->UseVisualStyleBackColor = false;
+	this->addNewOrder->Click += gcnew System::EventHandler(this, &OrdersControl::addNewOrder_Click);
 	// 
-	// comboBox1
+	// listBook
 	// 
-	this->comboBox1->BackColor = System::Drawing::Color::Black;
-	this->comboBox1->ForeColor = System::Drawing::Color::White;
-	this->comboBox1->FormattingEnabled = true;
-	this->comboBox1->Location = System::Drawing::Point(104, 232);
-	this->comboBox1->Name = L"comboBox1";
-	this->comboBox1->Size = System::Drawing::Size(280, 24);
-	this->comboBox1->TabIndex = 36;
+	this->listBook->BackColor = System::Drawing::Color::Black;
+	this->listBook->ForeColor = System::Drawing::Color::White;
+	this->listBook->FormattingEnabled = true;
+	this->listBook->Location = System::Drawing::Point(104, 232);
+	this->listBook->Name = L"listBook";
+	this->listBook->Size = System::Drawing::Size(280, 24);
+	this->listBook->TabIndex = 36;
 	// 
 	// order_id
 	// 
@@ -276,21 +277,21 @@ void BEBS::OrdersControl::InitializeComponent(void)
 	// 
 	// chartBookAmount
 	// 
-	chartArea1->AxisX->Interval = 1;
-	chartArea1->AxisX->IsLabelAutoFit = false;
-	chartArea1->AxisX->LabelStyle->Angle = -90;
-	chartArea1->Name = L"ChartArea1";
-	this->chartBookAmount->ChartAreas->Add(chartArea1);
-	legend1->Name = L"Legend1";
-	this->chartBookAmount->Legends->Add(legend1);
+	chartArea2->AxisX->Interval = 1;
+	chartArea2->AxisX->IsLabelAutoFit = false;
+	chartArea2->AxisX->LabelStyle->Angle = -90;
+	chartArea2->Name = L"ChartArea1";
+	this->chartBookAmount->ChartAreas->Add(chartArea2);
+	legend2->Name = L"Legend1";
+	this->chartBookAmount->Legends->Add(legend2);
 	this->chartBookAmount->Location = System::Drawing::Point(462, 309);
 	this->chartBookAmount->Name = L"chartBookAmount";
-	series1->ChartArea = L"ChartArea1";
-	series1->Color = System::Drawing::Color::MidnightBlue;
-	series1->Legend = L"Legend1";
-	series1->Name = L"B";
-	series1->YValuesPerPoint = 2;
-	this->chartBookAmount->Series->Add(series1);
+	series2->ChartArea = L"ChartArea1";
+	series2->Color = System::Drawing::Color::MidnightBlue;
+	series2->Legend = L"Legend1";
+	series2->Name = L"B";
+	series2->YValuesPerPoint = 2;
+	this->chartBookAmount->Series->Add(series2);
 	this->chartBookAmount->Size = System::Drawing::Size(502, 236);
 	this->chartBookAmount->TabIndex = 70;
 	this->chartBookAmount->Text = L"chart2";
@@ -316,8 +317,8 @@ void BEBS::OrdersControl::InitializeComponent(void)
 	this->Controls->Add(this->amount_txt);
 	this->Controls->Add(this->label1);
 	this->Controls->Add(this->order_id);
-	this->Controls->Add(this->comboBox1);
-	this->Controls->Add(this->weekly);
+	this->Controls->Add(this->listBook);
+	this->Controls->Add(this->addNewOrder);
 	this->Name = L"OrdersControl";
 	this->StartPosition = System::Windows::Forms::FormStartPosition::CenterParent;
 	this->Text = L"OrdersControl";
@@ -328,7 +329,15 @@ void BEBS::OrdersControl::InitializeComponent(void)
 	this->PerformLayout();
 
 }
-
+System::Void BEBS::OrdersControl::addNewOrder_Click(System::Object^ sender, System::EventArgs^ e)
+{
+	MySQL db;
+	int idB = (*lineB)[listBook->SelectedIndex.ToString()];
+	db.addNewOrder(idB, comboBox2->Text,amount_txt->Text);
+	this->~OrdersControl();
+	BEBS::OrdersControl rander;
+	rander.ShowDialog();
+}
 System::Void BEBS::OrdersControl::InventoryClick(System::Object^ sender, System::EventArgs^ e) {
 	this->~OrdersControl();
 	BEBS::AdminMenu admin;
@@ -357,7 +366,7 @@ System::Void BEBS::OrdersControl::HomePageClick(System::Object^ sender, System::
 }
 void BEBS::OrdersControl::fillBooks(void) {
 	MySQL db;
-	db.booksCom(this->comboBox1);
+	db.booksCom(this->listBook,lineB);
 	db.providerData(OrderList); 
 }
 

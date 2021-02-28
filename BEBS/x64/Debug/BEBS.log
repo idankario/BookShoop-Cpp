@@ -1,26 +1,3 @@
-﻿  pch.cpp
-C:\Users\gal\Desktop\BEBS\BEBS\MySQL.h(27,77): warning C4677: 'fillListDiscount': signature of non-private member contains assembly private type 'cliext::map<System::String ^,int>'
-C:\Users\gal\Desktop\BEBS\BEBS\pch.h(18): message : see declaration of 'cliext::map<System::String ^,int>'
-C:\Users\gal\Desktop\BEBS\BEBS\MySQL.h(59,77): warning C4677: 'UsersList': signature of non-private member contains assembly private type 'cliext::map<System::String ^,int>'
-C:\Users\gal\Desktop\BEBS\BEBS\pch.h(18): message : see declaration of 'cliext::map<System::String ^,int>'
-  AdminMenu.cpp
-  AssemblyInfo.cpp
-  BEBS.cpp
-  Book.cpp
-  Coustomer.cpp
-  DiscountControl.cpp
-  HomePage.cpp
-  Inventory.cpp
-  Item.cpp
-  LogInMenu.cpp
-  Manager.cpp
-  MySQL.cpp
-  OrdersControl.cpp
-  ProfitControl.cpp
-  RegisterMenu.cpp
-  ShoppingMenu.cpp
-  User.cpp
-  UsersControl.cpp
-  Generating Code...
+﻿  MySQL.cpp
   AdminMenu.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
   BEBS.vcxproj -> C:\Users\gal\Desktop\BEBS\x64\Debug\BEBS.exe

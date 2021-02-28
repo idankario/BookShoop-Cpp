@@ -373,15 +373,17 @@ void MySQL::saveDiscount(System::Windows::Forms::TextBox^ discount, strP start, 
 
 }
 
-void  MySQL::setBooksCom(MySqlCommand^ cmdDB, System::Windows::Forms::ComboBox^ comboBox1) {
+void  MySQL::setBooksCom(MySqlCommand^ cmdDB, System::Windows::Forms::ComboBox^ comboBox1, mapSI^ line) {
 	MySqlDataReader^ myRender;
-
+	int n = 0;
 	try {
 		conData->Open();
 		myRender = cmdDB->ExecuteReader();
 		while (myRender->Read()) {
-			String^ vt = myRender->GetString("title");
-			comboBox1->Items->Add(vt);
+			int id = myRender->GetUInt32("book_id");
+			line->insert(mapSI::make_value(n.ToString(), id));
+			n++;
+			comboBox1->Items->Add(myRender->GetString("title"));
 		}
 		conData->Close();
 	}
@@ -389,9 +391,10 @@ void  MySQL::setBooksCom(MySqlCommand^ cmdDB, System::Windows::Forms::ComboBox^ 
 		MessageBox::Show(ex->Message);
 	}
 }
-void  MySQL::booksCom(System::Windows::Forms::ComboBox^ comboBox1) {
-	MySqlCommand^ cmdDB = gcnew MySqlCommand("select title from book_store.books;", conData);
-	setBooksCom(cmdDB, comboBox1);
+
+void  MySQL::booksCom(System::Windows::Forms::ComboBox^ comboBox1, mapSI^ line) {
+	MySqlCommand^ cmdDB = gcnew MySqlCommand("select title,book_id from book_store.books;", conData);
+	setBooksCom(cmdDB, comboBox1,line);
 }
 void MySQL::setProviderCom(MySqlCommand^ cmdDB, System::Windows::Forms::ComboBox^ comboBox2) {
 	MySqlDataReader^ myRender;
@@ -448,6 +451,7 @@ void  MySQL::quarterlySales(System::Windows::Forms::DataVisualization::Charting:
 	setValueChart2(chart2, cmdDB);
 
 }
+
 
 void  MySQL::weeklySales(System::Windows::Forms::DataVisualization::Charting::Chart^ chart2)
 {
@@ -557,21 +561,21 @@ void MySQL::providerData(System::Windows::Forms::DataGridView^ OrderList )
 void MySQL::setUsersTabel(int id, System::Windows::Forms::Label^ name, System::Windows::Forms::Label^ email, System::Windows::Forms::Label^ JoinDate, System::Windows::Forms::Label^ Status, System::Windows::Forms::DataGridView^ userPurchesTable)
 {
 
-	MySqlCommand^ cmdDB = gcnew MySqlCommand("select * from book_store.users where user_id='" + id + "';", conData);
+	MySqlCommand^ cmdDB = gcnew MySqlCommand("select user_id,user_name as name,email,DATE_FORMAT(join_date, '%m-%d-%Y') as jD,user_status from book_store.users where user_id='" + id + "';", conData);
 	try {
 		conData->Open();
 		MySqlDataReader^ myRender = cmdDB->ExecuteReader();
 
 		if (myRender->Read()) {
 			String^ vId = myRender->GetInt32("user_id").ToString();
-			name->Text = myRender->GetString("user_name");
+			name->Text = myRender->GetString("name");
 			email->Text = myRender->GetString("email");
-			JoinDate->Text = myRender->GetString("join_date");
+			JoinDate->Text = myRender->GetString("jD");
 			Status->Text = myRender->GetString("user_status");
 
 			//set list 2:
 			conData->Close();
-			MySqlCommand^ cmdDB2 = gcnew MySqlCommand("select pyment_date,price_paid,payment_method from book_store.purchases where user_id='" + vId + "';", conData);
+			MySqlCommand^ cmdDB2 = gcnew MySqlCommand("select DATE_FORMAT(pyment_date, '%m-%d-%Y') as Date,price_paid as TotalPrice,payment_method as PaymentMthod from book_store.purchases where user_id='" + vId + "';", conData);
 			try {
 				conData->Open();
 				MySqlDataAdapter^ sda = gcnew MySqlDataAdapter();
@@ -591,4 +595,11 @@ void MySQL::setUsersTabel(int id, System::Windows::Forms::Label^ name, System::W
 	catch (Exception^ ex) {
 		MessageBox::Show(ex->Message);
 	}
+}
+void MySQL::addNewOrder(int idB, strP nameP, strP amount)
+{
+	MySqlCommand^ cmdDB = gcnew MySqlCommand("INSERT INTO `book_store`.`orders_from_provider`(`book_id`,`provider`,`amount`)VALUES('" + idB + "','" + nameP + "','" + amount + "');", conData);
+	if(executeCmd(cmdDB))
+		MessageBox::Show("Secced create new order");
+
 }

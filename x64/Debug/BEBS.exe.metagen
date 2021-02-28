@@ -156,8 +156,8 @@ Class MySQL: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     setValueDiscountFiled(Int32, TextBox, DateTimePicker, DateTimePicker): PrivateScope, Public, HideBySig
     setProviderCom(MySqlCommand, ComboBox): PrivateScope, Public, HideBySig
     providerCom(ComboBox): PrivateScope, Public, HideBySig
-    booksCom(ComboBox): PrivateScope, Public, HideBySig
-    setBooksCom(MySqlCommand, ComboBox): PrivateScope, Public, HideBySig
+    booksCom(ComboBox, map<System::String ^\,int>): PrivateScope, Public, HideBySig
+    setBooksCom(MySqlCommand, ComboBox, map<System::String ^\,int>): PrivateScope, Public, HideBySig
     booksByAmount(Chart): PrivateScope, Public, HideBySig
     editUser(TextBox, TextBox, TextBox): PrivateScope, Public, HideBySig
     monthlySales(Chart): PrivateScope, Public, HideBySig
@@ -169,4 +169,5 @@ Class MySQL: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     UsersList(ListBox, map<System::String ^\,int>): PrivateScope, Public, HideBySig
     providerData(DataGridView): PrivateScope, Public, HideBySig
     setValueGrid(DataGridView, MySqlCommand): PrivateScope, Public, HideBySig
+    addNewOrder(Int32, String, String): PrivateScope, Public, HideBySig
     Dispose(): PrivateScope, Public, Final, Virtual, HideBySig

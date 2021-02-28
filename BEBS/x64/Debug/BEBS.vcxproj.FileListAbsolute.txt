@@ -34,3 +34,4 @@ C:\Users\gal\Desktop\BEBS\BEBS\x64\Debug\BEBS.ShoppingMenu.resources
 C:\Users\gal\Desktop\BEBS\BEBS\x64\Debug\BEBS.UsersControl.resources
 C:\Users\gal\Desktop\BEBS\BEBS\x64\Debug\BEBS.vcxproj.GenerateResource.cache
 C:\Users\gal\Desktop\BEBS\BEBS\x64\Debug\BEBS.vcxproj.CopyComplete
+C:\Users\gal\Desktop\BEBS\BEBS\x64\Debug\BEBS.vcxprojAssemblyReference.cache

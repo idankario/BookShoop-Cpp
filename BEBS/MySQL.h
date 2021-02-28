@@ -42,8 +42,8 @@
 		
 		void setProviderCom(MySqlCommand^ cmdDB, System::Windows::Forms::ComboBox^ comboBox2);
 		void providerCom(System::Windows::Forms::ComboBox^ comboBox2);
-		void booksCom(System::Windows::Forms::ComboBox^ comboBox1);
-		void setBooksCom(MySqlCommand^ cmdDB, System::Windows::Forms::ComboBox^ comboBox1);
+		void booksCom(System::Windows::Forms::ComboBox^ comboBox1, mapSI^ line);
+		void setBooksCom(MySqlCommand^ cmdDB, System::Windows::Forms::ComboBox^ comboBox1, mapSI^ line);
 		void booksByAmount(System::Windows::Forms::DataVisualization::Charting::Chart^ chartBookAmount);
 		
 	
@@ -59,6 +59,7 @@
 		void UsersList(System::Windows::Forms::ListBox^ listBoxTable, mapSI^ line);
 		void providerData(System::Windows::Forms::DataGridView ^ OrderList);
 		void setValueGrid(System::Windows::Forms::DataGridView^ dataGridView1, MySqlCommand^ cmdDB);
+		void addNewOrder(int idB, strP nameP, strP amount);
 		//SELECT trackid, name FROM tracks WHERE name LIKE 'Wild%'
 	protected:
 		~MySQL();
