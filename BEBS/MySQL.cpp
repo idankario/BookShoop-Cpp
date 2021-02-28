@@ -104,33 +104,49 @@ Book^ MySQL::getListOfBook()
 	conData->Close();
 	return head;
 }
-
-//serch book in list
-Book^ MySQL::searchBooks(strP s)
+Book^ serchBookInListChangeItToHead(Book^ b, strP bookId, int size)
 {
-	MySqlCommand^ cmdDB = gcnew MySqlCommand("select * from book_store.books where amount>1 and CONCAT(`book_id`,`title`,`pages`, `section`,`price`,`amount`,`publish_date`,`info`,`img`,`author`) LIKE '%" + s + "%';", conData);
-	Book^ head = nullptr, ^ next = nullptr;
+	
+	Book^ temp = b,^head = safe_cast<Book^>(b->next), ^back = b;
+	if (String::Compare(b->getBookId(), bookId)!=0)
+	{
+		for (int i=0;i<size;i++)
+		{
+			if (String::Compare(head->getBookId(), bookId)!=0)
+			{
+				back = head;
+				head = safe_cast<Book^>(head->next);
+			}
+			else
+			{
+				back->next = head->next;
+				head->next = temp;
+				return head;
+			}
+		}
+	}
+	else
+		return temp;
+}
+//serch book in list
+Book^ MySQL::searchBooks(strP s, Book^ headB,int size)
+{
+	MySqlCommand^ cmdDB = gcnew MySqlCommand("select book_id from book_store.books where amount>1 and CONCAT(`title`,`pages`, `section`,`price`,`author`) LIKE '%" + s + "%';", conData);
 	try {
 		conData->Open();
 		MySqlDataReader^ myRender = cmdDB->ExecuteReader();
-		if (myRender->Read())
-		{
-			head = getBookMyRender(myRender);
-			next = head;
-		}
 		while (myRender->Read())
 		{
-			next->next = getBookMyRender(myRender);
-			next = safe_cast<Book^>(next->next);
+			strP bookId = myRender->GetInt32("book_id").ToString();
+			headB=serchBookInListChangeItToHead(headB, bookId,size);
 		}
-
 		myRender->Close();
 	}
 	catch (Exception^ ex) {
 		MessageBox::Show(ex->Message);
 	}
 	conData->Close();
-	return head;
+	return headB;
 }
 Boolean MySQL::executeCmd(MySqlCommand^ cmdDB)
 {

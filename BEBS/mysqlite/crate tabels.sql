@@ -10,18 +10,18 @@ CREATE TABLE users (
     email VARCHAR(45) UNIQUE NOT NULL,
     pass VARCHAR(17) NOT NULL,
     user_name VARCHAR(45) NOT NULL,
-    last_activity DATETIME DEFAULT CURRENT_TIMESTAMP,
-    join_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    last_activity datetime DEFAULT current_timestamp,
+    join_date datetime DEFAULT CURRENT_TIMESTAMP,
     user_status VARCHAR(45) DEFAULT 'active',
     PRIMARY KEY (user_id)
 );
 
 CREATE TABLE discounts (
     discount_id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
-    percent SMALLINT UNSIGNED NOT NULL,
-    user_id_discount VARCHAR(5) DEFAULT "all",
+    percent VARCHAR(6) NOT NULL,
     date_from DATE NOT NULL,
     date_until DATE NOT NULL,
+    user_id_discount VARCHAR(5) DEFAULT "all",
     active_discount boolean DEFAULT true ,
     PRIMARY KEY (discount_id)
 );
@@ -33,7 +33,7 @@ CREATE TABLE books (
     section VARCHAR(100) NOT NULL,
     price SMALLINT UNSIGNED NOT NULL,
     amount SMALLINT UNSIGNED NOT NULL,
-    publish_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    publish_date datetime DEFAULT CURRENT_TIMESTAMP,
     info VARCHAR(1000) NOT NULL,
     img VARCHAR(200) NOT NULL,
     author VARCHAR(50) DEFAULT 'anonimous',
@@ -41,7 +41,7 @@ CREATE TABLE books (
 );
 CREATE TABLE shoping_carts (
     shoping_cart_id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
-    order_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    order_date datetime DEFAULT CURRENT_TIMESTAMP,
     discount_id SMALLINT UNSIGNED,
     PRIMARY KEY (shoping_cart_id),
     FOREIGN KEY (discount_id)
@@ -66,7 +66,7 @@ CREATE TABLE purchases (
     cart_id VARCHAR(4) NOT NULL,
     user_id VARCHAR(10) NOT NULL,
     payment_method VARCHAR(45) NOT NULL,
-    pyment_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    pyment_date datetime DEFAULT CURRENT_TIMESTAMP,
     price_paid VARCHAR(45) NOT NULL,
     PRIMARY KEY (purchase_id)
 );
@@ -76,7 +76,7 @@ CREATE TABLE orders_from_provider (
     amount SMALLINT UNSIGNED NOT NULL,
     provider VARCHAR(45) NOT NULL,
     order_status VARCHAR(45) DEFAULT 'active',
-    order_date DATE,
+    order_date datetime DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (order_provider_id),
     FOREIGN KEY (book_id)
 	REFERENCES books (book_id)

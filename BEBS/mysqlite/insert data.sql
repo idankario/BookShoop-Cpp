@@ -2,15 +2,15 @@ use book_store;
 
 -- users																								
 INSERT INTO `book_store`.`users`(`user_role`,`user_id`,`email`,`pass`,`user_name`, `last_activity`,`join_date`,`user_status`)VALUES('Buyer',1,'idan@gmail.com','123','Idan Ryrman','2019-10-10','2018-10-10','active');
-INSERT INTO `book_store`.`users`(`user_role`,`user_id`,`email`,`pass`,`user_name`, `last_activity`,`join_date`,`user_status`)VALUES('Buyer',2,'sarah@gmail.com','123','Sarah Hopman','2020-10-20','2018-10-10','Unregistered');
+INSERT INTO `book_store`.`users`(`user_role`,`user_id`,`email`,`pass`,`user_name`, `last_activity`,`join_date`,`user_status`)VALUES('Buyer',2,'sarah@gmail.com','123','Sarah Hopman','2020-10-20','2018-10-10','active');
 INSERT INTO `book_store`.`users`(`user_role`,`user_id`,`email`,`pass`,`user_name`, `last_activity`,`join_date`,`user_status`)VALUES('Admin',3,'tomas@gmail.com','123','Tomas Eily','2019-01-01','2017-01-01','active');
 INSERT INTO `book_store`.`users`(`user_role`,`user_id`,`email`,`pass`,`user_name`, `last_activity`,`join_date`,`user_status`)VALUES('Buyer',4,'shani@gmail.com','123','Shani Queen' ,'2019-01-01','2019-01-01','active');
 
 
 -- discounts
-INSERT INTO `book_store`.`discounts`(`discount_id`,`percent`,`date_from`,`date_until`,`user_id_discount`)VALUES(1, 15 ,'2020-11-02','2021-6-20','all');
-INSERT INTO `book_store`.`discounts`(`discount_id`,`percent`,`date_from`,`date_until`,`user_id_discount`)VALUES(2, 10 ,'2020-12-01','2021-12-20','all');
-INSERT INTO `book_store`.`discounts`(`discount_id`,`percent`,`date_from`,`date_until`,`user_id_discount`)VALUES(3, 20 ,'2020-12-30','2021-01-01','all');
+INSERT INTO `book_store`.`discounts`(`discount_id`,`percent`,`date_from`,`date_until`,`user_id_discount`)VALUES(1, '15' ,'2020-11-02','2021-6-20','all');
+INSERT INTO `book_store`.`discounts`(`discount_id`,`percent`,`date_from`,`date_until`,`user_id_discount`)VALUES(2, '10' ,'2020-12-01','2021-12-20','all');
+INSERT INTO `book_store`.`discounts`(`discount_id`,`percent`,`date_from`,`date_until`,`user_id_discount`)VALUES(3, '20' ,'2020-12-30','2021-01-01','all');
 
 -- shoping_carts
 INSERT INTO `book_store`.`shoping_carts`(`shoping_cart_id`,`order_date`,`discount_id`) VALUES(1, '2020-11-02', 1);

@@ -16,7 +16,7 @@ FROM book_store.books
 select pass from book_store.users where email="idan@gmail.com";
 SELECT DATE_FORMAT(publish_date, '%m-%d-%Y') as publishDate ,book_store.books.* FROM book_store.books; 
 
- SELECT * FROM book_store.books WHERE amount>1 and CONCAT(`book_id`,`title`,`pages` ,`section`,`price`,`amount`,`publish_date`,`info`,`img`,`author`) LIKE '%HTML%' ;
+ SELECT * FROM book_store.books WHERE amount>1 and CONCAT(`title`,`pages` ,`section`,`price`,`author`) LIKE '%c++%' ;
  SELECT * FROM book_store.books ;
 select * from book_store.purchases where pyment_date >= now()-interval 1 week;
 -- 1 register 
@@ -52,3 +52,8 @@ select max(percent) from book_store.discounts where now()>=date_from and now()<=
 UPDATE  book_store.discounts SET  active_discount = false where discount_id=1;
 
 
+INSERT INTO `book_store`.`orders_from_provider`(`order_provider_id`,`book_id`,`amount`,`provider`,`order_date`,`order_status`) VALUES(6,9,90,'Dolev','2020-12-18','active'); 
+
+INSERT INTO `book_store`.`orders_from_provider`(`book_id`,`provider`,`amount`) VALUES(9,'Dolev','90'); 
+select pyment_date as Date, price_paid as TotalPrice,payment_method from book_store.purchases where user_id=1;
+select * from book_store.books;

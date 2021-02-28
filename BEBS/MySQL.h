@@ -23,7 +23,7 @@
 		void createNewBook(strP title, strP page, strP section, strP price, strP amount, strP info,strP img, strP author);
 		Boolean  addNewUser(strP email, strP password, strP name);
 		Book^ getListOfBook();
-		Book^ searchBooks(strP s);
+		Book^ searchBooks(strP s, Book^ headB,int size);
 		void fillListDiscount(System::Windows::Forms::ListBox^ listD, mapSI^ line);
 		void quarterlyProfit(System::Windows::Forms::DataVisualization::Charting::Chart^ chart1, System::Windows::Forms::DataGridView^ dataGridView1);
 		void monthlyProfit(System::Windows::Forms::DataVisualization::Charting::Chart^ chart1, System::Windows::Forms::DataGridView^ dataGridView1);

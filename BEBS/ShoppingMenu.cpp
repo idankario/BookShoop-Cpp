@@ -44,7 +44,7 @@ void BEBS::ShoppingMenu::setPic(System::Windows::Forms::PictureBox^ pic, System:
 
 void BEBS::ShoppingMenu::getItemR(void)
 {
-	int s = store.getNumberItems();
+	int s = store.getNumberBooks();
 	if (s > 0)
 	{
 		setPic(item1, titleItem1, PriceItem1);
@@ -579,9 +579,9 @@ System::Void BEBS::ShoppingMenu::SearchIcon_Click(System::Object^ sender, System
 	MySQL db;
 	if (!(this->TextSearch->Text == ""))
 	{
-		Book^ b = db.searchBooks(this->TextSearch->Text);
-		store.setSearchList(b);
-		
+		store.setBook(db.searchBooks(this->TextSearch->Text, store.getHead(),store.getNumberBooks()));
+		store.initIndex();
+		getItemR();
 	}
 }
 

@@ -89,13 +89,15 @@ Class Inventory: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   Interfaces:
     System.IDisposable
   Methods:
-    getNumberItems(): PrivateScope, Public, HideBySig
-    setSearchList(Book): PrivateScope, Public, HideBySig
+    getNumberBooks(): PrivateScope, Public, HideBySig
     BookLIndex(): PrivateScope, Public, HideBySig
     getBook(): PrivateScope, Public, HideBySig
     addListBook(ListBox): PrivateScope, Public, HideBySig
     getBookByIndex(Int32): PrivateScope, Public, HideBySig
+    initIndex(): PrivateScope, Public, HideBySig
     addBookToInvoice(ListBox): PrivateScope, Public, HideBySig
+    getHead(): PrivateScope, Public, HideBySig
+    setBook(Book): PrivateScope, Public, HideBySig
     Dispose(): PrivateScope, Public, Final, Virtual, HideBySig
 Class BEBS.DiscountControl: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
@@ -139,7 +141,7 @@ Class MySQL: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     createNewBook(String, String, String, String, String, String, String, String): PrivateScope, Public, HideBySig
     addNewUser(String, String, String): PrivateScope, Public, HideBySig
     getListOfBook(): PrivateScope, Public, HideBySig
-    searchBooks(String): PrivateScope, Public, HideBySig
+    searchBooks(String, Book, Int32): PrivateScope, Public, HideBySig
     fillListDiscount(ListBox, map<System::String ^\,int>): PrivateScope, Public, HideBySig
     quarterlyProfit(Chart, DataGridView): PrivateScope, Public, HideBySig
     monthlyProfit(Chart, DataGridView): PrivateScope, Public, HideBySig

@@ -1,5 +1,8 @@
 #include "pch.h"
-
+Book^ Inventory::getHead()
+{
+	return head;
+}
 Inventory::Inventory(){
 	MySQL db;
 	head = db.getListOfBook();
@@ -19,11 +22,9 @@ Inventory::~Inventory()
 {
 	deleteBook(head);
 }
-
-void Inventory::setSearchList(Book^ bookList)
+void Inventory::initIndex()
 {
-	head = bookList;
-
+	this->index = 0;
 }
 void Inventory::addListBook(System::Windows::Forms::ListBox^ listBox)
 {
@@ -47,12 +48,19 @@ Book^ Inventory::getBook()
 	if (size <2)
 		return head;
 	Book^ b = head;
-	index++;
 	if (index == size)
 		index = 0;
 	for (int i = 0; i != index; ++i)
 		b = safe_cast<Book^>(b->next);
+	index++;
 	return b;
+
+}
+int Inventory::getNumberBooks()
+{
+	if (head == nullptr)
+		return 0;
+	return head->getNumItem();
 
 }
 Book^ Inventory::getBookByIndex(int index)
@@ -73,4 +81,8 @@ void Inventory::addBookToInvoice(System::Windows::Forms::ListBox^ listBox)
 	for (Book^ b = head; b != nullptr; b = safe_cast<Book^>(b->next))
 		listBox->Items->Add(b->getTitle());
 
+}
+void Inventory::setBook(Book^ b)
+{
+	this->head = b;
 }

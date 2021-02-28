@@ -10,26 +10,19 @@ public:
 	{
 		head = listBook;
 	}
-	
-	int getNumberItems()
-	{
-		if(searchList == nullptr)
-			if (head == nullptr)
-				return 0;
-		return head->getNumItem();
-
-	}
-	void setSearchList(Book^ bookList);
+	int getNumberBooks();
 	void BookLIndex();
 	Book^ getBook();
 	void  addListBook(System::Windows::Forms::ListBox^ listBox);
 	Book^ getBookByIndex(int index);
+	void initIndex();
 	void addBookToInvoice(System::Windows::Forms::ListBox^ listBox);
+	Book^ getHead();
+	void setBook(Book^ b);
 protected:
 	~Inventory();
 private:
-	static Book^ head;
-	Book^ searchList;
+	Book^ head;
 	int index;
 	
 };
