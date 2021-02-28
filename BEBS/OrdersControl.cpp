@@ -34,9 +34,9 @@ BEBS::OrdersControl::~OrdersControl()
 void BEBS::OrdersControl::InitializeComponent(void)
 {
 	System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(OrdersControl::typeid));
-	System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea20 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-	System::Windows::Forms::DataVisualization::Charting::Legend^ legend20 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
-	System::Windows::Forms::DataVisualization::Charting::Series^ series20 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+	System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea1 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+	System::Windows::Forms::DataVisualization::Charting::Legend^ legend1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+	System::Windows::Forms::DataVisualization::Charting::Series^ series1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 	this->weekly = (gcnew System::Windows::Forms::Button());
 	this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 	this->order_id = (gcnew System::Windows::Forms::Label());
@@ -237,8 +237,10 @@ void BEBS::OrdersControl::InitializeComponent(void)
 	this->OrderList->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
 		| System::Windows::Forms::AnchorStyles::Left)
 		| System::Windows::Forms::AnchorStyles::Right));
+	this->OrderList->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
+	this->OrderList->BackgroundColor = System::Drawing::Color::White;
 	this->OrderList->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-	this->OrderList->Location = System::Drawing::Point(439, 120);
+	this->OrderList->Location = System::Drawing::Point(462, 120);
 	this->OrderList->Name = L"OrderList";
 	this->OrderList->ReadOnly = true;
 	this->OrderList->RowHeadersWidth = 100;
@@ -253,11 +255,11 @@ void BEBS::OrdersControl::InitializeComponent(void)
 	this->OrderListLabel->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->OrderListLabel->ForeColor = System::Drawing::Color::White;
-	this->OrderListLabel->Location = System::Drawing::Point(435, 95);
+	this->OrderListLabel->Location = System::Drawing::Point(458, 95);
 	this->OrderListLabel->Name = L"OrderListLabel";
-	this->OrderListLabel->Size = System::Drawing::Size(76, 22);
+	this->OrderListLabel->Size = System::Drawing::Size(80, 22);
 	this->OrderListLabel->TabIndex = 68;
-	this->OrderListLabel->Text = L"OrderList";
+	this->OrderListLabel->Text = L"Order List";
 	// 
 	// labelBookAmount
 	// 
@@ -266,7 +268,7 @@ void BEBS::OrdersControl::InitializeComponent(void)
 	this->labelBookAmount->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	this->labelBookAmount->ForeColor = System::Drawing::Color::White;
-	this->labelBookAmount->Location = System::Drawing::Point(435, 284);
+	this->labelBookAmount->Location = System::Drawing::Point(458, 284);
 	this->labelBookAmount->Name = L"labelBookAmount";
 	this->labelBookAmount->Size = System::Drawing::Size(190, 22);
 	this->labelBookAmount->TabIndex = 69;
@@ -274,22 +276,22 @@ void BEBS::OrdersControl::InitializeComponent(void)
 	// 
 	// chartBookAmount
 	// 
-	chartArea20->AxisX->Interval = 1;
-	chartArea20->AxisX->IsLabelAutoFit = false;
-	chartArea20->AxisX->LabelStyle->Angle = -90;
-	chartArea20->Name = L"ChartArea1";
-	this->chartBookAmount->ChartAreas->Add(chartArea20);
-	legend20->Name = L"Legend1";
-	this->chartBookAmount->Legends->Add(legend20);
-	this->chartBookAmount->Location = System::Drawing::Point(439, 309);
+	chartArea1->AxisX->Interval = 1;
+	chartArea1->AxisX->IsLabelAutoFit = false;
+	chartArea1->AxisX->LabelStyle->Angle = -90;
+	chartArea1->Name = L"ChartArea1";
+	this->chartBookAmount->ChartAreas->Add(chartArea1);
+	legend1->Name = L"Legend1";
+	this->chartBookAmount->Legends->Add(legend1);
+	this->chartBookAmount->Location = System::Drawing::Point(462, 309);
 	this->chartBookAmount->Name = L"chartBookAmount";
-	series20->ChartArea = L"ChartArea1";
-	series20->Color = System::Drawing::Color::MidnightBlue;
-	series20->Legend = L"Legend1";
-	series20->Name = L"B";
-	series20->YValuesPerPoint = 2;
-	this->chartBookAmount->Series->Add(series20);
-	this->chartBookAmount->Size = System::Drawing::Size(650, 236);
+	series1->ChartArea = L"ChartArea1";
+	series1->Color = System::Drawing::Color::MidnightBlue;
+	series1->Legend = L"Legend1";
+	series1->Name = L"B";
+	series1->YValuesPerPoint = 2;
+	this->chartBookAmount->Series->Add(series1);
+	this->chartBookAmount->Size = System::Drawing::Size(502, 236);
 	this->chartBookAmount->TabIndex = 70;
 	this->chartBookAmount->Text = L"chart2";
 	// 
@@ -365,6 +367,6 @@ void BEBS::OrdersControl::fillProviders(void) {
 }
 Void BEBS::OrdersControl::fillBookChart(void) {
 	MySQL db;
-	db.booksByAmount2(this->chartBookAmount);
+	db.booksByAmount(this->chartBookAmount);
 }
 

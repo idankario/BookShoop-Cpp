@@ -19,6 +19,7 @@ namespace BEBS {
 
 	private:  
 		Form^ lastForm;
+		mapSI^ line =gcnew mapSI;;
 		System::Windows::Forms::ListBox^ listBoxTable;
 		System::Windows::Forms::PictureBox^ HomePage;
 		System::Windows::Forms::Button^ edit;
@@ -26,7 +27,6 @@ namespace BEBS {
 		System::Windows::Forms::TextBox^ textBoxlName;
 		System::Windows::Forms::TextBox^ textBoxEmail;
 		System::Windows::Forms::TextBox^ textBoxDate;
-
 		System::Windows::Forms::Label^ textName;
 		System::Windows::Forms::Label^ textEmail;
 		System::Windows::Forms::Label^ textJoinDate;
@@ -40,8 +40,7 @@ namespace BEBS {
 		System::Windows::Forms::Button^ OrderButton;
 		System::Windows::Forms::Button^ UsersButton;
 		System::Windows::Forms::Button^ ProfitButton;
-	private: System::Windows::Forms::TextBox^ textBoxStatus;
-		   int countList2 = 0;
+		System::Windows::Forms::TextBox^ textBoxStatus;
 #pragma region Windows Form Designer generated code
 		/// <summary>
 		/// Required method for Designer support - do not modify
@@ -51,24 +50,14 @@ namespace BEBS {
 		
 #pragma endregion
 	private: 
-		System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e);
-		Void fillCom(void);
-		System::Void label5_Click(System::Object^ sender, System::EventArgs^ e);
-		System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) ;
-		//System::Void label8_Click(System::Object^ sender, System::EventArgs^ e);
 		System::Void listBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e);
 		Void fillListBox(void) ;
-		System::Void dataGridView1_CellContentClick_1(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e);
 		System::Void block_Click(System::Object^ sender, System::EventArgs^ e);
 		System::Void editClick(System::Object^ sender, System::EventArgs^ e);
-
-		String^ con = L"datasource=localhost; port=3306; username=root; password=bebs";
 		System::Void InventoryClick(System::Object^ sender, System::EventArgs^ e);
 		System::Void DiscountClick(System::Object^ sender, System::EventArgs^ e);
 		System::Void ProfitClick(System::Object^ sender, System::EventArgs^ e);
 		System::Void OrdersClick(System::Object^ sender, System::EventArgs^ e);
 		System::Void HomePageClick(System::Object^ sender, System::EventArgs^ e);
-
-
 	};
 }

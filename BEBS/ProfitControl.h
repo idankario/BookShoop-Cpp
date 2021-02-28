@@ -26,11 +26,12 @@ namespace BEBS {
 		System::Windows::Forms::Button^ DiscountButton;
 		System::Windows::Forms::Button^ OrderButton;
 		System::Windows::Forms::Button^ UsersButton;
-
 		System::Windows::Forms::Button^ ProfitButton;
-	private: System::Windows::Forms::DataVisualization::Charting::Chart^ chart2;
-		   System::ComponentModel::Container^ components;
-
+		System::Windows::Forms::DataVisualization::Charting::Chart^ chart2;
+		System::Windows::Forms::Label^ profitTable;
+		System::Windows::Forms::Label^ ProfitSlice;
+		System::Windows::Forms::Label^ label1;
+		System::ComponentModel::Container^ components;
 #pragma region Windows Form Designer generated code
 
 		void InitializeComponent(void);
@@ -45,6 +46,7 @@ namespace BEBS {
 		System::Void UsersClick(System::Object^ sender, System::EventArgs^ e);
 		System::Void OrdersClick(System::Object^ sender, System::EventArgs^ e);
 		System::Void HomePageClick(System::Object^ sender, System::EventArgs^ e);
-
+		System::Void ProfitControl_Load(System::Object^ sender, System::EventArgs^ e) {
+	}
 	};
 }

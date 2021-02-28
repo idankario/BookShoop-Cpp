@@ -1,5 +1,7 @@
 ﻿  pch.cpp
-C:\Users\gal\Desktop\BEBS\BEBS\MySQL.h(24,77): warning C4677: 'fillListDiscount': signature of non-private member contains assembly private type 'cliext::map<System::String ^,int>'
+C:\Users\gal\Desktop\BEBS\BEBS\MySQL.h(27,77): warning C4677: 'fillListDiscount': signature of non-private member contains assembly private type 'cliext::map<System::String ^,int>'
+C:\Users\gal\Desktop\BEBS\BEBS\pch.h(18): message : see declaration of 'cliext::map<System::String ^,int>'
+C:\Users\gal\Desktop\BEBS\BEBS\MySQL.h(59,77): warning C4677: 'UsersList': signature of non-private member contains assembly private type 'cliext::map<System::String ^,int>'
 C:\Users\gal\Desktop\BEBS\BEBS\pch.h(18): message : see declaration of 'cliext::map<System::String ^,int>'
   AdminMenu.cpp
   AssemblyInfo.cpp

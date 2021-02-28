@@ -14,8 +14,6 @@ namespace BEBS {
 	private:  
 		Form^ lastForm;
 		System::Windows::Forms::TextBox^ discount;
-
-
 		System::Windows::Forms::Label^ label2;
 		System::Windows::Forms::Label^ label1;
 		System::Windows::Forms::Label^ label3;
@@ -32,11 +30,10 @@ namespace BEBS {
 		System::Windows::Forms::Button^ DiscountButton;
 		System::Windows::Forms::Button^ OrderButton;
 		System::Windows::Forms::Button^ UsersButton;
-	private: System::Windows::Forms::DateTimePicker^ dateTimeStart;
-	private: System::Windows::Forms::DateTimePicker^ dateTimeEnd;
-
-
-		   System::Windows::Forms::Button^ ProfitButton;
+		System::Windows::Forms::DateTimePicker^ dateTimeStart;
+		System::Windows::Forms::DateTimePicker^ dateTimeEnd;
+		System::Windows::Forms::Button^ ProfitButton;
+		mapSI^ line = gcnew mapSI;
 #pragma region Windows Form Designer generated code
 		/// <summary>
 		/// Required method for Designer support - do not modify
@@ -56,6 +53,5 @@ namespace BEBS {
 		System::Void UsersClick(System::Object^ sender, System::EventArgs^ e);
 		System::Void ProfitClick(System::Object^ sender, System::EventArgs^ e);
 		System::Void HomePageClick(System::Object^ sender, System::EventArgs^ e);
-		mapSI^ line=gcnew mapSI;
 	};
 }

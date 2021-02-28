@@ -131,17 +131,16 @@ Class MySQL: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     System.String constr : Public
     MySql.Data.MySqlClient.MySqlConnection conData : Public
   Methods:
+    setValueChartAndGrid(String, Chart, DataGridView, MySqlCommand): PrivateScope, Public, HideBySig
+    executeCmd(MySqlCommand): PrivateScope, Public, HideBySig
     getInstaseUser(String, String): PrivateScope, Public, HideBySig
     deleteBook(String): PrivateScope, Public, HideBySig
     updateBook(String, String, String, String, String, String, String, String, String): PrivateScope, Public, HideBySig
     createNewBook(String, String, String, String, String, String, String, String): PrivateScope, Public, HideBySig
     addNewUser(String, String, String): PrivateScope, Public, HideBySig
-    GetBookTable(): PrivateScope, Public, HideBySig
-    GetUserTable(): PrivateScope, Public, HideBySig
     getListOfBook(): PrivateScope, Public, HideBySig
     searchBooks(String): PrivateScope, Public, HideBySig
     fillListDiscount(ListBox, map<System::String ^\,int>): PrivateScope, Public, HideBySig
-    setValueChart(Chart, DataGridView, MySqlCommand): PrivateScope, Public, HideBySig
     quarterlyProfit(Chart, DataGridView): PrivateScope, Public, HideBySig
     monthlyProfit(Chart, DataGridView): PrivateScope, Public, HideBySig
     weeklyProfit(Chart, DataGridView): PrivateScope, Public, HideBySig
@@ -151,16 +150,15 @@ Class MySQL: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     insertBookList(Int32, Int32, Int32, String): PrivateScope, Public, HideBySig
     disactiveDiscount(Int32): PrivateScope, Public, HideBySig
     fillListDiscountExpired(ListBox): PrivateScope, Public, HideBySig
+    setUsersTabel(Int32, Label, Label, Label, Label, DataGridView): PrivateScope, Public, HideBySig
     updateDiscount(String, String, String, String): PrivateScope, Public, HideBySig
     saveDiscount(TextBox, String, String): PrivateScope, Public, HideBySig
     setValueDiscountFiled(Int32, TextBox, DateTimePicker, DateTimePicker): PrivateScope, Public, HideBySig
-    executeCmd(MySqlCommand): PrivateScope, Public, HideBySig
     setProviderCom(MySqlCommand, ComboBox): PrivateScope, Public, HideBySig
     providerCom(ComboBox): PrivateScope, Public, HideBySig
     booksCom(ComboBox): PrivateScope, Public, HideBySig
     setBooksCom(MySqlCommand, ComboBox): PrivateScope, Public, HideBySig
-    booksByAmount2(Chart): PrivateScope, Public, HideBySig
-    setEditUser(MySqlCommand): PrivateScope, Public, HideBySig
+    booksByAmount(Chart): PrivateScope, Public, HideBySig
     editUser(TextBox, TextBox, TextBox): PrivateScope, Public, HideBySig
     monthlySales(Chart): PrivateScope, Public, HideBySig
     quarterlySales(Chart): PrivateScope, Public, HideBySig
@@ -168,8 +166,7 @@ Class MySQL: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     setValueChart2(Chart, MySqlCommand): PrivateScope, Public, HideBySig
     setBlockUser(MySqlCommand): PrivateScope, Public, HideBySig
     blockUser(TextBox): PrivateScope, Public, HideBySig
-    setUsersTabel(ListBox, MySqlCommand): PrivateScope, Public, HideBySig
-    UsersList(ListBox): PrivateScope, Public, HideBySig
+    UsersList(ListBox, map<System::String ^\,int>): PrivateScope, Public, HideBySig
     providerData(DataGridView): PrivateScope, Public, HideBySig
     setValueGrid(DataGridView, MySqlCommand): PrivateScope, Public, HideBySig
     Dispose(): PrivateScope, Public, Final, Virtual, HideBySig

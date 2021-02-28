@@ -28,15 +28,11 @@ namespace BEBS {
 		System::Windows::Forms::Button^ UsersButton;
 		System::Windows::Forms::Button^ ProfitButton;
 		System::ComponentModel::Container^ components;
-
-
 		System::Windows::Forms::DataGridView^ OrderList;
 		System::Windows::Forms::Label^ OrderListLabel;
 		System::Windows::Forms::Label^ labelBookAmount;
-	private: System::Windows::Forms::DataVisualization::Charting::Chart^ chartBookAmount;
-
-		   System::Windows::Forms::ComboBox^ comboBox2;
-		
+		System::Windows::Forms::DataVisualization::Charting::Chart^ chartBookAmount;
+		System::Windows::Forms::ComboBox^ comboBox2;
 #pragma region Windows Form Designer generated code
 	
 		void InitializeComponent(void);

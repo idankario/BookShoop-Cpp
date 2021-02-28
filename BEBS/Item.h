@@ -12,10 +12,6 @@ public:
     Item^ next;
     int getNumItem() { return size; }    strP productId, title, price, img;
 protected:
-   
-
     static int size;
- 
-
 };
 

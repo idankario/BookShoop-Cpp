@@ -43,6 +43,9 @@ BEBS::ProfitControl::~ProfitControl()
 			this->UsersButton = (gcnew System::Windows::Forms::Button());
 			this->ProfitButton = (gcnew System::Windows::Forms::Button());
 			this->chart2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
+			this->profitTable = (gcnew System::Windows::Forms::Label());
+			this->ProfitSlice = (gcnew System::Windows::Forms::Label());
+			this->label1 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->HomePage))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
@@ -246,12 +249,54 @@ BEBS::ProfitControl::~ProfitControl()
 			this->chart2->TabIndex = 65;
 			this->chart2->Text = L"chart2";
 			// 
+			// profitTable
+			// 
+			this->profitTable->AutoSize = true;
+			this->profitTable->BackColor = System::Drawing::Color::Transparent;
+			this->profitTable->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->profitTable->ForeColor = System::Drawing::Color::White;
+			this->profitTable->Location = System::Drawing::Point(65, 197);
+			this->profitTable->Name = L"profitTable";
+			this->profitTable->Size = System::Drawing::Size(152, 22);
+			this->profitTable->TabIndex = 69;
+			this->profitTable->Text = L"Profit By Book Table";
+			// 
+			// ProfitSlice
+			// 
+			this->ProfitSlice->AutoSize = true;
+			this->ProfitSlice->BackColor = System::Drawing::Color::Transparent;
+			this->ProfitSlice->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->ProfitSlice->ForeColor = System::Drawing::Color::White;
+			this->ProfitSlice->Location = System::Drawing::Point(437, 197);
+			this->ProfitSlice->Name = L"ProfitSlice";
+			this->ProfitSlice->Size = System::Drawing::Size(147, 22);
+			this->ProfitSlice->TabIndex = 70;
+			this->ProfitSlice->Text = L"Profit By Book Slice";
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->BackColor = System::Drawing::Color::Transparent;
+			this->label1->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label1->ForeColor = System::Drawing::Color::White;
+			this->label1->Location = System::Drawing::Point(770, 197);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(210, 22);
+			this->label1->TabIndex = 71;
+			this->label1->Text = L"Amount Of Book Sell In Shop";
+			// 
 			// ProfitControl
 			// 
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::None;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->ClientSize = System::Drawing::Size(1115, 582);
+			this->Controls->Add(this->label1);
+			this->Controls->Add(this->ProfitSlice);
+			this->Controls->Add(this->profitTable);
 			this->Controls->Add(this->chart2);
 			this->Controls->Add(this->UpdateInventoryButton);
 			this->Controls->Add(this->DiscountButton);
@@ -269,11 +314,13 @@ BEBS::ProfitControl::~ProfitControl()
 			this->Name = L"ProfitControl";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"ProfitControl";
+			this->Load += gcnew System::EventHandler(this, &ProfitControl::ProfitControl_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart1))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->HomePage))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart2))->EndInit();
 			this->ResumeLayout(false);
+			this->PerformLayout();
 
 		}
 
