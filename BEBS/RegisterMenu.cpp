@@ -355,6 +355,7 @@ System::Void BEBS::RegisterMenu::Next_Click(System::Object^ sender, System::Even
 	String^ email = this->textUser->Text;
 	String^ pass = this->textPass->Text;
 	String^ name = this->textName->Text;
+	String^ phone = this->textPhone->Text;
 	if (isValidInfoUser(email, pass, name))
 	{
 		if (!this->checkConditation->Checked)
@@ -363,7 +364,7 @@ System::Void BEBS::RegisterMenu::Next_Click(System::Object^ sender, System::Even
 			return;
 		}
 		MySQL db;
-		if (db.addNewUser(email, pass, name)) {
+		if (db.addNewUser(email, pass, name,phone)) {
 			MessageBox::Show("Conrgulition you are amember on our shop");
 			this->~RegisterMenu();
 			BEBS::LogInMenu logIn(lastForm);

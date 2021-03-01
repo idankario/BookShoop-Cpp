@@ -162,10 +162,10 @@ Boolean MySQL::executeCmd(MySqlCommand^ cmdDB)
 	conData->Close();
 	return true;
 }
-Boolean  MySQL::addNewUser(strP email, strP password, strP name)
+Boolean  MySQL::addNewUser(strP email, strP password, strP name,strP phone)
 {
 	MySqlCommand^ cmdDB;
-	cmdDB = gcnew MySqlCommand("INSERT INTO `book_store`.`users`(`user_name`,`email`,`pass`)VALUES('" + name + "','" + email + "','" + password + "');", conData);
+	cmdDB = gcnew MySqlCommand("INSERT INTO `book_store`.`users`(`user_name`,`email`,`pass`,`phone`)VALUES('" + name + "','" + email + "','" + password + "','"  + phone + "');", conData);
 	Boolean s = executeCmd(cmdDB);
 	return s;
 }

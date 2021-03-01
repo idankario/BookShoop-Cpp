@@ -23,7 +23,6 @@ C:\Users\gal\source\repos\BookShoop-Cpp\BEBS\x64\Debug\BEBS.ShoppingMenu.resourc
 C:\Users\gal\source\repos\BookShoop-Cpp\BEBS\x64\Debug\BEBS.UsersControl.resources
 C:\Users\gal\source\repos\BookShoop-Cpp\BEBS\x64\Debug\BEBS.vcxproj.GenerateResource.cache
 C:\Users\gal\source\repos\BookShoop-Cpp\BEBS\x64\Debug\BEBS.vcxproj.CopyComplete
-C:\Users\gal\Desktop\BEBS\BEBS\x64\Debug\BEBS.vcxprojAssemblyReference.cache
 C:\Users\gal\Desktop\BEBS\BEBS\x64\Debug\BEBS.AdminMenu.resources
 C:\Users\gal\Desktop\BEBS\BEBS\x64\Debug\BEBS.DiscountControl.resources
 C:\Users\gal\Desktop\BEBS\BEBS\x64\Debug\BEBS.HomePage.resources

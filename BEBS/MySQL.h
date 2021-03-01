@@ -21,7 +21,7 @@
 		void deleteBook(strP s);
 		void updateBook(strP title, strP page, strP section, strP price, strP amount, strP info,strP img, strP author, strP id);
 		void createNewBook(strP title, strP page, strP section, strP price, strP amount, strP info,strP img, strP author);
-		Boolean  addNewUser(strP email, strP password, strP name);
+		Boolean  addNewUser(strP email, strP password, strP name, strP phone);
 		Book^ getListOfBook();
 		Book^ searchBooks(strP s, Book^ headB,int size);
 		void fillListDiscount(System::Windows::Forms::ListBox^ listD, mapSI^ line);

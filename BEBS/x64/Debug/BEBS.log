@@ -1,4 +1,5 @@
 ﻿  MySQL.cpp
 C:\Users\gal\Desktop\BEBS\BEBS\MySQL.cpp(128): warning C4715: 'serchBookInListChangeItToHead': not all control paths return a value
+  .NETFramework,Version=v4.7.2.AssemblyAttributes.cpp
   AdminMenu.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
   BEBS.vcxproj -> C:\Users\gal\Desktop\BEBS\x64\Debug\BEBS.exe
