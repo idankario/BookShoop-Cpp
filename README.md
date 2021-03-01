@@ -10,7 +10,7 @@
 
 # c++ project with net Project
 Made by :
-| -------------     |-------------
+
 * Idan   Kario      | 300853751   (https://github.com/idankario)
 * Shani  Levi       | 308428226   (https://github.com/shani24levi)
 
@@ -68,13 +68,6 @@ The purpose of this work is to develop a system for coordinating the sales, orde
   * last_activity
   * join_date
   * user_status
- * discounts - saves all discounts related to users or the shop
-  * discount_id
-  * percent
-  * date_from
-  * date_until
-  * user_id_discount
-  * active_discount
 * discounts - saves all discounts related to users or the shop
   * discount_id
   * percent
