@@ -6,7 +6,6 @@ C:\Users\gal\Desktop\BookShoop-Cpp-master\BEBS\x64\Debug\BEBS.LogInMenu.resource
 C:\Users\gal\Desktop\BookShoop-Cpp-master\BEBS\x64\Debug\BEBS.OrdersControl.resources
 C:\Users\gal\Desktop\BookShoop-Cpp-master\BEBS\x64\Debug\BEBS.ProfitControl.resources
 C:\Users\gal\Desktop\BookShoop-Cpp-master\BEBS\x64\Debug\BEBS.RegisterMenu.resources
-C:\Users\gal\Desktop\BookShoop-Cpp-master\BEBS\x64\Debug\BEBS.SalesControl.resources
 C:\Users\gal\Desktop\BookShoop-Cpp-master\BEBS\x64\Debug\BEBS.ShoppingMenu.resources
 C:\Users\gal\Desktop\BookShoop-Cpp-master\BEBS\x64\Debug\BEBS.UsersControl.resources
 C:\Users\gal\Desktop\BookShoop-Cpp-master\BEBS\x64\Debug\BEBS.vcxproj.GenerateResource.cache
