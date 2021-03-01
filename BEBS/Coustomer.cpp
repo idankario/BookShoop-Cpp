@@ -70,16 +70,3 @@ void Coustomer::insertBookList(int idP, System::Windows::Forms::ListBox^ invoice
 		
 }
 
-
-//for (int size = invoice->Items->Count;size>0;size--)
-//{MessageBox::Show(invoice->GetItemText(0));
-//	lineItems.get_key(i);
-//	int p = Convert::ToInt32(lineItems[i]);
-//}
-
-//for (auto it = cartShoping.begin();it != cartShoping.end(); ++it)
-//{
-//	strP itemId = it.first;
-//	int amount= it.second;
-//}
-//int amountItem = Convert::ToInt32(cartShoping[itemId]);

@@ -1,6 +1,9 @@
 ﻿  Coustomer.cpp
 C:\Users\gal\Desktop\BEBS\BEBS\Coustomer.cpp(15,10): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\gal\Desktop\BEBS\BEBS\Coustomer.cpp(17,8): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\gal\Desktop\BEBS\BEBS\Coustomer.cpp(28,16): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\gal\Desktop\BEBS\BEBS\Coustomer.cpp(16,8): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\gal\Desktop\BEBS\BEBS\Coustomer.cpp(27,16): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  MySQL.cpp
+  Generating Code...
+C:\Users\gal\Desktop\BEBS\BEBS\MySQL.cpp(130): warning C4715: 'serchBookInListChangeItToHead': not all control paths return a value
   AdminMenu.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
   BEBS.vcxproj -> C:\Users\gal\Desktop\BEBS\x64\Debug\BEBS.exe

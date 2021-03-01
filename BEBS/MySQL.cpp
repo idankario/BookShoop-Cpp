@@ -240,8 +240,8 @@ void MySQL::insertBookList(int idP, int itemId, int amount, strP price)
 {
 	MySqlCommand^ cmdDB = gcnew MySqlCommand("INSERT INTO `book_store`.`book_list`(`purchase_id`,`book_id`,`amount`,`price`)VALUES('"
 		+ idP + "','" + itemId + "','" + amount + "', '" + price + "');", conData);
-	if(executeCmd(cmdDB))
-		MessageBox::Show("Error With Update Inventory");
+	if(!(executeCmd(cmdDB)))
+		MessageBox::Show("Error Inventory");
 }
 void MySQL::disactiveDiscount(int id)
 {

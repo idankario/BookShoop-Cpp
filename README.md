@@ -1,19 +1,13 @@
 # BookEasyBuyShoop (bebs)
 
 ##  Store management system with user interface
+# c++ project with net Project
 
 ### Team
-
- [Daniel Nunes](https://github.com/PNDaniel)
-* [Ivo Lima da Silva](https://github.com/ivolimasilva)
-* [Sara Linhas Paiva](https://github.com/Linhas)
-
-# c++ project with net Project
 Made by :
 
 * Idan   Kario      | 300853751   (https://github.com/idankario)
 * Shani  Levi       | 308428226   (https://github.com/shani24levi)
-
 
 ### Project specification: [link](https://github.com/idankario/BookShoop-Cpp).
 
@@ -22,7 +16,6 @@ Made by :
 The purpose of this work is to develop a system for coordinating the sales, orders and stock management of a book editor, while following the Service Oriented Architecture (SOA) principles. As such, a building block can play any of three roles, the service provider, the service registry and the server requester. The customers are capable of doing an order in the store.
 
 ### Architecture Specification
-
 
 ### Schema
 
