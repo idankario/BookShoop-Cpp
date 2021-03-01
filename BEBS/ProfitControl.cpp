@@ -36,7 +36,7 @@ BEBS::ProfitControl::~ProfitControl()
 			this->Quarterly = (gcnew System::Windows::Forms::Button());
 			this->chart1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
 			this->HomePage = (gcnew System::Windows::Forms::PictureBox());
-			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
+			this->chartProfit = (gcnew System::Windows::Forms::DataGridView());
 			this->UpdateInventoryButton = (gcnew System::Windows::Forms::Button());
 			this->DiscountButton = (gcnew System::Windows::Forms::Button());
 			this->OrderButton = (gcnew System::Windows::Forms::Button());
@@ -48,7 +48,7 @@ BEBS::ProfitControl::~ProfitControl()
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->HomePage))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chartProfit))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart2))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -135,27 +135,27 @@ BEBS::ProfitControl::~ProfitControl()
 			this->HomePage->TabIndex = 37;
 			this->HomePage->TabStop = false;
 			// 
-			// dataGridView1
+			// chartProfit
 			// 
-			this->dataGridView1->AllowUserToAddRows = false;
-			this->dataGridView1->AllowUserToDeleteRows = false;
-			this->dataGridView1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+			this->chartProfit->AllowUserToAddRows = false;
+			this->chartProfit->AllowUserToDeleteRows = false;
+			this->chartProfit->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
 				| System::Windows::Forms::AnchorStyles::Left)
 				| System::Windows::Forms::AnchorStyles::Right));
-			this->dataGridView1->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
-			this->dataGridView1->BackgroundColor = System::Drawing::Color::White;
-			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Location = System::Drawing::Point(67, 222);
-			this->dataGridView1->Name = L"dataGridView1";
-			this->dataGridView1->ReadOnly = true;
-			this->dataGridView1->RowHeadersWidth = 72;
-			this->dataGridView1->RowTemplate->Height = 31;
-			this->dataGridView1->ShowCellErrors = false;
-			this->dataGridView1->ShowCellToolTips = false;
-			this->dataGridView1->ShowEditingIcon = false;
-			this->dataGridView1->ShowRowErrors = false;
-			this->dataGridView1->Size = System::Drawing::Size(356, 313);
-			this->dataGridView1->TabIndex = 38;
+			this->chartProfit->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
+			this->chartProfit->BackgroundColor = System::Drawing::Color::White;
+			this->chartProfit->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->chartProfit->Location = System::Drawing::Point(67, 222);
+			this->chartProfit->Name = L"chartProfit";
+			this->chartProfit->ReadOnly = true;
+			this->chartProfit->RowHeadersWidth = 72;
+			this->chartProfit->RowTemplate->Height = 31;
+			this->chartProfit->ShowCellErrors = false;
+			this->chartProfit->ShowCellToolTips = false;
+			this->chartProfit->ShowEditingIcon = false;
+			this->chartProfit->ShowRowErrors = false;
+			this->chartProfit->Size = System::Drawing::Size(356, 313);
+			this->chartProfit->TabIndex = 38;
 			// 
 			// UpdateInventoryButton
 			// 
@@ -303,7 +303,7 @@ BEBS::ProfitControl::~ProfitControl()
 			this->Controls->Add(this->OrderButton);
 			this->Controls->Add(this->UsersButton);
 			this->Controls->Add(this->ProfitButton);
-			this->Controls->Add(this->dataGridView1);
+			this->Controls->Add(this->chartProfit);
 			this->Controls->Add(this->HomePage);
 			this->Controls->Add(this->chart1);
 			this->Controls->Add(this->Quarterly);
@@ -317,7 +317,7 @@ BEBS::ProfitControl::~ProfitControl()
 			this->Load += gcnew System::EventHandler(this, &ProfitControl::ProfitControl_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart1))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->HomePage))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chartProfit))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart2))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
@@ -326,24 +326,24 @@ BEBS::ProfitControl::~ProfitControl()
 
 	System::Void BEBS::ProfitControl::weeklyClick(System::Object^ sender, System::EventArgs^ e) {
 		MySQL db;
-		db.weeklyProfit(this->chart1, this->dataGridView1);
+		db.weeklyProfit(this->chart1, this->chartProfit);
 		db.weeklySales(this->chart2);
 	
 	}
 	Void BEBS::ProfitControl::fillAll(void) {
 		MySQL db;
-		db.quarterlyProfit(this->chart1, this->dataGridView1);
+		db.quarterlyProfit(this->chart1, this->chartProfit);
 		db.quarterlySales(this->chart2);
 	}
 
 	System::Void BEBS::ProfitControl::monthlyClick(System::Object^ sender, System::EventArgs^ e) {
 		MySQL db;
-		db.monthlyProfit(this->chart1, this->dataGridView1);
+		db.monthlyProfit(this->chart1, this->chartProfit);
 		db.monthlySales(this->chart2);
 	}
 	System::Void BEBS::ProfitControl::quarterlyClick(System::Object^ sender, System::EventArgs^ e) {
 		MySQL db;
-		db.quarterlyProfit(this->chart1, this->dataGridView1);
+		db.quarterlyProfit(this->chart1, this->chartProfit);
 		db.quarterlySales(this->chart2);
 	}
 

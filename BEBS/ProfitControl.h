@@ -21,7 +21,8 @@ namespace BEBS {
 		System::Windows::Forms::Button^ Quarterly;
 		System::Windows::Forms::DataVisualization::Charting::Chart^ chart1;
 		System::Windows::Forms::PictureBox^ HomePage;
-		System::Windows::Forms::DataGridView^ dataGridView1;
+	private: System::Windows::Forms::DataGridView^ chartProfit;
+
 		System::Windows::Forms::Button^ UpdateInventoryButton;
 		System::Windows::Forms::Button^ DiscountButton;
 		System::Windows::Forms::Button^ OrderButton;

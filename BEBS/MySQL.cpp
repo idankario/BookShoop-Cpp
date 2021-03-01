@@ -264,7 +264,7 @@ void MySQL::setValueChartAndGrid(strP b,System::Windows::Forms::DataVisualizatio
 		while (myRender->Read()) {
 			chart1->Series[b]->Points->AddXY(myRender->GetString("Id"), myRender->GetInt32("Price"));
 		}
-		
+		conData->Close();
 		MySqlDataAdapter^ sda = gcnew MySqlDataAdapter();
 		sda->SelectCommand = cmdDB;
 		DataTable^ dbdataset = gcnew DataTable();
@@ -277,7 +277,7 @@ void MySQL::setValueChartAndGrid(strP b,System::Windows::Forms::DataVisualizatio
 	catch (Exception^ ex) {
 		MessageBox::Show(ex->Message);
 	}
-	conData->Close();
+	
 }
 
 void  MySQL::quarterlyProfit(System::Windows::Forms::DataVisualization::Charting::Chart^ chart1, System::Windows::Forms::DataGridView^ dataGridView1)
@@ -553,7 +553,7 @@ void MySQL::setValueGrid(System::Windows::Forms::DataGridView^ providerList, MyS
 		while (myRender->Read()) {
 		}
 		
-
+		conData->Close();
 		MySqlDataAdapter^ sda = gcnew MySqlDataAdapter();
 		sda->SelectCommand = cmdDB;
 		DataTable^ dbdataset = gcnew DataTable();
@@ -566,7 +566,7 @@ void MySQL::setValueGrid(System::Windows::Forms::DataGridView^ providerList, MyS
 	catch (Exception^ ex) {
 		MessageBox::Show(ex->Message);
 	}
-	conData->Close();
+	
 }
 void MySQL::providerData(System::Windows::Forms::DataGridView^ OrderList )
 {
