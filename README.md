@@ -10,7 +10,6 @@
 
 # c++ project with net Project
 Made by :
- Student name       | ID
 | -------------     |-------------
 * Idan   Kario      | 300853751   (https://github.com/idankario)
 * Shani  Levi       | 308428226   (https://github.com/shani24levi)
@@ -83,5 +82,4 @@ The purpose of this work is to develop a system for coordinating the sales, orde
   * date_until
   * user_id_discount
   * active_discount
-### Routes
 
