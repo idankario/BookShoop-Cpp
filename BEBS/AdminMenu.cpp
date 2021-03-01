@@ -8,8 +8,6 @@ BEBS::AdminMenu::AdminMenu(void)
 
 }
 
-
-
 BEBS::AdminMenu::~AdminMenu()
 	{
 		if (components)
@@ -17,7 +15,6 @@ BEBS::AdminMenu::~AdminMenu()
 			delete components;
 		}
 	}
-
 
 	void BEBS::AdminMenu::InitializeComponent(void)
 	{

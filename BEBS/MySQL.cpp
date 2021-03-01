@@ -7,9 +7,7 @@ MySQL::MySQL()
 }
 MySQL::~MySQL()
 {
-
 }
-
 
 strP  MySQL::getPassqord(strP user)
 {
@@ -29,6 +27,7 @@ strP  MySQL::getPassqord(strP user)
 	catch (Exception^ ex) {
 		MessageBox::Show(ex->Message);
 	}
+	conData->Close();
 	return pass;
 }
 
@@ -53,7 +52,6 @@ User^ MySQL::getInstaseUser(strP user, strP password)
 				t= gcnew Coustomer(userRole, userId, email, name, lastActivity);
 		}
 		myRender->Close();
-		conData->Close();
 	}
 	catch (Exception^ ex) {
 		MessageBox::Show(ex->Message);
@@ -174,10 +172,8 @@ Boolean  MySQL::addNewUser(strP email, strP password, strP name)
 void MySQL::deleteBook(strP id)
 {
 	MySqlCommand^ cmdDB = gcnew MySqlCommand("UPDATE  book_store.books SET  active_item = false WHERE book_id ='" + id + "' ;", conData);
-	conData->Open();
 	if(executeCmd(cmdDB))
 		MessageBox::Show("Book Disactive");
-	conData->Close();
 }
 void MySQL::updateBook(strP title, strP page, strP section, strP price, strP amount,strP info, strP img, strP author, strP id)
 {
@@ -268,7 +264,7 @@ void MySQL::setValueChartAndGrid(strP b,System::Windows::Forms::DataVisualizatio
 		while (myRender->Read()) {
 			chart1->Series[b]->Points->AddXY(myRender->GetString("Id"), myRender->GetInt32("Price"));
 		}
-		conData->Close();
+		
 		MySqlDataAdapter^ sda = gcnew MySqlDataAdapter();
 		sda->SelectCommand = cmdDB;
 		DataTable^ dbdataset = gcnew DataTable();
@@ -281,6 +277,7 @@ void MySQL::setValueChartAndGrid(strP b,System::Windows::Forms::DataVisualizatio
 	catch (Exception^ ex) {
 		MessageBox::Show(ex->Message);
 	}
+	conData->Close();
 }
 
 void  MySQL::quarterlyProfit(System::Windows::Forms::DataVisualization::Charting::Chart^ chart1, System::Windows::Forms::DataGridView^ dataGridView1)
@@ -555,7 +552,7 @@ void MySQL::setValueGrid(System::Windows::Forms::DataGridView^ providerList, MyS
 		myRender = cmdDB->ExecuteReader();
 		while (myRender->Read()) {
 		}
-		conData->Close();
+		
 
 		MySqlDataAdapter^ sda = gcnew MySqlDataAdapter();
 		sda->SelectCommand = cmdDB;
@@ -569,6 +566,7 @@ void MySQL::setValueGrid(System::Windows::Forms::DataGridView^ providerList, MyS
 	catch (Exception^ ex) {
 		MessageBox::Show(ex->Message);
 	}
+	conData->Close();
 }
 void MySQL::providerData(System::Windows::Forms::DataGridView^ OrderList )
 {
@@ -608,6 +606,7 @@ void MySQL::setUsersTabel(int id, System::Windows::Forms::Label^ name, System::W
 			catch (Exception^ ex) {
 				MessageBox::Show(ex->Message);
 			}
+			conData->Close();
 		}
 	}
 	catch (Exception^ ex) {
