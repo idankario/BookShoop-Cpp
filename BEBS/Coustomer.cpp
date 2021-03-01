@@ -11,7 +11,9 @@ strP Coustomer::getValue(strP s)
 }
 void Coustomer::addItemToCart(strP itemId, strP name,strP price,System::Windows::Forms::ListBox^ listBox, System::Windows::Forms::TextBox^ totalPay)
 {
-	int p = Convert::ToInt32(price);
+	MySQL db;
+	float d = 1 -( db.getDiscount(this->getId()) * 0.01);
+	int p = Convert::ToInt32(price)*(d);
 	totalCart += p;
 	totalPay->Text = "Total Price: "+ totalCart;
 	if (cartShoping.count(itemId) == 0)
@@ -22,7 +24,7 @@ void Coustomer::addItemToCart(strP itemId, strP name,strP price,System::Windows:
 	else
 		cartShoping[itemId]++;
 	int amountItem = Convert::ToInt32(cartShoping[itemId]);
-	int priceItem = Convert::ToInt32(price)* amountItem;
+	int priceItem = Convert::ToInt32(price)* (amountItem*d);
 	if (listBox->Items->Count>0)
 	{
 		if(amountItem==1)

@@ -223,6 +223,7 @@ int MySQL::getDiscount(strP id)
 	MySqlCommand^ cmdDB = gcnew MySqlCommand("select max(percent) as p from book_store.discounts where active_discount=true and now() >= date_from and now() <= date_until and user_id_discount ='" + id + "'|| user_id_discount = 'all';", conData);
 	int persent;
 	try {
+		conData->Open();
 		MySqlDataReader^ myRender = cmdDB->ExecuteReader();
 		if (myRender->Read()) {
 			persent = Convert::ToInt32(myRender->GetString("p"));
@@ -232,6 +233,7 @@ int MySQL::getDiscount(strP id)
 	catch (Exception^ ex) {
 		MessageBox::Show(ex->Message);
 	}
+	conData->Close();
 	return persent;
 }
 void MySQL::insertBookList(int idP, int itemId, int amount, strP price)
