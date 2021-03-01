@@ -15,7 +15,7 @@ FROM book_store.books
 
 select pass from book_store.users where email="idan@gmail.com";
 SELECT DATE_FORMAT(publish_date, '%m-%d-%Y') as publishDate ,book_store.books.* FROM book_store.books; 
-
+select *  from book_store.books where amount>1 and active_item=true;
  SELECT * FROM book_store.books WHERE amount>1 and CONCAT(`title`,`pages` ,`section`,`price`,`author`) LIKE '%c++%' ;
  SELECT * FROM book_store.books ;
 select * from book_store.purchases where pyment_date >= now()-interval 1 week;
