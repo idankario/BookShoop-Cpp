@@ -1,6 +1,6 @@
 # BookEasyBuyShoop (bebs)
 
-#A local shortcut is located in the BEBS folder - named BEBS - Shortcut Its will be the best to run it from visual studio to get the best performance
+# A local shortcut is located in the BEBS folder - named BEBS - Shortcut Its will be the best to run it from visual studio to get the best performance
 
 #  Store management system with user interface
 # c++ project with net Project
